@@ -1,0 +1,1601 @@
+0: The Year of the Rising Flame
+1: The Year of Sunrise
+2: The Year of the Smiling Hag
+3: The Year of the Faded Flower
+4: The Year of the Slaked Blade
+5: The Year of the Clutched Emerald
+6: The Year of the Firestars
+7: The Year of the Vampires' Sun
+8: The Year of Spellspheres
+9: The Year of the Falling Wall
+10: The Year of Dreams
+11: The Year of the Mellifluent Sphinx
+12: The Year of Wistful Looks
+13: The Year of the Sweet Songs
+14: The Year of the Unknown Beloved
+15: The Year of Glittering Glory
+16: The Year of Distant Thunder
+17: The Year of Crashing Glee
+18: The Year of the Lasting Wonders
+19: The Year of the Blessed Beast
+20: The Year of the Fallen Fury
+21: The Year of Lamenting
+22: The Year of the Empty Fist
+23: The Year of Falling Arrows
+24: The Year of the Evasive Hare
+25: The Year of Many Runes
+26: The Year of Opening Doors
+27: The Year of Shadowed Blades
+28: The Year of the Barren Fields
+29: The Year of the Carved Cliffs
+30: The Year of the Crushed Monument
+31: The Year of the Garrulous Gargoyle
+32: The Year of Errant Arrows
+33: The Year of Slowing Sands
+34: The Year of Purloined Power
+35: The Year of Scaled Lightning
+36: The Year of Consuming Ice
+37: The Year of Dark Venom
+38: The Year of Verdant Pain
+39: The Year of Proud Flame
+40: The Year of the Gaunt Wolf
+41: The Year of the Branded Lily
+42: The Year of the Charging Cavalry
+43: The Year of Frostbrands
+44: The Year of the Vow Manifest
+45: The Year of the Torpid Arms
+46: The Year of the Hidden Fortress
+47: The Year of the Crystal Orb
+48: The Year of the Bloodied Pikes
+49: The Year of the Deadly Joust
+50: The Year of the Barbed Wind
+51: The Year of the Red Pearls
+52: The Year of the Thundering Horde
+53: The Year of the Desert Kingdoms
+54: The Year of the Forlorn Prince
+55: The Year of the Caustic Blood
+56: The Year of the Laughing Nightmare
+57: The Year of Lamplit Nights
+58: The Year of the Dazzling Dolphins
+59: The Year of the Tangled Threads
+60: The Year of the Pirate's Lost Eye
+61: The Year of the Branded Mage
+62: The Year of the Lonely Daughters
+63: The Year of the Winsome Trio
+64: The Year of the Boisterous Orc
+65: The Year of the Foaming Wave
+66: The Year of the Spellbound Heir
+67: The Year of the Redolent Innkeeper
+68: The Year of the Echoing Chasm
+69: The Year of the Lit Pathway
+70: The Year of the Mournful Dance
+71: The Year of the Entwined Sculpture
+72: The Year of the Climber's Rest
+73: The Year of Wise Counsel
+74: The Year of the Fearful Mercenary
+75: The Year of Clinging Death
+76: The Year of Windsong
+77: The Year of the Quivering Mountains
+78: The Year of the Closing Darkness
+79: The Year of the Whispering Woods
+80: The Year of the Mordant Blight
+81: The Year of the Vampiric Torch
+82: The Year of the Preordained Youth
+83: The Year of the Satyr's Adulation
+84: The Year of the Monotonous Speech
+85: The Year of the Orb Obsidious
+86: The Year of the Eyeless Wraith
+87: The Year of the Hoar Frost
+88: The Year of the Flood
+89: The Year of the Faithful Oracle
+90: The Year of the Moor Birds
+91: The Year of the Scabbard Peace
+92: The Year of the Vanished Tattoo
+93: The Year of the Quiet Valley
+94: The Year of the Multitudes
+95: The Year of the Reluctant Hero
+96: The Year of the Mournful Harp
+97: The Year of Flickering Nyths
+98: The Year of Revealed Grimoires
+99: The Year of the Dragonstar
+100: The Year of Greybeards
+101: The Year of the Smiling Moon
+102: The Year of the Ormage
+103: The Year of the White Hound
+104: The Year of the Preying Griffon
+105: The Year of the Tattooed Mistress
+106: The Year of the Adamantine Spiral
+107: The Year of the Fledglings
+108: The Year of the Mortified Monk
+109: The Year of the False Ghost
+110: The Year of the Quirt
+111: The Year of Fallen Guards
+112: The Year of the Tusk
+113: The Year of the Belching Boggle
+114: The Year of the Jagged Leaves
+115: The Year of the Morning Glory
+116: The Year of the Mortal Promise
+117: The Year of the Swinging Pendulum
+118: The Year of the Monkey
+119: The Year of the Mountain's Fire
+120: The Year of the Remembered Pain
+121: The Year of the Embroidered Button
+122: The Year of the Mourning Armsmen
+123: The Year of Year ofthe Icy Axe
+124: The Year of the Biting Frost
+125: The Year of the Ironwood
+126: The Year of the Cinammon Haze
+127: The Year of the Defiant Stone
+128: The Year of the Addled Arcanist
+129: The Year of the Mummy's Amulet
+130: The Year of the Dwarven Twins
+131: The Year of the Cockatrice's Stare
+132: The Year of Thirteen Prides Lost
+133: The Year of the Arduous Journey
+134: The Year of the Impassable Chasm
+135: The Year of the Halfling's Dale
+136: The Year of the Storm Skeleton
+137: The Year of the King's Destiny
+138: The Year of Sparks Flying
+139: The Year of the Resolute Courtesans
+140: The Year of the Executioner
+141: The Year of the Impenetrable Mystery
+142: The Year of the Prowling Naga
+143: The Year of the Smiling Princess
+144: The Year of the Fear and Flame
+145: The Year of the Pirates' Port
+146: The Year of the Risen Towers
+147: The Year of the Iron Colossus
+148: The Year of the Blue Ice
+149: The Year of the Dwarf
+150: The Year of the Lost Library
+151: The Year of the Kraken
+152: The Year of the Severed Hand
+153: The Year of the Wolfstone
+154: The Year of the Jealous Hag
+155: The Year of the Mellifluous Heaps
+156: The Year of the Imaginary Foe
+157: The Year of the Resounding Call
+158: The Year of the Imploring Widow
+159: The Year of the Lost Profit
+160: The Year of the Smirking Knaves
+161: The Year of the Hangman's Noose
+162: The Year of the Great Dwarven Gate
+163: The Year of the Screeching Vole
+164: The Year of the Fallen Temple
+165: The Year of the Smoking Brazier
+166: The Year of the Reremouse
+167: The Year of the Deep Wellspring
+168: The Year of Scattered Stars
+169: The Year of the Weary Warrior
+170: The Year of the Bloodties
+171: The Year of Unkind Weapons
+172: The Year of the Great Debate
+173: The Year of Screaming Sharn
+174: The Year of the Windswept Plains
+175: The Year of the Black Boats
+176: The Year of the Wyrmclaws
+177: The Year of the Troublesome Vixen
+178: The Year of the Jealous Spouse
+179: The Year of the Engraved Locket
+180: The Year of Leaning Pillars
+181: The Year of the Sinking Islands
+182: The Year of the Quenched Stirges
+183: The Year of the Murmuring Dead
+184: The Year of the Leucrotta
+185: The Year of the Golden Elephant
+186: The Year of Vestigial Wings
+187: The Year of the Twisted Tree
+188: The Year of Dissolute Drow
+189: The Year of the Cowled Defender
+190: The Year of the Apparition
+191: The Year of the Broken Lands
+192: The Year of the Magnificent Equine
+193: The Year of the Raised Brow
+194: The Year of Coiling Smoke
+195: The Year of the Yeti
+196: The Year of Yearning Elves
+197: The Year of the Unseeing Priest
+198: The Year of the Almond Eyes
+199: The Year of the Cold Enchanter
+200: The Year of Leaping Flames
+201: The Year of the Student
+202: The Year of the Fanged Gauntlet
+203: The Year of Scattered Sands
+204: The Year of the Avarice
+205: The Year of the Greengrass
+206: The Year of the Regal Doppleganger
+207: The Year of the Majestic Mace
+208: The Year of Riven Realms
+209: The Year of the Dying Eye
+210: The Year of the Steelfall
+211: The Year of Spoiled Splendors
+212: The Year of the Awakening Magic
+213: The Year of the Waking Wraith
+214: The Year of Lost Voices
+215: The Year of the Shadowsnare
+216: The Year of the Battle Horns
+217: The Year of the Giant Skulls
+218: The Year of the Dancing Lights
+219: The Year of Old Danger
+220: The Year of the Sword Violets
+221: The Year of the Melting Manscorpion
+222: The Year of the Ghosthunt
+223: The Year of Dark Dreams
+224: The Year of the Flaming Forests
+225: The Year of the Shattered Skulls
+226: The Year of the Empty Turret
+227: The Year of the Raised Banner
+228: The Year of the Loremasters
+229: The Year of the Black Flame
+230: The Year of the Wailing Dryads
+231: The Year of the Mist Dragon
+232: The Year of the Leaping Centaur
+233: The Year of Much Ale
+234: The Year of Bloodflowers
+235: The Year of Drawn Knives
+236: The Year of the Plague Clouds
+237: The Year of the Disappearing Dragon
+238: The Year of Many Mushrooms
+239: The Year of the Wandering Leucrotta
+240: The Year of the Chosen
+241: The Year of the Hippogriff's Folly
+242: The Year of the Hunting Horn
+243: The Year of the Sad Orm
+244: The Year of the Elfsands
+245: The Year of the Dun Dragon
+246: The Year of the Sepulchre
+247: The Year of the Moaning Maiden
+248: The Year of Tumbletowns
+249: The Year of the Crystal Casket
+250: The Year of the Storm Crown
+251: The Year of Strange Seedlings
+252: The Year of the Bloody Spider
+253: The Year of Somber Smiles
+254: The Year of the Ghost Horse
+255: The Year of the Magethunder
+256: The Year of the Thousand Snows
+257: The Year of the Speaking Mountain
+258: The Year of the War Wyvern
+259: The Year of the Magedirge
+260: The Year of Sunless Stones
+261: The Year of Soaring Stars
+262: The Year of Pages Perilous
+263: The Year of the Worn Pages
+264: The Year of the Vanishing Cat
+265: The Year of the Masterful Plan
+266: The Year of the Unspoken Name
+267: The Year of Bane's Shadow
+268: The Year of the Cruel Storms
+269: The Year of the Wild Roses
+270: The Year of the Unheeded Warning
+271: The Year of the Port Stormed
+272: The Year of the Weeping Kingdom
+273: The Year of the Delighted Dwarves
+274: The Year of the Vested Vigil
+275: The Year of the Wrath Sword
+276: The Year of the Burnished Blade
+277: The Year of Broken Flame
+278: The Year of the Fallen Banner
+279: The Year of Smiling Nyth
+280: The Year of the Secreted Phylactery
+281: The Year of the Weeping Flail
+282: The Year of the Watchful Hermit
+283: The Year of the Skillful Tailor
+284: The Year of Fallen Flagons
+285: The Year of Wasted Pride
+286: The Year of the Jolly Mongrels
+287: The Year of the Warped Narthex
+288: The Year of the Xorn's Yearning
+289: The Year of the Waking Dreams
+290: The Year of Full Cribs
+291: The Year of the Vintner's Dagger
+292: The Year of Frostfires
+293: The Year of Hounds
+294: The Year of the Yak Men
+295: The Year of the Wrathful Revenant
+296: The Year of the Two Riders
+297: The Year of the Wailing Mothers
+298: The Year of the Scarred Wagon
+299: The Year of the Vaasan Knot
+300: The Year of the Late Sun
+301: The Year of Argent Cape
+302: The Year of the Deep Bay
+303: The Year of the Crimson Tiara
+304: The Year of the Questing Raven
+305: The Year of the Barrows
+306: The Year of the Fanged Horde
+307: The Year of Sundered Sails
+308: The Year of Promise
+309: The Year of the Cascade
+310: The Year of the Amber Hulk
+311: The Year of the Lupine Embrace
+312: The Year of the Aurum Bramble
+313: The Year of Regretful Births
+314: The Year of the Stammering Apprentice
+315: The Year of the Carnivorose
+316: The Year of the Vibrant Land
+317: The Year of the Riven Shield
+318: The Year of the Hero's Lament
+319: The Year of the Unforgotten Fire
+320: The Year of the Bright Plumage
+321: The Year of the Blessed Sleep
+322: The Year of Seven Scales
+323: The Year of the Miscast Shadow
+324: The Year of Freedom's Friends
+325: The Year of the Silken Whisper
+326: The Year of Secret Slaughters
+327: The Year of the Sullen Grimalkin
+328: The Year of the Ermine Cloak
+329: The Year of the Closed Scroll
+330: The Year of Roused Giants
+331: The Year of the Cold Clashes
+332: The Year of the Crashing Steeple
+333: The Year of the Drawstring
+334: The Year of the Humbled Fiend
+335: The Year of Seven Stones
+336: The Year of the Whipped Cur
+337: The Year of the Chosen's Blade
+338: The Year of the Envenomed Bolt
+339: The Year of the Vanished Foe
+340: The Year of the Uncrossed Bridge
+341: The Year of the Black Wing
+342: The Year of the Cantobele Stalking
+343: The Year of Fraying Binds
+344: The Year of the Loom
+345: The Year of Flying Daggers
+346: The Year of Blushing Stars
+347: The Year of the Sage's Fervor
+348: The Year of the Dagger
+349: The Year of the Toad
+350: The Year of the Hunter
+351: The Year of the Dancing Deer
+352: The Year of the Dancing Piper
+353: The Year of the Gold Band
+354: The Year of the Fleeting Pains
+355: The Year of Mourning Horns
+356: The Year of the Errant Kings
+357: The Year of the Pendulum
+358: The Year of the Battle Talons
+359: The Year of the Awakened Witch
+360: The Year of the Dusty Shelf
+361: The Year of the Fearless King
+362: The Year of the Greedy Altruist
+363: The Year of the Opal Key
+364: The Year of the Selfless Knave
+365: The Year of the Swift Sword
+366: The Year of Molten Anvils
+367: The Year of Shying Eyes
+368: The Year of the Bitter Smile
+369: The Year of the Maiden's Fancy
+370: The Year of Sleeping Dangers
+371: The Year of Emerald Eyes
+372: The Year of the Elder
+373: The Year of the Pacifist
+374: The Year of the Thoughtful Man
+375: The Year of the Woeful Resurrection
+376: The Year of the Leaping Hare
+377: The Year of the Ghoul
+378: The Year of Autumn Drums
+379: The Year of Seven Stars
+380: The Year of the Guarded Stance
+381: The Year of the Broken Chalice
+382: The Year of Steel Roses
+383: The Year of the Quelzarn
+384: The Year of Dreaming Dragons
+385: The Year of the Lady's Gaze
+386: The Year of Dawn Moons
+387: The Year of the River Candles
+388: The Year of the Simoom
+389: The Year of the Wooded Altar
+390: The Year of the Half Moon
+391: The Year of the Azure Cockatrice
+392: The Year of the Firstborn
+393: The Year of the Dying Bard
+394: The Year of the Herald's Tale
+395: The Year of the Narrow Escape
+396: The Year of the Purring Tiger
+397: The Year of the Swallowing Mists
+398: The Year of the Warning Ghost
+399: The Year of the Frayed Rope
+400: The Year of the Blue Shield
+401: The Year of the Serous Fist
+402: The Year of the Banished Bard
+403: The Year of the Black Dagger
+404: The Year of Withered Flowers
+405: The Year of the Blinding Locusts
+406: The Year of the Catoblepas
+407: The Year of the Ebony Cudgel
+408: The Year of the Goblin King
+409: The Year of High Eyes
+410: The Year of the Sun Crystal
+411: The Year of the Wavering Shadow
+412: The Year of the Burning Blazes
+413: The Year of the Beholder's Grin
+414: The Year of Omen Stars
+415: The Year of the Fiend's Kiss
+416: The Year of the Striped Moon
+417: The Year of the Brilliant Plan
+418: The Year of the Eagle's Flight
+419: The Year of the Hale Blacksmith
+420: The Year of the Last Breath
+421: The Year of the Peerless Foe
+422: The Year of the Murderous Mire
+423: The Year of the Velvet Night
+424: The Year of the Ambitious Sycophant
+425: The Year of the Argent Shafts
+426: The Year of the Black Dawn
+427: The Year of Violet Fungi
+428: The Year of the One's Tears
+429: The Year of the Cat's Eye
+430: The Year of the Floating Rock
+431: The Year of the Hearth
+432: The Year of the Sea Princes
+433: The Year of the Rebellious Youth
+434: The Year of the Stallion Triumphant
+435: The Year of Willing Sacrifice
+436: The Year of Steelscreaming
+437: The Year of Silver Holly
+438: The Year of the Bitter Root
+439: The Year of the Child's Tear
+440: The Year of the Festering Heart
+441: The Year of the Haggling Merchant
+442: The Year of the Relic's Vigil
+443: The Year of the Thousand Enemies
+444: The Year of the Infamous Wizard
+445: The Year of the Beardless Dwarf
+446: The Year of the Unblinking Eye
+447: The Year of the Awakening Treant
+448: The Year of the Haughty Friend
+449: The Year of Killing Ice
+450: The Year of the Corrie Fist
+451: The Year of Unleashed Fears
+452: The Year of the Rolling Heads
+453: The Year of the Lady's Palace
+454: The Year of the Glorious Windfall
+455: The Year of the Dryad's Dowry
+456: The Year of the Swift Hart
+457: The Year of the Unfurled Flag
+458: The Year of the Beast's Redemption
+459: The Year of the Blooded Dagger
+460: The Year of Scorching Suns
+461: The Year of the Lissome Apprentice
+462: The Year of the Empty Helm
+463: The Year of the Burning Sands
+464: The Year of True Names
+465: The Year of Dawn Blades
+466: The Year of the Burnt Spear
+467: The Year of Four Winds
+468: The Year of the Bared Sword
+469: The Year of the Dusty Library
+470: The Year of the Merciful Shadow
+471: The Year of the Sundered Tower
+472: The Year of Full Cellars
+473: The Year of the Crowned Knave
+474: The Year of the Goblin Battles
+475: The Year of the Maiden's Tears
+476: The Year of the Raging Hunter
+477: The Year of the Owlbear
+478: The Year of the Coarse Wool
+479: The Year of Forestsfrost
+480: The Year of the Winter Sphinx
+481: The Year of the Eversharp Axe
+482: The Year of the Blighted Vine
+483: The Year of the Soaring Galleon
+484: The Year of the Lawless Hunt
+485: The Year of the Arcane Image
+486: The Year of the Bleeding Altar
+487: The Year of Hidden Relics
+488: The Year of the Empty Hall
+489: The Year of the Foaming Tankard
+490: The Year of the Crone's Counsel
+491: The Year of Faltering Fires
+492: The Year of Azure Darkness
+493: The Year of the Ecstatic Priest
+494: The Year of the Ghost Ship
+495: The Year of the Listening Ear
+496: The Year of the Ravaging Dragon
+497: The Year of the Spear
+498: The Year of the Unstrung Bow
+499: The Year of the Wager
+500: The Year of the Flame Tongue
+501: The Year of the Lost Bird
+502: The Year of the Crawling Vine
+503: The Year of the Galloping Gorgon
+504: The Year of the Eclipsed Heart
+505: The Year of the Humble Knight
+506: The Year of the Opaque Eye
+507: The Year of the Rotting Pox
+508: The Year of the Stony Terror
+509: The Year of the Thunder Lizard
+510: The Year of the Unwavering Glare
+511: The Year of the Fortress Scoured
+512: The Year of the Wyvernfall
+513: The Year of the Blood Price
+514: The Year of the Elk
+515: The Year of the Frivolous Exchange
+516: The Year of the Haunting Hawk
+517: The Year of the Oaken Glade
+518: The Year of the Pendulous Tongues
+519: The Year of the Phoenix
+520: The Year of the Quiver
+521: The Year of the Sea's Beauty
+522: The Year of the Unmasked Traitor
+523: The Year of Trials Arcane
+524: The Year of the Arcane Cabal
+525: The Year of the Cracked Bell
+526: The Year of the Besieged Keep
+527: The Year of Tatters
+528: The Year of the Burning Sky
+529: The Year of the Evening Tree
+530: The Year of the Gluttonous Otyugh
+531: The Year of the Lily
+532: The Year of the Perceptive Judge
+533: The Year of the Shattered Manacles
+534: The Year of the Spitting Viper
+535: The Year of the Upright Man
+536: The Year of the Laughing Lich
+537: The Year of the Basilisk
+538: The Year of the Amethyst Axe
+539: The Year of the Borrowed Crown
+540: The Year of the Colorful Costume
+541: The Year of the Etched Chevron
+542: The Year of the Grasping Claw
+543: The Year of the Lyre
+544: The Year of the Killing Rose
+545: The Year of the Pernicon
+546: The Year of the Rusted Sabre
+547: The Year of the Simpering Courtier
+548: The Year of the Eloene Blade
+549: The Year of the Unstoppable Ogre
+550: The Year of the Zealous
+551: The Year of the Barren Chamber
+552: The Year of the Dead
+553: The Year of the Gnashing Tooth
+554: The Year of Waving Wheat
+555: The Year of Dances Perilous
+556: The Year of the Green Man
+557: The Year of the Melding
+558: The Year of the Mithral Eagle
+559: The Year of the Scarlet Dagger
+560: The Year of the Unknown Truth
+561: The Year of the Three Setting Suns
+562: The Year of the Waking Feyr
+563: The Year of the Sable Basilisk
+564: The Year of the Brandished Axe
+565: The Year of the Encrusted Pendant
+566: The Year of the Ghasts
+567: The Year of the Martyr
+568: The Year of the Pernicious Hauberk
+569: The Year of Tumbled Bones
+570: The Year of Bright Fangs
+571: The Year of the Scholar
+572: The Year of Writhing Darkness
+573: The Year of the Sable Spider
+574: The Year of the Gored Griffon
+575: The Year of the Breaching Bulette
+576: The Year of the Sunless Passage
+577: The Year of the Alabaster Mounds
+578: The Year of the Floating Fish
+579: The Year of the Cultured Rake
+580: The Year of Loose Coins
+581: The Year of the Harried Harpies
+582: The Year of the Deep Wound
+583: The Year of the Furled Sail
+584: The Year of the Juggernaut
+585: The Year of the Ogling Beholder
+586: The Year of the Night's Dying
+587: The Year of Radiant Rods
+588: The Year of Dragons Dawning
+589: The Year of the Splintered Oak
+590: The Year of the Turning Leaf
+591: The Year of Silver Streams
+592: The Year of the Supreme Duelist
+593: The Year of the Yellow Locus
+594: The Year of the Couched Spear
+595: The Year of the Coven
+596: The Year of the Flightless Eagle
+597: The Year of the Hungry Anelace
+598: The Year of the Pauper
+599: The Year of the Scourged Fool
+600: The Year of Fire and Frost
+601: The Year of the Desolate Warrior
+602: The Year of the Glimmering Sea
+603: The Year of Frigid Ghosts
+604: The Year of the Immured Imp
+605: The Year of Many Serpents
+606: The Year of the Kindly Lich
+607: The Year of the Crystal Vambrace
+608: The Year of Failed Daggers
+609: The Year of Old Bones
+610: The Year of the Spellfire
+611: The Year of the Normiir
+612: The Year of the Jester's Smile
+613: The Year of the Glaring Eye
+614: The Year of the Shattered Scepter
+615: The Year of the Lamia's Kiss
+616: The Year of the Ensorceled Kings
+617: The Year of the Needless Slaughter
+618: The Year of the Siege Tower
+619: The Year of Orcsfall
+620: The Year of the Mountain Crypts
+621: The Year of Nineteen Swords
+622: The Year of Soaring Shadows
+623: The Year of Nightsilver
+624: The Year of the Journey Home
+625: The Year of the Torrents
+626: The Year of the Eagle and Falcon
+627: The Year of the Bloodcrystals
+628: The Year of the Kobold Hordes
+629: The Year of the Empty Hearth
+630: The Year of the Winking Jester
+631: The Year of the Lone Lark
+632: The Year of Burning Skies
+633: The Year of Chasms
+634: The Year of the Darkspawn
+635: The Year of the Soldier's Forfeit
+636: The Year of the Luminous Tabard
+637: The Year of the Silver Sun
+638: The Year of the Menial Phrases
+639: The Year of Ire's Immolation
+640: The Year of the Fanged Beast
+641: The Year of the Necropolis
+642: The Year of the Sifting Sands
+643: The Year of the Nesting Harpy
+644: The Year of the Gleaming Gates
+645: The Year of the Costly Gift
+646: The Year of the Tormented Souls
+647: The Year of the Wayward Heart
+648: The Year of the Dancing Daggers
+649: The Year of the Bloody Crown
+650: The Year of the Falling Tower
+651: The Year of the Waning Sun
+652: The Year of the Viper
+653: The Year of the Killing Blow
+654: The Year of the Coveted Briars
+655: The Year of the Volanth
+656: The Year of Peaceful Seas
+657: The Year of the Nine Stars
+658: The Year of the Dangerous Game
+659: The Year of the Hunting Ghosts
+660: The Year of the Morning Horn
+661: The Year of the Bloody Tusk
+662: The Year of the Peoples' Mourning
+663: The Year of the Baleful Song
+664: The Year of the Falling Petals
+665: The Year of the Ashen Tears
+666: The Year of Stern Judgment
+667: The Year of Austere Ceremonies
+668: The Year of the Telling Tome
+669: The Year of the Brutal Beast
+670: The Year of the Many Floods
+671: The Year of the Shrouded Slayer
+672: The Year of the Angry Caverns
+673: The Year of the Covenant
+674: The Year of the Nomad
+675: The Year of the Bloodfeud
+676: The Year of Gruesome Grimoires
+677: The Year of Resonant Silence
+678: The Year of the Poignant Poniard
+679: The Year of the Scarlet Sash
+680: The Year of the Long March
+681: The Year of the Zombie Lords
+682: The Year of the Howling
+683: The Year of the Tainted Troll
+684: The Year of the Sundered Crypt
+685: The Year of the Wraithwinds
+686: The Year of the Unshriven
+687: The Year of the Wandering Sylph
+688: The Year of the Zephyr
+689: The Year of the Eager Executioner
+690: The Year of the Clashing Blades
+691: The Year of the Stricken Sun
+692: The Year of the Crawling Crags
+693: The Year of the Enigmatic Smile
+694: The Year of the Ominous Oracle
+695: The Year of Fanciful Feasts
+696: The Year of the Great Escape
+697: The Year of the Triton's Horn
+698: The Year of the Voracious Vole
+699: The Year of Rampaging Raaserpents
+700: The Year of the Slain Raven
+701: The Year of the White Jonquil
+702: The Year of the Clutching Death
+703: The Year of the Shambling Ice
+704: The Year of the Emerald Citadel
+705: The Year of Watchful Eyes
+706: The Year of the Realmsrage
+707: The Year of Portents Perilous
+708: The Year of Bound Evils
+709: The Year of the Earnest Oaths
+710: The Year of the Toppled Throne
+711: The Year of Despairing Elves
+712: The Year of the Lost Lance
+713: The Year of the Firedrake
+714: The Year of Doom
+715: The Year of Hungry Jaws
+716: The Year of Reaching Regret
+717: The Year of the Druid's Wrath
+718: The Year of the Painful Price
+719: The Year of the Lost Lord
+720: The Year of the Dawn Rose
+721: The Year of the Hungry Pool
+722: The Year of the Last Hunt
+723: The Year of the Underdark Afire
+724: The Year of the Prisoner Unfettered
+725: The Year of the Shorn Beard
+726: The Year of the Dowager Lady
+727: The Year of the Purloined Throne
+728: The Year of the Sleeping Princess
+729: The Year of the Twisted Horn
+730: The Year of the Jovial Mage
+731: The Year of the Visions
+732: The Year of the Proud Father
+733: The Year of the Sad Refrains
+734: The Year of the Splendid Stag
+735: The Year of the Prophet's Child
+736: The Year of the Gleeful Noise
+737: The Year of the Purple Wyrm
+738: The Year of the Gliding Man
+739: The Year of the Staggered Minotaur
+740: The Year of the Netherese Lai
+741: The Year of the Shandon Eyes
+742: The Year of the Wavering Voice
+743: The Year of the Snowy Addax
+744: The Year of the Jeweled Aerie
+745: The Year of the Proud Menhir
+746: The Year of the Somber Dancers
+747: The Year of Stagnant Water
+748: The Year of the Coin
+749: The Year of the Glass Eye
+750: The Year of the Dying Dwarf
+751: The Year of Good Tidings
+752: The Year of High Treachery
+753: The Year of Strife
+754: The Year of Midsummer's Dreams
+755: The Year of the Enigma
+756: The Year of the Leaning Post
+757: The Year of Lost Wayfarers
+758: The Year of the Scorched Sea
+759: The Year of the Missing Blade
+760: The Year of Drifting Stars
+761: The Year of Laughter
+762: The Year of the Snow Sword
+763: The Year of the Sharp Edge
+764: The Year of Mistmaidens
+765: The Year of the Cowl
+766: The Year of Yearning
+767: The Year of the Awakening Wyrm
+768: The Year of the Prying Gods
+769: The Year of the Torm Cloak
+770: The Year of the Diamond Sword
+771: The Year of the Stalking Knight
+772: The Year of the Giggling Ogre
+773: The Year of the Aurumvorax
+774: The Year of the Scowling Duchess
+775: The Year of the Bloody Stone
+776: The Year of the Crystal Ball
+777: The Year of the Fortified Mind
+778: The Year of Awaiting Webs
+779: The Year of the Crying Sphinx
+780: The Year of the Broken Crossbow
+781: The Year of the Elven Fortress
+782: The Year of the Gentle Hand
+783: The Year of the Lizard King
+784: The Year of the Shattered Tome
+785: The Year of the Manticore Rampant
+786: The Year of the Moaning Gorge
+787: The Year of the Rotting Orchard
+788: The Year of the True Believer
+789: The Year of the Flourishing Forests
+790: The Year of Bend Sinister
+791: The Year of the Sisters' Battles
+792: The Year of the Crimson Thorn
+793: The Year of the Furious Horse
+794: The Year of the Grimacing Elf
+795: The Year of the Firehawk
+796: The Year of the Gray Mists
+797: The Year of the Hearthstone
+798: The Year of the Holy Aspergill
+799: The Year of the Laughing Gull
+800: The Year of the Black Fist
+801: The Year of the Star Rose
+802: The Year of the Patchworked Peace
+803: The Year of the Reaching Hand
+804: The Year of the Spreading Scourge
+805: The Year of the Unsung Bard
+806: The Year of the Warrior's Rest
+807: The Year of the Bearded Maiden
+808: The Year of the Crescent Moon
+809: The Year of the Boastful Noble
+810: The Year of the Dark Mystery
+811: The Year of Many Tears
+812: The Year of the Gem Dragons
+813: The Year of Widows
+814: The Year of the Harper's Apprentice
+815: The Year of the Heavy Heart
+816: The Year of the Laughing Swan
+817: The Year of the Deadly Torch
+818: The Year of Broken Locks
+819: The Year of the Mendacious Page
+820: The Year of the Roving Tyrant
+821: The Year of the Firewall
+822: The Year of the Wizard's Chalice
+823: The Year of the Floating Petals
+824: The Year of the Copper Coil
+825: The Year of the Silver Flagon
+826: The Year of Wolfpacks
+827: The Year of the Sacrificed Fortune
+828: The Year of Alarmed Merchants
+829: The Year of the Thessalhydra
+830: The Year of the Ambitious Proposal
+831: The Year of the Deceptive Tongue
+832: The Year of the Slow Herald
+833: The Year of the Flying Serpent
+834: The Year of the Leaping Lion
+835: The Year of the Billowed Sail
+836: The Year of Twelve Bells
+837: The Year of the Darkened Sundial
+838: The Year of the Unfettered Genie
+839: The Year of Ten Atonements
+840: The Year of the Fighting Sage
+841: The Year of the Hunted Elk
+842: The Year of the Maverick
+843: The Year of Amber
+844: The Year of the Midnight Sun
+845: The Year of the Ruby Pendant
+846: The Year of the Steadfast Dwarf
+847: The Year of the Unmarked Path
+848: The Year of the Vigilant Familiar
+849: The Year of the Black Book
+850: The Year of the Empty Throne
+851: The Year of the Jasmal Blade
+852: The Year of the False Smile
+853: The Year of the Hungry Box
+854: The Year of the Indigo Inferno
+855: The Year of Cornerstones
+856: The Year of Thorns
+857: The Year of Forgotten Fame
+858: The Year of the Saffron Orb
+859: The Year of the Sea Crossing
+860: The Year of the Tired Horsemen
+861: The Year of the Exploding Orl
+862: The Year of the Snow Rose
+863: The Year of the Wondrous Sea
+864: The Year of the Broken Branch
+865: The Year of Flamedance
+866: The Year of the Blessed Morning
+867: The Year of the Cryptic Recipe
+868: The Year of the Endless Scroll
+869: The Year of the Final Price
+870: The Year of the Hooded Tracker
+871: The Year of the Marching Golem
+872: The Year of the Moonbar Crest
+873: The Year of the Opening Flower
+874: The Year of the Roiling Cauldron
+875: The Year of the Stricken Star
+876: The Year of the Toothless Skulls
+877: The Year of the Scratching Claw
+878: The Year of the Two-edged Axe
+879: The Year of the Winter's Warmth
+880: The Year of Unfettered Secrets
+881: The Year of the Brazen Vizier
+882: The Year of the Curse
+883: The Year of the Giant's Oath
+884: The Year of the Singing Arrows
+885: The Year of the Thistle
+886: The Year of the Fell Firebreak
+887: The Year of Fell Pearls
+888: The Year of Twelve Teeth
+889: The Year of the Shining Shield
+890: The Year of the Burning Tree
+891: The Year of the Leaning Keep
+892: The Year of the Open Tome
+893: The Year of the Raised Sword
+894: The Year of Cold Flame
+895: The Year of the Spitting Cat
+896: The Year of the Empty Hand
+897: The Year of the Calling Shrike
+898: The Year of the Common Corpse
+899: The Year of the Tolling Bell
+900: The Year of the Thirsty Sword
+901: The Year of the August Armathor
+902: The Year of the Queen's Tears
+903: The Year of the Trial
+904: The Year of the Rising Maeran
+905: The Year of the Rotting Word
+906: The Year of the Plough
+907: The Year of Waiting
+908: The Year of the Lone Tribe
+909: The Year of the Ogre
+910: The Year of Deathblows Denied
+911: The Year of Ruins Reborn
+912: The Year of the Sudden Journey
+913: The Year of the Watching Raven
+914: The Year of the Book
+915: The Year of the Bats
+916: The Year of the Sinhala
+917: The Year of the Winding Road
+918: The Year of the Palace
+919: The Year of the Chase
+920: The Year of Great Riches
+921: The Year of the Falling Maeran
+922: The Year of the Spouting Fish
+923: The Year of the Bloodied Soldier
+924: The Year of the Cracked Turtle
+925: The Year of the Enchanted Trail
+926: The Year of the Fearless Peasant
+927: The Year of the Red Rain
+928: The Year of the Hurled Axe
+929: The Year of Flashing Eyes
+930: The Year of the Liberty Crest
+931: The Year of the Penitent Rogue
+932: The Year of Fireslaughter
+933: The Year of the Five Jugs
+934: The Year of Fell Wizardry
+935: The Year of the Rearing Lion
+936: The Year of the Sky Riders
+937: The Year of the Turning Wheel
+938: The Year of the Unhanged Man
+939: The Year of the Vengeful Halfling
+940: The Year of the Cold Claws
+941: The Year of Sudden Sorrows
+942: The Year of the Circling Vulture
+943: The Year of the Flying Steed
+944: The Year of the Animated Armor
+945: The Year of the Foolish Bridegroom
+946: The Year of the Blazing Call
+947: The Year of the Advancing Wind
+948: The Year of the Clarion Trumpet
+949: The Year of the Forbidden Tome
+950: The Year of the Doomguard
+951: The Year of the Empty Hourglass
+952: The Year of the Rings Royal
+953: The Year of the Guiding Crow
+954: The Year of Perilous Halls
+955: The Year of the Telltale Candle
+956: The Year of the Crooked Finger
+957: The Year of the Entombed Poet
+958: The Year of the Far-flung Harp
+959: The Year of the Haunted Crew
+960: The Year of the Mageling
+961: The Year of the Pensive Gibberling
+962: The Year of the Shandon Veil
+963: The Year of the Deadly Duo
+964: The Year of the Pickled Privateer
+965: The Year of the Runelightning
+966: The Year of the Squire
+967: The Year of the Tearful Princess
+968: The Year of the Wandering Gnome
+969: The Year of the Bright Standard
+970: The Year of the Child's Trinket
+971: The Year of the Children
+972: The Year of the Cairngorm Crown
+973: The Year of the Emptied Lair
+974: The Year of the Haunting Harpy
+975: The Year of the Bent Coin
+976: The Year of the Slaying Spells
+977: The Year of Swordforging
+978: The Year of the Hooded Rogue
+979: The Year of the Marching Forest
+980: The Year of the Orator
+981: The Year of the Rebel Uprising
+982: The Year of the Scythe
+983: The Year of the Submerged Country
+984: The Year of the Caravan
+985: The Year of Bright Nights
+986: The Year of the Dusken Ride
+987: The Year of the Flaming Dwarf
+988: The Year of the Meddling Avatar
+989: The Year of Dark Stalking
+990: The Year of the Muster
+991: The Year of the Breaking Ice
+992: The Year of the Watching Helm
+993: The Year of the Slain Mountain
+994: The Year of the Weary Scribe
+995: The Year of the Charging Mare
+996: The Year of the Disfiguring Scar
+997: The Year of the Fearful Harper
+998: The Year of Much Iron
+999: The Year of the Gaping Sky
+1000: The Year of the Wailing Winds
+1001: The Year of the Awakening
+1002: The Year of the Heavenly Rock
+1003: The Year of the Labyrinth
+1004: The Year of the Oracle's Carcass
+1005: The Year of the Pillaged Crypt
+1006: The Year of the Second Son
+1007: The Year of the Bold Barbarian
+1008: The Year of the Treacherous Path
+1009: The Year of the Broken Spear
+1010: The Year of Three Signs
+1011: The Year of the Defiant Mountain
+1012: The Year of the Flamboyant Coif
+1013: The Year of the Hunted Whale
+1014: The Year of the Grimacing Sage
+1015: The Year of the Maid Enraged
+1016: The Year of the Roaring Tempest
+1017: The Year of the Stone Rose
+1018: The Year of the Dracorage
+1019: The Year of the Sure Quarrel
+1020: The Year of Smoldering Spells
+1021: The Year of the Howling Axe
+1022: The Year of the Wandering Wyvern
+1023: The Year of the Pirates' Trove
+1024: The Year of Lathander's Light
+1025: The Year of Screaming Princesses
+1026: The Year of Crimson Magics
+1027: The Year of the Tempest
+1028: The Year of the Wistful Nymph
+1029: The Year of the Bold Strides
+1030: The Year of Warlords
+1031: The Year of the Comforting Hand
+1032: The Year of the Nightmaidens
+1033: The Year of the Dreamforging
+1034: The Year of Bane's Brood
+1035: The Year of Falling Stars
+1036: The Year of the Final Test
+1037: The Year of the Immortals
+1038: The Year of Spreading Spring
+1039: The Year of the Haunted Haven
+1040: The Year of the Lion's Heart
+1041: The Year of the Mistmarch Soldier
+1042: The Year of the Reaching Beacon
+1043: The Year of the Dark Rider
+1044: The Year of Singing Shards
+1045: The Year of the Singing Mushrooms
+1046: The Year of the Twilight Campaign
+1047: The Year of the Vitriolic Sage
+1048: The Year of the Chevalier
+1049: The Year of Auril's Absence
+1050: The Year of the Keening Gale
+1051: The Year of the Dogged Search
+1052: The Year of the Frozen Kingdoms
+1053: The Year of Lashing and Torment
+1054: The Year of Tolling Terrors
+1055: The Year of the Grueling Story
+1056: The Year of the Laughing Dead
+1057: The Year of Azure Frost
+1058: The Year of the Spider's Daughter
+1059: The Year of the Broken Pillar
+1060: The Year of Fantastic Spectacle
+1061: The Year of the Pious Dance
+1062: The Year of the Shattered Lance
+1063: The Year of the Deluded Tyrant
+1064: The Year of the Stranger
+1065: The Year of the Watching Wood
+1066: The Year of the Lord's Dilemma
+1067: The Year of the Minotaur Paladin
+1068: The Year of the Seer Born
+1069: The Year of the Thunder's Child
+1070: The Year of the Spawning
+1071: The Year of Lions' Roars
+1072: The Year of the Wandering Elfmaid
+1073: The Year of the Bottomless Ocean
+1074: The Year of the Tightening Fist
+1075: The Year of the Bronze Banner
+1076: The Year of the Defiant Salute
+1077: The Year of the Friendly Jackal
+1078: The Year of the Hierodulic Wolverines
+1079: The Year of the Lazy Scribe
+1080: The Year of the Misguided Archer
+1081: The Year of the Disastrous Bauble
+1082: The Year of the Prancing Korred
+1083: The Year of the Sighted Hind
+1084: The Year of the Tireless Lute
+1085: The Year of the Vacant Plain
+1086: The Year of the Seer's Fires
+1087: The Year of Forgotten Anger
+1088: The Year of Shambles
+1089: The Year of Three Faces
+1090: The Year of Slaughter
+1091: The Year of Watery Graves
+1092: The Year of the Aimless Mystic
+1093: The Year of the Bursting Song
+1094: The Year of the Crested Thrush
+1095: The Year of the Dawndance
+1096: The Year of the Diverged Path
+1097: The Year of the Gleaming Crown
+1098: The Year of the Rose
+1099: The Year of the Restless
+1100: The Year of the Bloodrose
+1101: The Year of the Maelstrom
+1102: The Year of the Chaste Maiden
+1103: The Year of the Consuming Glory
+1104: The Year of the Dark Dawn
+1105: The Year of the Guardian
+1106: The Year of the Solemn Halfling
+1107: The Year of the Skulk
+1108: The Year of the Open Chest
+1109: The Year of the Lover's Eyes
+1110: The Year of the Bloody Fields
+1111: The Year of the Old Giant
+1112: The Year of the Perilous Storm
+1113: The Year of the Outcast Prophet
+1114: The Year of the Last Enclave
+1115: The Year of the Haunted Herald
+1116: The Year of the Empty Scabbard
+1117: The Year of the Twelverule
+1118: The Year of the False Bargain
+1119: The Year of the Sharn Suitors
+1120: The Year of the Perplexing Sphinx
+1121: The Year of the Shameful Plea
+1122: The Year of the Rose Pearls
+1123: The Year of the Shattered Chains
+1124: The Year of the Shared Sorrows
+1125: The Year of the Lupine Torque
+1126: The Year of Azure Blood
+1127: The Year of the Luminar Procession
+1128: The Year of the Peryton
+1129: The Year of the Gilded Cormorant
+1130: The Year of the Howling Moon
+1131: The Year of the Seven Kings Horde
+1132: The Year of the Talking Spiders
+1133: The Year of the Persuasive Voice
+1134: The Year of the Sylvan Wards
+1135: The Year of the Petulant Dragon
+1136: The Year of the Shadowkin Return
+1137: The Year of the Falling Menhirs
+1138: The Year of the Sharpened Teeth
+1139: The Year of Shining Waves
+1140: The Year of the Knight
+1141: The Year of Eyes
+1142: The Year of the Sword's Oath
+1143: The Year of the Talisman
+1144: The Year of the Giant's Maul
+1145: The Year of the Smiling Flame
+1146: The Year of the Tardy Guests
+1147: The Year of the Glad Tidings
+1148: The Year of the Angry Sea
+1149: The Year of the Persuasive Trees
+1150: The Year of the Scourge
+1151: The Year of the Molten Man
+1152: The Year of the Portentous Waters
+1153: The Year of the Remembering Stones
+1154: The Year of the Sun Underground
+1155: The Year of the Tyrant's Lament
+1156: The Year of the Winged Gift
+1157: The Year of the Wizened Mage
+1158: The Year of the Blood Tusk Charge
+1159: The Year of the Cloven Stones
+1160: The Year of the Swimming Lass
+1161: The Year of the Quiet Earth
+1162: The Year of the Prancing Centaur
+1163: The Year of the Shrouded Sky
+1164: The Year of Long Shadows
+1165: The Year of the Obsidian Heart
+1166: The Year of Countless Scribes
+1167: The Year of the Parchment Heretical
+1168: The Year of the Leering Orc
+1169: The Year of the Earth Shaking
+1170: The Year of the Moonlight Tapestry
+1171: The Year of the Dark Mask
+1172: The Year of the Hoary Host
+1173: The Year of the Fledglings
+1174: The Year of the Agate Hammer
+1175: The Year of the Storm Skeleton
+1176: The Year of Prowling Naga
+1177: The Year of the Majesty
+1178: The Year of the Secret Rider
+1179: The Year of the Stalking Satyr
+1180: The Year of Sinking Sails
+1181: The Year of the Shieldtree
+1182: The Year of the Tomb
+1183: The Year of the Grisly Ghosts
+1184: The Year of the Howling Hourglass
+1185: The Year of the Immoral Imp
+1186: The Year of the Mesmer Pool
+1187: The Year of the Arcane Guise
+1188: The Year of the Soft Fogs
+1189: The Year of the Lynx
+1190: The Year of the Poisoned Quill
+1191: The Year of the Bone Helm
+1192: The Year of the Guide
+1193: The Year of the Peltast
+1194: The Year of the Bloody Wave
+1195: The Year of the Midday Mists
+1196: The Year of the Shrike
+1197: The Year of the Sundered Shields
+1198: The Year of the Lean Purse
+1199: The Year of the Baldric
+1200: The Year of the Buckler
+1201: The Year of Embers
+1202: The Year of the Dragon Altar
+1203: The Year of the Gold Sash
+1204: The Year of the Private Tears
+1205: The Year of Seven Trinkets
+1206: The Year of the Sarune
+1207: The Year of the Bloated Baron
+1208: The Year of the Gamine
+1209: The Year of the Blazing Banners
+1210: The Year of the Armarel
+1211: The Year of the Crimson Crag
+1212: The Year of Ocean's Wrath
+1213: The Year of the Night's Peace
+1214: The Year of the Waking Wrath
+1215: The Year of Starlight
+1216: The Year of Green Wings
+1217: The Year of the Falling Moon
+1218: The Year of the Swimming Cats
+1219: The Year of Prideful Tales
+1220: The Year of the Toppled Tree
+1221: The Year of the Frozen Flower
+1222: The Year of the Horn
+1223: The Year of the Trembling Tree
+1224: The Year of the Swollen Stars
+1225: The Year of the Winged Worm
+1226: The Year of the Black Buck
+1227: The Year of the Wall
+1228: The Year of the Tattered Banners
+1229: The Year of the Carrion Crow
+1230: The Year of the Long Watch
+1231: The Year of the Bright Star
+1232: The Year of the Weeping Wives
+1233: The Year of Many Monsters
+1234: The Year of the Full Flagon
+1235: The Year of the Black Horde
+1236: The Year of the Struck Gong
+1237: The Year of the Grotto
+1238: The Year of the Lone Candle
+1239: The Year of the Bloodied Sword
+1240: The Year of the Bright Sun
+1241: The Year of the Lost Lady
+1242: The Year of the Yellow Rose
+1243: The Year of the Blue Dragon
+1244: The Year of the Defiant Keep
+1245: The Year of Pain
+1246: The Year of Burning Steel
+1247: The Year of the Purple Basilisk
+1248: The Year of the Cockatrice
+1249: The Year of the Bold Knight
+1250: The Year of the Riven Skull
+1251: The Year of the Wandering Winds
+1252: The Year of the Empty Goblet
+1253: The Year of Beckoning Death
+1254: The Year of Silent Steel
+1255: The Year of the Raging Flame
+1256: The Year of the Dusty Throne
+1257: The Year of the Killing Wave
+1258: The Year of the Wilted Flowers
+1259: The Year of the Vigilant Fist
+1260: The Year of the Broken Blade
+1261: The Year of Bright Dreams
+1262: The Year of the Black Wind
+1263: The Year of the Tressym
+1264: The Year of the Shattered Altar
+1265: The Year of Flowers
+1266: The Year of the Leaping Frog
+1267: The Year of the Groaning Cart
+1268: The Year of Daystars
+1269: The Year of the Moat
+1270: The Year of the Tooth
+1271: The Year of the Shattered Wall
+1272: The Year of the Shrieker
+1273: The Year of the Wagon
+1274: The Year of the Purple Toad
+1275: The Year of the Blade
+1276: The Year of the Crumbling Keep
+1277: The Year of the Beholder
+1278: The Year of Many Bones
+1279: The Year of the Snarling Dragon
+1280: The Year of the Manticore
+1281: The Year of the Cold Soul
+1282: The Year of the Many Mists
+1283: The Year of the Crawling Clouds
+1284: The Year of the Dying Stars
+1285: The Year of the Blacksnake
+1286: The Year of the Rock
+1287: The Year of the Smoky Moon
+1288: The Year of the Roaring Horn
+1289: The Year of the Sighing Serpent
+1290: The Year of the Whelm
+1291: The Year of the Hooded Falcon
+1292: The Year of the Wandering Waves
+1293: The Year of the Talking Skull
+1294: The Year of the Deep Moon
+1295: The Year of the Ormserpent
+1296: The Year of the Black Hound
+1297: The Year of the Singing Skull
+1298: The Year of the Pointed Bone
+1299: The Year of the Claw
+1300: The Year of the Starfall
+1301: The Year of the Trumpet
+1302: The Year of the Broken Helm
+1303: The Year of the Evening Sun
+1304: The Year of the Stag
+1305: The Year of the Creeping Fang
+1306: The Year of Thunder
+1307: The Year of the Mace
+1308: The Year of the Catacombs
+1309: The Year of the Sunset Winds
+1310: The Year of Storms
+1311: The Year of the Fist
+1312: The Year of the Griffon
+1313: The Year of the Shattered Oak
+1314: The Year of the Shadowtop
+1315: The Year of Spilled Blood
+1316: The Year of the Gulagoar
+1317: The Year of the Wandering Wyrm
+1318: The Year of the Tired Treant
+1319: The Year of the Fallen Throne
+1320: The Year of the Watching Cold
+1321: The Year of Chains
+1322: The Year of Lurking Death
+1323: The Year of Dreamwebs
+1324: The Year of the Grimoire
+1325: The Year of the Great Harvests
+1326: The Year of the Striking Hawk
+1327: The Year of the Blue Flame
+1328: The Year of the Adder
+1329: The Year of the Lost Helm
+1330: The Year of the Marching Moon
+1331: The Year of the Leaping Dolphin
+1332: The Year of the Sword and Stars
+1333: The Year of the Striking Falcon
+1334: The Year of the Blazing Brand
+1335: The Year of the Snow Winds
+1336: The Year of the Highmantle
+1337: The Year of the Wandering Maiden
+1338: The Year of the Wanderer
+1339: The Year of the Weeping Moon
+1340: The Year of the Lion
+1341: The Year of the Gate
+1342: The Year of the Behir
+1343: The Year of the Boot
+1344: The Year of Moonfall
+1345: The Year of the Saddle
+1346: The Year of the Bloodbird
+1347: The Year of the Bright Blade
+1348: The Year of the Spur
+1349: The Year of the Bridle
+1350: The Year of the Morningstar
+1351: The Year of the Crown
+1352: The Year of the Dragon
+1353: The Year of the Arch
+1354: The Year of the Bow
+1355: The Year of the Harp
+1356: The Year of the Worm
+1357: The Year of the Prince
+1358: The Year of Shadows
+1359: The Year of the Serpent
+1360: The Year of the Turret
+1361: The Year of Maidens
+1362: The Year of the Helm
+1363: The Year of the Wyvern
+1364: The Year of the Wave
+1365: The Year of the Sword
+1366: The Year of the Staff
+1367: The Year of the Shield
+1368: The Year of the Banner
+1369: The Year of the Gauntlet
+1370: The Year of the Tankard
+1371: The Year of the Unstrung Harp
+1372: The Year of Wild Magic
+1373: The Year of Rogue Dragons
+1374: The Year of Lightning Storms
+1375: The Year of Risen Elfkin
+1376: The Year of the Bent Blade
+1377: The Year of the Haunting
+1378: The Year of the Cauldron
+1379: The Year of the Lost Keep
+1380: The Year of the Blazing Hand
+1381: The Year of the Starving
+1382: The Year of the Black Blazon
+1383: The Year of the Vindicated Warrior
+1384: The Year of Three Streams Blooded
+1385: The Year of Blue Fire
+1386: The Year of the Halflings' Lament
+1387: The Year of the Emerald Ermine
+1388: The Year of the Tanarukka
+1389: The Year of the Forgiven Foes
+1390: The Year of the Walking Man
+1391: The Year of the Wrathful Eye
+1392: The Year of the Scroll
+1393: The Year of the Ring
+1394: The Year of Deaths Unmourned
+1395: The Year of Silent Death
+1396: The Year of the Secret
+1397: The Year of the Quill
+1398: The Year of the Voyage
+1399: The Year of the Fallen Friends
+1400: The Year of Lost Ships
+1401: The Year of the Sheltered Viper
+1402: The Year of the Exorcised Helm
+1403: The Year of the Hidden Harp
+1404: The Year of the Sceptered One
+1405: The Year of the Golden Mask
+1406: The Year of the Blackened Moon
+1407: The Year of the Halls Unhaunted
+1408: The Year of the Solitary Cloister
+1409: The Year of True Omens
+1410: The Year of the Eight-legged Mount
+1411: The Year of the Wrathful Vizier
+1412: The Year of the Dauntless Dwarves
+1413: The Year of Sunken Vessels
+1414: The Year of Sea Lions Roaring
+1415: The Year of Staves Arcane
+1416: The Year of the Enthroned Puppet
+1417: The Year of the Phaerimm's Vengeance
+1418: The Year of the Lords' Coronation
+1419: The Year of the Empty Necropolis
+1420: The Year of the Dark Goddess
+1421: The Year of the Walking Trees
+1422: The Year of the Advancing Shadows
+1423: The Year of Thundering Hosts
+1424: The Year of the Dog-Eared Journal
+1425: The Year of Seven Sisters
+1426: The Year of the Dozen Dwarves
+1427: The Year of the Shalarins Surfacing
+1428: The Year of the Elfqueen's Joy
+1429: The Year of Ten Terrors
+1430: The Year of Stalking Horrors
+1431: The Year of the Lashing Tail
+1432: The Year of Silent Thunder
+1433: The Year of the Silent Departure
+1434: The Year of the Silent Crickets
+1435: The Year of the Silent Bell
+1436: The Year of Silent Shadows
+1437: The Year of the Silent Flute
+1438: The Year of Silent Waterfalls
+1439: The Year of the Silent Tear
+1440: The Year of Azuth's Woe
+1441: The Year of Resurrections Rampant
+1442: The Year of Darkenbeasts Risen
+1443: The Year of Silver Bell Tolling
+1444: The Year of the Seductive Cambion
+1445: The Year of the Malachite Throne
+1446: The Year of the Queen's Honor
+1447: The Year of the Fallen Tower
+1448: The Year of Neomen Swords
+1449: The Year of the Godly Invitation
+1450: The Year of Holy Thunder
+1451: The Year of Knowledge Unearthed
+1452: The Year of the Impatient Son
+1453: The Year of the Strangled Jester
+1454: The Year of the Emerald Sun
+1455: The Year of the King's Repentance
+1456: The Year of the Mithral Hammer
+1457: The Year of the Lightning Strikes
+1458: The Year of the Plotting Priests
+1459: The Year of the Forged Sigil
+1460: The Year of the Malachite Shadows
+1461: The Year of Three Goddesses Blessing
+1462: The Year of the Elves' Weeping
+1463: The Year of the Reborn Hero
+1464: The Year of the Six-Armed Elf
+1465: The Year of the Elven Swords Returned
+1466: The Year of the Mages in Amber
+1467: The Year of the Three Heroes United
+1468: The Year of the First Circle
+1469: The Year of Splendors Burning
+1470: The Year of the Second Circle
+1471: The Year of the Plagued Lords
+1472: The Year of the Third Circle
+1473: The Year of the Heretic's Rampage
+1474: The Year of the Fourth Circle
+1475: The Year of the Final Stand
+1476: The Year of the Fifth Circle
+1477: The Year of the Purloined Statue
+1478: The Year of the Dark Circle
+1479: The Year of the Ageless One
+1480: The Year of Deep Water Drifting
+1481: The Year of the Grinning Halfling
+1482: The Year of the Narthex Murders
+1483: The Year of the Tasked Weasel
+1484: The Year of the Awakened Sleepers
+1485: The Year of the Iron Dwarf's Vengeance
+1486: The Year of the Nether Mountain Scrolls
+1487: The Year of the Rune Lords Triumphant
+1488: The Year of Dwarvenkind Reborn
+1489: The Year of the Warrior Princess
+1490: The Year of the Star Walker's Return
+1491: The Year of the Scarlet Witch
+1492: The Year of Three Ships Sailing
+1493: The Year of the Purple Dragons
+1494: The Year of Twelve Warnings
+1495: The Year of the Tyrant's Pawn
+1496: The Year of the Duplicitous Courtier
+1497: The Year of the Palls Purple
+1498: The Year of the Black Regalia
+1499: The Year of the Desperate Gambit
+1500: The Year of the Sea's Secrets Revealed
+1501: The Year of the Shining Mythal
+1502: The Year of the Pox Plague
+1503: The Year of the Haunted Inn
+1504: The Year of the Conquering Queen
+1505: The Year of Ogres Marching
+1506: The Year of the Discarded Shields
+1507: The Year of the Glowing Onyx
+1508: The Year of the Legend Reborn
+1509: The Year of the Sea Lion
+1510: The Year of the Treasure Abandoned
+1511: The Year of the Lion Rampant
+1512: The Year of the Shattered Mirror
+1513: The Year of the Tawny Feline
+1514: The Year of the Lost Wagers
+1515: The Year of the Howling Ghouls
+1516: The Year of the Hangman's Joke
+1517: The Year of the Coward Rewarded
+1518: The Year of the Adomal Tapestry
+1519: The Year of the Deceitful Brother
+1520: The Year of the Arcane
+1521: The Year of the Moon Harp Restored
+1522: The Year of the Bored Phylls
+1523: The Year of the Brownie's Delight
+1524: The Year of the Captive Harper
+1525: The Year of the Drawn Line
+1526: The Year of the Hazy Coast
+1527: The Year of the Hoard Retaken
+1528: The Year of the Insufferable Mystic
+1529: The Year of the Horseman's Triumph
+1530: The Year of the Long-toothed Tiger
+1531: The Year of the Oozing Bog
+1532: The Year of the Locked Crypt
+1533: The Year of the Mishapen Mage
+1534: The Year of the Pale Lords
+1535: The Year of the Laurel Wreath
+1536: The Year of the Mirrored Face
+1537: The Year of the Jungle's Vengeance
+1538: The Year of the Stalking Tiger
+1539: The Year of the Thoughtless Suitor
+1540: The Year of the Lifeless Archdruid
+1541: The Year of the Mirthful House
+1542: The Year of the Painted Grin
+1543: The Year of the Sacred Sceptre
+1544: The Year of Shadow Fiends
+1545: The Year of the Undying March
+1546: The Year of the Winter Rose
+1547: The Year of Dungeons Reclaimed
+1548: The Year of the Handsome Deal
+1549: The Year of the Meandering Archipelago
+1550: The Year of the Scarlet Tabard
+1551: The Year of the Misty Grave
+1552: The Year of the Overflowing Cup
+1553: The Year of the Request
+1554: The Year of the Dark Chosen
+1555: The Year of the Argent Scarab
+1556: The Year of the Stone Steps
+1557: The Year of the Murdered Sage
+1558: The Year of the Watchful Guardian
+1559: The Year of the Shepherd's Son
+1560: The Year of the Trees' Receding
+1561: The Year of the Wild Hunt
+1562: The Year of the Pointing Finger
+1563: The Year of the Starlit Necklace
+1564: The Year of the Slaughtered Lamb
+1565: The Year of the Unkindest Cut
+1566: The Year of the Weasel
+1567: The Year of the Sacred Lash
+1568: The Year of the Studious Enchanter
+1569: The Year of the Turned Page
+1570: The Year of the Vacant Cairn
+1571: The Year of the Red Mantle
+1572: The Year of the Stingray
+1573: The Year of the Wicked Jailor
+1574: The Year of the Rebuked Storm
+1575: The Year of the Twin Pavilions
+1576: The Year of the Vanishing Throne
+1577: The Year of the Whispering Hood
+1578: The Year of the Steadfast Patrol
+1579: The Year of the Underking
+1580: The Year of the Widow's Tears
+1581: The Year of Rings
+1582: The Year of Howling Winds
+1583: The Year of the Decay
+1584: The Year of the Skirling Pipes
+1585: The Year of the Bloodied Manacles
+1586: The Year of the Pax Draconomica
+1587: The Year of Long Silence
+1588: The Year of the Swarming Ravens
+1589: The Year of the Watching Ancestors
+1590: The Year of the Coming Twilight
+1591: The Year of Skeletons
+1592: The Year of the Dying Hate
+1593: The Year of Rising Stars
+1594: The Year of Fragrant Orchards
+1595: The Year of Raging Baatezu
+1596: The Year of Heavenly Scriptures
+1597: The Year of the Stolen Gold
+1598: The Year of the Doom Cauldron
+1599: The Year of the Black Pearls
+1600: The Year of Unseen Enemies
