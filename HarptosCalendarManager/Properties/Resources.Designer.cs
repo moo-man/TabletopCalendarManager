@@ -211,6 +211,30 @@ namespace HarptosCalendarManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 0: The Year of the Rising Flame
+        ///1: The Year of Sunrise
+        ///2: The Year of the Smiling Hag
+        ///3: The Year of the Faded Flower
+        ///4: The Year of the Slaked Blade
+        ///5: The Year of the Clutched Emerald
+        ///6: The Year of the Firestars
+        ///7: The Year of the Vampires&apos; Sun
+        ///8: The Year of Spellspheres
+        ///9: The Year of the Falling Wall
+        ///10: The Year of Dreams
+        ///11: The Year of the Mellifluent Sphinx
+        ///12: The Year of Wistful Looks
+        ///13: The Year of the Sweet Songs
+        ///14: The Year of the Unknown Beloved
+        ///15: The Year of Glittering Gl [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Roll_of_Years {
+            get {
+                return ResourceManager.GetString("Roll_of_Years", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap save_icon_5404 {

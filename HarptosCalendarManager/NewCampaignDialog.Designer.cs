@@ -187,6 +187,7 @@
             this.Controls.Add(this.nameLabel);
             this.Name = "NewCampaignDialog";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "New Campaign";
             this.ResumeLayout(false);
             this.PerformLayout();

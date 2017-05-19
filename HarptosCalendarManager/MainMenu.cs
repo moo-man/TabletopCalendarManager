@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Text;
 
 namespace HarptosCalendarManager
 {
@@ -14,9 +15,12 @@ namespace HarptosCalendarManager
     {
         HelpBox help;
         CalendarMenu currentCalendar;
+        PrivateFontCollection fonts;
 
         public MainMenu()
         {
+            //fonts = new PrivateFontCollection();
+           // fonts.AddFontFile(@"C:\Users\Moo Man\OneDrive\HarptosCalendarManager\HarptosCalendarManager\Resources\Ozymandias Solid WBW.ttf");
             InitializeComponent();
             currentCalendar = null;
         }
@@ -31,7 +35,7 @@ namespace HarptosCalendarManager
             if (help != null)
                 help.Close();
             help = new HelpBox();
-            help.ShowDialog();
+            help.ShowDialog(this);
         }
 
         private void newCalendarButton_Click(object sender, EventArgs e)
@@ -42,7 +46,7 @@ namespace HarptosCalendarManager
         public void loadCalendarMenu(Calendar calendarToUse)
         {
             currentCalendar = new CalendarMenu(this, calendarToUse);
-            currentCalendar.Show();
+            currentCalendar.Show(this);
             this.Hide();
         }
 
@@ -88,13 +92,13 @@ namespace HarptosCalendarManager
                     alertLevel importance;
                     switch (numImportance)
                     {
-                        case 1:
+                        case 2:
                             importance = alertLevel.alertAll;
                             break;
-                        case 2:
+                        case 1:
                             importance = alertLevel.alertCampaign;
                             break;
-                        case 3:
+                        case 0:
                             importance = alertLevel.dontAlert;
                             break;
                         default:

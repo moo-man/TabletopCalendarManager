@@ -85,6 +85,7 @@
             this.Controls.Add(this.campaignTree);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CampaignViewer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Campaigns";
             this.Load += new System.EventHandler(this.CampaignViewer_Load);
             this.ResumeLayout(false);

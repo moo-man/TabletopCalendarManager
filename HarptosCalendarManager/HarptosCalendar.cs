@@ -18,40 +18,19 @@ namespace HarptosCalendarManager
         readonly static string [] monthNames = {null, "Hammer", "Alturiak", "Ches", "Tarsakh", "Mirtul", "Kythorn", "Flamerule", "Eleasis", "Eleint", "Merpenoth", "Uktar", "Nightal" };
         readonly static string[] altMonthNames = { null, "Deepwinter", "The Claw of Winter", "The Claw of Sunsets", "The Claw of Storms", "The Melting", "The Time of Flowers", "Summertide", "Highsun", "The Fading", "Leaffall", "The Rotting", "The Drawing Down" };
         string [] yearNames;
-        bool leap;
 
-        public HarptosCalendar()
+        public HarptosCalendar() : this (1, 1, 1491)
         {
-            day = 1;
-            month = 1;
-            year = 1491;
-            leap = false;
-            holidays = new bool[10];
-            for (int i = 0; i < 10; i++)
-                holidays[i] = false;
-            isHoliday = false;
-            readInYears();
+
         }
 
-        public HarptosCalendar(int y)
+        public HarptosCalendar(int y) : this (1, 1, y)
         {
-            day = 1;
-            month = 1;
-            year = y;
-            holidays = new bool[10];
-            if (y % 2 == 0 && y/2 % 2 == 0)
-                leap = true;
-            clearHolidays();
-            readInYears();
         }
 
         public HarptosCalendar(int m, int d, int y)
         {
-            day = 1;
-            month = 1;
-            year = y;
             holidays = new bool[10];
-            isHoliday = false;
             setDate(m, d, y);
             readInYears();
         }
@@ -198,14 +177,16 @@ namespace HarptosCalendarManager
 
         public void addYear()
         {
-            year++;
-            leap = year % 2 == 0 && year / 2 % 2 == 0 ? true : false;
+            if (year % 4 == 0 && day == 32)
+                setDate(month, day - 1, year + 1);
+            else
+                year++;
         }
 
         public void addYear(int num)
         {
-            year += num;
-            leap = year % 2 == 0 && year / 2 % 2 == 0 ? true : false;
+            for(int i = 0; i < num; i++)
+                addYear();
         }
 
         public void subDay()
@@ -319,8 +300,11 @@ namespace HarptosCalendarManager
 
         public void subYear()
         {
-            year--;
-            leap = year % 2 == 0 && year / 2 % 2 == 0 ? true : false;
+            if (year % 4 == 0 && day == 32)
+                setDate(month, day - 1, year - 1);
+            else
+                year--;
+
         }
 
         public bool setDate(string dateString)
@@ -377,7 +361,6 @@ namespace HarptosCalendarManager
                         month = m;
                         day = d;
                         year = y;
-                        leap = true;
                     }
                     else
                         return false;
@@ -702,6 +685,23 @@ namespace HarptosCalendarManager
         private void readInYears()
         {
             yearNames = new string[1601];
+            String yearFile = Properties.Resources.Roll_of_Years;
+            for (int endIndex = 0, beginIndex = 3, yearNum = 0; endIndex < yearFile.Length; endIndex++)
+            {
+
+                if (yearFile[endIndex] == '\n')
+                {
+                    yearNames[yearNum] = yearFile.Substring(beginIndex, endIndex - 1 - beginIndex);
+                    beginIndex = endIndex + 1;
+                    for (; Char.IsLetter(yearFile[beginIndex]) == false; beginIndex++)
+                    {
+                    }
+                    yearNum++;
+                }
+            }
+            yearNames[1600] = "The Year of Unseen Enemies";
+
+            /*
             try
             {
                 using (System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\Moo Man\OneDrive\HarptosCalendarManager\HarptosCalendarManager\Roll of Years.txt"))
@@ -725,7 +725,7 @@ namespace HarptosCalendarManager
             catch (Exception e)
             {
                 
-            }
+            }*/
         }
     }
 }

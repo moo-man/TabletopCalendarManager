@@ -35,7 +35,6 @@
             this.yearNameLabel = new System.Windows.Forms.Label();
             this.campaignName = new System.Windows.Forms.Label();
             this.notesLabel = new System.Windows.Forms.Label();
-            this.noteBox = new System.Windows.Forms.TextBox();
             this.addNoteButton = new System.Windows.Forms.Button();
             this.wheelPicture = new System.Windows.Forms.PictureBox();
             this.dayLabel = new System.Windows.Forms.Label();
@@ -50,6 +49,8 @@
             this.subMonth = new System.Windows.Forms.Button();
             this.addMonth = new System.Windows.Forms.Button();
             this.monthLabel = new System.Windows.Forms.Label();
+            this.editNotesButton = new System.Windows.Forms.Button();
+            this.noteBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.wheelPicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,10 +58,10 @@
             // 
             this.titleText.AutoSize = true;
             this.titleText.BackColor = System.Drawing.Color.Transparent;
-            this.titleText.Font = new System.Drawing.Font("Ozymandias Solid WBW", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleText.Location = new System.Drawing.Point(152, 9);
+            this.titleText.Font = new System.Drawing.Font("Garamond", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleText.Location = new System.Drawing.Point(0, 44);
             this.titleText.Name = "titleText";
-            this.titleText.Size = new System.Drawing.Size(838, 80);
+            this.titleText.Size = new System.Drawing.Size(656, 72);
             this.titleText.TabIndex = 1;
             this.titleText.Text = "The Calendar of Harptos";
             // 
@@ -68,10 +69,10 @@
             // 
             this.currentCampaignLabel.AutoSize = true;
             this.currentCampaignLabel.BackColor = System.Drawing.Color.Transparent;
-            this.currentCampaignLabel.Font = new System.Drawing.Font("Minion Pro", 26F);
+            this.currentCampaignLabel.Font = new System.Drawing.Font("Garamond", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentCampaignLabel.Location = new System.Drawing.Point(4, 156);
             this.currentCampaignLabel.Name = "currentCampaignLabel";
-            this.currentCampaignLabel.Size = new System.Drawing.Size(171, 47);
+            this.currentCampaignLabel.Size = new System.Drawing.Size(162, 39);
             this.currentCampaignLabel.TabIndex = 6;
             this.currentCampaignLabel.Text = "Campaign:";
             this.currentCampaignLabel.Click += new System.EventHandler(this.currentDateLabel_Click);
@@ -80,10 +81,10 @@
             // 
             this.currentDate.AutoSize = true;
             this.currentDate.BackColor = System.Drawing.Color.Transparent;
-            this.currentDate.Font = new System.Drawing.Font("Minion Pro", 30F);
+            this.currentDate.Font = new System.Drawing.Font("Garamond", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentDate.Location = new System.Drawing.Point(3, 203);
             this.currentDate.Name = "currentDate";
-            this.currentDate.Size = new System.Drawing.Size(79, 54);
+            this.currentDate.Size = new System.Drawing.Size(73, 45);
             this.currentDate.TabIndex = 7;
             this.currentDate.Text = "aeu";
             this.currentDate.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -92,10 +93,10 @@
             // 
             this.yearNameLabel.AutoSize = true;
             this.yearNameLabel.BackColor = System.Drawing.Color.Transparent;
-            this.yearNameLabel.Font = new System.Drawing.Font("Minion Pro", 30F);
+            this.yearNameLabel.Font = new System.Drawing.Font("Garamond", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yearNameLabel.Location = new System.Drawing.Point(3, 257);
             this.yearNameLabel.Name = "yearNameLabel";
-            this.yearNameLabel.Size = new System.Drawing.Size(79, 54);
+            this.yearNameLabel.Size = new System.Drawing.Size(73, 45);
             this.yearNameLabel.TabIndex = 10;
             this.yearNameLabel.Text = "aeu";
             this.yearNameLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -104,10 +105,10 @@
             // 
             this.campaignName.AutoSize = true;
             this.campaignName.BackColor = System.Drawing.Color.Transparent;
-            this.campaignName.Font = new System.Drawing.Font("Minion Pro", 26F);
+            this.campaignName.Font = new System.Drawing.Font("Garamond", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.campaignName.Location = new System.Drawing.Point(167, 156);
             this.campaignName.Name = "campaignName";
-            this.campaignName.Size = new System.Drawing.Size(70, 47);
+            this.campaignName.Size = new System.Drawing.Size(65, 39);
             this.campaignName.TabIndex = 12;
             this.campaignName.Text = "test";
             // 
@@ -120,15 +121,6 @@
             this.notesLabel.Size = new System.Drawing.Size(68, 30);
             this.notesLabel.TabIndex = 14;
             this.notesLabel.Text = "Notes:";
-            // 
-            // noteBox
-            // 
-            this.noteBox.Location = new System.Drawing.Point(218, 357);
-            this.noteBox.Multiline = true;
-            this.noteBox.Name = "noteBox";
-            this.noteBox.ReadOnly = true;
-            this.noteBox.Size = new System.Drawing.Size(470, 198);
-            this.noteBox.TabIndex = 15;
             // 
             // addNoteButton
             // 
@@ -279,6 +271,25 @@
             this.monthLabel.TabIndex = 24;
             this.monthLabel.Text = "Month";
             // 
+            // editNotesButton
+            // 
+            this.editNotesButton.Location = new System.Drawing.Point(313, 570);
+            this.editNotesButton.Name = "editNotesButton";
+            this.editNotesButton.Size = new System.Drawing.Size(75, 23);
+            this.editNotesButton.TabIndex = 30;
+            this.editNotesButton.Text = "Edit Note";
+            this.editNotesButton.UseVisualStyleBackColor = true;
+            this.editNotesButton.Click += new System.EventHandler(this.editNotesButton_Click);
+            // 
+            // noteBox
+            // 
+            this.noteBox.FormattingEnabled = true;
+            this.noteBox.HorizontalScrollbar = true;
+            this.noteBox.Location = new System.Drawing.Point(218, 357);
+            this.noteBox.Name = "noteBox";
+            this.noteBox.Size = new System.Drawing.Size(353, 199);
+            this.noteBox.TabIndex = 31;
+            // 
             // DayTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,6 +298,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(234)))), ((int)(((byte)(222)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1343, 652);
+            this.Controls.Add(this.noteBox);
+            this.Controls.Add(this.editNotesButton);
             this.Controls.Add(this.subYear);
             this.Controls.Add(this.addYear);
             this.Controls.Add(this.yearlabel);
@@ -300,7 +313,6 @@
             this.Controls.Add(this.addDayButton);
             this.Controls.Add(this.dayLabel);
             this.Controls.Add(this.addNoteButton);
-            this.Controls.Add(this.noteBox);
             this.Controls.Add(this.notesLabel);
             this.Controls.Add(this.campaignName);
             this.Controls.Add(this.yearNameLabel);
@@ -310,6 +322,7 @@
             this.Controls.Add(this.titleText);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DayTracker";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Harptos Calendar";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DayTracker_FormClosing);
             this.Load += new System.EventHandler(this.DayTracker_Load);
@@ -328,7 +341,6 @@
         private System.Windows.Forms.Label yearNameLabel;
         private System.Windows.Forms.Label campaignName;
         private System.Windows.Forms.Label notesLabel;
-        private System.Windows.Forms.TextBox noteBox;
         private System.Windows.Forms.Button addNoteButton;
         private System.Windows.Forms.Label dayLabel;
         private System.Windows.Forms.Button addDayButton;
@@ -342,6 +354,8 @@
         private System.Windows.Forms.Button subMonth;
         private System.Windows.Forms.Button addMonth;
         private System.Windows.Forms.Label monthLabel;
+        private System.Windows.Forms.Button editNotesButton;
+        private System.Windows.Forms.ListBox noteBox;
     }
 }
 

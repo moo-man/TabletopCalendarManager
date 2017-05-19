@@ -97,6 +97,14 @@ namespace HarptosCalendarManager
         {
         }
 
+        public Note findNote(string content)
+        {
+            foreach (Campaign c in campaignList)
+                foreach (Note n in c.notes)
+                    if (n.NoteContent == content)
+                        return n;
+            return null;
+        }
     }
 
     public class Campaign
@@ -186,13 +194,13 @@ namespace HarptosCalendarManager
 
         public void addNote(string date, alertLevel importance, string note)
         {
-            notes.Add(new Note(date, importance, note));
+            notes.Add(new Note(date, importance, note, this));
             sortNotes();
         }
 
-        public bool deleteNote(string date)
+        public bool deleteNote(Note noteToDelete)
         {
-            return notes.Remove(notes.Find(x => x.Date == date)); 
+            return notes.Remove(notes.Find(x => x.Equals(noteToDelete))); 
         }
 
         public static string fixTag(string t)
@@ -211,6 +219,14 @@ namespace HarptosCalendarManager
             });
         }
 
+        public Note findNote(string content)
+        {
+            foreach (Note n in notes)
+                if (n.NoteContent == content)
+                    return n;
+            return null;
+        }
+
     }
 
     public class Note
@@ -218,12 +234,14 @@ namespace HarptosCalendarManager
         string date;  //MMDDYYYY
         alertLevel importance; // who should be notified when this date is reached?
         string noteContent; // Note contents
+        Campaign campaign;
 
-        public Note(string d, alertLevel imp, string n)
+        public Note(string d, alertLevel imp, string n, Campaign c)
         {
             editDate(d);
             importance = imp;
             editNoteContent(n);
+            campaign = c;
         }
 
         public string Date
@@ -236,6 +254,12 @@ namespace HarptosCalendarManager
         {
             get { return noteContent; }
             set { editNoteContent(value); }
+        }
+
+        public Campaign Campaign
+        {
+            get {return campaign; }
+            set {campaign = value; }
         }
 
         public void editDate(string newDate)

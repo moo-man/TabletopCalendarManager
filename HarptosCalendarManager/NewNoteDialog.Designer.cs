@@ -139,6 +139,7 @@
             this.Controls.Add(this.generalBox);
             this.Name = "NewNoteDialog";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "New Note";
             this.ResumeLayout(false);
             this.PerformLayout();

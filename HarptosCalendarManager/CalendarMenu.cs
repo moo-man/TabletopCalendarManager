@@ -36,12 +36,12 @@ namespace HarptosCalendarManager
             if (campaignViewer == null)
             {
                 campaignViewer = new CampaignViewer(currentCalendar);
-                campaignViewer.Show();
+                campaignViewer.Show(this);
             }
             else if (campaignViewer.IsDisposed)
             {
                 campaignViewer = new CampaignViewer(currentCalendar);
-                campaignViewer.Show();
+                campaignViewer.Show(this);
             }
         }
 
@@ -58,12 +58,12 @@ namespace HarptosCalendarManager
             if (dayTracker == null)
             {
                 dayTracker = new DayTracker(currentCalendar);
-                dayTracker.Show();
+                dayTracker.Show(this);
             }
             else if (dayTracker.IsDisposed)
             {
                 dayTracker = new DayTracker(currentCalendar);
-                dayTracker.Show();
+                dayTracker.Show(this);
             }
      
         }
@@ -76,7 +76,7 @@ namespace HarptosCalendarManager
             saveFileDialog1.FilterIndex = 2;
             saveFileDialog1. RestoreDirectory = true;
 
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
                 if ((outStream = saveFileDialog1.OpenFile()) != null)
                 {

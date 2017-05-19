@@ -38,15 +38,19 @@ namespace HarptosCalendarManager
                     string noteDate = n.Date.ToString();
                   
                     TreeNode existingNode = findExistingDateNode(campaignTree.Nodes[campaignCount].Nodes, noteDate);
+                    //TreeNode parentExistingNode = existingNode.Parent;
 
                     if (existingNode != null)
+                    {
                         existingNode.Nodes.Add(new TreeNode(n.NoteContent));
+                    }
                     else
                     {
                         campaignTree.Nodes[campaignCount].Nodes.Add(new TreeNode(HarptosCalendar.returnGivenDate(n.Date))); // ADD DATE OF NOTE
                         campaignTree.Nodes[campaignCount].Nodes[notesCount].Nodes.Add(new TreeNode(n.NoteContent));         // ADD NOTE CONTENT UNDER IT
+                        notesCount++;
                     }
-                    notesCount++;
+                    
                 }
                 campaignCount++;
             }
@@ -65,7 +69,7 @@ namespace HarptosCalendarManager
         private void addCampaignButton_Click(object sender, EventArgs e)
         {
             NewCampaignDialog newCampaign = new NewCampaignDialog(currentCalendar, campaignTree, this);
-            newCampaign.ShowDialog();
+            newCampaign.ShowDialog(this);
         }
 
         private void campaignTree_Enter(object sender, EventArgs e)
