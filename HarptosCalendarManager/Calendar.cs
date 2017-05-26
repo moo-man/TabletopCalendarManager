@@ -10,7 +10,7 @@ namespace HarptosCalendarManager
     // dontAlert will not alert any campaign when that date is reached
     // alertCampaign will alert the campaign that the note belongs to
     // alertAll will alert all campaigns in this calendar
-    public enum alertLevel { dontAlert, alertCampaign, alertAll }
+    public enum alertScope { dontAlert, alertCampaign, alertAll }
 
     public class Calendar
     {
@@ -64,7 +64,7 @@ namespace HarptosCalendarManager
 
         public void setActiveCampaign(int index)
         {
-            activeCampaign = campaignList[index];
+            setActiveCampaign(campaignList[index]);
         }
         
         public void setActiveCampaign(Campaign c)
@@ -79,6 +79,16 @@ namespace HarptosCalendarManager
             }
             else
                 activeCampaign = null;
+        }
+
+        /// <summary>
+        /// goToCurrentDate() function sets the HarptosCalendar to the current date of the ACTIVE campaign
+        /// </summary>
+        public void goToCurrentDate()
+        {
+            if (activeCampaign == null)
+                return;
+            calendar.setDate(activeCampaign.CurrentDate);
         }
 
         public void advanceDay()
@@ -116,7 +126,7 @@ namespace HarptosCalendarManager
 
         public Campaign(string n, string t, string startDate) : this(n, t, startDate, startDate)
         {
-           
+
         }
 
         public Campaign(string n, string t, string startDate, string currDate)
@@ -127,32 +137,32 @@ namespace HarptosCalendarManager
             if (Note.VerifyDate(startDate))
             {
                 string msg = name + " began!";
-                addNote(startDate, alertLevel.alertAll, msg);
+                addNote(startDate, alertScope.alertAll, msg);
                 currentDate = currDate;
             }
             if (Note.VerifyDate(currDate))
             {
                 string msg = "Current Date";
-                addNote(currentDate, alertLevel.alertAll, msg);
+                addNote(currentDate, alertScope.alertAll, msg);
                 currentDate = currDate;
             }
         }
 
         public Campaign()
         {
-             notes = new List<Note>();
+            notes = new List<Note>();
         }
 
         public string Tag
         {
-            get {return tag; }
+            get { return tag; }
             set { tag = fixTag(value); }
         }
 
         public string Name
         {
-            get {return name; }
-            set {name = value; }
+            get { return name; }
+            set { name = value; }
         }
 
         public string CurrentDate
@@ -192,7 +202,46 @@ namespace HarptosCalendarManager
             setCurrentDate(newDate.ToString());
         }
 
-        public void addNote(string date, alertLevel importance, string note)
+        public Note returnBeginNote()
+        {
+            return notes.Find(x => x.NoteContent == Name + " began!");
+        }
+
+        #region starting/ending campaign
+        public void endCampaign()
+        {
+            Note endNote = findNote("Current Date");
+            if (endNote == null)
+                return;
+            endNote.NoteContent = endNote.Campaign.Name + " ended.";
+        }
+
+        public void startCampaign()
+        {
+            Note endNote = findNote(Name + " ended.");
+            if (endNote == null)
+                return;
+            endNote.NoteContent = "Current Date";
+        }
+
+        public bool isEnded()
+        {
+            if (findNote("Current Date") == null && findNote(Name + " ended.") != null)
+                return true;
+
+            else return false;
+        }
+
+        public void toggleEnded()
+        {
+            if (isEnded())
+                startCampaign();
+            else
+                endCampaign();
+        }
+        #endregion
+
+        public void addNote(string date, alertScope importance, string note)
         {
             notes.Add(new Note(date, importance, note, this));
             sortNotes();
@@ -200,7 +249,7 @@ namespace HarptosCalendarManager
 
         public bool deleteNote(Note noteToDelete)
         {
-            return notes.Remove(notes.Find(x => x.Equals(noteToDelete))); 
+            return notes.Remove(notes.Find(x => x.Equals(noteToDelete)));
         }
 
         public static string fixTag(string t)
@@ -210,6 +259,16 @@ namespace HarptosCalendarManager
             else
                 return t.ToUpper();
         }
+
+        // Returns the note "Current Date" or "ended"
+        public Note getCurrentDateOrEndNote()
+        {
+            if (isEnded())
+                return findNote(Name + " ended.");
+            else
+                return findNote("Current Date");
+        }
+
 
         public void sortNotes()
         {
@@ -232,11 +291,11 @@ namespace HarptosCalendarManager
     public class Note
     {
         string date;  //MMDDYYYY
-        alertLevel importance; // who should be notified when this date is reached?
+        alertScope importance; // who should be notified when this date is reached?
         string noteContent; // Note contents
         Campaign campaign;
 
-        public Note(string d, alertLevel imp, string n, Campaign c)
+        public Note(string d, alertScope imp, string n, Campaign c)
         {
             editDate(d);
             importance = imp;
@@ -270,7 +329,7 @@ namespace HarptosCalendarManager
                 date = "00000000";
         }
 
-        public alertLevel Importance
+        public alertScope Importance
         {
             get {return importance; }
             set {importance = value; }

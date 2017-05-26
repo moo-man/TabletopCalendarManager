@@ -41,17 +41,18 @@
             // 
             this.titleText.AutoSize = true;
             this.titleText.BackColor = System.Drawing.Color.Transparent;
-            this.titleText.Font = new System.Drawing.Font("Ozymandias Solid WBW", 22F);
-            this.titleText.Location = new System.Drawing.Point(26, 8);
+            this.titleText.Font = new System.Drawing.Font("Ozymandias Solid WBW", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleText.Location = new System.Drawing.Point(-7, 7);
             this.titleText.Name = "titleText";
-            this.titleText.Size = new System.Drawing.Size(223, 114);
+            this.titleText.Size = new System.Drawing.Size(268, 115);
             this.titleText.TabIndex = 2;
-            this.titleText.Text = "The Calendar \r\nof \r\nHarptos";
+            this.titleText.Text = "    The Calendar \r\n    of \r\nHarptos";
             this.titleText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.titleText.UseCompatibleTextRendering = true;
             // 
             // howToUseButton
             // 
-            this.howToUseButton.Location = new System.Drawing.Point(93, 181);
+            this.howToUseButton.Location = new System.Drawing.Point(83, 176);
             this.howToUseButton.Name = "howToUseButton";
             this.howToUseButton.Size = new System.Drawing.Size(86, 23);
             this.howToUseButton.TabIndex = 3;
@@ -71,7 +72,7 @@
             // 
             // newCalendarButton
             // 
-            this.newCalendarButton.Location = new System.Drawing.Point(33, 125);
+            this.newCalendarButton.Location = new System.Drawing.Point(23, 125);
             this.newCalendarButton.Name = "newCalendarButton";
             this.newCalendarButton.Size = new System.Drawing.Size(86, 23);
             this.newCalendarButton.TabIndex = 5;
@@ -88,15 +89,15 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(4, 231);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(205, 13);
+            this.label1.Size = new System.Drawing.Size(183, 13);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Version: 0.22 (Apprentice\'s Advancement)";
+            this.label1.Text = "Version: 0.3 (Apprentice\'s Attainment)";
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(273, 253);
+            this.ClientSize = new System.Drawing.Size(257, 253);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.newCalendarButton);
             this.Controls.Add(this.loadCalendarButton);

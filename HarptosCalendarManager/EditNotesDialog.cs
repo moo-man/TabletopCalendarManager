@@ -29,13 +29,13 @@ namespace HarptosCalendarManager
         {
             switch(editNote.Importance)
             {
-                case alertLevel.alertAll:
+                case alertScope.alertAll:
                     alertAll.Checked = true;
                     break;
-                case alertLevel.alertCampaign:
+                case alertScope.alertCampaign:
                     AlertCampaign.Checked = true;
                     break;
-                case alertLevel.dontAlert:
+                case alertScope.dontAlert:
                     noAlert.Checked = true;
                     break;
                 default:
@@ -64,6 +64,10 @@ namespace HarptosCalendarManager
         private void generalBox_CheckedChanged(object sender, EventArgs e)
         {
             AlertCampaign.Enabled = !generalBox.Checked;
+            if (generalBox.Checked)
+                campaignSelector.Enabled = false;
+            else
+                campaignSelector.Enabled = true;
         }
 
 
@@ -75,13 +79,13 @@ namespace HarptosCalendarManager
             notesCampaign = campaignList.Find(x => x.Tag == campaignSelector.SelectedItem.ToString());
             editNote.Campaign.deleteNote(editNote);
 
-            alertLevel importance = alertLevel.dontAlert;
+            alertScope importance = alertScope.dontAlert;
             if (alertAll.Checked)
-                importance = alertLevel.alertAll;
+                importance = alertScope.alertAll;
             else if (AlertCampaign.Checked)
-                importance = alertLevel.alertCampaign;
+                importance = alertScope.alertCampaign;
             else if (noAlert.Checked)
-                importance = alertLevel.dontAlert;
+                importance = alertScope.dontAlert;
 
             notesCampaign.addNote(textBoxToDate(), importance, editNoteBox.Text);
 

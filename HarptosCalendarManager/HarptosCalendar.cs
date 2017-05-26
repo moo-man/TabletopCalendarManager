@@ -418,7 +418,7 @@ namespace HarptosCalendarManager
             switch (d)
             {
                 case 31:
-                    if (m == 1 || m == 4 || m == 7 || m == 9 || m == 11)
+                    if (m == 1 || m == 4 || m == 7 || m == 9 || m == 11) 
                     {
                         switch (m)
                         {
@@ -610,7 +610,20 @@ namespace HarptosCalendarManager
 
         public string returnConciseDate()
         {
-            return returnGivenDate(day, month, year);
+            return returnGivenDate(month, day, year);
+        }
+
+        public string returnJustHoliday()
+        {
+            if (isHoliday)
+            {
+                int holidayIndex;
+                for (holidayIndex = 0; holidayIndex < holidays.Length && holidays[holidayIndex] == false; holidayIndex++)
+                {
+                }
+                return holidayNames[holidayIndex];
+            }
+            return null;
         }
 
         public bool sameDate(string testDate)

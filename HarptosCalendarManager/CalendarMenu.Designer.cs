@@ -36,18 +36,20 @@
             this.mainMenuButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.campaignSelector = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // titleText
             // 
             this.titleText.AutoSize = true;
             this.titleText.BackColor = System.Drawing.Color.Transparent;
-            this.titleText.Font = new System.Drawing.Font("Ozymandias Solid WBW", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleText.Location = new System.Drawing.Point(2, 9);
             this.titleText.Name = "titleText";
-            this.titleText.Size = new System.Drawing.Size(838, 80);
+            this.titleText.Size = new System.Drawing.Size(742, 84);
             this.titleText.TabIndex = 3;
             this.titleText.Text = "The Calendar of Harptos";
+            this.titleText.UseCompatibleTextRendering = true;
             // 
             // dayTrackerButton
             // 
@@ -61,6 +63,7 @@
             // 
             // exploreButton
             // 
+            this.exploreButton.Enabled = false;
             this.exploreButton.Location = new System.Drawing.Point(354, 110);
             this.exploreButton.Name = "exploreButton";
             this.exploreButton.Size = new System.Drawing.Size(101, 43);
@@ -100,11 +103,22 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
+            // campaignSelector
+            // 
+            this.campaignSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.campaignSelector.FormattingEnabled = true;
+            this.campaignSelector.Location = new System.Drawing.Point(560, 159);
+            this.campaignSelector.Name = "campaignSelector";
+            this.campaignSelector.Size = new System.Drawing.Size(101, 21);
+            this.campaignSelector.TabIndex = 9;
+            this.campaignSelector.SelectedIndexChanged += new System.EventHandler(this.campaignSelector_SelectedIndexChanged);
+            // 
             // CalendarMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 310);
+            this.Controls.Add(this.campaignSelector);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.mainMenuButton);
             this.Controls.Add(this.campaignButton);
@@ -115,6 +129,7 @@
             this.Name = "CalendarMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Calendar Manager";
+            this.Activated += new System.EventHandler(this.CalendarMenu_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CalendarMenu_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -130,5 +145,6 @@
         private System.Windows.Forms.Button mainMenuButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ComboBox campaignSelector;
     }
 }

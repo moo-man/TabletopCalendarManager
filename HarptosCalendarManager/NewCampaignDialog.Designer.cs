@@ -56,7 +56,7 @@
             // tagLabel
             // 
             this.tagLabel.AutoSize = true;
-            this.tagLabel.Location = new System.Drawing.Point(12, 45);
+            this.tagLabel.Location = new System.Drawing.Point(12, 48);
             this.tagLabel.Name = "tagLabel";
             this.tagLabel.Size = new System.Drawing.Size(76, 13);
             this.tagLabel.TabIndex = 1;

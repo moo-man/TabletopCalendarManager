@@ -17,18 +17,22 @@ namespace HarptosCalendarManager
         CampaignViewer campaignViewer;
         DayTracker dayTracker;
 
-        public CalendarMenu(MainMenu m)
+        /*public CalendarMenu(MainMenu m)
         {
             InitializeComponent();
             main = m;
             currentCalendar = new Calendar();
-        }
+        }*/
 
         public CalendarMenu(MainMenu m, Calendar loadedCalendar)
         {
             InitializeComponent();
             main = m;
             currentCalendar = loadedCalendar;
+            MainMenu.applyFont(titleText, 1);
+            campaignSelector.Items.Insert(0, "No Campaign");
+            campaignSelector.SelectedIndex = 0;
+            updateCampaignList();
         }
 
         private void campaignButton_Click(object sender, EventArgs e)
@@ -117,6 +121,65 @@ namespace HarptosCalendarManager
 
             if (main.Visible == false)
                 Application.Exit();
+        }
+
+        private void updateCampaignList()
+        {
+            foreach (Campaign c in currentCalendar.CampaignList)
+            {
+                if (campaignSelector.Items.Contains(c.Tag) == false && c.isEnded() == false)
+                    campaignSelector.Items.Add(c.Tag);
+            }
+
+            if (currentCalendar.activeCampaign != null)
+            {
+                campaignSelector.SelectedItem = currentCalendar.activeCampaign.Tag;
+            }
+
+            foreach (string s in campaignSelector.Items)
+            {
+                // Remove item if it doesnt exist in the campaign list, if it has been ended, but don't remove "No Campaign" option
+                if ((currentCalendar.CampaignList.Find(x => x.Tag == s) == null || currentCalendar.CampaignList.Find(x=>x.Tag == s).isEnded()) && s != "No Campaign")
+                {
+                    campaignSelector.Items.Remove(s);
+                    updateCampaignList();
+                    break;                // Can't remove items from the from the list in the for loop
+                }                         // so remove it and then call the function again (start over);
+            }
+        }
+
+        private void CalendarMenu_Activated(object sender, EventArgs e)
+        {
+            updateCampaignList();
+        }
+
+        private void campaignSelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Only perform this function IF:
+            // * the newly selected index is not the default "Active campaign" text
+            // * the newly selected index is not the current campaign or there is no active campaign
+            //if (campaignSelector.SelectedItem.ToString() != "No Campaign" && 
+            //  (currentCalendar.activeCampaign == null || campaignSelector.SelectedItem.ToString().Equals(currentCalendar.activeCampaign.Tag) == false))
+            if (campaignSelector.SelectedItem.ToString() == "No Campaign")
+                currentCalendar.activeCampaign = null;
+            else if (currentCalendar.activeCampaign != null && campaignSelector.SelectedItem.ToString() == currentCalendar.activeCampaign.Tag)
+                return;
+            else
+            {
+                foreach (Campaign c in currentCalendar.CampaignList)
+                {
+                    if (c.Tag == campaignSelector.SelectedItem.ToString())
+                    {
+                        MessageBox.Show("Successufully activated " + c.Name, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        currentCalendar.setActiveCampaign(c);
+                        updateCampaignList();
+                        return;
+                    }
+                }
+                MessageBox.Show("Error: Could not activate campaign.", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                campaignSelector.SelectedIndex = 0;
+                return;
+            }
         }
     }
 }

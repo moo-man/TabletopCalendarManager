@@ -70,6 +70,12 @@
     <Compile Include="CalendarMenu.Designer.cs">
       <DependentUpon>CalendarMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditCampaignDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCampaignDialog.Designer.cs">
+      <DependentUpon>EditCampaignDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditNotesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     <EmbeddedResource Include="CalendarMenu.resx">
       <DependentUpon>CalendarMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditCampaignDialog.resx">
+      <DependentUpon>EditCampaignDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditNotesDialog.resx">
       <DependentUpon>EditNotesDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,25 +148,26 @@
     <EmbeddedResource Include="NewNoteDialog.resx">
       <DependentUpon>NewNoteDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <None Include="Minion Pro.ttf" />
+    <None Include="Ozymandias Solid WBW.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Ozymandias Solid WBW.ttf" />
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +194,32 @@
     <Content Include="Properties\MonthLights\Nightal.jpg" />
     <Content Include="Properties\MonthLights\Tarsakh.jpg" />
     <Content Include="Properties\MonthLights\Uktar.jpg" />
+    <Content Include="Resources\Default.jpg" />
+    <Content Include="Resources\infoicon.png" />
+    <Content Include="Resources\MonthLights\Alturiak.jpg" />
+    <Content Include="Resources\MonthLights\Alturiak.png" />
+    <Content Include="Resources\MonthLights\Autumn Equinox.jpg" />
+    <Content Include="Resources\MonthLights\Ches.jpg" />
+    <Content Include="Resources\MonthLights\Default.jpg" />
+    <Content Include="Resources\MonthLights\Eleasis.jpg" />
+    <Content Include="Resources\MonthLights\Eleint.jpg" />
+    <Content Include="Resources\MonthLights\Feast of the Moon.jpg" />
+    <Content Include="Resources\MonthLights\Flamerule.jpg" />
+    <Content Include="Resources\MonthLights\Greengrass.jpg" />
+    <Content Include="Resources\MonthLights\Hammer.jpg" />
+    <Content Include="Resources\MonthLights\Highharvestide.jpg" />
+    <Content Include="Resources\MonthLights\Kythorn.jpg" />
+    <Content Include="Resources\MonthLights\Merpenoth.jpg" />
+    <Content Include="Resources\MonthLights\Midsummer.jpg" />
+    <Content Include="Resources\MonthLights\Midwinter.jpg" />
+    <Content Include="Resources\MonthLights\Mirtul.jpg" />
+    <Content Include="Resources\MonthLights\Nightal.jpg" />
+    <Content Include="Resources\MonthLights\Shieldmeet.jpg" />
+    <Content Include="Resources\MonthLights\Spring Equinox.jpg" />
+    <Content Include="Resources\MonthLights\Summer Solstice.jpg" />
+    <Content Include="Resources\MonthLights\Tarsakh.jpg" />
+    <Content Include="Resources\MonthLights\Uktar.jpg" />
+    <Content Include="Resources\MonthLights\Winter Solstice.jpg" />
     <Content Include="Roll of Years.txt" />
     <Content Include="save-icon-5404.png" />
     <None Include="Resources\Alturiak.bmp" />

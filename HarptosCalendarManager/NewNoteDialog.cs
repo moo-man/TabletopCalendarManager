@@ -25,6 +25,9 @@ namespace HarptosCalendarManager
 
         private void generalBox_CheckedChanged(object sender, EventArgs e)
         {
+            if (AlertCampaign.Checked)
+                AlertCampaign.Checked = false;
+
             AlertCampaign.Enabled = !generalBox.Checked;
         }
 
@@ -54,13 +57,13 @@ namespace HarptosCalendarManager
 
                 else
                 {
-                    alertLevel importance = alertLevel.dontAlert;
+                    alertScope importance = alertScope.dontAlert;
                     if (alertAll.Checked)
-                        importance = alertLevel.alertAll;
+                        importance = alertScope.alertAll;
                     else if (AlertCampaign.Checked)
-                        importance  = alertLevel.alertCampaign;
+                        importance  = alertScope.alertCampaign;
                     else if (noAlert.Checked)
-                        importance = alertLevel.dontAlert;
+                        importance = alertScope.dontAlert;
 
                     currCalendar.activeCampaign.addNote(currCalendar.calendar.ToString(), importance, newNoteBox.Text);
                     MessageBox.Show("Note successfully added", "Note Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
