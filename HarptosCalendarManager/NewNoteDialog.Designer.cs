@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.generalBox = new System.Windows.Forms.CheckBox();
             this.noAlert = new System.Windows.Forms.RadioButton();
-            this.AlertCampaign = new System.Windows.Forms.RadioButton();
-            this.alertAll = new System.Windows.Forms.RadioButton();
+            this.AlertCampaignButton = new System.Windows.Forms.RadioButton();
+            this.globalButton = new System.Windows.Forms.RadioButton();
             this.generalTip = new System.Windows.Forms.ToolTip(this.components);
             this.globalTip = new System.Windows.Forms.ToolTip(this.components);
             this.campaignTip = new System.Windows.Forms.ToolTip(this.components);
@@ -65,27 +65,27 @@
             this.noAlert.Text = "No Alerts";
             this.noAlert.UseVisualStyleBackColor = true;
             // 
-            // AlertCampaign
+            // AlertCampaignButton
             // 
-            this.AlertCampaign.AutoSize = true;
-            this.AlertCampaign.Location = new System.Drawing.Point(201, 56);
-            this.AlertCampaign.Name = "AlertCampaign";
-            this.AlertCampaign.Size = new System.Drawing.Size(72, 17);
-            this.AlertCampaign.TabIndex = 5;
-            this.AlertCampaign.TabStop = true;
-            this.AlertCampaign.Text = "Campaign";
-            this.AlertCampaign.UseVisualStyleBackColor = true;
+            this.AlertCampaignButton.AutoSize = true;
+            this.AlertCampaignButton.Location = new System.Drawing.Point(201, 56);
+            this.AlertCampaignButton.Name = "AlertCampaignButton";
+            this.AlertCampaignButton.Size = new System.Drawing.Size(72, 17);
+            this.AlertCampaignButton.TabIndex = 5;
+            this.AlertCampaignButton.TabStop = true;
+            this.AlertCampaignButton.Text = "Campaign";
+            this.AlertCampaignButton.UseVisualStyleBackColor = true;
             // 
-            // alertAll
+            // globalButton
             // 
-            this.alertAll.AutoSize = true;
-            this.alertAll.Location = new System.Drawing.Point(201, 33);
-            this.alertAll.Name = "alertAll";
-            this.alertAll.Size = new System.Drawing.Size(55, 17);
-            this.alertAll.TabIndex = 6;
-            this.alertAll.TabStop = true;
-            this.alertAll.Text = "Global";
-            this.alertAll.UseVisualStyleBackColor = true;
+            this.globalButton.AutoSize = true;
+            this.globalButton.Location = new System.Drawing.Point(201, 33);
+            this.globalButton.Name = "globalButton";
+            this.globalButton.Size = new System.Drawing.Size(55, 17);
+            this.globalButton.TabIndex = 6;
+            this.globalButton.TabStop = true;
+            this.globalButton.Text = "Global";
+            this.globalButton.UseVisualStyleBackColor = true;
             // 
             // newNoteBox
             // 
@@ -133,8 +133,8 @@
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.newNoteBox);
-            this.Controls.Add(this.alertAll);
-            this.Controls.Add(this.AlertCampaign);
+            this.Controls.Add(this.globalButton);
+            this.Controls.Add(this.AlertCampaignButton);
             this.Controls.Add(this.noAlert);
             this.Controls.Add(this.generalBox);
             this.Name = "NewNoteDialog";
@@ -149,8 +149,8 @@
         #endregion
         private System.Windows.Forms.CheckBox generalBox;
         private System.Windows.Forms.RadioButton noAlert;
-        private System.Windows.Forms.RadioButton AlertCampaign;
-        private System.Windows.Forms.RadioButton alertAll;
+        private System.Windows.Forms.RadioButton AlertCampaignButton;
+        private System.Windows.Forms.RadioButton globalButton;
         private System.Windows.Forms.ToolTip generalTip;
         private System.Windows.Forms.ToolTip globalTip;
         private System.Windows.Forms.ToolTip campaignTip;

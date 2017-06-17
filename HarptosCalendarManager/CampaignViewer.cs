@@ -13,111 +13,101 @@ namespace HarptosCalendarManager
     public partial class CampaignViewer : Form
     {
         Calendar currentCalendar;
-        bool[] expansionMap;
+        List<string> expandedNodes;
 
         public CampaignViewer(Calendar cal)
         {
             InitializeComponent();
             currentCalendar = cal;
+            activateToolTip.SetToolTip(makeActiveButton, "Activate a campaign to use it in the Day Tracker");
         }
 
-        public void UpdateCampaigns()
+        public void UpdateTree()
         {
-            mapExpansion();
+            expandedNodes = ListOfExpandedNodes(campaignTree);
             campaignTree.Nodes.Clear();
-            if (currentCalendar.numOfCampaigns() == 0)
-            {
-                campaignTree.Nodes.Add(new TreeNode("No Campaigns"));
-            }
+            int campaignCount;
 
-            int campaignCount = 0;
+            if (currentCalendar.GeneralNoteList.Count > 0)
+            {
+                campaignTree.Nodes.Add("General Notes");
+                int genNoteCount = 0;
+                foreach (Note n in currentCalendar.GeneralNoteList)
+                    AddNoteToTree(n, 0, ref genNoteCount);
+                campaignCount = 1; // start at 1 if there are general notes (general notes are in the first tree node
+            }
+            else
+                campaignCount = 0;
+
+            if (currentCalendar.numOfCampaigns() == 0)
+                campaignTree.Nodes.Add(new TreeNode("No Campaigns"));
+
+            
             foreach (Campaign c in currentCalendar.CampaignList)
             {
                 campaignTree.Nodes.Add(new TreeNode(c.Name + " (" + c.Tag + ")" ));
                 int notesCount = 0;
                 foreach (Note n in c.notes)
-                {
-                    string noteDate = n.Date.ToString();
-                  
-                    // Find existing date node checks if there is already a note with that same date, so it can be put in that node
-                    TreeNode existingNode = FindExistingDateNode(campaignTree.Nodes[campaignCount].Nodes, noteDate);
-
-                    if (existingNode != null)
-                    {
-                        existingNode.Nodes.Add(new TreeNode(n.NoteContent));
-                    }
-                    else
-                    {
-                        campaignTree.Nodes[campaignCount].Nodes.Add(new TreeNode(HarptosCalendar.returnGivenDate(n.Date))); // ADD DATE OF NOTE
-                        campaignTree.Nodes[campaignCount].Nodes[notesCount].Nodes.Add(new TreeNode(n.NoteContent));         // ADD NOTE CONTENT UNDER IT
-                        notesCount++;
-                    }
-                    
-                }
+                    AddNoteToTree(n, campaignCount, ref notesCount);
                 campaignCount++;
             }
-            ExpandNodesWithMap();
+            ExpandNodes(expandedNodes, campaignTree);
         }
 
-        public void ExpandNodesWithMap()
+        public void AddNoteToTree(Note noteToAdd, int campNum, ref int noteNum)
         {
-            int expansionIndex = 0;
-            for (int campaignCount = 0; campaignCount < campaignTree.Nodes.Count && expansionIndex < expansionMap.Length; campaignCount++) // Campaign Loop
+            string noteDate = noteToAdd.Date.ToString();
+
+            // Find existing date node checks if there is already a note with that same date, so it can be put in that node
+            TreeNode existingNode = FindExistingDateNode(campaignTree.Nodes[campNum].Nodes, noteDate);
+
+            if (existingNode != null)
             {
-                if (expansionMap[expansionIndex++] == true) // If campaign is expanded, go into date loop
+                existingNode.Nodes.Add(new TreeNode(noteToAdd.NoteContent));
+            }
+            else
+            {
+                campaignTree.Nodes[campNum].Nodes.Add(new TreeNode(HarptosCalendar.returnGivenDate(noteToAdd.Date))); // ADD DATE OF NOTE
+                campaignTree.Nodes[campNum].Nodes[noteNum].Nodes.Add(new TreeNode(noteToAdd.NoteContent));         // ADD NOTE CONTENT UNDER IT
+                noteNum++;
+            }
+        }
+
+        public void ExpandNodes(List<string> nodesText, TreeView tree)
+        {
+            foreach (TreeNode campaignNode in tree.Nodes)
+            {
+                if (nodesText.Contains(campaignNode.Text))
                 {
-                    campaignTree.Nodes[campaignCount].Expand();
-                    for (int dateCount = 0; dateCount < campaignTree.Nodes[campaignCount].Nodes.Count; dateCount++)
+                    campaignNode.Expand();
+                    foreach (TreeNode dateNode in campaignNode.Nodes)
                     {
-                        if (expansionMap[expansionIndex++] == true)
-                            campaignTree.Nodes[campaignCount].Nodes[dateCount].Expand();
+                        if (nodesText.Contains(dateNode.Text))
+                            dateNode.Expand();
                     }
                 }
+
             }
-            campaignTree.Nodes[0].EnsureVisible();
         }
 
-
-        // Every time the TreeView is updated, it collapses all the nodes, to avoid this, we map out which ones
-        // are expanded by using a bool array, true - node is expanded, false - collapsed. 
-        // Note: This does not look at EVERY node, if a node is collapsed, the children are not looked at
-        // Look at ExpandNodesWithMap() function for details on how the array is read
-        public void mapExpansion()
+        public List<string> ListOfExpandedNodes(TreeView tree)
         {
-            expansionMap = new bool[campaignTree.GetNodeCount(true)]; // max length of array is the number of nodes
-            //for (int i = 0; i < expansionMap.Length; i++)
-              //  expansionMap[i] = false;
-
-            int expansionIndex = 0;
-            for (int campaignNodeCount = 0; campaignNodeCount < campaignTree.Nodes.Count; campaignNodeCount++)// Campaign Loop
+            List<string> returnList = new List<string>();
+            foreach (TreeNode campaignNode in tree.Nodes)
             {
-                // This if will happen if a campaign was deleted. When a campaign is deleted, it isn't deleted from view until the tree reupdates
-                // So a deleted campaign will still me mapped into mapExpansion, unwanted. This if checks if the campaign still exists before mapping it
-                if (currentCalendar.CampaignList.Find(x => x.Name == parseCampaignName(campaignTree.Nodes[campaignNodeCount].Text)) != null)
+                if (campaignNode.IsExpanded)
                 {
-                    if (campaignTree.Nodes[campaignNodeCount].IsExpanded)
+                    returnList.Add(campaignNode.Text);
+                    foreach (TreeNode dateNode in campaignNode.Nodes)
                     {
-                        expansionMap[expansionIndex++] = true;
-
-                        for (int dateNodeCount = 0; dateNodeCount < campaignTree.Nodes[campaignNodeCount].Nodes.Count; dateNodeCount++) // Date loop
+                        if (dateNode.IsExpanded)
                         {
-                            if (campaignTree.Nodes[campaignNodeCount].Nodes[dateNodeCount].IsExpanded)
-                                expansionMap[expansionIndex++] = true;
-                            else
-                                expansionMap[expansionIndex++] = false;
+                            returnList.Add(dateNode.Text);
                         }
                     }
-                    else
-                        expansionMap[expansionIndex++] = false;
                 }
             }
-            bool [] shorterMap = new bool[expansionIndex];
-            for (int i = 0; i < shorterMap.Length; i++)
-            {
-                shorterMap[i] = expansionMap[i];
-            }
-
-            expansionMap = shorterMap;
+            return returnList;
         }
 
         public TreeNode FindExistingDateNode(TreeNodeCollection nodes, string dateString)
@@ -138,7 +128,7 @@ namespace HarptosCalendarManager
 
         private void CampaignViewer_Load(object sender, EventArgs e)
         {
-            UpdateCampaigns();
+            UpdateTree();
         }
 
         private void makeActiveButton_Click(object sender, EventArgs e)
@@ -163,7 +153,7 @@ namespace HarptosCalendarManager
             {
                 MessageBox.Show("Error: Could not activate campaign.", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            UpdateCampaigns();
+            UpdateTree();
         }
 
        
@@ -205,24 +195,22 @@ namespace HarptosCalendarManager
                 MessageBox.Show("Deactivated " + currentCalendar.activeCampaign.Name, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 currentCalendar.activeCampaign = null;
             }
-            //UpdateCampaigns();
-        }
-
-        private void editButton_Click(object sender, EventArgs e)
-        {
-            if (returnSelectedCampaign() == null)
+            else
+            {
+                MessageBox.Show("No active campaign", "Deactivation", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            EditCampaignDialog editMenu = new EditCampaignDialog(returnSelectedCampaign());
-            editMenu.ShowDialog(this);
-            currentCalendar.goToCurrentDate();
-            UpdateCampaigns();
+            }
+            //UpdateCampaigns();
         }
 
         private void endButton_Click(object sender, EventArgs e)
         {
             Campaign campaignToEnd = returnSelectedCampaign();
             if (campaignToEnd == null)
+            {
+                MessageBox.Show("Select the campaign you wish to end.", "Select Campaign", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
             if (campaignToEnd.isEnded() == true)
             {
                 MessageBox.Show("This campaign has already ended. Activating it will start it again.", "End Campaign", MessageBoxButtons.OK);
@@ -240,22 +228,7 @@ namespace HarptosCalendarManager
 
                 campaignToEnd.toggleEnded();
             }
-            UpdateCampaigns();
-        }
-
-        private void deleteButton_Click(object sender, EventArgs e)
-        {
-            if (returnSelectedCampaign() == null)
-                return;
-            else
-            {
-                Campaign toDelete = returnSelectedCampaign();
-                DialogResult result;
-                result = MessageBox.Show("Are you sure you want to delete " + toDelete.Name + "?", "Delete Campaign", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                    currentCalendar.CampaignList.Remove(toDelete);
-            }
-            UpdateCampaigns();
+            UpdateTree();
         }
 
         private void CampaignViewer_Enter(object sender, EventArgs e)
@@ -266,6 +239,99 @@ namespace HarptosCalendarManager
         private void CampaignViewer_Activated(object sender, EventArgs e)
         {
             // UpdateCampaigns();
+        }
+
+        private void editCampaignButton_Click(object sender, EventArgs e)
+        {
+            if (returnSelectedCampaign() == null)
+            {
+                MessageBox.Show("Select the campaign you wish to edit.", "Select Campaign", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            EditCampaignDialog editMenu = new EditCampaignDialog(returnSelectedCampaign(), currentCalendar);
+            editMenu.ShowDialog(this);
+            currentCalendar.goToCurrentDate();
+            UpdateTree();
+        }
+
+        private void deleteCampaignButton_Click(object sender, EventArgs e)
+        {
+            if (returnSelectedCampaign() == null)
+            {
+                MessageBox.Show("Select the campaign you wish to delete.", "Select Campaign", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                Campaign toDelete = returnSelectedCampaign();
+                DialogResult result;
+                result = MessageBox.Show("Are you sure you want to delete " + toDelete.Name + "?", "Delete Campaign", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                    currentCalendar.CampaignList.Remove(toDelete);
+            }
+            UpdateTree();
+        }
+
+        private void addNoteButton_Click(object sender, EventArgs e)
+        {
+            EditNotesDialog newNoteDialog = new EditNotesDialog(currentCalendar);
+            newNoteDialog.ShowDialog(this);
+            UpdateTree();
+        }
+
+        private void editNoteButton_Click(object sender, EventArgs e)
+        {
+            if (campaignTree.SelectedNode.Level != 2 || campaignTree.SelectedNode == null)
+            {
+                MessageBox.Show("Please select the note you wish to edit", "Select Note", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            bool generalNote;
+            if (campaignTree.SelectedNode.Parent.Parent.Text == "General Notes")
+                generalNote = true;
+            else
+                generalNote = false;
+
+            Note noteToEdit = currentCalendar.findNote(campaignTree.SelectedNode.Text, generalNote);
+            if (Calendar.CanEditOrDelete(noteToEdit))
+            {
+                EditNotesDialog editNoteDialog = new EditNotesDialog(noteToEdit, currentCalendar);
+                editNoteDialog.ShowDialog(this);
+                UpdateTree();
+            }
+            else
+            {
+                MessageBox.Show(this, "This note cannot be edited.", "Cannot edit note", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void deleteNoteButton_Click(object sender, EventArgs e)
+        {
+            if (campaignTree.SelectedNode.Level != 2 || campaignTree.SelectedNode == null)
+            {
+                MessageBox.Show("Please select the note you wish to delete", "Delete Note", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            bool generalNote;
+            if (campaignTree.SelectedNode.Parent.Parent.Text == "General Notes")
+                generalNote = true;
+            else
+                generalNote = false;
+
+            Note noteToDelete = currentCalendar.findNote(campaignTree.SelectedNode.Text, generalNote);
+            if (Calendar.CanEditOrDelete(noteToDelete))
+            {
+                if (MessageBox.Show("Are you sure you want to delete this note?", "Delete Note", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    currentCalendar.deleteNote(noteToDelete);
+            }
+            else
+            {
+                MessageBox.Show(this, "This note cannot be deleted.", "Cannot delete note", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            UpdateTree();
         }
     }
 }

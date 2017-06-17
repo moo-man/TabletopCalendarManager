@@ -13,35 +13,61 @@ namespace HarptosCalendarManager
     public partial class EditNotesDialog : Form
     {
         Note editNote;
-        List<Campaign> campaignList;
-        public EditNotesDialog(Note n, List<Campaign> clist)
+        Calendar currentCalendar;
+        public EditNotesDialog(Note n, Calendar currCal)
         {
             InitializeComponent();
             editNote = n;
-            campaignList = clist;
+            currentCalendar = currCal;
             editNoteBox.Text = editNote.NoteContent;
             fillDateBoxes();
             populateCampaignDropDown();
             setVisibility();
+            SetToolTips();
+        }
+        /// <summary>
+        /// This constructor is used for adding a brand new note
+        /// used by CampaignViewer, because NewNoteDialog (used by daytracker)
+        /// does not ask for enough info, such as date and campaign
+        /// </summary>
+        /// <param name="currCal"></param>
+        public EditNotesDialog(Calendar currCal)
+        {
+            InitializeComponent();
+            editNote = new Note(null, 0, null, null); // dummy values
+            currentCalendar = currCal;
+            populateCampaignDropDown();
+            this.Text = "New Note";
+            SetToolTips();
+        }
+
+        public void SetToolTips()
+        {
+            generalTip.SetToolTip(generalBox, "General notes are not tied to a campaign.");
+            globalTip.SetToolTip(alertAll, "Global notes will be shown to all campaigns on their date or anniversary.");
+            campaignTip.SetToolTip(AlertCampaign, "Campaign notes will only be shown to their campaign.");
+            noAlertTip.SetToolTip(noAlert, "These notes will only be shown on the actual date of occurrence (not anniversary), and only to their campaign");
         }
 
         public void setVisibility()
         {
             switch(editNote.Importance)
             {
-                case alertScope.alertAll:
+                case AlertScope.global:
                     alertAll.Checked = true;
                     break;
-                case alertScope.alertCampaign:
+                case AlertScope.campaign:
                     AlertCampaign.Checked = true;
                     break;
-                case alertScope.dontAlert:
+                case AlertScope.dontAlert:
                     noAlert.Checked = true;
                     break;
                 default:
-
                     break;
-                    // TODO: general visibility
+            }
+            if (editNote.Campaign == null)
+            {
+                generalBox.Checked = true;
             }
         }
 
@@ -54,18 +80,37 @@ namespace HarptosCalendarManager
 
         public void populateCampaignDropDown()
         {
-            campaignSelector.Items.Insert(0, editNote.Campaign.Tag);
-            foreach (Campaign c in campaignList)
-                if (c.Tag != editNote.Campaign.Tag)
+
+            if (editNote.Campaign != null)
+            {
+                campaignSelector.Items.Insert(0, editNote.Campaign.Tag);
+                foreach (Campaign c in currentCalendar.CampaignList)
+                    if (c.Tag != editNote.Campaign.Tag)
+                        campaignSelector.Items.Add(c.Tag);
+                campaignSelector.SelectedIndex = 0;
+            }
+            else
+            {
+                foreach (Campaign c in currentCalendar.CampaignList)
                     campaignSelector.Items.Add(c.Tag);
-            campaignSelector.SelectedIndex = 0;
+                campaignSelector.SelectedItem = null;
+            }
         }
 
         private void generalBox_CheckedChanged(object sender, EventArgs e)
         {
+            // These 2 lines ensure that when general is checked, it both
+            // disables campaign visibility button, and unchecks it if it was checked
             AlertCampaign.Enabled = !generalBox.Checked;
+            if (AlertCampaign.Checked)
+                AlertCampaign.Checked = false;
+
             if (generalBox.Checked)
+            {
                 campaignSelector.Enabled = false;
+                campaignSelector.SelectedItem = null;
+            }
+
             else
                 campaignSelector.Enabled = true;
         }
@@ -73,21 +118,49 @@ namespace HarptosCalendarManager
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            // todo: add verification
             Campaign notesCampaign;
 
-            notesCampaign = campaignList.Find(x => x.Tag == campaignSelector.SelectedItem.ToString());
-            editNote.Campaign.deleteNote(editNote);
+            if (alertAll.Checked == false && AlertCampaign.Checked == false && noAlert.Checked == false)
+            {
+                MessageBox.Show("Choose a visibilty level.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (month.Text == "" || day.Text == "" || year.Text == "")
+            {
+                MessageBox.Show("Please enter a valid date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (editNoteBox.Text == "")
+            {
+                MessageBox.Show("The note must have some content.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (campaignSelector.SelectedItem == null && generalBox.Checked)
+                notesCampaign = null;
 
-            alertScope importance = alertScope.dontAlert;
+            else if (campaignSelector.SelectedItem == null && generalBox.Checked == false)
+            {
+                MessageBox.Show("Please select an associated campaign.\nIf it is a general note, check the general box.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+                notesCampaign = currentCalendar.CampaignList.Find(x => x.Tag == campaignSelector.SelectedItem.ToString());
+
+
+            if (editNote.Campaign == null)
+                currentCalendar.deleteNote(editNote);
+            else
+                editNote.Campaign.deleteNote(editNote);
+
+            AlertScope importance = AlertScope.dontAlert;
             if (alertAll.Checked)
-                importance = alertScope.alertAll;
+                importance = AlertScope.global;
             else if (AlertCampaign.Checked)
-                importance = alertScope.alertCampaign;
+                importance = AlertScope.campaign;
             else if (noAlert.Checked)
-                importance = alertScope.dontAlert;
+                importance = AlertScope.dontAlert;
 
-            notesCampaign.addNote(textBoxToDate(), importance, editNoteBox.Text);
+                currentCalendar.AddNote( new Note(textBoxToDate(), importance, editNoteBox.Text, notesCampaign));
 
             this.Close();
         }
@@ -104,26 +177,30 @@ namespace HarptosCalendarManager
 
         private void month_Leave(object sender, EventArgs e)
         {
-            if (month.Text.Length < 2)
-                month.Text = "0" + month.Text;
+            month.Text = HarptosCalendar.enforceMonthFormat(month.Text);       
         }
 
         private void day_Leave(object sender, EventArgs e)
         {
-            if (day.Text.Length < 2)
-                day.Text = "0" + day.Text;
+            day.Text = HarptosCalendar.enforceDayFormat(month.Text, day.Text, year.Text);
         }
 
         private void year_Leave(object sender, EventArgs e)
         {
-            if (year.Text.Length == 3)
-                year.Text = "0" + year.Text;
+            year.Text = HarptosCalendar.enforceYearFormat(year.Text);
+        }
 
-            if (year.Text.Length == 2)
-                year.Text = "00" + year.Text;
+        private void date_keypress(object sender, KeyPressEventArgs e)
+        {
+            char keypress = e.KeyChar;
 
-            if (year.Text.Length == 1)
-                year.Text = "000" + year.Text;
+            if (Char.IsControl(keypress))
+                return;
+
+            if (Char.IsNumber(keypress) == false)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

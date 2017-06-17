@@ -153,9 +153,29 @@ namespace HarptosCalendarManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap First_Quarter {
+            get {
+                object obj = ResourceManager.GetObject("First_Quarter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Flamerule {
             get {
                 object obj = ResourceManager.GetObject("Flamerule", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Full_Moon {
+            get {
+                object obj = ResourceManager.GetObject("Full_Moon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,6 +233,16 @@ namespace HarptosCalendarManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Last_Quarter {
+            get {
+                object obj = ResourceManager.GetObject("Last_Quarter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Merpenoth {
             get {
                 object obj = ResourceManager.GetObject("Merpenoth", resourceCulture);
@@ -256,6 +286,16 @@ namespace HarptosCalendarManager.Properties {
         internal static System.Drawing.Bitmap Mirtul {
             get {
                 object obj = ResourceManager.GetObject("Mirtul", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap New_Moon {
+            get {
+                object obj = ResourceManager.GetObject("New_Moon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -360,6 +400,56 @@ namespace HarptosCalendarManager.Properties {
         internal static System.Drawing.Bitmap Uktar {
             get {
                 object obj = ResourceManager.GetObject("Uktar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unrollingscroll {
+            get {
+                object obj = ResourceManager.GetObject("unrollingscroll", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Waning_Crescent {
+            get {
+                object obj = ResourceManager.GetObject("Waning_Crescent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Waning_Gibbous {
+            get {
+                object obj = ResourceManager.GetObject("Waning_Gibbous", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Waxing_Crescent {
+            get {
+                object obj = ResourceManager.GetObject("Waxing_Crescent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Waxing_Gibbous {
+            get {
+                object obj = ResourceManager.GetObject("Waxing_Gibbous", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -25,6 +25,7 @@ namespace HarptosCalendarManager
 
         private void startD_TextChanged(object sender, EventArgs e)
         {
+
             currD.Text = startD.Text;
         }
 
@@ -48,17 +49,56 @@ namespace HarptosCalendarManager
         {
             string startDate;
             string currentDate;
+            if (tagBox.Text == "")
+            {
+                MessageBox.Show("The campaign must have a tag.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            startDate = startM.Text + startD.Text + startY.Text;
-            currentDate = currM.Text + currD.Text + currY.Text;
+            if (nameBox.Text == "")
+            {
+                MessageBox.Show("The campaign must have a name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            Campaign newCampaign = new Campaign(nameBox.Text, tagBox.Text, startDate, currentDate);
+            if (tagBox.Text == "TIMER")
+            {
+                MessageBox.Show("This tag is not allowed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            currentCalendar.addCampaign(newCampaign);
+            if (currentCalendar.CampaignList.Find(x => x.Tag == tagBox.Text) != null)
+            {
+                MessageBox.Show("A campaign with this tag already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            Cviewer.UpdateCampaigns();
+            if (validDateBoxes())
+            {
 
-            this.Close();
+                startDate = startM.Text + startD.Text + startY.Text;
+                currentDate = currM.Text + currD.Text + currY.Text;
+
+                Campaign newCampaign = new Campaign(nameBox.Text, tagBox.Text, startDate, currentDate);
+
+                currentCalendar.AddCampaign(newCampaign);
+
+                Cviewer.UpdateTree();
+
+                this.Close();
+            }
+            else
+                return;
+        }
+
+        public bool validDateBoxes()
+        {
+            if (startM.Text == "" || startD.Text == "" || startY.Text == "" || currM.Text == "" || currD.Text == "" || currY.Text == "")
+            {
+                MessageBox.Show("Please fill out start date and current date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -68,50 +108,62 @@ namespace HarptosCalendarManager
 
         private void startD_Leave(object sender, EventArgs e)
         {
-            if (startD.Text.Length < 2)
-                startD.Text = "0" + startD.Text;
+            startD.Text = HarptosCalendar.enforceDayFormat(startM.Text, startD.Text, startY.Text);
         }
 
         private void startM_Leave(object sender, EventArgs e)
         {
-            if (startM.Text.Length < 2)
-                startM.Text = "0" + startM.Text;
+            startM.Text = HarptosCalendar.enforceMonthFormat(startM.Text);
         }
 
         private void currD_Leave(object sender, EventArgs e)
         {
-            if (currD.Text.Length < 2)
-                currD.Text = "0" + currD.Text;
+            currD.Text = HarptosCalendar.enforceDayFormat(currM.Text, currD.Text, currY.Text);
         }
 
         private void currM_Leave(object sender, EventArgs e)
         {
-            if (currM.Text.Length < 2)
-                currM.Text = "0" + currM.Text;
+            currM.Text = HarptosCalendar.enforceMonthFormat(currM.Text);
         }
 
         private void startY_Leave(object sender, EventArgs e)
         {
-            if (startY.Text.Length == 3)
-                startY.Text = "0" + startY.Text;
-
-            if (startY.Text.Length == 2)
-                startY.Text = "00" + startY.Text;
-
-            if (startY.Text.Length == 1)
-                startY.Text = "000" + startY.Text;
+            startY.Text = HarptosCalendar.enforceYearFormat(startY.Text);
         }
 
         private void currY_Leave(object sender, EventArgs e)
         {
-            if (currY.Text.Length == 3)
-                currY.Text = "0" + currY.Text;
-
-            if (currY.Text.Length == 2)
-                currY.Text = "00" + currY.Text;
-
-            if (currY.Text.Length == 1)
-                currY.Text = "000" + currY.Text;
+            currY.Text = HarptosCalendar.enforceYearFormat(currY.Text);
         }
+
+        public string startBoxesToDate()
+        {
+            return startM.Text + startD.Text + startY.Text;
+        }
+        public string currentBoxesToDate()
+        {
+            return currM.Text + currD.Text + currY.Text;
+        }
+
+        private void date_keypress(object sender, KeyPressEventArgs e)
+        {
+            char keypress = e.KeyChar;
+
+            if (Char.IsControl(keypress))
+                return;
+
+            if (Char.IsNumber(keypress) == false)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tagBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keypress = e.KeyChar;
+
+            if (keypress == '(' || keypress == ')')
+                e.Handled = true;
+        } 
     }
 }

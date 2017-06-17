@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -63,12 +64,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddTimerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTimerForm.Designer.cs">
+      <DependentUpon>AddTimerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Calendar.cs" />
     <Compile Include="CalendarMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CalendarMenu.Designer.cs">
       <DependentUpon>CalendarMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangelogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangelogForm.Designer.cs">
+      <DependentUpon>ChangelogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="EditCampaignDialog.cs">
       <SubType>Form</SubType>
@@ -121,8 +134,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddTimerForm.resx">
+      <DependentUpon>AddTimerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CalendarMenu.resx">
       <DependentUpon>CalendarMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangelogForm.resx">
+      <DependentUpon>ChangelogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditCampaignDialog.resx">
       <DependentUpon>EditCampaignDialog.cs</DependentUpon>
@@ -180,7 +199,11 @@
     <None Include="Properties\harptosWheel.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="First Quarter.png" />
+    <Content Include="Full Moon.png" />
     <Content Include="HarptosIcon.ico" />
+    <Content Include="Last Quarter.png" />
+    <Content Include="New Moon.png" />
     <Content Include="Properties\MonthLights\Alturiak.jpg" />
     <Content Include="Properties\MonthLights\Alturiak.png" />
     <Content Include="Properties\MonthLights\Ches.jpg" />
@@ -196,6 +219,11 @@
     <Content Include="Properties\MonthLights\Uktar.jpg" />
     <Content Include="Resources\Default.jpg" />
     <Content Include="Resources\infoicon.png" />
+    <Content Include="Waning Crescent.png" />
+    <Content Include="Waning Gibbous.png" />
+    <Content Include="Waxing Crescent.png" />
+    <Content Include="Waxing Gibbous.png" />
+    <None Include="Resources\LastQuarter.bmp" />
     <Content Include="Resources\MonthLights\Alturiak.jpg" />
     <Content Include="Resources\MonthLights\Alturiak.png" />
     <Content Include="Resources\MonthLights\Autumn Equinox.jpg" />
@@ -222,6 +250,7 @@
     <Content Include="Resources\MonthLights\Winter Solstice.jpg" />
     <Content Include="Roll of Years.txt" />
     <Content Include="save-icon-5404.png" />
+    <None Include="unrollingscroll.png" />
     <None Include="Resources\Alturiak.bmp" />
     <None Include="Properties\MonthLights\Default.jpg" />
   </ItemGroup>

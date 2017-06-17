@@ -208,4 +208,31 @@
   <data name="infoicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\infoicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="unrollingscroll" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\unrollingscroll.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="First_Quarter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\first quarter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Full_Moon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\full moon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Last_Quarter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\last quarter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="New_Moon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\new moon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Waning_Crescent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\waning crescent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Waning_Gibbous" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\waning gibbous.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Waxing_Crescent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\waxing crescent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Waxing_Gibbous" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\waxing gibbous.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

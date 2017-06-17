@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalendarMenu));
             this.titleText = new System.Windows.Forms.Label();
             this.dayTrackerButton = new System.Windows.Forms.Button();
@@ -37,6 +38,9 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.campaignSelector = new System.Windows.Forms.ComboBox();
+            this.dayTrackerTip = new System.Windows.Forms.ToolTip(this.components);
+            this.campaignsTip = new System.Windows.Forms.ToolTip(this.components);
+            this.campaignSelectorTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // titleText
@@ -130,6 +134,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Calendar Manager";
             this.Activated += new System.EventHandler(this.CalendarMenu_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CalendarMenu_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CalendarMenu_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -146,5 +151,8 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ComboBox campaignSelector;
+        private System.Windows.Forms.ToolTip dayTrackerTip;
+        private System.Windows.Forms.ToolTip campaignsTip;
+        private System.Windows.Forms.ToolTip campaignSelectorTip;
     }
 }

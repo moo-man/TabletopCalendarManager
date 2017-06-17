@@ -35,16 +35,18 @@
             this.newCalendarButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label1 = new System.Windows.Forms.Label();
+            this.changelogPicture = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.changelogPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // titleText
             // 
             this.titleText.AutoSize = true;
             this.titleText.BackColor = System.Drawing.Color.Transparent;
-            this.titleText.Font = new System.Drawing.Font("Ozymandias Solid WBW", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleText.Location = new System.Drawing.Point(-7, 7);
             this.titleText.Name = "titleText";
-            this.titleText.Size = new System.Drawing.Size(268, 115);
+            this.titleText.Size = new System.Drawing.Size(247, 106);
             this.titleText.TabIndex = 2;
             this.titleText.Text = "    The Calendar \r\n    of \r\nHarptos";
             this.titleText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -68,7 +70,7 @@
             this.loadCalendarButton.TabIndex = 4;
             this.loadCalendarButton.Text = "Load Calendar";
             this.loadCalendarButton.UseVisualStyleBackColor = true;
-            this.loadCalendarButton.Click += new System.EventHandler(this.loadCalendarButton_Click);
+            this.loadCalendarButton.Click += new System.EventHandler(this.LoadCalendarButton_Click);
             // 
             // newCalendarButton
             // 
@@ -78,7 +80,7 @@
             this.newCalendarButton.TabIndex = 5;
             this.newCalendarButton.Text = "New Calendar";
             this.newCalendarButton.UseVisualStyleBackColor = true;
-            this.newCalendarButton.Click += new System.EventHandler(this.newCalendarButton_Click);
+            this.newCalendarButton.Click += new System.EventHandler(this.NewCalendarButton_Click);
             // 
             // openFileDialog1
             // 
@@ -89,15 +91,27 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(4, 231);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 13);
+            this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Version: 0.3 (Apprentice\'s Attainment)";
+            this.label1.Text = "Version: 0.8";
+            // 
+            // changelogPicture
+            // 
+            this.changelogPicture.Image = global::HarptosCalendarManager.Properties.Resources.unrollingscroll;
+            this.changelogPicture.Location = new System.Drawing.Point(221, 221);
+            this.changelogPicture.Name = "changelogPicture";
+            this.changelogPicture.Size = new System.Drawing.Size(20, 20);
+            this.changelogPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.changelogPicture.TabIndex = 7;
+            this.changelogPicture.TabStop = false;
+            this.changelogPicture.Click += new System.EventHandler(this.changelogPicture_Click);
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(257, 253);
+            this.Controls.Add(this.changelogPicture);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.newCalendarButton);
             this.Controls.Add(this.loadCalendarButton);
@@ -108,6 +122,7 @@
             this.Text = "Harptos Calendar";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenu_FormClosed);
             this.Load += new System.EventHandler(this.MainMenu_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.changelogPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,5 +136,6 @@
         private System.Windows.Forms.Button newCalendarButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox changelogPicture;
     }
 }

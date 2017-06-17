@@ -38,6 +38,7 @@ namespace HarptosCalendarManager
         {
         }
 
+        #region font stuff that is basically magic and DOES work
         private void initalizeFont(byte[] fontData )
         {
             //Select your font from the resources.
@@ -76,6 +77,7 @@ namespace HarptosCalendarManager
         {
             c.Font = new Font(pfc.Families[whichFont], c.Font.Size, style);
         }
+        #endregion
 
         #region font stuff that is basically magic and doesnt work
         private void loadFont()
@@ -123,86 +125,172 @@ namespace HarptosCalendarManager
             help.ShowDialog(this);
         }
 
-        private void newCalendarButton_Click(object sender, EventArgs e)
+        private void NewCalendarButton_Click(object sender, EventArgs e)
         {
-            loadCalendarMenu(new Calendar());
+            LoadCalendarMenu(new Calendar());
         }
 
-        public void loadCalendarMenu(Calendar calendarToUse)
+        public void LoadCalendarMenu(Calendar calendarToUse)
         {
             currentCalendar = new CalendarMenu(this, calendarToUse);
             currentCalendar.Show(this);
             this.Hide();
         }
 
-        private void loadCalendarButton_Click(object sender, EventArgs e)
+        private void LoadCalendarButton_Click(object sender, EventArgs e)
         {
             openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.ShowDialog();
             openFileDialog1.InitialDirectory = "c:\\";
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.Filter = "Harptos Calendar files (*.hcal)|*.hcal|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 0;
             openFileDialog1.RestoreDirectory = true;
 
-            try
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                System.IO.StreamReader sr = new System.IO.StreamReader(openFileDialog1.FileName);
-                readInFile(sr);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: Could not read file. Original error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                try
+                {
+                    bool oldFile = !openFileDialog1.FileName.Contains(".cal");
+                    System.IO.StreamReader sr = new System.IO.StreamReader(openFileDialog1.FileName);
+                    ReadInFile(sr, oldFile);
+                    sr.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file. Original error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
-        public void readInFile(System.IO.StreamReader sr)
+        public void ReadInFile(System.IO.StreamReader sr)
         {
             Calendar loadedCalendar = new Calendar();
-            
-            int numOfCampaigns = Int32.Parse(sr.ReadLine());
-            for (int i = 0; i < numOfCampaigns; i++)
+            int numOfGenNotes;
+            if (Int32.TryParse(sr.ReadLine(), out numOfGenNotes))
             {
-                Campaign loadedCampaign = new Campaign();
+                for (int i = 0; i < numOfGenNotes; i++)
+                    loadedCalendar.AddNote(ReadInNote(sr));
 
-                loadedCampaign.Name = sr.ReadLine();
-                loadedCampaign.Tag = sr.ReadLine();
-                loadedCampaign.CurrentDate= sr.ReadLine();
-
-                int numOfNotes = Int32.Parse(sr.ReadLine());
-                for (int j = 0; j < numOfNotes; j++)
+                int numOfCampaigns;
+                if (Int32.TryParse(sr.ReadLine(), out numOfCampaigns))
                 {
-                    string noteDate = sr.ReadLine();
-                    int numImportance = Int32.Parse(sr.ReadLine());
-                    int general = Int32.Parse(sr.ReadLine());
-                    string content = sr.ReadLine();
-                    alertScope importance;
-                    switch (numImportance)
+                    //StartLoadingBar(numOfCampaigns);
+                    for (int i = 0; i < numOfCampaigns; i++)
                     {
-                        case 2:
-                            importance = alertScope.alertAll;
-                            break;
-                        case 1:
-                            importance = alertScope.alertCampaign;
-                            break;
-                        case 0:
-                            importance = alertScope.dontAlert;
-                            break;
-                        default:
-                            importance = alertScope.dontAlert;
-                            break;
+                        Campaign loadedCampaign = new Campaign();
+
+                        loadedCampaign.Name = sr.ReadLine();
+                        loadedCampaign.Tag = sr.ReadLine();
+                        loadedCampaign.CurrentDate = sr.ReadLine();
+
+                        int numOfTimers = Int32.Parse(sr.ReadLine());
+                        for (int j = 0; j < numOfTimers; j++)
+                        {
+                            string timerMessage = sr.ReadLine();
+                            bool trackTimer = Convert.ToBoolean(sr.ReadLine());
+                            string timerDate = sr.ReadLine();
+                            loadedCampaign.addTimer(new Timer(timerDate, trackTimer, timerMessage));
+                        }
+
+                        int numOfNotes = Int32.Parse(sr.ReadLine());
+                        for (int j = 0; j < numOfNotes; j++)
+                            loadedCampaign.addNote(ReadInNote(sr));
+
+                        loadedCalendar.AddCampaign(loadedCampaign);
+                        //loadingBar.Increment(1);
                     }
-
-                    loadedCampaign.addNote(noteDate, importance, content);
-
                 }
-
-                loadedCalendar.addCampaign(loadedCampaign);
+                LoadCalendarMenu(loadedCalendar);
             }
-            loadCalendarMenu(loadedCalendar);
+        }
+
+        public void ReadInFile(System.IO.StreamReader sr, bool oldFile)
+        {
+            if (oldFile)
+            {
+                Calendar loadedCalendar = new Calendar();
+                int numOfGenNotes;
+                if (Int32.TryParse(sr.ReadLine(), out numOfGenNotes))
+                {
+                    for (int i = 0; i < numOfGenNotes; i++)
+                        loadedCalendar.AddNote(ReadInNote(sr));
+
+                    int numOfCampaigns;
+                    if (Int32.TryParse(sr.ReadLine(), out numOfCampaigns))
+                    {
+                        //StartLoadingBar(numOfCampaigns);
+                        for (int i = 0; i < numOfCampaigns; i++)
+                        {
+                            Campaign loadedCampaign = new Campaign();
+
+                            loadedCampaign.Name = sr.ReadLine();
+                            loadedCampaign.Tag = sr.ReadLine();
+                            loadedCampaign.CurrentDate = sr.ReadLine();
+
+                            int numOfTimers = Int32.Parse(sr.ReadLine());
+                            for (int j = 0; j < numOfTimers; j++)
+                            {
+                                string timerMessage = sr.ReadLine();
+                                bool trackTimer = Convert.ToBoolean(sr.ReadLine());
+                                string timerDate = sr.ReadLine();
+                                loadedCampaign.addTimer(new Timer(timerDate, trackTimer, timerMessage));
+                            }
+
+                            int numOfNotes = Int32.Parse(sr.ReadLine());
+                            for (int j = 0; j < numOfNotes; j++)
+                                loadedCampaign.addNote(ReadInNote(sr));
+
+                            loadedCalendar.AddCampaign(loadedCampaign);
+                            //loadingBar.Increment(1);
+                        }
+                    }
+                    LoadCalendarMenu(loadedCalendar);
+                }
+            }
+            else ReadInFile(sr);
+        }
+
+        public Note ReadInNote(System.IO.StreamReader sr)
+        {
+            string noteDate = sr.ReadLine();
+            int numImportance = Int32.Parse(sr.ReadLine());
+            string content = sr.ReadLine();
+            AlertScope importance;
+            switch (numImportance)
+            {
+                case 2:
+                    importance = AlertScope.global;
+                    break;
+                case 1:
+                    importance = AlertScope.campaign;
+                    break;
+                case 0:
+                    importance = AlertScope.dontAlert;
+                    break;
+                default:
+                    importance = AlertScope.dontAlert;
+                    break;
+            }
+
+            return new Note(noteDate, importance, content);
         }
 
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
 
         }
+
+        private void changelogPicture_Click(object sender, EventArgs e)
+        {
+            new ChangelogForm().Show();
+        }
+
+        /*public void StartLoadingBar(int numItems)
+        {
+            loadingBar.Visible = false;
+            loadingBar.Minimum = 1;
+            loadingBar.Maximum = numItems;
+            loadingBar.Value = 1;
+            loadingBar.Step = 1;
+        }*/
     }
 }

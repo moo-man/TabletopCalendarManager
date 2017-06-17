@@ -50,6 +50,7 @@
             this.currY.Name = "currY";
             this.currY.Size = new System.Drawing.Size(64, 20);
             this.currY.TabIndex = 20;
+            this.currY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dateBox_KeyPress);
             this.currY.Leave += new System.EventHandler(this.currY_Leave);
             // 
             // currM
@@ -58,6 +59,7 @@
             this.currM.Name = "currM";
             this.currM.Size = new System.Drawing.Size(29, 20);
             this.currM.TabIndex = 18;
+            this.currM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dateBox_KeyPress);
             this.currM.Leave += new System.EventHandler(this.currM_Leave);
             // 
             // currD
@@ -66,6 +68,7 @@
             this.currD.Name = "currD";
             this.currD.Size = new System.Drawing.Size(29, 20);
             this.currD.TabIndex = 19;
+            this.currD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dateBox_KeyPress);
             this.currD.Leave += new System.EventHandler(this.currD_Leave);
             // 
             // startY
@@ -74,6 +77,7 @@
             this.startY.Name = "startY";
             this.startY.Size = new System.Drawing.Size(64, 20);
             this.startY.TabIndex = 17;
+            this.startY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dateBox_KeyPress);
             this.startY.Leave += new System.EventHandler(this.startY_Leave);
             // 
             // startM
@@ -82,6 +86,7 @@
             this.startM.Name = "startM";
             this.startM.Size = new System.Drawing.Size(29, 20);
             this.startM.TabIndex = 14;
+            this.startM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dateBox_KeyPress);
             this.startM.Leave += new System.EventHandler(this.startM_Leave);
             // 
             // startD
@@ -90,6 +95,7 @@
             this.startD.Name = "startD";
             this.startD.Size = new System.Drawing.Size(29, 20);
             this.startD.TabIndex = 16;
+            this.startD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dateBox_KeyPress);
             this.startD.Leave += new System.EventHandler(this.startD_Leave);
             // 
             // tagBox
@@ -98,6 +104,8 @@
             this.tagBox.Name = "tagBox";
             this.tagBox.Size = new System.Drawing.Size(92, 20);
             this.tagBox.TabIndex = 12;
+            this.tagBox.TextChanged += new System.EventHandler(this.tagBox_TextChanged);
+            this.tagBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tagBox_KeyPress);
             // 
             // nameBox
             // 

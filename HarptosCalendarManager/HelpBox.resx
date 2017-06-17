@@ -119,21 +119,19 @@
   </resheader>
   <data name="label2.Text" xml:space="preserve">
     <value>The intention of this program is to easily track time passage in tabletop roleplaying 
-games set in the Forgotten Realms, for a single group or multiple.
+games set in the Forgotten Realms, for a single game group or multiple.
 
 When you create a 'New Calendar,' that calendar should contain all the groups in 
 the same 'world.' As you populate the calendar with important dates and events, it
-will alert you the next time you stumble upon that date (in a different game that 
-takes place in the past and reaches that date, for example).
+will alert you the next time you stumble upon that date or an anniversary of that 
+date.
 
 You should use 'New Calendar' for groups that can't interact with each other, such
 as if you run the same adventure for a different group of people. 
 
-Each calendar is associated with one or more campaigns, which have a start date,
-as you track the days of your campaign you can add notes to the days, which are 
-visible to all campaigns in the same calendar. You can also explore the calendar,
-which lets you select any day and read and edit notes, useful for setting birthdays 
-and seeing how long ago something happened.
+Each calendar is associated with one or more campaigns, which have a start date
+and current date. As you track the days of your campaign you can add notes to 
+the days, which are visible to all campaigns in the same calendar.
 
 I hope this program is useful, and if you have any questions or comments, feel free 
 to email me at russellthurman94@gmail.com

@@ -13,26 +13,38 @@ namespace HarptosCalendarManager
     public partial class NewNoteDialog : Form
     {
         Calendar currCalendar;
-        public NewNoteDialog(Calendar calendar)
+        public NewNoteDialog(Calendar calendar) : this (calendar, "")
+        {
+
+        }
+
+        public NewNoteDialog(Calendar calendar, string content)
         {
             InitializeComponent();
-            currCalendar = calendar;
             generalTip.SetToolTip(generalBox, "General notes are not tied to a campaign.");
-            globalTip.SetToolTip(alertAll, "Global notes will be shown to all campaigns on their date.");
-            campaignTip.SetToolTip(AlertCampaign, "Campaign notes will only be shown to their respective campaign.");
-            noAlertTip.SetToolTip(noAlert, "These notes won't be shown on their date.");
+            globalTip.SetToolTip(globalButton, "Global notes will be shown to all campaigns on their date or anniversary.");
+            campaignTip.SetToolTip(AlertCampaignButton, "Campaign notes will only be shown to their campaign.");
+            noAlertTip.SetToolTip(noAlert, "These notes will only be shown on the actual date of occurrence (not anniversary), and only to their campaign");
+            currCalendar = calendar;
+            if (currCalendar.activeCampaign == null)
+                generalBox.Checked = true;
+            newNoteBox.Text = content;
         }
 
         private void generalBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (AlertCampaign.Checked)
-                AlertCampaign.Checked = false;
+            // Force general if no active campaign
+            if (currCalendar.activeCampaign == null)
+                generalBox.Checked = true;
 
-            AlertCampaign.Enabled = !generalBox.Checked;
+            // If generalbox is checked, force campaignbutton to uncheck
+            if (AlertCampaignButton.Checked) 
+                AlertCampaignButton.Checked = false;
+
+            // Disable campaign button if general box is checked
+            AlertCampaignButton.Enabled = !generalBox.Checked;
         }
-
-
-
+        
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -40,9 +52,12 @@ namespace HarptosCalendarManager
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            if (newNoteBox.Text == null)
-                this.Close();
-            else if (alertAll.Checked == false && AlertCampaign.Checked == false && noAlert.Checked == false)
+            if (newNoteBox.Text == "")
+            {
+                MessageBox.Show("The note must have some content.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (globalButton.Checked == false && AlertCampaignButton.Checked == false && noAlert.Checked == false)
             {
                 MessageBox.Show("Choose a visibilty level.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);   
                 return;
@@ -50,20 +65,27 @@ namespace HarptosCalendarManager
 
             else
             {
+                AlertScope importance = AlertScope.dontAlert;
                 if (generalBox.Checked)
                 {
+                    if (globalButton.Checked)
+                        importance = AlertScope.global;
+                    else if (noAlert.Checked)
+                        importance = AlertScope.dontAlert;
 
+                    currCalendar.AddGeneralNote(new Note(currCalendar.calendar.ToString(), importance, newNoteBox.Text, null));
+                    MessageBox.Show("Note successfully added", "Note Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                 }
 
-                else
+                else // if not general
                 {
-                    alertScope importance = alertScope.dontAlert;
-                    if (alertAll.Checked)
-                        importance = alertScope.alertAll;
-                    else if (AlertCampaign.Checked)
-                        importance  = alertScope.alertCampaign;
+                    if (globalButton.Checked)
+                        importance = AlertScope.global;
+                    else if (AlertCampaignButton.Checked)
+                        importance  = AlertScope.campaign;
                     else if (noAlert.Checked)
-                        importance = alertScope.dontAlert;
+                        importance = AlertScope.dontAlert;
 
                     currCalendar.activeCampaign.addNote(currCalendar.calendar.ToString(), importance, newNoteBox.Text);
                     MessageBox.Show("Note successfully added", "Note Added", MessageBoxButtons.OK, MessageBoxIcon.Information);

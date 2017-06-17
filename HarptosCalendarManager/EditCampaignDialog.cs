@@ -13,12 +13,13 @@ namespace HarptosCalendarManager
     public partial class EditCampaignDialog : Form
     {
         Campaign campaignToEdit;
-        public EditCampaignDialog(Campaign editCampaign)
+        Calendar currentCalendar;
+        public EditCampaignDialog(Campaign editCampaign, Calendar currCalendar)
         {
             InitializeComponent();
             try
             {
-
+                currentCalendar = currCalendar;
                 campaignToEdit = editCampaign;
                 nameBox.Text = campaignToEdit.Name;
                 tagBox.Text = campaignToEdit.Tag;
@@ -35,29 +36,68 @@ namespace HarptosCalendarManager
             }
             catch (Exception e)
             {
-
+                MessageBox.Show("Error: " + e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            // todo: verification
 
-            string newStartDate = startM.Text + startD.Text+ startY.Text;
-            string newCurrentDate = currM.Text + currD.Text + currY.Text;
-            Note startDate = campaignToEdit.findNote(campaignToEdit.Name + " began!");
-            Note currentDate = campaignToEdit.getCurrentDateOrEndNote();
+            if (tagBox.Text == "")
+            {
+                MessageBox.Show("The campaign must have a tag.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            startDate.editDate(newStartDate);
-            currentDate.editDate(newCurrentDate);
-            campaignToEdit.setCurrentDate(newCurrentDate);
-            campaignToEdit.Name = nameBox.Text;
-            campaignToEdit.Tag = tagBox.Text;
-            startDate.editNoteContent(campaignToEdit.Name + " began!");
-            if (campaignToEdit.isEnded())
-                currentDate.editNoteContent(campaignToEdit.Name + " ended.");
+            if (tagBox.Text == "TIMER")
+            {
+                MessageBox.Show("This tag is not allowed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            this.Close();
+            if (nameBox.Text == "")
+            {
+                MessageBox.Show("The campaign must have a name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (currentCalendar.CampaignList.Find(x => x.Tag == tagBox.Text) != null)
+            {
+                MessageBox.Show("A campaign with this tag already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (validDateBoxes())
+            {
+
+                string newStartDate = startM.Text + startD.Text + startY.Text;
+                string newCurrentDate = currM.Text + currD.Text + currY.Text;
+                Note startDate = campaignToEdit.findNote(campaignToEdit.Name + " began!");
+                Note currentDate = campaignToEdit.getCurrentDateOrEndNote();
+
+                startDate.editDate(newStartDate);
+                currentDate.editDate(newCurrentDate);
+                campaignToEdit.setCurrentDate(newCurrentDate);
+                campaignToEdit.Name = nameBox.Text;
+                campaignToEdit.Tag = tagBox.Text;
+                startDate.editNoteContent(campaignToEdit.Name + " began!");
+                if (campaignToEdit.isEnded())
+                    currentDate.editNoteContent(campaignToEdit.Name + " ended.");
+
+                this.Close();
+            }
+            else
+                return;
+        }
+
+        public bool validDateBoxes()
+        {
+            if (startM.Text == "" || startD.Text == "" || startY.Text == "" || currM.Text == "" || currD.Text == "" || currY.Text == "")
+            {
+                MessageBox.Show("Please fill out start date and current date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -67,50 +107,64 @@ namespace HarptosCalendarManager
 
         private void startD_Leave(object sender, EventArgs e)
         {
-            if (startD.Text.Length < 2)
-                startD.Text = "0" + startD.Text;
+            startD.Text = HarptosCalendar.enforceDayFormat(startM.Text, startD.Text, startY.Text);
         }
 
         private void startM_Leave(object sender, EventArgs e)
         {
-            if (startM.Text.Length < 2)
-                startM.Text = "0" + startM.Text;
-        }
-
-        private void currD_Leave(object sender, EventArgs e)
-        {
-            if (currD.Text.Length < 2)
-                currD.Text = "0" + currD.Text;
-        }
-
-        private void currM_Leave(object sender, EventArgs e)
-        {
-            if (currM.Text.Length < 2)
-                currM.Text = "0" + currM.Text;
+            startM.Text = HarptosCalendar.enforceMonthFormat(startM.Text);
         }
 
         private void startY_Leave(object sender, EventArgs e)
         {
-            if (startY.Text.Length == 3)
-                startY.Text = "0" + startY.Text;
+            startY.Text = HarptosCalendar.enforceYearFormat(startY.Text);
+        }
 
-            if (startY.Text.Length == 2)
-                startY.Text = "00" + startY.Text;
+        private void currD_Leave(object sender, EventArgs e)
+        {
+            currD.Text = HarptosCalendar.enforceDayFormat(currM.Text, currD.Text, currY.Text);
+        }
 
-            if (startY.Text.Length == 1)
-                startY.Text = "000" + startY.Text;
+        private void currM_Leave(object sender, EventArgs e)
+        {
+            currM.Text = HarptosCalendar.enforceMonthFormat(currM.Text);
         }
 
         private void currY_Leave(object sender, EventArgs e)
         {
-            if (currY.Text.Length == 3)
-                currY.Text = "0" + currY.Text;
+            currY.Text = HarptosCalendar.enforceYearFormat(currY.Text);
+        }
 
-            if (currY.Text.Length == 2)
-                currY.Text = "00" + currY.Text;
+        public string currentBoxesToDate()
+        {
+            return currM.Text + currD.Text + currY.Text;
+        }
 
-            if (currY.Text.Length == 1)
-                currY.Text = "000" + currY.Text;
+        private void dateBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keypress = e.KeyChar;
+
+            if (Char.IsControl(keypress))
+                return;
+
+            if (Char.IsNumber(keypress) == false)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tagBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keypress = e.KeyChar;
+
+            if (keypress == '(' || keypress == ')')
+                e.Handled = true;
+        }
+
+        private void tagBox_TextChanged(object sender, EventArgs e)
+        {
+            tagBox.Text = Campaign.fixTag(tagBox.Text);
+            tagBox.SelectionStart = tagBox.Text.Length;
         }
     }
 }

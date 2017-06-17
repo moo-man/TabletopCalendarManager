@@ -21,4 +21,5 @@ namespace HarptosCalendarManager
     }
 
     // TODO: X days till holiday
+    // TODO: add alerts for events skipped when advancing by tendays, months, etc
 }

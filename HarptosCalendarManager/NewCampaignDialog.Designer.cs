@@ -47,7 +47,7 @@
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(12, 9);
+            this.nameLabel.Location = new System.Drawing.Point(10, 15);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(85, 13);
             this.nameLabel.TabIndex = 0;
@@ -56,7 +56,7 @@
             // tagLabel
             // 
             this.tagLabel.AutoSize = true;
-            this.tagLabel.Location = new System.Drawing.Point(12, 48);
+            this.tagLabel.Location = new System.Drawing.Point(10, 54);
             this.tagLabel.Name = "tagLabel";
             this.tagLabel.Size = new System.Drawing.Size(76, 13);
             this.tagLabel.TabIndex = 1;
@@ -65,7 +65,7 @@
             // startDateLabel
             // 
             this.startDateLabel.AutoSize = true;
-            this.startDateLabel.Location = new System.Drawing.Point(12, 84);
+            this.startDateLabel.Location = new System.Drawing.Point(10, 90);
             this.startDateLabel.Name = "startDateLabel";
             this.startDateLabel.Size = new System.Drawing.Size(85, 26);
             this.startDateLabel.TabIndex = 2;
@@ -74,7 +74,7 @@
             // currentDateLabel
             // 
             this.currentDateLabel.AutoSize = true;
-            this.currentDateLabel.Location = new System.Drawing.Point(12, 130);
+            this.currentDateLabel.Location = new System.Drawing.Point(10, 136);
             this.currentDateLabel.Name = "currentDateLabel";
             this.currentDateLabel.Size = new System.Drawing.Size(85, 26);
             this.currentDateLabel.TabIndex = 3;
@@ -82,68 +82,75 @@
             // 
             // nameBox
             // 
-            this.nameBox.Location = new System.Drawing.Point(103, 6);
+            this.nameBox.Location = new System.Drawing.Point(101, 12);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(194, 20);
             this.nameBox.TabIndex = 1;
             // 
             // tagBox
             // 
-            this.tagBox.Location = new System.Drawing.Point(103, 45);
+            this.tagBox.Location = new System.Drawing.Point(101, 51);
             this.tagBox.Name = "tagBox";
             this.tagBox.Size = new System.Drawing.Size(92, 20);
             this.tagBox.TabIndex = 2;
             this.tagBox.TextChanged += new System.EventHandler(this.tagBox_TextChanged);
+            this.tagBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tagBox_KeyPress);
             // 
             // startD
             // 
-            this.startD.Location = new System.Drawing.Point(166, 81);
+            this.startD.Location = new System.Drawing.Point(164, 87);
             this.startD.Name = "startD";
             this.startD.Size = new System.Drawing.Size(29, 20);
             this.startD.TabIndex = 4;
             this.startD.TextChanged += new System.EventHandler(this.startD_TextChanged);
+            this.startD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
             this.startD.Leave += new System.EventHandler(this.startD_Leave);
             // 
             // startM
             // 
-            this.startM.Location = new System.Drawing.Point(120, 81);
+            this.startM.Location = new System.Drawing.Point(118, 87);
             this.startM.Name = "startM";
             this.startM.Size = new System.Drawing.Size(29, 20);
             this.startM.TabIndex = 3;
             this.startM.TextChanged += new System.EventHandler(this.startM_TextChanged);
+            this.startM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
             this.startM.Leave += new System.EventHandler(this.startM_Leave);
             // 
             // startY
             // 
-            this.startY.Location = new System.Drawing.Point(214, 81);
+            this.startY.Location = new System.Drawing.Point(212, 87);
             this.startY.Name = "startY";
             this.startY.Size = new System.Drawing.Size(64, 20);
             this.startY.TabIndex = 5;
             this.startY.TextChanged += new System.EventHandler(this.startY_TextChanged);
+            this.startY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
             this.startY.Leave += new System.EventHandler(this.startY_Leave);
             // 
             // currY
             // 
-            this.currY.Location = new System.Drawing.Point(214, 123);
+            this.currY.Location = new System.Drawing.Point(212, 129);
             this.currY.Name = "currY";
             this.currY.Size = new System.Drawing.Size(64, 20);
             this.currY.TabIndex = 8;
+            this.currY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
             this.currY.Leave += new System.EventHandler(this.currY_Leave);
             // 
             // currM
             // 
-            this.currM.Location = new System.Drawing.Point(120, 123);
+            this.currM.Location = new System.Drawing.Point(118, 129);
             this.currM.Name = "currM";
             this.currM.Size = new System.Drawing.Size(29, 20);
             this.currM.TabIndex = 6;
+            this.currM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
             this.currM.Leave += new System.EventHandler(this.currM_Leave);
             // 
             // currD
             // 
-            this.currD.Location = new System.Drawing.Point(166, 123);
+            this.currD.Location = new System.Drawing.Point(164, 129);
             this.currD.Name = "currD";
             this.currD.Size = new System.Drawing.Size(29, 20);
             this.currD.TabIndex = 7;
+            this.currD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
             this.currD.Leave += new System.EventHandler(this.currD_Leave);
             // 
             // okButton

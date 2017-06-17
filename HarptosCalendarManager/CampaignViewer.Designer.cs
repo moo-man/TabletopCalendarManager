@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CampaignViewer));
             this.campaignTree = new System.Windows.Forms.TreeView();
             this.addCampaignButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.makeActiveButton = new System.Windows.Forms.Button();
-            this.editButton = new System.Windows.Forms.Button();
+            this.editCampaignButton = new System.Windows.Forms.Button();
             this.endButton = new System.Windows.Forms.Button();
             this.deactivateButton = new System.Windows.Forms.Button();
             this.campaignLabel = new System.Windows.Forms.Label();
@@ -41,6 +42,7 @@
             this.editNoteButton = new System.Windows.Forms.Button();
             this.deleteNoteButton = new System.Windows.Forms.Button();
             this.addNoteButton = new System.Windows.Forms.Button();
+            this.activateToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // campaignTree
@@ -70,7 +72,7 @@
             this.deleteButton.TabIndex = 2;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            this.deleteButton.Click += new System.EventHandler(this.deleteCampaignButton_Click);
             // 
             // makeActiveButton
             // 
@@ -82,15 +84,15 @@
             this.makeActiveButton.UseVisualStyleBackColor = true;
             this.makeActiveButton.Click += new System.EventHandler(this.makeActiveButton_Click);
             // 
-            // editButton
+            // editCampaignButton
             // 
-            this.editButton.Location = new System.Drawing.Point(372, 68);
-            this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(64, 23);
-            this.editButton.TabIndex = 4;
-            this.editButton.Text = "Edit";
-            this.editButton.UseVisualStyleBackColor = true;
-            this.editButton.Click += new System.EventHandler(this.editButton_Click);
+            this.editCampaignButton.Location = new System.Drawing.Point(372, 68);
+            this.editCampaignButton.Name = "editCampaignButton";
+            this.editCampaignButton.Size = new System.Drawing.Size(64, 23);
+            this.editCampaignButton.TabIndex = 4;
+            this.editCampaignButton.Text = "Edit";
+            this.editCampaignButton.UseVisualStyleBackColor = true;
+            this.editCampaignButton.Click += new System.EventHandler(this.editCampaignButton_Click);
             // 
             // endButton
             // 
@@ -140,6 +142,7 @@
             this.editNoteButton.TabIndex = 10;
             this.editNoteButton.Text = "Edit";
             this.editNoteButton.UseVisualStyleBackColor = true;
+            this.editNoteButton.Click += new System.EventHandler(this.editNoteButton_Click);
             // 
             // deleteNoteButton
             // 
@@ -149,6 +152,7 @@
             this.deleteNoteButton.TabIndex = 9;
             this.deleteNoteButton.Text = "Delete";
             this.deleteNoteButton.UseVisualStyleBackColor = true;
+            this.deleteNoteButton.Click += new System.EventHandler(this.deleteNoteButton_Click);
             // 
             // addNoteButton
             // 
@@ -158,6 +162,7 @@
             this.addNoteButton.TabIndex = 8;
             this.addNoteButton.Text = "Add";
             this.addNoteButton.UseVisualStyleBackColor = true;
+            this.addNoteButton.Click += new System.EventHandler(this.addNoteButton_Click);
             // 
             // CampaignViewer
             // 
@@ -171,7 +176,7 @@
             this.Controls.Add(this.campaignLabel);
             this.Controls.Add(this.deactivateButton);
             this.Controls.Add(this.endButton);
-            this.Controls.Add(this.editButton);
+            this.Controls.Add(this.editCampaignButton);
             this.Controls.Add(this.makeActiveButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.addCampaignButton);
@@ -194,7 +199,7 @@
         private System.Windows.Forms.Button addCampaignButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button makeActiveButton;
-        private System.Windows.Forms.Button editButton;
+        private System.Windows.Forms.Button editCampaignButton;
         private System.Windows.Forms.Button endButton;
         private System.Windows.Forms.Button deactivateButton;
         private System.Windows.Forms.Label campaignLabel;
@@ -202,5 +207,6 @@
         private System.Windows.Forms.Button editNoteButton;
         private System.Windows.Forms.Button deleteNoteButton;
         private System.Windows.Forms.Button addNoteButton;
+        private System.Windows.Forms.ToolTip activateToolTip;
     }
 }

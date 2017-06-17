@@ -10,12 +10,13 @@ namespace HarptosCalendarManager
     // dontAlert will not alert any campaign when that date is reached
     // alertCampaign will alert the campaign that the note belongs to
     // alertAll will alert all campaigns in this calendar
-    public enum alertScope { dontAlert, alertCampaign, alertAll }
+    public enum AlertScope { dontAlert, campaign, global }
 
     public class Calendar
     {
         public HarptosCalendar calendar;
         List<Campaign> campaignList;
+        List<Note> generalNoteList;
         public Campaign activeCampaign;
 
         public Calendar()
@@ -23,6 +24,7 @@ namespace HarptosCalendarManager
             activeCampaign = null;
             calendar = new HarptosCalendar();
             campaignList = new List<Campaign>();
+            generalNoteList = new List<Note>();
         }
 
         public void addNewCampaign(string name, string t, string startDate)
@@ -42,7 +44,34 @@ namespace HarptosCalendarManager
             campaignList.Add(loadedCampaign);
         }
 
-        public void addCampaign(Campaign c)
+        public List<Note> GeneralNoteList
+        {
+            get { return generalNoteList; }
+        }
+
+        public void AddGeneralNote(Note noteToAdd)
+        {
+            if (noteToAdd.Campaign != null)
+                return;
+            else
+                generalNoteList.Add(noteToAdd);
+        }
+
+        public void AddNote(Note noteToAdd)
+        {
+            if (noteToAdd.Campaign == null)
+            {
+                generalNoteList.Add(noteToAdd);
+                GeneralNoteList.Sort(delegate (Note x, Note y)
+                {
+                    return Note.compareNotes(x, y);
+                });
+            }
+            else
+                noteToAdd.Campaign.addNote(noteToAdd);
+        }
+
+        public void AddCampaign(Campaign c)
         {
             campaignList.Add(c);
         }
@@ -107,14 +136,51 @@ namespace HarptosCalendarManager
         {
         }
 
-        public Note findNote(string content)
+        public Note findNote(string content, bool general)
         {
-            foreach (Campaign c in campaignList)
-                foreach (Note n in c.notes)
+            if (general)
+            {
+                foreach (Note n in generalNoteList)
                     if (n.NoteContent == content)
                         return n;
+            }
+
+            else
+            {
+                foreach (Campaign c in campaignList)
+                    foreach (Note n in c.notes)
+                        if (n.NoteContent == content)
+                            return n;
+            }
             return null;
         }
+
+        public void deleteNote(string content, bool general)
+        {
+            Note noteToDelete = findNote(content, general);
+            deleteNote(noteToDelete);
+        }
+
+        public void deleteNote(Note noteToDelete)
+        {
+            if (noteToDelete == null)
+                return;
+
+            if (noteToDelete.Campaign == null)
+                generalNoteList.Remove(noteToDelete);
+            else
+                noteToDelete.Campaign.deleteNote(noteToDelete);
+        }
+        public static bool CanEditOrDelete(Note noteToTest)
+        {
+            if (noteToTest.Campaign != null &&                                          // If campaign is not null (note not general)
+        (noteToTest.Campaign.getCurrentDateOrEndNote() == noteToTest ||   // AND (the note is not the currentdate note OR the begin note)
+        noteToTest.Campaign.returnBeginNote() == noteToTest))
+                return false;
+            else
+                return true;
+        }
+
     }
 
     public class Campaign
@@ -122,6 +188,7 @@ namespace HarptosCalendarManager
         string tag;
         string name;
         public List<Note> notes;
+        public List<Timer> timers;
         string currentDate;
 
         public Campaign(string n, string t, string startDate) : this(n, t, startDate, startDate)
@@ -132,18 +199,19 @@ namespace HarptosCalendarManager
         public Campaign(string n, string t, string startDate, string currDate)
         {
             notes = new List<Note>();
+            timers = new List<Timer>();
             name = n;
             tag = t;
             if (Note.VerifyDate(startDate))
             {
                 string msg = name + " began!";
-                addNote(startDate, alertScope.alertAll, msg);
+                addNote(startDate, AlertScope.global, msg);
                 currentDate = currDate;
             }
             if (Note.VerifyDate(currDate))
             {
                 string msg = "Current Date";
-                addNote(currentDate, alertScope.alertAll, msg);
+                addNote(currentDate, AlertScope.global, msg);
                 currentDate = currDate;
             }
         }
@@ -151,6 +219,7 @@ namespace HarptosCalendarManager
         public Campaign()
         {
             notes = new List<Note>();
+            timers = new List<Timer>();
         }
 
         public string Tag
@@ -241,10 +310,15 @@ namespace HarptosCalendarManager
         }
         #endregion
 
-        public void addNote(string date, alertScope importance, string note)
+        public void addNote(string date, AlertScope importance, string note)
         {
             notes.Add(new Note(date, importance, note, this));
             sortNotes();
+        }
+
+        public void addNote(Note noteToAdd)
+        {
+            addNote(noteToAdd.Date, noteToAdd.Importance, noteToAdd.NoteContent);
         }
 
         public bool deleteNote(Note noteToDelete)
@@ -254,8 +328,8 @@ namespace HarptosCalendarManager
 
         public static string fixTag(string t)
         {
-            if (t.Length > 5)
-                return t.Substring(0, 5).ToUpper();
+            if (t.Length > 10)
+                return t.Substring(0, 10).ToUpper();
             else
                 return t.ToUpper();
         }
@@ -286,21 +360,39 @@ namespace HarptosCalendarManager
             return null;
         }
 
+        public void addTimer(Timer t)
+        {
+            timers.Add(t);
+        }
+
+        public int hiddenTimerCount()
+        {
+            int count = 0;
+            foreach (Timer t in timers)
+                if (t.keepTrack == false)
+                    count++;
+            return count;
+        }
+
     }
 
     public class Note
     {
         string date;  //MMDDYYYY
-        alertScope importance; // who should be notified when this date is reached?
+        AlertScope importance; // who should be notified when this date is reached?
         string noteContent; // Note contents
         Campaign campaign;
 
-        public Note(string d, alertScope imp, string n, Campaign c)
+        public Note(string d, AlertScope imp, string n, Campaign c)
         {
             editDate(d);
             importance = imp;
             editNoteContent(n);
             campaign = c;
+        }
+        public Note(string d, AlertScope imp, string n) : this(d, imp, n, null)
+        {
+
         }
 
         public string Date
@@ -329,7 +421,7 @@ namespace HarptosCalendarManager
                 date = "00000000";
         }
 
-        public alertScope Importance
+        public AlertScope Importance
         {
             get {return importance; }
             set {importance = value; }
@@ -340,10 +432,18 @@ namespace HarptosCalendarManager
             // TODO: fix this
         }
 
+        public bool isGeneral()
+        {
+            if (Campaign == null)
+                return true;
+            else
+                return false;
+        }
+
         public static bool VerifyDate(string dateString)
         {
 
-            if (dateString.Length != 8) // Date must be 8 characters: DDMMYYYY
+            if (dateString == null || dateString.Length != 8) // Date must be 8 characters: DDMMYYYY
                 return false;
 
             int result;                                                                           // Date is bad...
@@ -364,50 +464,55 @@ namespace HarptosCalendarManager
 
         public void editNoteContent(string newNote)
         {
-            /*int lineSize = 20; // When should endlines be put in the note?
-            StringBuilder sb = new StringBuilder(newNote);
-            for(int i = 0; i < newNote.Length; i++)
-            {
-                if (i % lineSize == 0) // if the line should break on a space, do so
-                {
-                    if (newNote.ElementAt(i) == ' ')
-                    {
-                        newNote = newNote.Insert(i, "\n");
-                    }
-                    else // if the line would break in the middle of a word, back up to a space, then insert
-                    {
-                        int j = i;
-
-                        while (newNote.ElementAt(j) != ' ')
-                            j--;
-
-                        newNote = newNote.Insert(j, "\n");
-                        i = j;
-                    }
-                }
-            }*/ // TODO: fix editnotecontent
-
             noteContent = newNote;
         }
 
         // Returns 1 if x happened after y, -1 if y happened after x, 0 if same date
         public static int compareNotes(Note x, Note y)
         {
-            int xDate = Int32.Parse(x.Date);
-            int yDate = Int32.Parse(y.Date);
-
-            if (xDate == yDate)
-                return 0;
-            else if(xDate > yDate)
-                return 1;
-            else
-                return -1;
+            return HarptosCalendar.FarthestInTime(x.date, y.date);
         }
 
         public int compareTo(Note n)
         {
             return compareNotes(this, n);
         }
+    }
+
+    public class Timer
+    {
+        int month;              // Month timer occurs;
+        int day;                // day timer occurs;
+        int year;               // year timer occurs;
+        public bool keepTrack;         // should this timer be displayed continually until occurrence
+        public string message;  // What the timer shows when it occurs
+
+        public Timer(int m, int d, int y, bool track, string msg)
+        {
+            month = m;
+            day = d;
+            year = y;
+            keepTrack = track;
+            message = msg;
+        }
+
+        public Timer(string dateString, bool track, string msg)
+        {
+            month = Int32.Parse(dateString.Substring(0, 2));
+            day = Int32.Parse(dateString.Substring(2, 2));
+            year = Int32.Parse(dateString.Substring(4, 4));
+            keepTrack = track;
+            message = msg;
+        }
+
+        public string returnDateString()
+        {
+            string monthString = HarptosCalendar.enforceMonthFormat(month.ToString());
+            string yearString = HarptosCalendar.enforceYearFormat(year.ToString());
+            string dayString = HarptosCalendar.enforceDayFormat(monthString, day.ToString(), yearString);
+            return monthString + dayString + yearString;
+        }
+
     }
 
 }
