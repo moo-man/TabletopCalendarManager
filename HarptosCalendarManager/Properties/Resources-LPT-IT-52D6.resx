@@ -121,22 +121,31 @@
   <data name="Roll_of_Years" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Roll of Years.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="alarmicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\alarmicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Minion_Pro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Minion Pro.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Ozymandias_Solid_WBW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Ozymandias Solid WBW.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="save_icon_5404" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\save-icon-5404.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>MonthLights\Default.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Alturiak" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\alturiak.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Alturiak1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\monthlights\alturiak.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Autumn_Equinox" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\autumn equinox.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="calendarview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\calendarview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Ches" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\ches.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Default1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\default.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Eleasis" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -145,20 +154,11 @@
   <data name="Eleint" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\eleint.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="eyeicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\eyeicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Feast_of_the_Moon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\feast of the moon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="First_Quarter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\moons\first quarter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Flamerule" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\flamerule.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Full_Moon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\moons\full moon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Greengrass" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\greengrass.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,20 +166,11 @@
   <data name="Hammer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\hammer.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="HarptosIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\harptosicon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Highharvestide" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\highharvestide.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="infoicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\infoicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Kythorn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\kythorn.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Last_Quarter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\moons\last quarter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Merpenoth" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\merpenoth.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,26 +181,11 @@
   <data name="Midwinter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\midwinter.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Minion_Pro" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\fonts\minion pro.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Mirtul" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\mirtul.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="New_Moon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\moons\new moon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Nightal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\nightal.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="noteicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\noteicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Ozymandias_Solid_WBW" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\fonts\ozymandias solid wbw.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="save_icon_5404" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\save-icon-5404.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Shieldmeet" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\shieldmeet.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,22 +202,16 @@
   <data name="Uktar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\uktar.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="unrollingscroll" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\unrollingscroll.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Waning_Crescent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\moons\waning crescent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Waning_Gibbous" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\moons\waning gibbous.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Waxing_Crescent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\moons\waxing crescent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Waxing_Gibbous" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\moons\waxing gibbous.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Winter_Solstice" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\monthlights\winter solstice.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="infoicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\infoicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="unrollingscroll" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\unrollingscroll.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="calendarview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\calendarview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

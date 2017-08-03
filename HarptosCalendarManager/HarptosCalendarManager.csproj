@@ -48,9 +48,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>HarptosIcon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Icons\HarptosIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -64,120 +67,121 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddTimerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddTimerForm.Designer.cs">
-      <DependentUpon>AddTimerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Calendar.cs" />
-    <Compile Include="CalendarMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CalendarMenu.Designer.cs">
-      <DependentUpon>CalendarMenu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ChangelogForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ChangelogForm.Designer.cs">
-      <DependentUpon>ChangelogForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditCampaignDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditCampaignDialog.Designer.cs">
-      <DependentUpon>EditCampaignDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditNotesDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditNotesDialog.Designer.cs">
-      <DependentUpon>EditNotesDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="HelpBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HelpBox.Designer.cs">
-      <DependentUpon>HelpBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DayTracker.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DayTracker.Designer.cs">
-      <DependentUpon>DayTracker.cs</DependentUpon>
-    </Compile>
-    <Compile Include="HarptosCalendar.cs" />
-    <Compile Include="MainMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainMenu.Designer.cs">
-      <DependentUpon>MainMenu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CampaignViewer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CampaignViewer.Designer.cs">
-      <DependentUpon>CampaignViewer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NewCampaignDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewCampaignDialog.Designer.cs">
-      <DependentUpon>NewCampaignDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NewNoteDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewNoteDialog.Designer.cs">
-      <DependentUpon>NewNoteDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddTimerForm.resx">
-      <DependentUpon>AddTimerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CalendarMenu.resx">
-      <DependentUpon>CalendarMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ChangelogForm.resx">
-      <DependentUpon>ChangelogForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditCampaignDialog.resx">
-      <DependentUpon>EditCampaignDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditNotesDialog.resx">
-      <DependentUpon>EditNotesDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HelpBox.resx">
-      <DependentUpon>HelpBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DayTracker.resx">
-      <DependentUpon>DayTracker.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainMenu.resx">
-      <DependentUpon>MainMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CampaignViewer.resx">
-      <DependentUpon>CampaignViewer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewCampaignDialog.resx">
-      <DependentUpon>NewCampaignDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewNoteDialog.resx">
-      <DependentUpon>NewNoteDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="Minion Pro.ttf" />
-    <None Include="Ozymandias Solid WBW.ttf" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Source\AddTimerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\AddTimerForm.Designer.cs">
+      <DependentUpon>AddTimerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Calendar.cs" />
+    <Compile Include="Source\CalendarMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\CalendarMenu.Designer.cs">
+      <DependentUpon>CalendarMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\ChangelogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\ChangelogForm.Designer.cs">
+      <DependentUpon>ChangelogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\EditCampaignDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\EditCampaignDialog.Designer.cs">
+      <DependentUpon>EditCampaignDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\EditNotesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\EditNotesDialog.Designer.cs">
+      <DependentUpon>EditNotesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\HelpBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\HelpBox.Designer.cs">
+      <DependentUpon>HelpBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\DayTracker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\DayTracker.Designer.cs">
+      <DependentUpon>DayTracker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\HarptosCalendar.cs" />
+    <Compile Include="Source\MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\CampaignViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\CampaignViewer.Designer.cs">
+      <DependentUpon>CampaignViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\NewCampaignDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\NewCampaignDialog.Designer.cs">
+      <DependentUpon>NewCampaignDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\NewNoteDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\NewNoteDialog.Designer.cs">
+      <DependentUpon>NewNoteDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Source\Utility.cs" />
+    <EmbeddedResource Include="Source\AddTimerForm.resx">
+      <DependentUpon>AddTimerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\CalendarMenu.resx">
+      <DependentUpon>CalendarMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\ChangelogForm.resx">
+      <DependentUpon>ChangelogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\EditCampaignDialog.resx">
+      <DependentUpon>EditCampaignDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\EditNotesDialog.resx">
+      <DependentUpon>EditNotesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\HelpBox.resx">
+      <DependentUpon>HelpBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\DayTracker.resx">
+      <DependentUpon>DayTracker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\CampaignViewer.resx">
+      <DependentUpon>CampaignViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\NewCampaignDialog.resx">
+      <DependentUpon>NewCampaignDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\NewNoteDialog.resx">
+      <DependentUpon>NewNoteDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Resources\Fonts\Minion Pro.ttf" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -185,45 +189,33 @@
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Ozymandias Solid WBW.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Ozymandias Solid WBW.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\BackgroundTexture.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Properties\harptosWheel.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="First Quarter.png" />
-    <Content Include="Full Moon.png" />
-    <Content Include="HarptosIcon.ico" />
-    <Content Include="Last Quarter.png" />
-    <Content Include="New Moon.png" />
-    <Content Include="Properties\MonthLights\Alturiak.jpg" />
-    <Content Include="Properties\MonthLights\Alturiak.png" />
-    <Content Include="Properties\MonthLights\Ches.jpg" />
-    <Content Include="Properties\MonthLights\Eleasis.jpg" />
-    <Content Include="Properties\MonthLights\Eleint.jpg" />
-    <Content Include="Properties\MonthLights\Flamerule.jpg" />
-    <Content Include="Properties\MonthLights\Hammer.jpg" />
-    <Content Include="Properties\MonthLights\Kythorn.jpg" />
-    <Content Include="Properties\MonthLights\Merpenoth.jpg" />
-    <Content Include="Properties\MonthLights\Mirtul.jpg" />
-    <Content Include="Properties\MonthLights\Nightal.jpg" />
-    <Content Include="Properties\MonthLights\Tarsakh.jpg" />
-    <Content Include="Properties\MonthLights\Uktar.jpg" />
-    <Content Include="Resources\Default.jpg" />
-    <Content Include="Resources\infoicon.png" />
-    <Content Include="Waning Crescent.png" />
-    <Content Include="Waning Gibbous.png" />
-    <Content Include="Waxing Crescent.png" />
-    <Content Include="Waxing Gibbous.png" />
-    <None Include="Resources\LastQuarter.bmp" />
+    <Content Include="Resources\Icons\alarmicon.png" />
+    <Content Include="Resources\calendarview.png" />
+    <Content Include="Resources\Icons\eyeicon.png" />
+    <Content Include="Resources\Moons\First Quarter.png" />
+    <Content Include="Resources\Moons\Full Moon.png" />
+    <Content Include="Resources\Icons\HarptosIcon.ico" />
+    <Content Include="Resources\Moons\Last Quarter.png" />
+    <Content Include="Resources\Moons\New Moon.png" />
+    <EmbeddedResource Include="Newtonsoft.Json.dll" />
+    <Content Include="Resources\Icons\noteicon.png" />
+    <Content Include="Resources\Icons\infoicon.png" />
+    <Content Include="Resources\Moons\Waning Crescent.png" />
+    <Content Include="Resources\Moons\Waning Gibbous.png" />
+    <Content Include="Resources\Moons\Waxing Crescent.png" />
+    <Content Include="Resources\Moons\Waxing Gibbous.png" />
     <Content Include="Resources\MonthLights\Alturiak.jpg" />
     <Content Include="Resources\MonthLights\Alturiak.png" />
     <Content Include="Resources\MonthLights\Autumn Equinox.jpg" />
@@ -249,10 +241,8 @@
     <Content Include="Resources\MonthLights\Uktar.jpg" />
     <Content Include="Resources\MonthLights\Winter Solstice.jpg" />
     <Content Include="Roll of Years.txt" />
-    <Content Include="save-icon-5404.png" />
-    <None Include="unrollingscroll.png" />
-    <None Include="Resources\Alturiak.bmp" />
-    <None Include="Properties\MonthLights\Default.jpg" />
+    <Content Include="Resources\Icons\save-icon-5404.png" />
+    <EmbeddedResource Include="Resources\Icons\unrollingscroll.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -266,6 +256,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

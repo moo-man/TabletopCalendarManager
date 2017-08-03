@@ -1,9 +1,0 @@
-Harptos Calendar Manager Changelog
-
-v0.5 
-First public build
-
-v0.51
-Increased maximum tag length
-disallowed parentheses from being in tags
-added various error messages and tooltips in the campaign viewer
