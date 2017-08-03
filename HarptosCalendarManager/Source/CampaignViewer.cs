@@ -249,7 +249,7 @@ namespace HarptosCalendarManager
                 MessageBox.Show("Select the campaign you wish to edit.", "Select Campaign", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            EditCampaignDialog editMenu = new EditCampaignDialog(returnSelectedCampaign(), currentCalendar);
+            NewCampaignDialog editMenu = new NewCampaignDialog(currentCalendar, returnSelectedCampaign(), campaignTree, this);
             editMenu.ShowDialog(this);
             currentCalendar.goToCurrentDate();
             UpdateTree();

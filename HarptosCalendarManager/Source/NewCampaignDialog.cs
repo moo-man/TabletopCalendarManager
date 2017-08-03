@@ -15,28 +15,53 @@ namespace HarptosCalendarManager
         Calendar currentCalendar;
         TreeView campaignTree;
         CampaignViewer Cviewer;
+        Campaign campaignToAdd;
         public NewCampaignDialog(Calendar cal, TreeView cTree, CampaignViewer cviewer)
         {
             InitializeComponent();
             currentCalendar = cal;
             campaignTree = cTree;
             Cviewer = cviewer;
+            campaignToAdd = null;
+
+        }
+
+        // This constructor is called if a campaign is passed to it, turning the dialog into an 'edit campaign' dialog
+        // Throughout the form, it checks to see if editCampaign is null, if it is, that means it's a 'new campaign' form
+        public NewCampaignDialog(Calendar cal, Campaign editCampaign, TreeView cTree, CampaignViewer cviewer) : this(cal, cTree, cviewer)
+        {
+            campaignToAdd = editCampaign;
+            nameBox.Text = campaignToAdd.Name;
+            tagBox.Text = campaignToAdd.Tag;
+
+            startM.Text = campaignToAdd.findNote(campaignToAdd.Name + " began!").Date.Substring(0, 2);
+            startD.Text = campaignToAdd.findNote(campaignToAdd.Name + " began!").Date.Substring(2, 2);
+            startY.Text = campaignToAdd.findNote(campaignToAdd.Name + " began!").Date.Substring(4, 4);
+
+            currM.Text = campaignToAdd.CurrentDate.Substring(0, 2);
+            currD.Text = campaignToAdd.CurrentDate.Substring(2, 2);
+            currY.Text = campaignToAdd.CurrentDate.Substring(4, 4);
+
+            this.Text = "Edit Campaign";
         }
 
         private void startD_TextChanged(object sender, EventArgs e)
         {
-
-            currD.Text = startD.Text;
+            // Don't mirror start and current dates if editing an existing campaign
+            if (campaignToAdd == null)
+                currD.Text = startD.Text;
         }
 
         private void startM_TextChanged(object sender, EventArgs e)
         {
-            currM.Text = startM.Text;
+            if (campaignToAdd == null)
+                currM.Text = startM.Text;
         }
 
         private void startY_TextChanged(object sender, EventArgs e)
         {
-            currY.Text = startY.Text;
+            if (campaignToAdd == null)
+                currY.Text = startY.Text;
         }
 
         private void tagBox_TextChanged(object sender, EventArgs e)
@@ -67,21 +92,31 @@ namespace HarptosCalendarManager
                 return;
             }
 
-            if (currentCalendar.CampaignList.Find(x => x.Tag == tagBox.Text) != null)
-            {
+            if (currentCalendar.CampaignList.Find(x => x.Tag == tagBox.Text) != null && campaignToAdd == null) // added check for 'if editing existing campaign, allow tag if it already exists 
+            {                                                                                                  // (without this, to edit a campaign you would need to change the tag)
                 MessageBox.Show("A campaign with this tag already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+
             if (validDateBoxes())
             {
-
                 startDate = startM.Text + startD.Text + startY.Text;
                 currentDate = currM.Text + currD.Text + currY.Text;
 
-                Campaign newCampaign = new Campaign(nameBox.Text, tagBox.Text, startDate, currentDate);
+                if (campaignToAdd == null)
+                {
+                    campaignToAdd = new Campaign(nameBox.Text, tagBox.Text, startDate, currentDate);
+                    currentCalendar.AddCampaign(campaignToAdd);
+                }
 
-                currentCalendar.AddCampaign(newCampaign);
+                else
+                {
+                    campaignToAdd.Name = nameBox.Text;
+                    campaignToAdd.setCurrentDate(currentDate);
+                    campaignToAdd.setStartDate(startDate);
+                    campaignToAdd.Tag = tagBox.Text;
+                }
 
                 Cviewer.UpdateTree();
 

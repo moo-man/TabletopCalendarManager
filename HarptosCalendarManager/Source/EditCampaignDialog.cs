@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace HarptosCalendarManager
 {
+    /// <summary>
+    /// OBSOLETE, use NewCampaignDialog and pass a campaign into the constructor to edit
+    /// </summary>
     public partial class EditCampaignDialog : Form
     {
         Campaign campaignToEdit;

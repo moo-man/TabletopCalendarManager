@@ -739,7 +739,7 @@ namespace HarptosCalendarManager
         }
 
         /// <summary>
-        /// 
+        /// Returns a value for day that's correct for the month (30, 31, or 32 if the input day was greater than those, depending on the month
         /// </summary>
         /// <param name="m">number of month being tested</param>
         /// <param name="d">number of day being tested</param>
@@ -1077,32 +1077,6 @@ namespace HarptosCalendarManager
                 }
             }
             yearNames[1600] = "The Year of Unseen Enemies";
-
-            /*
-            try
-            {
-                using (System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\Moo Man\OneDrive\HarptosCalendarManager\HarptosCalendarManager\Roll of Years.txt"))
-                {
-                    string line;
-                    int yearIndex = 0;
-                    for (int i = 0; i < yearNames.Length && (line = file.ReadLine() )!= null; i++)
-                    {
-                        for (int j = 0; j < line.Length; j++)
-                            if(Char.IsLetter(line.ElementAt(j)))
-                            {
-                                yearIndex = Convert.ToInt32(line.Substring(0, j-2));
-                                line = line.Substring(j);
-                                break;
-                            }
-                        yearNames[yearIndex] = line;
-                    }
-                }
-            }
-
-            catch (Exception e)
-            {
-                
-            }*/
         }
 
         public void addMoonPhase()
@@ -1117,7 +1091,12 @@ namespace HarptosCalendarManager
             if (moonCounter < 0)
                 moonCounter = moonPhases.Length-1;
         }
-        // full moon every 30.4375
+
+        /// <summary>
+        /// Determines what phase selune is current in
+        /// full moon every 30.4375, approximate with 30.5
+        /// Full moon happens EVERY Leap year on the first day of that year.
+        /// </summary>
         public void determineMoonCounter()
         {
             int lastLeapYear = year;
@@ -1243,8 +1222,6 @@ namespace HarptosCalendarManager
             int m = month;
             int y = year;
 
-
-
             if (daysInMonth(m, y) < d + numDays)
             {
                 do
@@ -1286,52 +1263,6 @@ namespace HarptosCalendarManager
         public int daysTo(int toMonth, int toDay, int toYear)
         {
             return daysBetween(month, day, year, toMonth, toDay, toYear);
-            /*int m = month;
-            int d = day;
-            int y = year;
-            int numDays = 0;
-
-            if (m != toMonth && toYear == y)
-            {
-                while (toMonth != m)
-                {
-                    numDays += daysInMonth(m, y) - d;
-                    d = 0;
-                    if (++m > 12)
-                    {
-                        m = 1;
-                        y++;
-                    }
-                }
-                numDays += toDay;
-            }
-            else if (m == toMonth && toYear == y && toDay > d)
-            {
-                numDays = toDay - d;
-            }
-            else if (toYear != y)
-            {
-                while (toYear - y > 2)
-                {
-                    if (y % 4 == 0)
-                        numDays += 366;
-                    else
-                        numDays += 365;
-                    y++;
-                }
-                while (toMonth != m || toYear != y)
-                {
-                    numDays += daysInMonth(m, y) - d;
-                    d = 0;
-                    if (++m > 12)
-                    {
-                        m = 1;
-                        y++;
-                    }
-                }
-                numDays += toDay;
-            }
-            return numDays;*/
         }
 
         /// <summary>
@@ -1356,7 +1287,10 @@ namespace HarptosCalendarManager
         /// <returns>days between the input date</returns>
         public static int daysBetween(int beginMonth, int beginDay, int beginYear, int toMonth, int toDay, int toYear)
         {
-            int numDays = 0;
+
+            // This is pretty gross and i don't like to think about it, neither should you
+
+            int numDays = 0; // Counter that's returned
             if (beginMonth != toMonth && toYear == beginYear)
             {
                 while (toMonth != beginMonth)
