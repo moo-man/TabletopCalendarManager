@@ -74,6 +74,16 @@ namespace HarptosCalendarManager
             }
         }
 
+
+        // TODO: If "General Notes" is expanded, and there is a not-expanded general note that has the same date as an expanded, non-general note, the non-general note will expand on update, or vice-versa
+
+
+
+        /// <summary>
+        /// Takes a list of string and expands all nodes that have text in the list
+        /// </summary>
+        /// <param name="nodesText"></param>
+        /// <param name="tree"></param>
         public void ExpandNodes(List<string> nodesText, TreeView tree)
         {
             foreach (TreeNode campaignNode in tree.Nodes)
@@ -91,6 +101,11 @@ namespace HarptosCalendarManager
             }
         }
 
+        /// <summary>
+        /// Finds the text of all nodes that are expanded, returns list of them
+        /// </summary>
+        /// <param name="tree"></param>
+        /// <returns></returns>
         public List<string> ListOfExpandedNodes(TreeView tree)
         {
             List<string> returnList = new List<string>();

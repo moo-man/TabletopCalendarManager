@@ -1254,7 +1254,6 @@ namespace HarptosCalendarManager
 
         /// <summary>
         /// returns the amount of days between current date and input date
-        /// TODO: Make this not disgusting
         /// </summary>
         /// <param name="toMonth"></param>
         /// <param name="toDay"></param>

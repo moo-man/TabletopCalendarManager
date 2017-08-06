@@ -340,7 +340,7 @@ namespace HarptosCalendarManager
 
             // This part applies if the current date is not the note's date
             // Trims off the (x years ago) or (in x years)
-            if (stringToParse.ElementAt(stringToParse.Length - 1) == ')') // TODO: add verification for strings that aren't "" (edit: no need, can't input notes that are empty)
+            if (stringToParse.ElementAt(stringToParse.Length - 1) == ')')
             {
                 if (stringToParse.Contains(" years ago)") || stringToParse.Contains(" year ago)") ||
                 stringToParse.Contains(" years)") || stringToParse.Contains(" year)") ||
