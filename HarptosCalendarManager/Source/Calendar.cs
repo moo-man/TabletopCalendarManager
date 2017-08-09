@@ -148,35 +148,45 @@ namespace HarptosCalendarManager
         /// <summary>
         /// Move to the next day in the calendar
         /// </summary>
-        public void addDay()
+        public List<Note> addDay()
         {
-
             calendar.addDay();
+
+            List<Note> notesOnThisDay = new List<Note>();
+            findNotesToList(notesOnThisDay);
+            return notesOnThisDay;
         }
 
         /// <summary>
         /// Move to the next n days in the calendar
         /// </summary>
         /// <param name="num">The number of days passing</param>
-        public void addDay(int num)
+        public List<Note> addDay(int num)
         {
-            calendar.addDay(num);
-        }
-
-        public void addTenday()
-        {
-            addDay(10);
-        }
-
-        public void addMonth()
-        {
-            addDay(30);
-        }
-
-        public void addMonth(int num)
-        {
+            List<Note> notesPassed = new List<Note>();
             for (int i = 0; i < num; i++)
-                addMonth();
+            {
+                notesPassed.AddRange(addDay());
+            }
+            return notesPassed;
+        }
+
+        public List<Note> addTenday()
+        {
+            return addDay(10);
+        }
+
+        public List<Note> addMonth()
+        {
+            return addDay(30);
+        }
+
+        public List<Note> addMonth(int num)
+        {
+            List<Note> notesPassed = new List<Note>();
+            for (int i = 0; i < num; i++)
+                notesPassed.AddRange(addMonth());
+            return notesPassed;
         }
 
         public void addYear()
@@ -219,6 +229,46 @@ namespace HarptosCalendarManager
             calendar.subYear();
         }
         #endregion
+
+
+        /// <summary>
+        /// Finds all notes that should be listed based on the current date of the calendar
+        /// </summary>
+        /// <param name="listOfNotes">list of notes to put into and return</param>
+        /// <returns></returns>
+        public void findNotesToList(List<Note> listOfNotes)
+        {
+            listOfNotes.Clear();
+
+            foreach (Note n in GeneralNoteList)
+            {
+                if (n.Importance == AlertScope.global && calendar.isAnniversary(n.Date) || (n.Importance == AlertScope.dontAlert && calendar.sameDate(n.Date)))
+                    listOfNotes.Add(n);
+            }
+
+            foreach (Campaign c in CampaignList)
+            {
+                foreach (Note n in c.notes)
+                {
+                    if (c.Equals(activeCampaign)) // If the note belongs to current campaign, and has appropriate visibilty, and is anniversary of this date
+                    {
+                        if ((n.Importance == AlertScope.campaign || n.Importance == AlertScope.global) && calendar.isAnniversary(n.Date))
+                        {
+                            if (n.NoteContent.Equals("Current Date") == false) // don't print the current date of current campaign, as that is always the current date
+                                listOfNotes.Add(n);
+                        }
+                        else if (n.Importance == AlertScope.dontAlert && calendar.sameDate(n.Date))
+                            listOfNotes.Add(n);
+                    }
+
+                    else // If the note does not belong in the current campaign
+                        if ((n.Importance == AlertScope.global) && calendar.isAnniversary(n.Date)) // if the note happened on this day and is of                                                                                        // sufficient importance level
+                        listOfNotes.Add(n);
+                } // end foreach note
+            } // end foreach campaign
+
+            //return listOfNotes;
+        }
 
         public Note findNote(string content, noteType type)
         {

@@ -37,7 +37,7 @@ namespace HarptosCalendarManager
             noteBox.ContextMenuStrip = noteboxRightClickMenu;
             noneSelectedContextMenu();
 
-           // daytrackerToolStrip.Enabled = false; // placeholder
+            // daytrackerToolStrip.Enabled = false; // placeholder
 
             altNames = false;
             goButton.Hide();
@@ -82,68 +82,11 @@ namespace HarptosCalendarManager
 
             DetermineTimerButtonVisibility();
 
-            // The following section of code finds all notes that should be listed and puts them in a list to give to writeNotes() function
-            StringBuilder noteboxText = new StringBuilder();
             listOfNotes.Clear();
 
+            checkIfTimerPassed();
 
-            if (currentCalendar.activeCampaign != null)
-            {
-                foreach (Timer t in currentCalendar.activeCampaign.timers)
-                {
-                    if (HarptosCalendar.FarthestInTime(t.returnDateString(), currentCalendar.calendar.ToString()) == 0)
-                    {
-                        if (MessageBox.Show(this, t.message + "\n\nCreate a note?", "Timer Reached", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                            new EditNotesDialog(new Note(t.returnDateString(), AlertScope.campaign, t.message, currentCalendar.activeCampaign), currentCalendar).ShowDialog(this);
-
-                        // Remove, then restart updating (can't remove and iterate)
-                        currentCalendar.activeCampaign.timers.Remove(t);
-                        UpdateCalendar();
-                        return;
-                    }
-                    else if (HarptosCalendar.FarthestInTime(t.returnDateString(), currentCalendar.calendar.ToString()) < 0)
-                    {
-                        if (MessageBox.Show(this, t.message + " (" + HarptosCalendar.returnGivenDate(t.returnDateString()) + ")" + "\n\nCreate a note?", "Timer Passed", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                            new EditNotesDialog(new Note(t.returnDateString(), AlertScope.campaign, t.message, currentCalendar.activeCampaign), currentCalendar).ShowDialog(this);
-                        if (MessageBox.Show(this, "Go to date? (" + HarptosCalendar.returnGivenDate(t.returnDateString()) + ")", "Go to date", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                            currentCalendar.calendar.setDate(t.returnDateString());
-                        // Remove, then restart updating (can't remove and iterate)
-                        currentCalendar.activeCampaign.timers.Remove(t);
-                        UpdateCalendar();
-                        return;
-                    }
-
-                }
-            }
-
-            foreach (Note n in currentCalendar.GeneralNoteList)
-            {
-                if (n.Importance == AlertScope.global && currentCalendar.calendar.isAnniversary(n.Date) || (n.Importance == AlertScope.dontAlert && currentCalendar.calendar.sameDate(n.Date)))
-                    listOfNotes.Add(n);
-            }
-
-            foreach (Campaign c in currentCalendar.CampaignList)
-            {
-                foreach (Note n in c.notes)
-                {
-                    if (c.Equals(currentCalendar.activeCampaign)) // If the note belongs to current campaign, and has appropriate visibilty, and is anniversary of this date
-                    {
-                        if ((n.Importance == AlertScope.campaign || n.Importance == AlertScope.global) && currentCalendar.calendar.isAnniversary(n.Date))
-                        {
-                            if (n.NoteContent.Equals("Current Date") == false) // don't print the current date of current campaign, as that is always the current date
-                                listOfNotes.Add(n);
-                        }
-                        else if (n.Importance == AlertScope.dontAlert && currentCalendar.calendar.sameDate(n.Date))
-                            listOfNotes.Add(n);
-                    }
-
-                    else // If the note does not belong in the current campaign
-                        if ((n.Importance == AlertScope.global) && currentCalendar.calendar.isAnniversary(n.Date)) // if the note happened on this day and is of                                                                                        // sufficient importance level
-                        listOfNotes.Add(n);
-
-
-                } // end foreach note
-            } // end foreach campaign
+            currentCalendar.findNotesToList(listOfNotes);
 
             if (currentCalendar.activeCampaign != null)
                 writeNotes(currentCalendar.activeCampaign.timers, listOfNotes);
@@ -211,6 +154,39 @@ namespace HarptosCalendarManager
             }
         }
 
+        public void checkIfTimerPassed()
+        {
+            if (currentCalendar.activeCampaign != null)
+            {
+                foreach (Timer t in currentCalendar.activeCampaign.timers)
+                {
+                    // If the current date is same date a timer (0 means same date)
+                    if (HarptosCalendar.FarthestInTime(t.returnDateString(), currentCalendar.calendar.ToString()) == 0)
+                    {
+                        if (MessageBox.Show(this, t.message + "\n\nCreate a note?", "Timer Reached", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                            new EditNotesDialog(new Note(t.returnDateString(), AlertScope.campaign, t.message, currentCalendar.activeCampaign), currentCalendar).ShowDialog(this);
+
+                        // Remove, then restart updating (can't remove and iterate)
+                        currentCalendar.activeCampaign.timers.Remove(t);
+                        checkIfTimerPassed();
+                        return;
+                    }
+                    else if (HarptosCalendar.FarthestInTime(t.returnDateString(), currentCalendar.calendar.ToString()) < 0)
+                    {
+                        if (MessageBox.Show(this, t.message + " (" + HarptosCalendar.returnGivenDate(t.returnDateString()) + ")" + "\n\nCreate a note?", "Timer Passed", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                            new EditNotesDialog(new Note(t.returnDateString(), AlertScope.campaign, t.message, currentCalendar.activeCampaign), currentCalendar).ShowDialog(this);
+                        if (MessageBox.Show(this, "Go to date? (" + HarptosCalendar.returnGivenDate(t.returnDateString()) + ")", "Go to date", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            currentCalendar.calendar.setDate(t.returnDateString());
+                        // Remove, then restart updating (can't remove and iterate)
+                        currentCalendar.activeCampaign.timers.Remove(t);
+                        checkIfTimerPassed();
+                        return;
+                    }
+
+                }
+            }
+        }
+
         private void currentDateLabel_Click(object sender, EventArgs e)
         {
 
@@ -249,8 +225,9 @@ namespace HarptosCalendarManager
 
         private void addTenday_Click(object sender, EventArgs e)
         {
-            currentCalendar.addTenday();
+            List<Note> passedNotes = currentCalendar.addTenday();
             UpdateCalendar();
+            ShowPassedNotes(passedNotes);
         }
 
         private void subTenday_Click(object sender, EventArgs e)
@@ -261,8 +238,9 @@ namespace HarptosCalendarManager
 
         private void addMonth_Click(object sender, EventArgs e)
         {
-            currentCalendar.addMonth();
+            List<Note> passedNotes = currentCalendar.addMonth();
             UpdateCalendar();
+            ShowPassedNotes(passedNotes);
         }
 
         private void subMonth_Click(object sender, EventArgs e)
@@ -284,6 +262,25 @@ namespace HarptosCalendarManager
         }
 
         #endregion
+
+        /// <summary>
+        /// If many days were passed, such as a month, and there were notes on one of the days passed, this function notifies the user
+        /// </summary>
+        /// <param name="passedNotes"></param>
+        public void ShowPassedNotes(List<Note> passedNotes)
+        {
+            if (passedNotes.Count == 0)
+                return;
+
+            // If you land on a note, don't include it, I don't like this solution but it may be the simplest.
+            passedNotes.RemoveAll(x => x.Date == currentCalendar.calendar.ToString());
+
+            if (MessageBox.Show(this, passedNotes.Count + " notes were passed. View?", "Passed Notes", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                new PassedNoteGrid(passedNotes).ShowDialog(this);
+            }
+
+        }
 
         private void editNotesButton_Click(object sender, EventArgs e)
         {
@@ -461,7 +458,7 @@ namespace HarptosCalendarManager
 
         private void showHiddenTimersButton_Click(object sender, EventArgs e)
         {
-             foreach (Timer t in currentCalendar.activeCampaign.timers)
+            foreach (Timer t in currentCalendar.activeCampaign.timers)
                 t.keepTrack = true;
 
             UpdateCalendar();
@@ -684,7 +681,7 @@ namespace HarptosCalendarManager
                 ProcessStartInfo sInfo = new ProcessStartInfo(webpage);
                 Process.Start(sInfo);
             }
-            
+
         }
 
         private void calendarOfHarptosToolStripMenuItem_Click(object sender, EventArgs e)
