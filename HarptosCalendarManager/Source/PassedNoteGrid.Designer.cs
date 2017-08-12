@@ -53,6 +53,7 @@
             this.noteGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.noteGrid.Size = new System.Drawing.Size(457, 237);
             this.noteGrid.TabIndex = 0;
+            this.noteGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.noteGrid_CellClick);
             // 
             // tagColumn
             // 
@@ -88,6 +89,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(481, 261);
             this.Controls.Add(this.noteGrid);
             this.Name = "PassedNoteGrid";

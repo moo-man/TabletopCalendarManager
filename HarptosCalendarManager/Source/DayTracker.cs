@@ -19,6 +19,8 @@ namespace HarptosCalendarManager
         bool altNames;
         List<Note> listOfNotes;
 
+       
+
         public DayTracker(Calendar currCalendar)
         {
             InitializeComponent();
@@ -277,7 +279,10 @@ namespace HarptosCalendarManager
 
             if (MessageBox.Show(this, passedNotes.Count + " notes were passed. View?", "Passed Notes", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
-                new PassedNoteGrid(passedNotes).ShowDialog(this);
+                PassedNoteGrid noteGrid = new PassedNoteGrid(passedNotes);
+                noteGrid.Show(this);
+                noteGrid.GoToDate += goButton_Click;
+                // I don't know how events really work but this seems to fine, make it static and increment in the constructor?
             }
 
         }
@@ -504,6 +509,24 @@ namespace HarptosCalendarManager
 
             UpdateCalendar();
         }
+        
+        /// <summary>
+        /// Go to event coming from PassedNoteGrid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void goButton_Click(object sender, GoToEventArgs e)
+        {
+            if (currentCalendar.activeCampaign != null)
+            {
+                currentCalendar.activeCampaign.setCurrentDate(e.date);
+                currentCalendar.goToCurrentDate();
+            }
+            else
+                currentCalendar.calendar.setDate(e.date);
+
+            UpdateCalendar();
+        }
 
         private void date_TextChanged(object sender, EventArgs e)
         {
@@ -716,5 +739,10 @@ namespace HarptosCalendarManager
                 Process.Start(sInfo);
             }
         }
+    }
+
+    public class GoToEventArgs : EventArgs
+    {
+        public string date { get; set; }
     }
 }
