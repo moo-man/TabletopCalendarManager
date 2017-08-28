@@ -118,7 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>v0.9.2
+    <value>v0.9.3
+- Added "Passed Notes" form. If, in the Day Tracker, you move forward by a month or tenday, and there were notes in that time span, you get an alert and can view the notes you skipped over.
+
+v0.9.2
 - Changed save format to JSON (incompatible with previous saves, sorry!)
 
 v0.9.1

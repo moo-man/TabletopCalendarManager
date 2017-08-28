@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.noteGrid = new System.Windows.Forms.DataGridView();
+            this.tagColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gotoColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.currentDateLabel = new System.Windows.Forms.Label();
             this.messageQueue1 = new System.Messaging.MessageQueue();
             this.currentDate = new System.Windows.Forms.Label();
             this.goButton = new System.Windows.Forms.Button();
-            this.gotoColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.contentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tagColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.noteGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,6 +58,36 @@
             this.noteGrid.Size = new System.Drawing.Size(457, 237);
             this.noteGrid.TabIndex = 0;
             this.noteGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.noteGrid_CellClick);
+            // 
+            // tagColumn
+            // 
+            this.tagColumn.HeaderText = "Tag";
+            this.tagColumn.Name = "tagColumn";
+            this.tagColumn.ReadOnly = true;
+            this.tagColumn.Width = 50;
+            // 
+            // dateColumn
+            // 
+            this.dateColumn.HeaderText = "Date";
+            this.dateColumn.Name = "dateColumn";
+            this.dateColumn.ReadOnly = true;
+            this.dateColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dateColumn.Width = 80;
+            // 
+            // contentColumn
+            // 
+            this.contentColumn.HeaderText = "Note Content";
+            this.contentColumn.Name = "contentColumn";
+            this.contentColumn.ReadOnly = true;
+            this.contentColumn.Width = 281;
+            // 
+            // gotoColumn
+            // 
+            this.gotoColumn.HeaderText = "Go To";
+            this.gotoColumn.Name = "gotoColumn";
+            this.gotoColumn.ReadOnly = true;
+            this.gotoColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gotoColumn.Width = 43;
             // 
             // currentDateLabel
             // 
@@ -87,41 +117,11 @@
             // 
             this.goButton.Location = new System.Drawing.Point(158, 4);
             this.goButton.Name = "goButton";
-            this.goButton.Size = new System.Drawing.Size(32, 23);
+            this.goButton.Size = new System.Drawing.Size(60, 23);
             this.goButton.TabIndex = 3;
-            this.goButton.Text = "Go";
+            this.goButton.Text = "Go Back";
             this.goButton.UseVisualStyleBackColor = true;
             this.goButton.Click += new System.EventHandler(this.goButton_Click);
-            // 
-            // gotoColumn
-            // 
-            this.gotoColumn.HeaderText = "Go To";
-            this.gotoColumn.Name = "gotoColumn";
-            this.gotoColumn.ReadOnly = true;
-            this.gotoColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gotoColumn.Width = 43;
-            // 
-            // contentColumn
-            // 
-            this.contentColumn.HeaderText = "Note Content";
-            this.contentColumn.Name = "contentColumn";
-            this.contentColumn.ReadOnly = true;
-            this.contentColumn.Width = 281;
-            // 
-            // dateColumn
-            // 
-            this.dateColumn.HeaderText = "Date";
-            this.dateColumn.Name = "dateColumn";
-            this.dateColumn.ReadOnly = true;
-            this.dateColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dateColumn.Width = 80;
-            // 
-            // tagColumn
-            // 
-            this.tagColumn.HeaderText = "Tag";
-            this.tagColumn.Name = "tagColumn";
-            this.tagColumn.ReadOnly = true;
-            this.tagColumn.Width = 50;
             // 
             // PassedNoteGrid
             // 
