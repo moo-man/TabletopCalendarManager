@@ -148,35 +148,51 @@ namespace HarptosCalendarManager
         /// <summary>
         /// Move to the next day in the calendar
         /// </summary>
-        public void addDay()
+        public List<Tuple<Note, string>> addDay()
         {
-
             calendar.addDay();
+
+            List<Tuple<Note, string>> notesAndDate = new List<Tuple<Note, string>>();
+
+            List<Note> notesOnThisDay = findNotesToList();
+            foreach (Note n in notesOnThisDay)
+            {
+                notesAndDate.Add(new Tuple<Note, string>(n, this.calendar.ToString()));
+            }
+
+            return notesAndDate;
         }
 
         /// <summary>
         /// Move to the next n days in the calendar
         /// </summary>
         /// <param name="num">The number of days passing</param>
-        public void addDay(int num)
+        public List<Tuple<Note, string>> addDay(int num)
         {
-            calendar.addDay(num);
-        }
-
-        public void addTenday()
-        {
-            addDay(10);
-        }
-
-        public void addMonth()
-        {
-            addDay(30);
-        }
-
-        public void addMonth(int num)
-        {
+            List<Tuple<Note, string>> notesAndDate = new List<Tuple<Note, string>>();
             for (int i = 0; i < num; i++)
-                addMonth();
+            {
+                notesAndDate.AddRange(addDay());
+            }
+            return notesAndDate;
+        }
+
+        public List<Tuple<Note, string>> addTenday()
+        {
+            return addDay(10);
+        }
+
+        public List<Tuple<Note, string>> addMonth()
+        {
+            return addDay(30);
+        }
+
+        public List<Tuple<Note, string>> addMonth(int num)
+        {
+            List<Tuple<Note, string>> notesAndDate = new List<Tuple<Note, string>>();
+            for (int i = 0; i < num; i++)
+                notesAndDate.AddRange(addMonth());
+            return notesAndDate;
         }
 
         public void addYear()
@@ -219,6 +235,45 @@ namespace HarptosCalendarManager
             calendar.subYear();
         }
         #endregion
+
+
+        /// <summary>
+        /// Finds all notes that should be listed based on the current date of the calendar
+        /// </summary>
+        /// <returns></returns>
+        public List<Note> findNotesToList()
+        {
+            List<Note> listOfNotes = new List<Note>();
+
+            foreach (Note n in GeneralNoteList)
+            {
+                if (n.Importance == AlertScope.global && calendar.isAnniversary(n.Date) || (n.Importance == AlertScope.dontAlert && calendar.sameDate(n.Date)))
+                    listOfNotes.Add(n);
+            }
+
+            foreach (Campaign c in CampaignList)
+            {
+                foreach (Note n in c.notes)
+                {
+                    if (c.Equals(activeCampaign)) // If the note belongs to current campaign, and has appropriate visibilty, and is anniversary of this date
+                    {
+                        if ((n.Importance == AlertScope.campaign || n.Importance == AlertScope.global) && calendar.isAnniversary(n.Date))
+                        {
+                            if (n.NoteContent.Equals("Current Date") == false) // don't print the current date of current campaign, as that is always the current date
+                                listOfNotes.Add(n);
+                        }
+                        else if (n.Importance == AlertScope.dontAlert && calendar.sameDate(n.Date))
+                            listOfNotes.Add(n);
+                    }
+
+                    else // If the note does not belong in the current campaign
+                        if ((n.Importance == AlertScope.global) && calendar.isAnniversary(n.Date)) // if the note happened on this day and is of                                                                                        // sufficient importance level
+                        listOfNotes.Add(n);
+                } // end foreach note
+            } // end foreach campaign
+
+            return listOfNotes;
+        }
 
         public Note findNote(string content, noteType type)
         {

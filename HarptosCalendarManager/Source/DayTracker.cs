@@ -15,7 +15,7 @@ namespace HarptosCalendarManager
     public partial class DayTracker : Form
     {
 
-        Calendar currentCalendar;
+        static Calendar currentCalendar; // Changed to static, beware of issues
         bool altNames;
         List<Note> listOfNotes;
 
@@ -37,7 +37,7 @@ namespace HarptosCalendarManager
             noteBox.ContextMenuStrip = noteboxRightClickMenu;
             noneSelectedContextMenu();
 
-           // daytrackerToolStrip.Enabled = false; // placeholder
+            // daytrackerToolStrip.Enabled = false; // placeholder
 
             altNames = false;
             goButton.Hide();
@@ -82,68 +82,11 @@ namespace HarptosCalendarManager
 
             DetermineTimerButtonVisibility();
 
-            // The following section of code finds all notes that should be listed and puts them in a list to give to writeNotes() function
-            StringBuilder noteboxText = new StringBuilder();
             listOfNotes.Clear();
 
+            checkIfTimerPassed();
 
-            if (currentCalendar.activeCampaign != null)
-            {
-                foreach (Timer t in currentCalendar.activeCampaign.timers)
-                {
-                    if (HarptosCalendar.FarthestInTime(t.returnDateString(), currentCalendar.calendar.ToString()) == 0)
-                    {
-                        if (MessageBox.Show(this, t.message + "\n\nCreate a note?", "Timer Reached", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                            new EditNotesDialog(new Note(t.returnDateString(), AlertScope.campaign, t.message, currentCalendar.activeCampaign), currentCalendar).ShowDialog(this);
-
-                        // Remove, then restart updating (can't remove and iterate)
-                        currentCalendar.activeCampaign.timers.Remove(t);
-                        UpdateCalendar();
-                        return;
-                    }
-                    else if (HarptosCalendar.FarthestInTime(t.returnDateString(), currentCalendar.calendar.ToString()) < 0)
-                    {
-                        if (MessageBox.Show(this, t.message + " (" + HarptosCalendar.returnGivenDate(t.returnDateString()) + ")" + "\n\nCreate a note?", "Timer Passed", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                            new EditNotesDialog(new Note(t.returnDateString(), AlertScope.campaign, t.message, currentCalendar.activeCampaign), currentCalendar).ShowDialog(this);
-                        if (MessageBox.Show(this, "Go to date? (" + HarptosCalendar.returnGivenDate(t.returnDateString()) + ")", "Go to date", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                            currentCalendar.calendar.setDate(t.returnDateString());
-                        // Remove, then restart updating (can't remove and iterate)
-                        currentCalendar.activeCampaign.timers.Remove(t);
-                        UpdateCalendar();
-                        return;
-                    }
-
-                }
-            }
-
-            foreach (Note n in currentCalendar.GeneralNoteList)
-            {
-                if (n.Importance == AlertScope.global && currentCalendar.calendar.isAnniversary(n.Date) || (n.Importance == AlertScope.dontAlert && currentCalendar.calendar.sameDate(n.Date)))
-                    listOfNotes.Add(n);
-            }
-
-            foreach (Campaign c in currentCalendar.CampaignList)
-            {
-                foreach (Note n in c.notes)
-                {
-                    if (c.Equals(currentCalendar.activeCampaign)) // If the note belongs to current campaign, and has appropriate visibilty, and is anniversary of this date
-                    {
-                        if ((n.Importance == AlertScope.campaign || n.Importance == AlertScope.global) && currentCalendar.calendar.isAnniversary(n.Date))
-                        {
-                            if (n.NoteContent.Equals("Current Date") == false) // don't print the current date of current campaign, as that is always the current date
-                                listOfNotes.Add(n);
-                        }
-                        else if (n.Importance == AlertScope.dontAlert && currentCalendar.calendar.sameDate(n.Date))
-                            listOfNotes.Add(n);
-                    }
-
-                    else // If the note does not belong in the current campaign
-                        if ((n.Importance == AlertScope.global) && currentCalendar.calendar.isAnniversary(n.Date)) // if the note happened on this day and is of                                                                                        // sufficient importance level
-                        listOfNotes.Add(n);
-
-
-                } // end foreach note
-            } // end foreach campaign
+            listOfNotes = currentCalendar.findNotesToList();
 
             if (currentCalendar.activeCampaign != null)
                 writeNotes(currentCalendar.activeCampaign.timers, listOfNotes);
@@ -177,36 +120,130 @@ namespace HarptosCalendarManager
 
             foreach (Note n in noteList)
             {
-                if (n.isGeneral()) // if note is general
-                {
-                    if (currentCalendar.calendar.yearsAgo(n.Date) == 1)
-                        noteBox.Items.Add("\u2022 " + " " + n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " year ago)\n");
-                    else if (currentCalendar.calendar.yearsAgo(n.Date) > 1)                                                                                                        // Note happened in past
-                        noteBox.Items.Add("\u2022 " + " " + n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " years ago)\n");
-                    else if ((currentCalendar.calendar.yearsAgo(n.Date) == 0))
-                        noteBox.Items.Add("\u2022 " + " " + n.NoteContent + "\n");                                                                         // Note happened this very day
-                    else if (currentCalendar.calendar.yearsAgo(n.Date) == -1)
-                        noteBox.Items.Add("\u2022 " + " " + n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " year)\n");
-                    else if (currentCalendar.calendar.yearsAgo(n.Date) < -1)                                                                                                       // Note happens in future
-                        noteBox.Items.Add("\u2022 " + " " + n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " years)\n");
-                    else
-                        noteBox.Items.Add("Error.");
-                }
+                noteBox.Items.Add(ReturnNoteDisplay(n));
+            }
+        }
 
-                else // if note belongs to a campaign
+        public string ReturnNoteDisplay(Note n)
+        {
+            if (n.isGeneral()) // if note is general
+            {
+                if (currentCalendar.calendar.yearsAgo(n.Date) == 1)
+                    return ("\u2022 " + " " + ReturnContentAndDateDifference(n));
+                else if (currentCalendar.calendar.yearsAgo(n.Date) > 1)                                                                                                        // Note happened in past
+                    return ("\u2022 " + " " + ReturnContentAndDateDifference(n));
+                else if ((currentCalendar.calendar.yearsAgo(n.Date) == 0))
+                    return ("\u2022 " + " " + ReturnContentAndDateDifference(n));                                                                                                 // Note happened this very day
+                else if (currentCalendar.calendar.yearsAgo(n.Date) == -1)
+                    return ("\u2022 " + " " + ReturnContentAndDateDifference(n));
+                else if (currentCalendar.calendar.yearsAgo(n.Date) < -1)                                                                                                       // Note happens in future
+                    return ("\u2022 " + " " + ReturnContentAndDateDifference(n));
+                else
+                    return ("Error.");
+            }
+
+            else // if note belongs to a campaign
+            {
+                if (currentCalendar.calendar.yearsAgo(n.Date) == 1)
+                    return ("\u2022 " + "(" + n.Campaign.Tag + ") " + ReturnContentAndDateDifference(n));
+                else if (currentCalendar.calendar.yearsAgo(n.Date) > 1)                                                                                                        // Note happened in past
+                    return ("\u2022 " + "(" + n.Campaign.Tag + ") " + ReturnContentAndDateDifference(n));
+                else if ((currentCalendar.calendar.yearsAgo(n.Date) == 0))
+                    return ("\u2022 " + "(" + n.Campaign.Tag + ") " + ReturnContentAndDateDifference(n));                                                                         // Note happened this very day
+                else if (currentCalendar.calendar.yearsAgo(n.Date) == -1)
+                    return ("\u2022 " + "(" + n.Campaign.Tag + ") " + ReturnContentAndDateDifference(n));
+                else if (currentCalendar.calendar.yearsAgo(n.Date) < -1)                                                                                                       // Note happens in future
+                    return ("\u2022 " + "(" + n.Campaign.Tag + ") " + ReturnContentAndDateDifference(n));
+                else
+                    return ("Error.");
+            }
+
+            //if (n.isGeneral()) // if note is general
+            //{
+            //    if (currentCalendar.calendar.yearsAgo(n.Date) == 1)
+            //        return ("\u2022 " + " " + n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " year ago)\n");
+            //    else if (currentCalendar.calendar.yearsAgo(n.Date) > 1)                                                                                                        // Note happened in past
+            //        return ("\u2022 " + " " + n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " years ago)\n");
+            //    else if ((currentCalendar.calendar.yearsAgo(n.Date) == 0))
+            //        return ("\u2022 " + " " + n.NoteContent + "\n");                                                                                                 // Note happened this very day
+            //    else if (currentCalendar.calendar.yearsAgo(n.Date) == -1)
+            //        return ("\u2022 " + " " + n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " year)\n");
+            //    else if (currentCalendar.calendar.yearsAgo(n.Date) < -1)                                                                                                       // Note happens in future
+            //        return ("\u2022 " + " " + n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " years)\n");
+            //    else
+            //        return ("Error.");
+            //}
+
+            //else // if note belongs to a campaign
+            //{
+            //    if (currentCalendar.calendar.yearsAgo(n.Date) == 1)
+            //        return ("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " year ago)\n");
+            //    else if (currentCalendar.calendar.yearsAgo(n.Date) > 1)                                                                                                        // Note happened in past
+            //        return ("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " years ago)\n");
+            //    else if ((currentCalendar.calendar.yearsAgo(n.Date) == 0))
+            //        return ("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + "\n");                                                                         // Note happened this very day
+            //    else if (currentCalendar.calendar.yearsAgo(n.Date) == -1)
+            //        return ("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " year)\n");
+            //    else if (currentCalendar.calendar.yearsAgo(n.Date) < -1)                                                                                                       // Note happens in future
+            //        return ("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " years)\n");
+            //    else
+            //        return ("Error.");
+            //}
+        }
+
+
+        /// <summary>
+        /// Returns the contents of the note, with the difference of time of the current date
+        /// Eg. "Note Content" (5 years ago)
+        /// Necessary for PassedNoteGrid to call
+        /// </summary>
+        /// <param name="n">Note whose contents are being returned</param>
+        /// <returns></returns>
+        public static string ReturnContentAndDateDifference(Note n)
+        {
+            if (currentCalendar.calendar.yearsAgo(n.Date) == 1)
+                return (n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " year ago)\n");
+            else if (currentCalendar.calendar.yearsAgo(n.Date) > 1)                                                    // Note happened in past
+                return (n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " years ago)\n");
+            else if ((currentCalendar.calendar.yearsAgo(n.Date) == 0))
+                return (n.NoteContent + "\n");                                                                         // Note happened this very day
+            else if (currentCalendar.calendar.yearsAgo(n.Date) == -1)
+                return (n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " year)\n");
+            else if (currentCalendar.calendar.yearsAgo(n.Date) < -1)                                                   // Note happens in future
+                return (n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " years)\n");
+            else
+                return ("Error.");
+        }
+
+        public void checkIfTimerPassed()
+        {
+            if (currentCalendar.activeCampaign != null)
+            {
+                foreach (Timer t in currentCalendar.activeCampaign.timers)
                 {
-                    if (currentCalendar.calendar.yearsAgo(n.Date) == 1)
-                        noteBox.Items.Add("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " year ago)\n");
-                    else if (currentCalendar.calendar.yearsAgo(n.Date) > 1)                                                                                                        // Note happened in past
-                        noteBox.Items.Add("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " years ago)\n");
-                    else if ((currentCalendar.calendar.yearsAgo(n.Date) == 0))
-                        noteBox.Items.Add("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + "\n");                                                                         // Note happened this very day
-                    else if (currentCalendar.calendar.yearsAgo(n.Date) == -1)
-                        noteBox.Items.Add("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " year)\n");
-                    else if (currentCalendar.calendar.yearsAgo(n.Date) < -1)                                                                                                       // Note happens in future
-                        noteBox.Items.Add("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " years)\n");
-                    else
-                        noteBox.Items.Add("Error.");
+                    // If the current date is same date a timer (0 means same date)
+                    if (HarptosCalendar.FarthestInTime(t.returnDateString(), currentCalendar.calendar.ToString()) == 0)
+                    {
+                        if (MessageBox.Show(this, t.message + "\n\nCreate a note?", "Timer Reached", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                            new EditNotesDialog(new Note(t.returnDateString(), AlertScope.campaign, t.message, currentCalendar.activeCampaign), currentCalendar).ShowDialog(this);
+
+                        // Remove, then restart updating (can't remove and iterate)
+                        currentCalendar.activeCampaign.timers.Remove(t);
+                        checkIfTimerPassed();
+                        return;
+                    }
+                    else if (HarptosCalendar.FarthestInTime(t.returnDateString(), currentCalendar.calendar.ToString()) < 0)
+                    {
+                        if (MessageBox.Show(this, t.message + " (" + HarptosCalendar.returnGivenDate(t.returnDateString()) + ")" + "\n\nCreate a note?", "Timer Passed", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                            new EditNotesDialog(new Note(t.returnDateString(), AlertScope.campaign, t.message, currentCalendar.activeCampaign), currentCalendar).ShowDialog(this);
+                        if (MessageBox.Show(this, "Go to date? (" + HarptosCalendar.returnGivenDate(t.returnDateString()) + ")", "Go to date", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            currentCalendar.calendar.setDate(t.returnDateString());
+                        // Remove, then restart updating (can't remove and iterate)
+                        currentCalendar.activeCampaign.timers.Remove(t);
+                        checkIfTimerPassed();
+                        return;
+                    }
+
                 }
             }
         }
@@ -249,8 +286,9 @@ namespace HarptosCalendarManager
 
         private void addTenday_Click(object sender, EventArgs e)
         {
-            currentCalendar.addTenday();
+            List<Tuple<Note, string>> passedNotes = currentCalendar.addTenday();
             UpdateCalendar();
+            ShowPassedNotes(passedNotes);
         }
 
         private void subTenday_Click(object sender, EventArgs e)
@@ -261,8 +299,9 @@ namespace HarptosCalendarManager
 
         private void addMonth_Click(object sender, EventArgs e)
         {
-            currentCalendar.addMonth();
+            List<Tuple<Note, string>> passedNotes = currentCalendar.addMonth();
             UpdateCalendar();
+            ShowPassedNotes(passedNotes);
         }
 
         private void subMonth_Click(object sender, EventArgs e)
@@ -284,6 +323,28 @@ namespace HarptosCalendarManager
         }
 
         #endregion
+
+        /// <summary>
+        /// If many days were passed, such as a month, and there were notes on one of the days passed, this function notifies the user
+        /// </summary>
+        /// <param name="passedNotes"></param>
+        public void ShowPassedNotes(List<Tuple<Note, string>> passedNotes)
+        {
+            if (passedNotes.Count == 0)
+                return;
+
+            // If you land on a note, don't include it, I don't like this solution but it may be the simplest.
+            passedNotes.RemoveAll(x => x.Item1.Date == currentCalendar.calendar.ToString());
+
+            if (MessageBox.Show(this, passedNotes.Count + " notes were passed. View?", "Passed Notes", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                PassedNoteGrid noteGrid = new PassedNoteGrid(passedNotes, currentCalendar.calendar.ToString());
+                noteGrid.Show(this);
+                noteGrid.GoToDate += goButton_Click;
+                // I don't know how events really work but this seems to fine, make it static and increment in the constructor?
+            }
+
+        }
 
         private void editNotesButton_Click(object sender, EventArgs e)
         {
@@ -461,7 +522,7 @@ namespace HarptosCalendarManager
 
         private void showHiddenTimersButton_Click(object sender, EventArgs e)
         {
-             foreach (Timer t in currentCalendar.activeCampaign.timers)
+            foreach (Timer t in currentCalendar.activeCampaign.timers)
                 t.keepTrack = true;
 
             UpdateCalendar();
@@ -504,6 +565,24 @@ namespace HarptosCalendarManager
             }
             else
                 currentCalendar.calendar.setDate(month.Text + day.Text + year.Text);
+
+            UpdateCalendar();
+        }
+        
+        /// <summary>
+        /// Go to event coming from PassedNoteGrid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void goButton_Click(object sender, GoToEventArgs e)
+        {
+            if (currentCalendar.activeCampaign != null)
+            {
+                currentCalendar.activeCampaign.setCurrentDate(e.date);
+                currentCalendar.goToCurrentDate();
+            }
+            else
+                currentCalendar.calendar.setDate(e.date);
 
             UpdateCalendar();
         }
@@ -684,7 +763,7 @@ namespace HarptosCalendarManager
                 ProcessStartInfo sInfo = new ProcessStartInfo(webpage);
                 Process.Start(sInfo);
             }
-            
+
         }
 
         private void calendarOfHarptosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -719,5 +798,10 @@ namespace HarptosCalendarManager
                 Process.Start(sInfo);
             }
         }
+    }
+
+    public class GoToEventArgs : EventArgs
+    {
+        public string date { get; set; }
     }
 }
