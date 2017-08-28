@@ -12,12 +12,12 @@ namespace HarptosCalendarManager
 {
     public partial class PassedNoteGrid : Form
     {
-        List<Note> passedNotes;
+        List<Tuple<Note, string>> passedNotes;
         public delegate void GoToEventHandler(object sender, GoToEventArgs args);
         public event GoToEventHandler GoToDate;
         //public event EventHandler<GoToEventArgs> GoToDate;
 
-        public PassedNoteGrid(List<Note> _passedNotes)
+        public PassedNoteGrid(List<Tuple<Note, string>> _passedNotes, string currDate)
         {
             InitializeComponent();
             passedNotes = _passedNotes;
@@ -27,21 +27,30 @@ namespace HarptosCalendarManager
 
             string[] rowToAdd;
             string dateString;
-            foreach (Note n in passedNotes)
+            string tag;
+            foreach (Tuple<Note, string> t in passedNotes)
             {
-                dateString = n.Date.Insert(2, "/").Insert(5, "/");
-                rowToAdd = new string[] { n.Campaign.Tag, dateString, n.NoteContent, "Go" };
+                if (t.Item1.Campaign == null)
+                    tag = "GEN";
+                else
+                    tag = t.Item1.Campaign.Tag;
+                dateString = t.Item2.Insert(2, "/").Insert(5, "/");
+                rowToAdd = new string[] { tag, dateString, DayTracker.ReturnContentAndDateDifference(t.Item1), "Go" };
                 noteGrid.Rows.Add(rowToAdd);
             }
+
+            currentDate.Text = currDate.Insert(2, "/").Insert(5, "/");
+            goButton.Hide();
         }
 
         private void noteGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex != noteGrid.Columns["gotoColumn"].Index)
                 return;
+
+            goButton.Show();
             string date = noteGrid[1, e.RowIndex].Value.ToString();
             date = date.Replace("/", "");
-
             GoToDate_clicked(date);
 
         }
@@ -49,6 +58,11 @@ namespace HarptosCalendarManager
         protected virtual void GoToDate_clicked(string dateToGoTo)
         {
             GoToDate(this, new GoToEventArgs() { date = dateToGoTo });
+        }
+
+        private void goButton_Click(object sender, EventArgs e)
+        {
+            GoToDate_clicked(currentDate.Text.Replace("/", ""));
         }
     }
 }

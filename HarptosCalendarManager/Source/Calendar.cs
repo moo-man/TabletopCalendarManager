@@ -148,45 +148,51 @@ namespace HarptosCalendarManager
         /// <summary>
         /// Move to the next day in the calendar
         /// </summary>
-        public List<Note> addDay()
+        public List<Tuple<Note, string>> addDay()
         {
             calendar.addDay();
 
-            List<Note> notesOnThisDay = new List<Note>();
-            findNotesToList(notesOnThisDay);
-            return notesOnThisDay;
+            List<Tuple<Note, string>> notesAndDate = new List<Tuple<Note, string>>();
+
+            List<Note> notesOnThisDay = findNotesToList();
+            foreach (Note n in notesOnThisDay)
+            {
+                notesAndDate.Add(new Tuple<Note, string>(n, this.calendar.ToString()));
+            }
+
+            return notesAndDate;
         }
 
         /// <summary>
         /// Move to the next n days in the calendar
         /// </summary>
         /// <param name="num">The number of days passing</param>
-        public List<Note> addDay(int num)
+        public List<Tuple<Note, string>> addDay(int num)
         {
-            List<Note> notesPassed = new List<Note>();
+            List<Tuple<Note, string>> notesAndDate = new List<Tuple<Note, string>>();
             for (int i = 0; i < num; i++)
             {
-                notesPassed.AddRange(addDay());
+                notesAndDate.AddRange(addDay());
             }
-            return notesPassed;
+            return notesAndDate;
         }
 
-        public List<Note> addTenday()
+        public List<Tuple<Note, string>> addTenday()
         {
             return addDay(10);
         }
 
-        public List<Note> addMonth()
+        public List<Tuple<Note, string>> addMonth()
         {
             return addDay(30);
         }
 
-        public List<Note> addMonth(int num)
+        public List<Tuple<Note, string>> addMonth(int num)
         {
-            List<Note> notesPassed = new List<Note>();
+            List<Tuple<Note, string>> notesAndDate = new List<Tuple<Note, string>>();
             for (int i = 0; i < num; i++)
-                notesPassed.AddRange(addMonth());
-            return notesPassed;
+                notesAndDate.AddRange(addMonth());
+            return notesAndDate;
         }
 
         public void addYear()
@@ -234,11 +240,10 @@ namespace HarptosCalendarManager
         /// <summary>
         /// Finds all notes that should be listed based on the current date of the calendar
         /// </summary>
-        /// <param name="listOfNotes">list of notes to put into and return</param>
         /// <returns></returns>
-        public void findNotesToList(List<Note> listOfNotes)
+        public List<Note> findNotesToList()
         {
-            listOfNotes.Clear();
+            List<Note> listOfNotes = new List<Note>();
 
             foreach (Note n in GeneralNoteList)
             {
@@ -267,7 +272,7 @@ namespace HarptosCalendarManager
                 } // end foreach note
             } // end foreach campaign
 
-            //return listOfNotes;
+            return listOfNotes;
         }
 
         public Note findNote(string content, noteType type)
