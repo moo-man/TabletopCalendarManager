@@ -34,7 +34,6 @@
             this.contentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gotoColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.currentDateLabel = new System.Windows.Forms.Label();
-            this.messageQueue1 = new System.Messaging.MessageQueue();
             this.currentDate = new System.Windows.Forms.Label();
             this.goButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.noteGrid)).BeginInit();
@@ -99,11 +98,6 @@
             this.currentDateLabel.TabIndex = 1;
             this.currentDateLabel.Text = "Current Date:";
             // 
-            // messageQueue1
-            // 
-            this.messageQueue1.MessageReadPropertyFilter.LookupId = true;
-            this.messageQueue1.SynchronizingObject = this;
-            // 
             // currentDate
             // 
             this.currentDate.AutoSize = true;
@@ -146,7 +140,6 @@
 
         private System.Windows.Forms.DataGridView noteGrid;
         private System.Windows.Forms.Label currentDateLabel;
-        private System.Messaging.MessageQueue messageQueue1;
         private System.Windows.Forms.Label currentDate;
         private System.Windows.Forms.Button goButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn tagColumn;
