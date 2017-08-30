@@ -54,11 +54,11 @@
             this.dateColumn,
             this.contentColumn,
             this.gotoColumn});
-            this.noteGrid.Location = new System.Drawing.Point(0, 33);
+            this.noteGrid.Location = new System.Drawing.Point(12, 31);
             this.noteGrid.Name = "noteGrid";
             this.noteGrid.RowHeadersVisible = false;
             this.noteGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.noteGrid.Size = new System.Drawing.Size(484, 247);
+            this.noteGrid.Size = new System.Drawing.Size(460, 237);
             this.noteGrid.TabIndex = 0;
             this.noteGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.noteGrid_CellClick);
             // 
