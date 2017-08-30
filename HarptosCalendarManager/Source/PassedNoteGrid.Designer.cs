@@ -43,6 +43,10 @@
             // 
             this.noteGrid.AllowUserToAddRows = false;
             this.noteGrid.AllowUserToDeleteRows = false;
+            this.noteGrid.AllowUserToResizeRows = false;
+            this.noteGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.noteGrid.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.noteGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.noteGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -50,16 +54,17 @@
             this.dateColumn,
             this.contentColumn,
             this.gotoColumn});
-            this.noteGrid.Location = new System.Drawing.Point(12, 31);
+            this.noteGrid.Location = new System.Drawing.Point(0, 33);
             this.noteGrid.Name = "noteGrid";
             this.noteGrid.RowHeadersVisible = false;
             this.noteGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.noteGrid.Size = new System.Drawing.Size(457, 237);
+            this.noteGrid.Size = new System.Drawing.Size(484, 247);
             this.noteGrid.TabIndex = 0;
             this.noteGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.noteGrid_CellClick);
             // 
             // tagColumn
             // 
+            this.tagColumn.FillWeight = 36.25907F;
             this.tagColumn.HeaderText = "Tag";
             this.tagColumn.Name = "tagColumn";
             this.tagColumn.ReadOnly = true;
@@ -67,6 +72,7 @@
             // 
             // dateColumn
             // 
+            this.dateColumn.FillWeight = 61.29682F;
             this.dateColumn.HeaderText = "Date";
             this.dateColumn.Name = "dateColumn";
             this.dateColumn.ReadOnly = true;
@@ -75,13 +81,15 @@
             // 
             // contentColumn
             // 
+            this.contentColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.contentColumn.FillWeight = 215.1345F;
             this.contentColumn.HeaderText = "Note Content";
             this.contentColumn.Name = "contentColumn";
             this.contentColumn.ReadOnly = true;
-            this.contentColumn.Width = 281;
             // 
             // gotoColumn
             // 
+            this.gotoColumn.FillWeight = 87.30965F;
             this.gotoColumn.HeaderText = "Go To";
             this.gotoColumn.Name = "gotoColumn";
             this.gotoColumn.ReadOnly = true;
