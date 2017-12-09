@@ -31,5 +31,6 @@ namespace HarptosCalendarManager
             }
         }
     }
-    // TODO: add alerts for events skipped when advancing by tendays, months, etc
+    // TODO: Pause Timers
+    // TODO: Autosave/retain file name
 }
