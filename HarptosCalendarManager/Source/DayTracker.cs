@@ -276,6 +276,7 @@ namespace HarptosCalendarManager
         {
             currentCalendar.addDay();
             UpdateCalendar();
+            Utility.AutoSave(currentCalendar);
         }
 
         private void subDayButton_Click(object sender, EventArgs e)
@@ -289,6 +290,7 @@ namespace HarptosCalendarManager
             List<Tuple<Note, string>> passedNotes = currentCalendar.addTenday();
             UpdateCalendar();
             ShowPassedNotes(passedNotes);
+            Utility.AutoSave(currentCalendar);
         }
 
         private void subTenday_Click(object sender, EventArgs e)
@@ -302,6 +304,7 @@ namespace HarptosCalendarManager
             List<Tuple<Note, string>> passedNotes = currentCalendar.addMonth();
             UpdateCalendar();
             ShowPassedNotes(passedNotes);
+            Utility.AutoSave(currentCalendar);
         }
 
         private void subMonth_Click(object sender, EventArgs e)
@@ -314,6 +317,7 @@ namespace HarptosCalendarManager
         {
             currentCalendar.addYear();
             UpdateCalendar();
+            Utility.AutoSave(currentCalendar);
         }
 
         private void subYear_Click(object sender, EventArgs e)
@@ -728,7 +732,10 @@ namespace HarptosCalendarManager
 
         private void DayTracker_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.S)
+            if (e.Control && e.Shift && e.KeyCode == Keys.S)
+                saveAsToolstripMenuItem_Click(sender, e);
+
+            else if (e.Control && e.KeyCode == Keys.S)
                 save_Click(sender, e);
 
             if (e.Control && e.KeyCode == Keys.N)
@@ -797,6 +804,11 @@ namespace HarptosCalendarManager
                 ProcessStartInfo sInfo = new ProcessStartInfo(webpage);
                 Process.Start(sInfo);
             }
+        }
+
+        private void saveAsToolstripMenuItem_Click(object sender, EventArgs e)
+        {
+            Utility.SaveAs(currentCalendar);
         }
     }
 

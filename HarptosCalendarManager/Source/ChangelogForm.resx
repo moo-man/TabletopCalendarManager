@@ -118,7 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>v0.9.3.1
+    <value>v0.9.4
+- Added 'Save As...', now Save doesn't show a save dialog (unless you've started a new calendar)
+- Implemented Autosaves, every advancement in time triggers an autosave
+
+v0.9.3.1
 - Passed Notes form properly resizes
 
 v0.9.3

@@ -153,6 +153,8 @@ namespace HarptosCalendarManager
                     e.Cancel = true;
             }
 
+            Utility.Clear(); // Ensure old file path is cleared
+
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -173,8 +175,15 @@ namespace HarptosCalendarManager
 
         private void CalendarMenu_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Control && e.Shift && e.KeyCode == Keys.S)
+                saveAsToolstripMenuItem_Click(sender, e);
             if (e.Control && e.KeyCode == Keys.S)
                 saveButton_Click(sender, e);
+        }
+
+        private void saveAsToolstripMenuItem_Click(object sender, EventArgs e)
+        {
+            Utility.SaveAs(currentCalendar);
         }
     }
 }

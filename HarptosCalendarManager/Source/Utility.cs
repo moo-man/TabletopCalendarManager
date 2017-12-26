@@ -10,29 +10,73 @@ namespace HarptosCalendarManager
 {
     static class Utility
     {
+        static string currentFilePath = null;
+
+        public static void Clear()
+        {
+            currentFilePath = null;
+        }
+
+        public static void SaveAs(Calendar calendarToSave)
+        {
+            string temp = currentFilePath;
+            currentFilePath = null;
+            Save(calendarToSave);
+
+            if (currentFilePath == null)
+                currentFilePath = temp;
+        }
+
+        public static void AutoSave(Calendar calendarToSave)
+        {
+            if (currentFilePath == null)
+                return;
+            else
+                Save(calendarToSave);
+        }
+
         public static void Save(Calendar calendarToSave)
         {
             System.IO.Stream outStream;
             System.IO.StreamWriter writer = null;
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "Harptos Calendar files (*.hcal)|*.hcal|All files (*.*)|*.*";
-            saveFileDialog1.InitialDirectory = Application.StartupPath;
-            saveFileDialog1.FilterIndex = 0;
-            saveFileDialog1.RestoreDirectory = true;
-            saveFileDialog1.DefaultExt = ".hcal";
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (currentFilePath == null || currentFilePath == "") // if new file, open a dialog box
             {
-                if ((outStream = saveFileDialog1.OpenFile()) != null)
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.Filter = "Harptos Calendar files (*.hcal)|*.hcal|All files (*.*)|*.*";
+                saveFileDialog1.InitialDirectory = Application.StartupPath;
+                saveFileDialog1.FilterIndex = 0;
+                saveFileDialog1.RestoreDirectory = true;
+                saveFileDialog1.DefaultExt = ".hcal";
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    writer = new System.IO.StreamWriter(outStream);
+                    if ((outStream = saveFileDialog1.OpenFile()) != null)
+                    {  
+                        writer = new System.IO.StreamWriter(outStream);
+                        currentFilePath = saveFileDialog1.FileName;
+                    }
+                    else
+                        return;
                 }
                 else
                     return;
             }
-            else
-                return;
 
+            else // save with no dialog
+            {
+                try
+                {
+                    writer = new System.IO.StreamWriter(currentFilePath);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error saving. Use Save As..");
+                    currentFilePath = null;
+                }
+                
+            }
+
+                // Prevents serializing nested objects forever
             JsonSerializerSettings settings = new JsonSerializerSettings()
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
@@ -40,7 +84,7 @@ namespace HarptosCalendarManager
 
             writer.WriteLine(JsonConvert.SerializeObject(calendarToSave, settings));
 
-
+            #region OLD FILE FORMAT
             /*
             int generalNoteCount = calendarToSave.GeneralNoteList.Count;
             writer.WriteLine(generalNoteCount);
@@ -79,6 +123,8 @@ namespace HarptosCalendarManager
                     }
                 }
             }*/
+            #endregion
+
             writer.Close();
         }
 
@@ -100,6 +146,8 @@ namespace HarptosCalendarManager
                     System.IO.StreamReader sr = new System.IO.StreamReader(openFileDialog1.FileName);
                     //loadedCalendar = ReadInFile(sr, oldFile);
                     loadedCalendar = ReadJSON(sr.ReadToEnd());
+
+                    currentFilePath = openFileDialog1.FileName;
                     sr.Close();
                 }
                 catch (Exception ex)
@@ -123,6 +171,7 @@ namespace HarptosCalendarManager
             }
         }
 
+        #region OLD FILE FORMAT
         public static Calendar ReadInFile(System.IO.StreamReader sr)
         {
             Calendar loadedCalendar = new Calendar();
@@ -200,7 +249,7 @@ namespace HarptosCalendarManager
                             for (int j = 0; j < numOfNotes; j++)
                                 loadedCampaign.addNote(ReadInNote(sr));
 
-                         loadedCalendar.AddCampaign(loadedCampaign);
+                            loadedCalendar.AddCampaign(loadedCampaign);
                         }
                     }
                 }
@@ -233,5 +282,6 @@ namespace HarptosCalendarManager
 
             return new Note(noteDate, importance, content);
         }
+        #endregion
     }
 }
