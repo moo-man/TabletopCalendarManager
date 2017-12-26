@@ -111,10 +111,22 @@ namespace HarptosCalendarManager
                     if (t.keepTrack && currentCalendar.calendar.sameDate(t.returnDateString()) == false)
                     {
                         int numDays = (currentCalendar.calendar.daysTo(t.returnDateString()));
-                        if (numDays > 1)
-                            noteBox.Items.Add("(TIMER) " + t.message + " (in " + currentCalendar.calendar.daysTo(t.returnDateString()) + " days)");
+
+                        if (t.pausedTime == 0)
+                        {
+
+                            if (numDays > 1)
+                                noteBox.Items.Add("(TIMER) " + t.message + " (in " + currentCalendar.calendar.daysTo(t.returnDateString()) + " days)");
+                            else
+                                noteBox.Items.Add("(TIMER) " + t.message + " (in " + currentCalendar.calendar.daysTo(t.returnDateString()) + " days)");
+                        }
                         else
-                            noteBox.Items.Add("(TIMER) " + t.message + " (in " + currentCalendar.calendar.daysTo(t.returnDateString()) + " days)");
+                        {
+                            if (numDays > 1)
+                                noteBox.Items.Add("(TIMER)(PAUSED) " + t.message + " (in " + currentCalendar.calendar.daysTo(t.returnDateString()) + " days)");
+                            else
+                                noteBox.Items.Add("(TIMER)(PAUSED) " + t.message + " (in " + currentCalendar.calendar.daysTo(t.returnDateString()) + " days)");
+                        }
                     }
                 }
 
@@ -221,6 +233,8 @@ namespace HarptosCalendarManager
             {
                 foreach (Timer t in currentCalendar.activeCampaign.timers)
                 {
+                    t.AdjustForPause(currentCalendar.calendar); // If paused, adjust timer
+
                     // If the current date is same date a timer (0 means same date)
                     if (HarptosCalendar.FarthestInTime(t.returnDateString(), currentCalendar.calendar.ToString()) == 0)
                     {
@@ -391,6 +405,13 @@ namespace HarptosCalendarManager
                     OpenParenIndex = i;
                 for (int i = OpenParenIndex; i < stringToParse.Length && stringToParse[i] != ')'; i++)
                     ClosedParenIndex = i;
+
+                // if paused, trim off paused
+                if (stringToParse.Contains("(PAUSED)") && type == noteType.timer)
+                {
+                    for (int i = ClosedParenIndex + 2; i < stringToParse.Length && stringToParse[i] != ')'; i++)
+                        ClosedParenIndex = i;
+                }
 
                 int startIndex = 0;
 
@@ -630,6 +651,7 @@ namespace HarptosCalendarManager
             editToolStripMenuItem.Enabled = false;  // Timer edit
             deleteToolStripMenuItem.Enabled = false;// Timer delete
             hideToolStripMenuItem.Enabled = false;  // Timer hide
+            pauseToolStripMenuItem.Enabled = false;
         }
 
         private void timerSelectedContextMenu()
@@ -640,6 +662,7 @@ namespace HarptosCalendarManager
             editToolStripMenuItem.Enabled = true;  // Timer edit
             deleteToolStripMenuItem.Enabled = true;// Timer delete
             hideToolStripMenuItem.Enabled = true;  // Timer hide
+            pauseToolStripMenuItem.Enabled = true;
 
         }
 
@@ -651,6 +674,7 @@ namespace HarptosCalendarManager
             editToolStripMenuItem.Enabled = false;  // Timer edit
             deleteToolStripMenuItem.Enabled = false;// Timer delete
             hideToolStripMenuItem.Enabled = false;  // Timer hide
+            pauseToolStripMenuItem.Enabled = false;
         }
 
         private void noteBox_MouseDown(object sender, MouseEventArgs e)
@@ -708,6 +732,17 @@ namespace HarptosCalendarManager
             if (t != null)
             {
                 t.keepTrack = false;
+            }
+            UpdateCalendar();
+        }
+
+        private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Timer t = currentCalendar.activeCampaign.timers.Find(x => x.message == parseNoteContent(noteBox.SelectedItem.ToString(), out noteType type));
+
+            if (t != null)
+            {
+                t.TogglePause(currentCalendar.calendar);
             }
             UpdateCalendar();
         }
@@ -810,6 +845,8 @@ namespace HarptosCalendarManager
         {
             Utility.SaveAs(currentCalendar);
         }
+
+
     }
 
     public class GoToEventArgs : EventArgs
