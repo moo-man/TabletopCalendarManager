@@ -147,13 +147,16 @@ namespace HarptosCalendarManager
             {
                 DialogResult result = MessageBox.Show(this, "Save?", "Save Calendar", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
+                {
                     saveButton_Click(this, new EventArgs());
+                    Utility.Clear(); // Ensure old file path is cleared
+                }
 
                 else if (result == DialogResult.Cancel)
                     e.Cancel = true;
             }
 
-            Utility.Clear(); // Ensure old file path is cleared
+
 
         }
 

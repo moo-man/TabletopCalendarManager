@@ -705,7 +705,7 @@ namespace HarptosCalendarManager
             year = timerJson["year"];
             keepTrack = timerJson["keepTrack"];
             message = timerJson["message"];
-            // PAUSED
+            pausedTime = timerJson["pausedTime"];
         }
 
         public Timer(string dateString, bool track, string msg)
