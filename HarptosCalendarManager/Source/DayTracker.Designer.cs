@@ -119,6 +119,8 @@
             this.winterSolsticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calendarOfHarptosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seluneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolstripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.wheelPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moonPicture)).BeginInit();
             this.noteboxRightClickMenu.SuspendLayout();
@@ -577,6 +579,7 @@
             this.addToolStripMenuItem1,
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem,
+            this.pauseToolStripMenuItem,
             this.hideToolStripMenuItem});
             this.timersToolStripMenuItem.Image = global::HarptosCalendarManager.Properties.Resources.alarmicon;
             this.timersToolStripMenuItem.Name = "timersToolStripMenuItem";
@@ -588,28 +591,28 @@
             // 
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
             this.addToolStripMenuItem1.ShortcutKeyDisplayString = "Crtl + T";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.addToolStripMenuItem1.Text = "Add";
             this.addToolStripMenuItem1.Click += new System.EventHandler(this.addTimerButton_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editTimerButton_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteButtonTimer_Click);
             // 
             // hideToolStripMenuItem
             // 
             this.hideToolStripMenuItem.Name = "hideToolStripMenuItem";
-            this.hideToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.hideToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.hideToolStripMenuItem.Text = "Hide";
             this.hideToolStripMenuItem.Click += new System.EventHandler(this.hideToolStripMenuItem_Click);
             // 
@@ -629,7 +632,7 @@
             this.toolStripDropDownButton3});
             this.daytrackerToolStrip.Location = new System.Drawing.Point(0, 0);
             this.daytrackerToolStrip.Name = "daytrackerToolStrip";
-            this.daytrackerToolStrip.Size = new System.Drawing.Size(1355, 25);
+            this.daytrackerToolStrip.Size = new System.Drawing.Size(1372, 25);
             this.daytrackerToolStrip.TabIndex = 53;
             this.daytrackerToolStrip.Text = "toolStrip1";
             // 
@@ -638,6 +641,7 @@
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveToolStripMenuItem,
+            this.saveAsToolstripMenuItem,
             this.exitToolStripMenuItem});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -650,14 +654,14 @@
             this.saveToolStripMenuItem.Image = global::HarptosCalendarManager.Properties.Resources.save_icon_5404;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeyDisplayString = "Crtl+S";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.save_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -682,7 +686,7 @@
             this.addToolStripMenuItem2,
             this.subtractToolStripMenuItem});
             this.dayToolStripMenuItem.Name = "dayToolStripMenuItem";
-            this.dayToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dayToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.dayToolStripMenuItem.Text = "Day";
             // 
             // addToolStripMenuItem2
@@ -707,7 +711,7 @@
             this.addToolStripMenuItem3,
             this.subtractToolStripMenuItem1});
             this.tendayToolStripMenuItem.Name = "tendayToolStripMenuItem";
-            this.tendayToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tendayToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.tendayToolStripMenuItem.Text = "Tenday";
             // 
             // addToolStripMenuItem3
@@ -730,7 +734,7 @@
             this.addToolStripMenuItem4,
             this.subtractToolStripMenuItem2});
             this.monthToolStripMenuItem.Name = "monthToolStripMenuItem";
-            this.monthToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.monthToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.monthToolStripMenuItem.Text = "Month";
             // 
             // addToolStripMenuItem4
@@ -753,20 +757,20 @@
             this.addToolStripMenuItem5,
             this.subtractToolStripMenuItem3});
             this.yearToolStripMenuItem.Name = "yearToolStripMenuItem";
-            this.yearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.yearToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.yearToolStripMenuItem.Text = "Year";
             // 
             // addToolStripMenuItem5
             // 
             this.addToolStripMenuItem5.Name = "addToolStripMenuItem5";
-            this.addToolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem5.Size = new System.Drawing.Size(118, 22);
             this.addToolStripMenuItem5.Text = "Add";
             this.addToolStripMenuItem5.Click += new System.EventHandler(this.addYear_Click);
             // 
             // subtractToolStripMenuItem3
             // 
             this.subtractToolStripMenuItem3.Name = "subtractToolStripMenuItem3";
-            this.subtractToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.subtractToolStripMenuItem3.Size = new System.Drawing.Size(118, 22);
             this.subtractToolStripMenuItem3.Text = "Subtract";
             this.subtractToolStripMenuItem3.Click += new System.EventHandler(this.subYear_Click);
             // 
@@ -776,7 +780,7 @@
             this.noteToolStripMenuItem,
             this.timerToolStripMenuItem});
             this.addToolStripMenuItem6.Name = "addToolStripMenuItem6";
-            this.addToolStripMenuItem6.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem6.Size = new System.Drawing.Size(112, 22);
             this.addToolStripMenuItem6.Text = "Add";
             // 
             // noteToolStripMenuItem
@@ -933,6 +937,21 @@
             this.seluneToolStripMenuItem.Text = "Selune";
             this.seluneToolStripMenuItem.Click += new System.EventHandler(this.moonNameLabel_Click);
             // 
+            // pauseToolStripMenuItem
+            // 
+            this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.pauseToolStripMenuItem.Text = "Pause/Unpause";
+            this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
+            // 
+            // saveAsToolstripMenuItem
+            // 
+            this.saveAsToolstripMenuItem.Name = "saveAsToolstripMenuItem";
+            this.saveAsToolstripMenuItem.ShortcutKeyDisplayString = "Crtl + Shift + S";
+            this.saveAsToolstripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.saveAsToolstripMenuItem.Text = "Save As...";
+            this.saveAsToolstripMenuItem.Click += new System.EventHandler(this.saveAsToolstripMenuItem_Click);
+            // 
             // DayTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -940,7 +959,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(234)))), ((int)(((byte)(222)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1372, 660);
+            this.ClientSize = new System.Drawing.Size(1389, 660);
             this.Controls.Add(this.daytrackerToolStrip);
             this.Controls.Add(this.showHiddenTimersButton);
             this.Controls.Add(this.alarmButton);
@@ -1089,6 +1108,8 @@
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem noteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem timerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pauseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolstripMenuItem;
     }
 }
 

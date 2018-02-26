@@ -147,11 +147,16 @@ namespace HarptosCalendarManager
             {
                 DialogResult result = MessageBox.Show(this, "Save?", "Save Calendar", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
+                {
                     saveButton_Click(this, new EventArgs());
+                    Utility.Clear(); // Ensure old file path is cleared
+                }
 
                 else if (result == DialogResult.Cancel)
                     e.Cancel = true;
             }
+
+
 
         }
 
@@ -173,8 +178,15 @@ namespace HarptosCalendarManager
 
         private void CalendarMenu_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Control && e.Shift && e.KeyCode == Keys.S)
+                saveAsToolstripMenuItem_Click(sender, e);
             if (e.Control && e.KeyCode == Keys.S)
                 saveButton_Click(sender, e);
+        }
+
+        private void saveAsToolstripMenuItem_Click(object sender, EventArgs e)
+        {
+            Utility.SaveAs(currentCalendar);
         }
     }
 }

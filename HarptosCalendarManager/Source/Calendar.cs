@@ -685,6 +685,7 @@ namespace HarptosCalendarManager
         public int year;               // year timer occurs;
         public bool keepTrack;         // should this timer be displayed continually until occurrence
         public string message;  // What the timer shows when it occurs
+        public int pausedTime;
 
         [Newtonsoft.Json.JsonConstructor]
         public Timer(int m, int d, int y, bool track, string msg)
@@ -694,6 +695,7 @@ namespace HarptosCalendarManager
             year = y;
             keepTrack = track;
             message = msg;
+            pausedTime = 0;
         }
 
         public Timer(dynamic timerJson)
@@ -703,6 +705,7 @@ namespace HarptosCalendarManager
             year = timerJson["year"];
             keepTrack = timerJson["keepTrack"];
             message = timerJson["message"];
+            pausedTime = timerJson["pausedTime"];
         }
 
         public Timer(string dateString, bool track, string msg)
@@ -712,7 +715,50 @@ namespace HarptosCalendarManager
             year = Int32.Parse(dateString.Substring(4, 4));
             keepTrack = track;
             message = msg;
+            pausedTime = 0;
         }
+
+        /// <summary>
+        /// If a timer is paused, when days are incremented, the timer's alarm date should also be incremented to reflect the pause
+        /// </summary>
+        /// <param name="currentCalendar"></param>
+        public void AdjustForPause(HarptosCalendar currentCalendar)
+        {
+            if (pausedTime == 0)
+                return;
+            else
+            {
+                string newDate;
+                newDate = currentCalendar.dateIn(pausedTime);
+
+                month = Int32.Parse(newDate.Substring(0, 2));
+                day = Int32.Parse(newDate.Substring(2, 2));
+                year = Int32.Parse(newDate.Substring(4, 4));
+            }
+
+        }
+
+        public void TogglePause(HarptosCalendar currentCalendar)
+        {
+            if (pausedTime == 0)
+                Pause(currentCalendar);
+            else
+                Unpause(currentCalendar);
+        }
+
+        public void Pause(HarptosCalendar currentCalendar)
+        {
+            if (pausedTime == 0)
+            {
+                pausedTime = currentCalendar.daysTo(month, day, year);
+            }
+        }
+
+        public void Unpause(HarptosCalendar currentCalendar)
+        {
+            pausedTime = 0;
+        }
+
 
         public string returnDateString()
         {

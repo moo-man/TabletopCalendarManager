@@ -111,10 +111,22 @@ namespace HarptosCalendarManager
                     if (t.keepTrack && currentCalendar.calendar.sameDate(t.returnDateString()) == false)
                     {
                         int numDays = (currentCalendar.calendar.daysTo(t.returnDateString()));
-                        if (numDays > 1)
-                            noteBox.Items.Add("(TIMER) " + t.message + " (in " + currentCalendar.calendar.daysTo(t.returnDateString()) + " days)");
+
+                        if (t.pausedTime == 0)
+                        {
+
+                            if (numDays > 1)
+                                noteBox.Items.Add("(TIMER) " + t.message + " (in " + currentCalendar.calendar.daysTo(t.returnDateString()) + " days)");
+                            else
+                                noteBox.Items.Add("(TIMER) " + t.message + " (in " + currentCalendar.calendar.daysTo(t.returnDateString()) + " days)");
+                        }
                         else
-                            noteBox.Items.Add("(TIMER) " + t.message + " (in " + currentCalendar.calendar.daysTo(t.returnDateString()) + " days)");
+                        {
+                            if (numDays > 1)
+                                noteBox.Items.Add("(TIMER)(PAUSED) " + t.message + " (in " + currentCalendar.calendar.daysTo(t.returnDateString()) + " days)");
+                            else
+                                noteBox.Items.Add("(TIMER)(PAUSED) " + t.message + " (in " + currentCalendar.calendar.daysTo(t.returnDateString()) + " days)");
+                        }
                     }
                 }
 
@@ -221,6 +233,8 @@ namespace HarptosCalendarManager
             {
                 foreach (Timer t in currentCalendar.activeCampaign.timers)
                 {
+                    t.AdjustForPause(currentCalendar.calendar); // If paused, adjust timer
+
                     // If the current date is same date a timer (0 means same date)
                     if (HarptosCalendar.FarthestInTime(t.returnDateString(), currentCalendar.calendar.ToString()) == 0)
                     {
@@ -276,6 +290,7 @@ namespace HarptosCalendarManager
         {
             currentCalendar.addDay();
             UpdateCalendar();
+            Utility.AutoSave(currentCalendar);
         }
 
         private void subDayButton_Click(object sender, EventArgs e)
@@ -289,6 +304,7 @@ namespace HarptosCalendarManager
             List<Tuple<Note, string>> passedNotes = currentCalendar.addTenday();
             UpdateCalendar();
             ShowPassedNotes(passedNotes);
+            Utility.AutoSave(currentCalendar);
         }
 
         private void subTenday_Click(object sender, EventArgs e)
@@ -302,6 +318,7 @@ namespace HarptosCalendarManager
             List<Tuple<Note, string>> passedNotes = currentCalendar.addMonth();
             UpdateCalendar();
             ShowPassedNotes(passedNotes);
+            Utility.AutoSave(currentCalendar);
         }
 
         private void subMonth_Click(object sender, EventArgs e)
@@ -314,6 +331,7 @@ namespace HarptosCalendarManager
         {
             currentCalendar.addYear();
             UpdateCalendar();
+            Utility.AutoSave(currentCalendar);
         }
 
         private void subYear_Click(object sender, EventArgs e)
@@ -387,6 +405,13 @@ namespace HarptosCalendarManager
                     OpenParenIndex = i;
                 for (int i = OpenParenIndex; i < stringToParse.Length && stringToParse[i] != ')'; i++)
                     ClosedParenIndex = i;
+
+                // if paused, trim off paused
+                if (stringToParse.Contains("(PAUSED)") && type == noteType.timer)
+                {
+                    for (int i = ClosedParenIndex + 2; i < stringToParse.Length && stringToParse[i] != ')'; i++)
+                        ClosedParenIndex = i;
+                }
 
                 int startIndex = 0;
 
@@ -626,6 +651,7 @@ namespace HarptosCalendarManager
             editToolStripMenuItem.Enabled = false;  // Timer edit
             deleteToolStripMenuItem.Enabled = false;// Timer delete
             hideToolStripMenuItem.Enabled = false;  // Timer hide
+            pauseToolStripMenuItem.Enabled = false;
         }
 
         private void timerSelectedContextMenu()
@@ -636,6 +662,7 @@ namespace HarptosCalendarManager
             editToolStripMenuItem.Enabled = true;  // Timer edit
             deleteToolStripMenuItem.Enabled = true;// Timer delete
             hideToolStripMenuItem.Enabled = true;  // Timer hide
+            pauseToolStripMenuItem.Enabled = true;
 
         }
 
@@ -647,6 +674,7 @@ namespace HarptosCalendarManager
             editToolStripMenuItem.Enabled = false;  // Timer edit
             deleteToolStripMenuItem.Enabled = false;// Timer delete
             hideToolStripMenuItem.Enabled = false;  // Timer hide
+            pauseToolStripMenuItem.Enabled = false;
         }
 
         private void noteBox_MouseDown(object sender, MouseEventArgs e)
@@ -708,6 +736,17 @@ namespace HarptosCalendarManager
             UpdateCalendar();
         }
 
+        private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Timer t = currentCalendar.activeCampaign.timers.Find(x => x.message == parseNoteContent(noteBox.SelectedItem.ToString(), out noteType type));
+
+            if (t != null)
+            {
+                t.TogglePause(currentCalendar.calendar);
+            }
+            UpdateCalendar();
+        }
+
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(this, "This is the Day Tracker, here is where you keep track of the passage of time in your active campaign, as well as take notes.\n\n" +
@@ -728,7 +767,10 @@ namespace HarptosCalendarManager
 
         private void DayTracker_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.S)
+            if (e.Control && e.Shift && e.KeyCode == Keys.S)
+                saveAsToolstripMenuItem_Click(sender, e);
+
+            else if (e.Control && e.KeyCode == Keys.S)
                 save_Click(sender, e);
 
             if (e.Control && e.KeyCode == Keys.N)
@@ -798,6 +840,13 @@ namespace HarptosCalendarManager
                 Process.Start(sInfo);
             }
         }
+
+        private void saveAsToolstripMenuItem_Click(object sender, EventArgs e)
+        {
+            Utility.SaveAs(currentCalendar);
+        }
+
+
     }
 
     public class GoToEventArgs : EventArgs

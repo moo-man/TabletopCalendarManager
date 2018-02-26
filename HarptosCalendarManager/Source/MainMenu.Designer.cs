@@ -93,7 +93,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 13);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Version: 0.9.3.1";
+            this.label1.Text = "Version: 0.9.4.1";
             // 
             // changelogPicture
             // 
