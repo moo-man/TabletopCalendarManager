@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 14 for Windows Desktop
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarptosCalendarManager", "HarptosCalendarManager\HarptosCalendarManager.csproj", "{465E5A23-A0B8-43F0-8B2E-30250ABEAA25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarManager", "CalendarManager\CalendarManager.csproj", "{49DC5B92-5E33-4397-90A1-1F9D36C31496}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{465E5A23-A0B8-43F0-8B2E-30250ABEAA25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{465E5A23-A0B8-43F0-8B2E-30250ABEAA25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{465E5A23-A0B8-43F0-8B2E-30250ABEAA25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49DC5B92-5E33-4397-90A1-1F9D36C31496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49DC5B92-5E33-4397-90A1-1F9D36C31496}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49DC5B92-5E33-4397-90A1-1F9D36C31496}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49DC5B92-5E33-4397-90A1-1F9D36C31496}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA818B9F-2E93-4713-A2EE-816D373E9C3F}
 	EndGlobalSection
 EndGlobal

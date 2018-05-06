@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{49DC5B92-5E33-4397-90A1-1F9D36C31496}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CalendarManager</RootNamespace>
+    <AssemblyName>CalendarManager</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Icons\HarptosIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Source\AddTimerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\AddTimerForm.Designer.cs">
+      <DependentUpon>AddTimerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Calendar.cs" />
+    <Compile Include="Source\CalendarMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\CalendarMenu.Designer.cs">
+      <DependentUpon>CalendarMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\ChangelogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\ChangelogForm.Designer.cs">
+      <DependentUpon>ChangelogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\EditNotesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\EditNotesDialog.Designer.cs">
+      <DependentUpon>EditNotesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\HelpBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\HelpBox.Designer.cs">
+      <DependentUpon>HelpBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\DayTracker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\DayTracker.Designer.cs">
+      <DependentUpon>DayTracker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\CalendarType.cs" />
+    <Compile Include="Source\ImportCalendarDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\ImportCalendarDialog.Designer.cs">
+      <DependentUpon>ImportCalendarDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\CampaignViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\CampaignViewer.Designer.cs">
+      <DependentUpon>CampaignViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\NewCampaignDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\NewCampaignDialog.Designer.cs">
+      <DependentUpon>NewCampaignDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\NewNoteDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\NewNoteDialog.Designer.cs">
+      <DependentUpon>NewNoteDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\PassedNoteGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\PassedNoteGrid.Designer.cs">
+      <DependentUpon>PassedNoteGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Source\TimeDifference.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\TimeDifference.Designer.cs">
+      <DependentUpon>TimeDifference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Utility.cs" />
+    <EmbeddedResource Include="Source\AddTimerForm.resx">
+      <DependentUpon>AddTimerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\CalendarMenu.resx">
+      <DependentUpon>CalendarMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\ChangelogForm.resx">
+      <DependentUpon>ChangelogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\EditNotesDialog.resx">
+      <DependentUpon>EditNotesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\HelpBox.resx">
+      <DependentUpon>HelpBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\DayTracker.resx">
+      <DependentUpon>DayTracker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\ImportCalendarDialog.resx">
+      <DependentUpon>ImportCalendarDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\CampaignViewer.resx">
+      <DependentUpon>CampaignViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\NewCampaignDialog.resx">
+      <DependentUpon>NewCampaignDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\NewNoteDialog.resx">
+      <DependentUpon>NewNoteDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\PassedNoteGrid.resx">
+      <DependentUpon>PassedNoteGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Resources\Fonts\Minion Pro.ttf" />
+    <None Include="Resources\Fonts\Ozymandias Solid WBW.ttf" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Icons\alarmicon.png" />
+    <Content Include="Resources\Icons\eyeicon.png" />
+    <Content Include="Resources\Moons\First Quarter.png" />
+    <Content Include="Resources\Moons\Full Moon.png" />
+    <Content Include="Resources\Icons\HarptosIcon.ico" />
+    <Content Include="Resources\Moons\Last Quarter.png" />
+    <Content Include="Resources\Moons\New Moon.png" />
+    <EmbeddedResource Include="Newtonsoft.Json.dll" />
+    <Content Include="Resources\Icons\noteicon.png" />
+    <Content Include="Resources\Icons\infoicon.png" />
+    <Content Include="Resources\Icons\save-icon-5404.png" />
+    <Content Include="Resources\Moons\Waning Crescent.png" />
+    <Content Include="Resources\Moons\Waning Gibbous.png" />
+    <Content Include="Resources\Moons\Waxing Crescent.png" />
+    <Content Include="Resources\Moons\Waxing Gibbous.png" />
+    <None Include="Resources\Icons\unrollingscroll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
