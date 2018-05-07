@@ -62,7 +62,8 @@ namespace CalendarManager
         private void dayTrackerButton_Click(object sender, EventArgs e)
         {
             if (currentCalendar.CampaignList.Count == 0 && currentCalendar.GeneralNoteList.Count == 0)
-                currentCalendar = new Calendar(currentCalendar.calendar);
+                currentCalendar = new Calendar();
+
             if (dayTracker == null)
             {
                 dayTracker = new DayTracker(currentCalendar);
@@ -164,7 +165,7 @@ namespace CalendarManager
 
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            mainMenuButton_Click(sender, e);
         }
 
 

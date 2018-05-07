@@ -65,6 +65,8 @@ namespace CalendarManager
                 month.Clear();
                 day.Clear();
                 year.Clear();
+                if (timerToEdit != null)
+                    numDays.Text = CalendarType.daysBetween(currentCalendar.calendar.ToString(), timerToEdit.returnDateString()).ToString();
             }
         }
 
