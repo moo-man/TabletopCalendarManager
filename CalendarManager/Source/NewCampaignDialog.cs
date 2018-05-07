@@ -85,6 +85,12 @@ namespace CalendarManager
                 return;
             }
 
+            if (tagBox.Text == "TIMER")
+            {
+                MessageBox.Show("This tag is not allowed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
 
             if (currentCalendar.CampaignList.Find(x => x.Tag == tagBox.Text) != null && campaignToAdd == null) // added check for 'if editing existing campaign, allow tag if it already exists 
             {                                                                                                  // (without this, to edit a campaign you would need to change the tag)

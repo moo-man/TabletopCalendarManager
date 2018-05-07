@@ -10,7 +10,6 @@ namespace HarptosCalendarManager
     public enum moonPhase { full, waningGib, lastQuarter, waningCresc, newMoon, waxingCrsec, firstQuarter, waxingGib };
     public class HarptosCalendar
     {
-
         [Newtonsoft.Json.JsonProperty]
         int day;
         [Newtonsoft.Json.JsonProperty]
@@ -301,7 +300,7 @@ namespace HarptosCalendarManager
                     case 7:
                         if (year % 4 == 0)
                         {
-                            day = 32;   
+                            day = 32;
                             isHoliday = true;
                             holidays[0] = true;
                         }
@@ -592,6 +591,78 @@ namespace HarptosCalendarManager
         }
 
         /// <summary>
+        /// Reverse ReturnGivenDate.
+        /// Give (monthName) (dayNumber) (yearNumber)
+        /// Returns mmddyyyy
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static string ReturnGivenDateFromName(string date)
+        {
+            string month = null, day = null, year = null;
+            try
+            {
+                string[] splitArray = date.Split(' ');
+
+                if (splitArray.Length == 3)
+                {
+
+                    for (int i = 1; i < monthNames.Length; i++)
+                    {
+                        if (splitArray[0].Equals(monthNames[i]))
+                        {
+                            month = HarptosCalendar.enforceMonthFormat(i.ToString());
+                        }
+
+                    }
+
+                    year = HarptosCalendar.enforceYearFormat(splitArray[2]);
+                    day = HarptosCalendar.enforceDayFormat(month, splitArray[1], year);
+                }
+                else if (splitArray.Length == 2) // holiday (except feast of the moon, else if below this for that case)
+                {
+                    switch (splitArray[0])
+                    {
+                        case "Shieldmeet":
+                            month = "07";
+                            day = "32";
+                            break;
+                        case "Midwinter":
+                            month = "01";
+                            day = "31";
+                            break;
+                        case "Greengrass":
+                            month = "04";
+                            day = "31";
+                            break;
+                        case "Midsummer":
+                            month = "07";
+                            day = "31";
+                            break;
+                        case "Highharvestide":
+                            month = "09";
+                            day = "31";
+                            break;
+                    }
+                    year = HarptosCalendar.enforceYearFormat(splitArray[1]);
+                }
+                // The fact that feast of the moon is multiple words screws up the above method, so hard coded else if for it
+                else if (splitArray.Contains("Feast") && splitArray.Contains("of") && splitArray.Contains("the") && splitArray.Contains("Moon"))
+                {
+                    month = "11";
+                    day = "31";
+                    year = HarptosCalendar.enforceYearFormat(splitArray[4]);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return month + day + year;
+        }
+
+
+        /// <summary>
         /// Returns current date as (dayNumber)st/rd/th of (monthName) (yearNumber) and holiday, if present
         /// </summary>
         /// <returns></returns>
@@ -724,7 +795,7 @@ namespace HarptosCalendarManager
                 case moonPhase.lastQuarter:
                     return "Last Quarter";
                 case moonPhase.waningCresc:
-                    return "Waning Crescent" ;
+                    return "Waning Crescent";
                 case moonPhase.newMoon:
                     return "New Moon";
                 case moonPhase.waxingCrsec:
@@ -891,15 +962,15 @@ namespace HarptosCalendarManager
         }
 
         /// <summary>
-        /// Determines whcih date is farthest in time
+        /// Determines whcih date is farthest in time.
+        /// returns 1 if date 1 happened later than date 2,
+        ///         0 if same,
+        ///        -1 if date 2 happened later than date 1.
+        ///        
         /// </summary>
         /// <param name="date1"></param>
         /// <param name="date2"></param>
-        /// <returns>
-        ///         returns 1 if date 1 happened more recently than date 2
-        ///         0 if same
-        ///        -1 if date 2 happened more recently than date 1
-        /// </returns>
+        /// <returns></returns>
         public static int FarthestInTime(string date1, string date2)
         {
             int year1 = Int32.Parse(date1.Substring(4, 4));
@@ -931,6 +1002,17 @@ namespace HarptosCalendarManager
             }
 
         }
+
+        /// <summary>
+        /// Returns true if testDate is between date1 and date2
+        /// </summary>
+        /// <param name="testDate"></param>
+        /// <param name="date1"></param>
+        /// <param name="date2"></param>
+        /// <returns></returns>
+        // public static bool dateBetween(string testDate, string date1, string date2)
+        //{
+        // }
 
         /// <summary>
         /// Formats current date as MMDDYYYY
@@ -1090,7 +1172,7 @@ namespace HarptosCalendarManager
         {
             moonCounter--;
             if (moonCounter < 0)
-                moonCounter = moonPhases.Length-1;
+                moonCounter = moonPhases.Length - 1;
         }
 
         /// <summary>
@@ -1141,29 +1223,29 @@ namespace HarptosCalendarManager
                 switch (m)
                 {
                     case 1:
-                        return d-1;
+                        return d - 1;
                     case 2:
-                        return 31 + d-1;
+                        return 31 + d - 1;
                     case 3:
-                        return 61 + d-1;
+                        return 61 + d - 1;
                     case 4:
-                        return 91 + d-1;
+                        return 91 + d - 1;
                     case 5:
-                        return 122 + d-1;
+                        return 122 + d - 1;
                     case 6:
-                        return 152 + d-1;
+                        return 152 + d - 1;
                     case 7:
-                        return 182 + d-1;
+                        return 182 + d - 1;
                     case 8:
-                        return 214 + d-1;
+                        return 214 + d - 1;
                     case 9:
-                        return 244 + d-1;
+                        return 244 + d - 1;
                     case 10:
-                        return 275 + d-1;
+                        return 275 + d - 1;
                     case 11:
-                        return 305 + d-1;
+                        return 305 + d - 1;
                     case 12:
-                        return 336 + d-1;
+                        return 336 + d - 1;
                 }
             }
             else
@@ -1171,29 +1253,29 @@ namespace HarptosCalendarManager
                 switch (m)
                 {
                     case 1:
-                        return d-1;
+                        return d - 1;
                     case 2:
-                        return 31 + d-1;
+                        return 31 + d - 1;
                     case 3:
-                        return 61 + d-1;
+                        return 61 + d - 1;
                     case 4:
-                        return 91 + d-1;
+                        return 91 + d - 1;
                     case 5:
-                        return 122 + d-1;
+                        return 122 + d - 1;
                     case 6:
-                        return 152 + d-1;
+                        return 152 + d - 1;
                     case 7:
-                        return 182 + d-1;
+                        return 182 + d - 1;
                     case 8:
-                        return 213 + d-1;
+                        return 213 + d - 1;
                     case 9:
-                        return 243 + d-1;
+                        return 243 + d - 1;
                     case 10:
-                        return 274 + d-1;
+                        return 274 + d - 1;
                     case 11:
-                        return 304 + d-1;
+                        return 304 + d - 1;
                     case 12:
-                        return 335 + d-1;
+                        return 335 + d - 1;
                 }
             }
             return -1;
@@ -1238,7 +1320,7 @@ namespace HarptosCalendarManager
                         }
                         d = 0;
                     }
-                } while (numDays >= daysInMonth(m,y));
+                } while (numDays >= daysInMonth(m, y));
                 // if numdays is 0, means the date landed at the very end of the month, assign d to numDays unless it's 0
                 d = numDays != 0 ? numDays : daysInMonth(m, y) - d;
             }
@@ -1287,6 +1369,7 @@ namespace HarptosCalendarManager
         /// <returns>days between the input date</returns>
         public static int daysBetween(int beginMonth, int beginDay, int beginYear, int toMonth, int toDay, int toYear)
         {
+            // TODO: should produce same result even if begin is later than end date
 
             // This is pretty gross and i don't like to think about it, neither should you
 

@@ -65,4 +65,8 @@ namespace HarptosCalendarManager
             GoToDate_clicked(currentDate.Text.Replace("/", ""));
         }
     }
+    public class GoToEventArgs : EventArgs
+    {
+        public string date { get; set; }
+    }
 }

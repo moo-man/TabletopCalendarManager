@@ -845,12 +845,5 @@ namespace HarptosCalendarManager
         {
             Utility.SaveAs(currentCalendar);
         }
-
-
-    }
-
-    public class GoToEventArgs : EventArgs
-    {
-        public string date { get; set; }
     }
 }

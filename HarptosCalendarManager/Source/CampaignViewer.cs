@@ -14,13 +14,25 @@ namespace HarptosCalendarManager
     {
         Calendar currentCalendar;
         List<string> expandedNodes;
-
+        TimeDifference timeDiffTool;
+        bool measuring;
         public CampaignViewer(Calendar cal)
         {
             InitializeComponent();
             currentCalendar = cal;
             activateToolTip.SetToolTip(makeActiveButton, "Activate a campaign to use it in the Day Tracker");
             campaignTree.ContextMenuStrip = campaignContextMenu;
+            timeDiffTool = new TimeDifference();
+            measuring = false;
+            timeDiffTool.VisibleChanged += CheckIfMeasuring;
+        }
+
+        private void CheckIfMeasuring(object sender, EventArgs e)
+        {
+            if (timeDiffTool.Visible)
+                measuring = true;
+            else
+                measuring = false;
         }
 
         public void UpdateTree()
@@ -43,10 +55,10 @@ namespace HarptosCalendarManager
             if (currentCalendar.numOfCampaigns() == 0)
                 campaignTree.Nodes.Add(new TreeNode("No Campaigns"));
 
-            
+
             foreach (Campaign c in currentCalendar.CampaignList)
             {
-                campaignTree.Nodes.Add(new TreeNode(c.Name + " (" + c.Tag + ")" ));
+                campaignTree.Nodes.Add(new TreeNode(c.Name + " (" + c.Tag + ")"));
                 int notesCount = 0;
                 foreach (Note n in c.notes)
                     AddNoteToTree(n, campaignCount, ref notesCount);
@@ -135,7 +147,7 @@ namespace HarptosCalendarManager
             }
             return null;
         }
-        
+
         private void AddCampaignButton_Click(object sender, EventArgs e)
         {
             NewCampaignDialog newCampaign = new NewCampaignDialog(currentCalendar, campaignTree, this);
@@ -172,7 +184,7 @@ namespace HarptosCalendarManager
             UpdateTree();
         }
 
-       
+
         public Campaign returnSelectedCampaign()
         {
             if (campaignTree.SelectedNode == null)
@@ -196,7 +208,7 @@ namespace HarptosCalendarManager
         {
             // Loop starts at the end of the string, so parentheses in the campaign name (for whatever reason)
             // doesn't affect the parsing
-            for (int i = nameAndTag.Length-1; i >= 0; i--)
+            for (int i = nameAndTag.Length - 1; i >= 0; i--)
             {
                 if (nameAndTag.ElementAt(i) == '(')
                     return nameAndTag.Substring(0, i - 1);
@@ -236,7 +248,7 @@ namespace HarptosCalendarManager
                 "Are you sure you wish to end this campaign?\n\n" +
                 "Ending a campaign will turn the \"Current Date\" note to an \"Ended\" note\n" +
                 "and this campaign can't be used in the Day Tracker.\n\n" +
-                "This can be reversed by activating the campaign again.", 
+                "This can be reversed by activating the campaign again.",
                 "End Campaign", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
                 if (currentCalendar.activeCampaign == campaignToEnd)
@@ -249,7 +261,7 @@ namespace HarptosCalendarManager
 
         private void CampaignViewer_Enter(object sender, EventArgs e)
         {
-           // UpdateCampaigns();
+            // UpdateCampaigns();
         }
 
         private void CampaignViewer_Activated(object sender, EventArgs e)
@@ -334,7 +346,7 @@ namespace HarptosCalendarManager
             if (campaignTree.SelectedNode.Parent.Parent.Text == "General Notes")
                 type = noteType.generalNote;
             else
-                type = noteType.note ;
+                type = noteType.note;
 
             Note noteToDelete = currentCalendar.findNote(campaignTree.SelectedNode.Text, type);
             if (Calendar.CanEditOrDelete(noteToDelete))
@@ -356,6 +368,27 @@ namespace HarptosCalendarManager
             campaignTree.SelectedNode = campaignTree.GetNodeAt(e.X, e.Y);
             if (e.Button == MouseButtons.Right)
                 DetermineTreeContextMenu(campaignTree.SelectedNode);
+
+            if (measuring && campaignTree.SelectedNode != null)
+            {
+                switch (campaignTree.SelectedNode.Level)
+                {
+                    case 0: // Take the name of the selected node (which is the campaign name), find the current date of that campaign
+                        timeDiffTool.GiveDate(currentCalendar.CampaignList.Find(x => x.Name.Equals(parseCampaignName(campaignTree.SelectedNode.Text))).CurrentDate);
+                        break;
+                    case 1: //
+                        timeDiffTool.GiveDate(HarptosCalendar.ReturnGivenDateFromName(campaignTree.SelectedNode.Text));
+                        break;
+                    case 2:
+                        timeDiffTool.GiveDate(
+                            currentCalendar.CampaignList.Find(
+                                x => x.Name.Equals(
+                                    parseCampaignName( // take the node's parent's parent, which is the campaign name. Find the note in that campaign, give date to timedifftool
+                                        campaignTree.SelectedNode.Parent.Parent.Text))).findNote(campaignTree.SelectedNode.Text).Date);
+                        break;
+                }
+
+            }
         }
 
         private void DetermineTreeContextMenu(TreeNode selectedNode)
@@ -426,6 +459,11 @@ namespace HarptosCalendarManager
             }
             else
                 campaignTree.CollapseAll();
+        }
+
+        private void timeDiffButton_Click(object sender, EventArgs e)
+        {
+            timeDiffTool.Show();
         }
     }
 }

@@ -56,6 +56,7 @@
             this.activateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expandAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.collapseALlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timeDiffButton = new System.Windows.Forms.Button();
             this.campaignContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -188,7 +189,7 @@
             this.expandAllToolStripMenuItem,
             this.collapseALlToolStripMenuItem});
             this.campaignContextMenu.Name = "campaignContextMenu";
-            this.campaignContextMenu.Size = new System.Drawing.Size(168, 136);
+            this.campaignContextMenu.Size = new System.Drawing.Size(168, 114);
             // 
             // campaignsToolStripMenuItem
             // 
@@ -198,7 +199,7 @@
             this.endToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.campaignsToolStripMenuItem.Name = "campaignsToolStripMenuItem";
-            this.campaignsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.campaignsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.campaignsToolStripMenuItem.Text = "Campaigns";
             // 
             // addToolStripMenuItem
@@ -236,7 +237,7 @@
             this.editToolStripMenuItem1,
             this.deleteToolStripMenuItem1});
             this.notesToolStripMenuItem.Name = "notesToolStripMenuItem";
-            this.notesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.notesToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.notesToolStripMenuItem.Text = "Notes";
             // 
             // addToolStripMenuItem1
@@ -263,7 +264,7 @@
             // activateToolStripMenuItem
             // 
             this.activateToolStripMenuItem.Name = "activateToolStripMenuItem";
-            this.activateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.activateToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.activateToolStripMenuItem.Text = "Activate";
             this.activateToolStripMenuItem.Click += new System.EventHandler(this.activateToolStripMenuItem_Click);
             // 
@@ -281,11 +282,22 @@
             this.collapseALlToolStripMenuItem.Text = "Collapse Children";
             this.collapseALlToolStripMenuItem.Click += new System.EventHandler(this.collapseALlToolStripMenuItem_Click);
             // 
+            // timeDiffButton
+            // 
+            this.timeDiffButton.Location = new System.Drawing.Point(372, 316);
+            this.timeDiffButton.Name = "timeDiffButton";
+            this.timeDiffButton.Size = new System.Drawing.Size(64, 35);
+            this.timeDiffButton.TabIndex = 13;
+            this.timeDiffButton.Text = "Time Difference";
+            this.timeDiffButton.UseVisualStyleBackColor = true;
+            this.timeDiffButton.Click += new System.EventHandler(this.timeDiffButton_Click);
+            // 
             // CampaignViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(458, 420);
+            this.Controls.Add(this.timeDiffButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.editNoteButton);
             this.Controls.Add(this.deleteNoteButton);
@@ -339,5 +351,6 @@
         private System.Windows.Forms.ToolStripMenuItem activateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem expandAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem collapseALlToolStripMenuItem;
+        private System.Windows.Forms.Button timeDiffButton;
     }
 }

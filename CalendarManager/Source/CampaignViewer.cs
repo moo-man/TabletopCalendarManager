@@ -370,7 +370,7 @@ namespace CalendarManager
             if (e.Button == MouseButtons.Right)
                 DetermineTreeContextMenu(campaignTree.SelectedNode);
 
-            if (measuring)
+            if (measuring && campaignTree.SelectedNode != null) 
             {
                 switch (campaignTree.SelectedNode.Level)
                 {
