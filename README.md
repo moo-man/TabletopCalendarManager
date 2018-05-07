@@ -1,6 +1,8 @@
-# HarptosCalendarManager
-An application to keep track of the passage of time in roleplaying games set in Forgotten Realms
+# TabletopCalendarManager
+Applications used to keep track of the passage of time in roleplaying games.
 
-v0.9.4 https://mega.nz/#!gopQgA4a!JoWrf0P0fCwb_GPI7U8wBmnU7i1ZzQp3_EfsHOyQ4AY
+HarptosCalendarManager (For use in the Forgotten Realms)
+https://mega.nz/#!xhwEXCjT!nBvxNPdKPZnW7sL8r_wdVs2khjDleR055HAo56m9xlE
 
-v0.9.3 (old) https://mega.nz/#!M4AXkD4T!eqb3Puvl_KEFDp1jiX8bGCVt28JHQJBP-09PwE--vKU
+CalendarManager (For use in homebrew settings, create a compatible calendar here https://donjon.bin.sh/fantasy/calendar/)
+https://mega.nz/#!Y5gkibzB!b8imM61oPkmTolwLavtEG3NH3BQGrrTreDNVofYX46k
