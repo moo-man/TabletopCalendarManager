@@ -10,6 +10,7 @@ namespace HarptosCalendarManager
     public enum moonPhase { full, waningGib, lastQuarter, waningCresc, newMoon, waxingCrsec, firstQuarter, waxingGib };
     public class HarptosCalendar
     {
+
         [Newtonsoft.Json.JsonProperty]
         int day;
         [Newtonsoft.Json.JsonProperty]
