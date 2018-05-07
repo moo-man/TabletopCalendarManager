@@ -5,6 +5,7 @@ HarptosCalendarManager (for use in the Forgotten Realms)
 https://mega.nz/#!xhwEXCjT!nBvxNPdKPZnW7sL8r_wdVs2khjDleR055HAo56m9xlE
 
 ImperialCalendarManager (for use in Warhammer Fantasy)
+
 Coming soon!
 
 CalendarManager (for use in homebrew settings, create a compatible calendar at https://donjon.bin.sh/fantasy/calendar/)
