@@ -24,19 +24,13 @@ namespace CalendarManager
         public Calendar()
         {
             activeCampaign = null;
+            calendar = new CalendarType();
             campaignList = new List<Campaign>();
             generalNoteList = new List<Note>();
         }
 
-        public Calendar(CalendarType calendarType) : this()
-        {
-            calendar = calendarType;
-        }
-
         public Calendar(dynamic json) : this()
         {
-            calendar = new CalendarType(json);
-
             foreach (var campaign in json["CampaignList"])
                 AddCampaign(new Campaign(campaign));
 

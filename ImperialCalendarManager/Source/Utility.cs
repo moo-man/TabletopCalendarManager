@@ -45,8 +45,8 @@ namespace CalendarManager
             if (currentFilePath == null || currentFilePath == "") // if new file, open a dialog box
             {
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.Filter = "cal files (*.cal)|*.cal|All files (*.*)|*.*";
-                saveFileDialog1.DefaultExt = "cal";
+                saveFileDialog1.Filter = "WH calendar files (*.whc)|*.whc|All files (*.*)|*.*";
+                saveFileDialog1.DefaultExt = "whc";
                 saveFileDialog1.InitialDirectory = Application.StartupPath;
                 saveFileDialog1.FilterIndex = 0;
                 saveFileDialog1.RestoreDirectory = true;
@@ -147,7 +147,7 @@ namespace CalendarManager
         {
             Calendar loadedCalendar = null;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Calendar files (*.cal)|*.cal|All files (*.*)|*.*";
+            openFileDialog1.Filter = "WH Calendar files (*.whc)|*.whc|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 0;
             openFileDialog1.RestoreDirectory = true;
             openFileDialog1.InitialDirectory = Application.StartupPath;

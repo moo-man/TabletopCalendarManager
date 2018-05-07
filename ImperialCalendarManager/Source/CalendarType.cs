@@ -14,37 +14,37 @@ namespace CalendarManager
 
 
         #region jsonData
-        [JsonProperty]
+
         public string calendarName { get; set; }
 
-        [JsonProperty]
-        static int numDaysInYear;
-        [JsonProperty]
-        static bool celestialEvents;
-        [JsonProperty]
-        static int numMonthsInYear;
-        [JsonProperty]
-        static string[] monthNames;
-        [JsonProperty]
-        static int[] numDaysInMonth;
-        [JsonProperty]
-        static int numDaysInWeek;
-        [JsonProperty]
-        static string[] weekdayNames;
-        [JsonProperty]
-        static int numOfMoons;
-        [JsonProperty]
-        static string[] moonNames;
-        [JsonProperty]
-        static int[] moonCycle;
-        [JsonProperty]
-        static int[] moonShift;
-        [JsonProperty]
-        static List<moonPhase[]> moonPhases;
-        [JsonProperty]
-        static int startYear;
-        [JsonProperty]
-        static int startDay;
+        readonly static int numDaysInYear = 400;
+
+
+        readonly static int numMonthsInYear = 12;
+
+        readonly static string[] monthNames = { null, "Nachexen", "Jahrdrung", "Pflugzeit", "Sigmarzeit", "Sommerzeit", "Vorgeheim", "Nachgeheim", "Erntezeit", "Brauzeit", "Kaldezeit", "Ulriczeit", "Vorhexen" };
+        readonly static string[] altMonthNames = { null, "After-Witching", "Year-Turn", "Ploughtide", "Sigmartide", "Summertide", "Fore-Mystery", "After-Mystery", "Harvest-Tide", "Brewmonth", "Chillmonth", "Ulrictide", "Fore-Witching" };
+
+
+        readonly static int[] numDaysInMonth = {0, 32, 33, 33, 33, 33, 33, 32, 33, 33, 33, 33, 33 };
+
+        readonly static int numDaysInWeek = 8;
+
+        readonly static string[] weekdayNames = {"Wellentag", "Aubentag", "Marktag", "Backertag", "Bezahltag", "Konistag", "Angestag", "Festag"};
+        readonly static string[] altWeekdayNames = { "Workday", "Levyday", "Marketday", "Bakeday", "Taxday", "Kingday", "Startweek", "Holiday" };
+
+
+        readonly static int mann_Cycle = 25;
+        static int morr_Cycle;
+
+        readonly static int mann_Shift = 12;
+        static int morr_Shift;
+
+        static moonPhase[] mann_Phases;
+
+        readonly static int startYear = 2522;
+
+        readonly static int startDay = 0;
         #endregion
 
         #region Current data
@@ -52,7 +52,7 @@ namespace CalendarManager
         int day;
         int year;
         int dayOfWeek;
-        int[] moonCounters;
+        int mannCounter;
         #endregion
 
         #region Accessors
@@ -106,25 +106,15 @@ namespace CalendarManager
         #endregion
 
 
-        public CalendarType(string json, string name)
+        public CalendarType()
         {
-            try
-            {
-                LoadFromDonjonJSON(JsonConvert.DeserializeObject(json));
-                createMoonPhaseArray();
-                setDate(1, 1, 0);
-            }
-            catch
-            {
-            }
-
-            calendarName = name;
+            setDate(1, 1, 2522);
         }
 
         public CalendarType(System.IO.StreamReader sr)
         {
             //loadData(sr);
-            setDate(1, 1, 0);
+            setDate(1, 1, 2522);
         }
 
         /// <summary>
@@ -133,251 +123,36 @@ namespace CalendarManager
         /// <param name="json"></param>
         public CalendarType(dynamic json)
         {
-            LoadFromJSON(json);
             createMoonPhaseArray();
-            setDate(1, 1, 0);
+            setDate(1, 1, 2522);
         }
-
-
-        public void saveData(System.IO.StreamWriter writer)
-        {
-            writer.WriteLine(calendarName);
-            writer.WriteLine(numDaysInYear);
-            writer.WriteLine(celestialEvents);
-            writer.WriteLine(numMonthsInYear);
-            for (int i = 0; i < numMonthsInYear; i++)
-            {
-                writer.WriteLine(monthNames[i+1]);
-                writer.WriteLine(numDaysInMonth[i+1]);
-            }
-            writer.WriteLine(numDaysInWeek);
-            for (int i = 0; i < numDaysInWeek; i++)
-                writer.WriteLine(weekdayNames[i]);
-            writer.WriteLine(numOfMoons);
-            for (int i = 0; i < numOfMoons; i++)
-            {
-                writer.WriteLine(moonNames[i]);
-                writer.WriteLine(moonCycle[i]);
-                writer.WriteLine(moonShift[i]);
-            }
-            writer.WriteLine(startYear);
-            writer.WriteLine(startDay);
-        }
-
-
-        public void LoadFromJSON(dynamic json)
-        {
-            try
-            {
-                calendarName = json["calendar"]["calendarName"];
-                numDaysInYear = json["calendar"]["numDaysInYear"];
-                celestialEvents = json["calendar"]["celestialEvents"];
-
-                numMonthsInYear = json["calendar"]["numMonthsInYear"];
-
-                monthNames = new string[numMonthsInYear + 1];
-                numDaysInMonth = new int[numMonthsInYear + 1];
-                for (int i = 0; i < numMonthsInYear; i++)
-                {
-                    monthNames[i + 1] = json["calendar"]["monthNames"][i+1];
-
-                    try
-                    {
-                        numDaysInMonth[i + 1] = json["calendar"]["numDaysInMonth"][i+1];
-                    }
-                    catch
-                    {
-                        numDaysInMonth[i + 1] = numDaysInYear / numMonthsInYear;
-                    }
-                }
-
-                numDaysInWeek = json["calendar"]["numDaysInWeek"];
-                weekdayNames = new string[numDaysInWeek];
-                if (weekdayNames == null)
-                {
-                    weekdayNames = new string[numDaysInWeek];
-                    for (int i = 0; i < numDaysInWeek; i++)
-                        weekdayNames[i] = null;
-                }
-
-                for (int i = 0; i < numDaysInWeek; i++)
-                    weekdayNames[i] = json["calendar"]["weekdayNames"][i];
-
-                numOfMoons = json["calendar"]["numOfMoons"];
-                moonNames = new string[numOfMoons];
-                moonCycle = new int[numOfMoons];
-                moonShift = new int[numOfMoons];
-                try
-                {
-                    for (int i = 0; i < numOfMoons; i++)
-                    {
-                        moonNames[i] = json["calendar"]["moonNames"][i];
-                        moonCycle[i] = json["calendar"]["moonCycle"][i];
-                        moonShift[i] = json["calendar"]["moonShift"][i];
-                    }
-                }
-                catch
-                {
-                    numOfMoons = 0;
-                    moonNames = new string[numOfMoons];
-                    moonCycle = new int[numOfMoons];
-                    moonShift = new int[numOfMoons];
-                }
-                startYear = json["calendar"]["startYear"];
-                startDay = json["calendar"]["startDay"];
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// Load JSON data FROM DONJON
-        /// </summary>
-        /// <param name="json"></param>
-        public void LoadFromDonjonJSON(dynamic json)
-        {
-            try
-            {
-                numDaysInYear = json["year_len"];
-                celestialEvents = json["events"];
-
-                numMonthsInYear = json["n_months"];
-                monthNames = new string[numMonthsInYear + 1];
-                numDaysInMonth = new int[numMonthsInYear + 1];
-                for (int i = 0; i < numMonthsInYear; i++)
-                {
-                    monthNames[i + 1] = json["months"][i];
-
-                    try
-                    {
-                        numDaysInMonth[i + 1] = json["month_len"][monthNames[i + 1]];
-                    }
-                    catch
-                    {
-                        numDaysInMonth[i + 1] = numDaysInYear / numMonthsInYear;
-                    }
-                }
-
-                numDaysInWeek = json["week_len"];
-                weekdayNames = new string[numDaysInWeek];
-                if (weekdayNames == null)
-                {
-                    weekdayNames = new string[numDaysInWeek];
-                    for (int i = 0; i < numDaysInWeek; i++)
-                        weekdayNames[i] = null;
-                }
-
-                for (int i = 0; i < numDaysInWeek; i++)
-                    weekdayNames[i] = json["weekdays"][i];
-
-                numOfMoons = json["n_moons"];
-                moonNames = new string[numOfMoons];
-                moonCycle = new int[numOfMoons];
-                moonShift = new int[numOfMoons];
-                try
-                {
-                    for (int i = 0; i < numOfMoons; i++)
-                    {
-                        moonNames[i] = json["moons"][i];
-                        moonCycle[i] = json["lunar_cyc"][moonNames[i]];
-                        moonShift[i] = json["lunar_shf"][moonNames[i]];
-                    }
-                }
-                catch
-                {
-                    numOfMoons = 0;
-                    moonNames = new string[numOfMoons];
-                    moonCycle = new int[numOfMoons];
-                    moonShift = new int[numOfMoons];
-                }
-                startYear = json["year"];
-                startDay = json["first_day"];
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.Message);
-            }
-        }
-
-        /*
-        public void loadData(System.IO.StreamReader reader)
-        {
-            calendarName = reader.ReadLine();
-            numDaysInYear = Int32.Parse(reader.ReadLine());
-            celestialEvents = Convert.ToBoolean(reader.ReadLine());
-            numMonthsInYear = Int32.Parse(reader.ReadLine());
-            monthNames = new string[numMonthsInYear+1];
-            numDaysInMonth = new int[numMonthsInYear+1];
-            for (int i = 0; i < numMonthsInYear; i++)
-            {
-                monthNames[i+1] = reader.ReadLine();
-                numDaysInMonth[i+1] = Int32.Parse(reader.ReadLine());
-            }
-
-            numDaysInWeek = Int32.Parse(reader.ReadLine());
-            weekdayNames = new string[numDaysInWeek];
-            for (int i = 0; i < numDaysInWeek; i++)
-                weekdayNames[i] = reader.ReadLine();
-
-            numOfMoons = Int32.Parse(reader.ReadLine());
-            moonNames = new string[numOfMoons];
-            moonCycle = new int[numOfMoons];
-            moonShift = new int[numOfMoons];
-            for (int i = 0; i < numOfMoons; i++)
-            {
-                moonNames[i] = reader.ReadLine();
-                moonCycle[i] = (int)Math.Round(Double.Parse(reader.ReadLine()));
-                moonShift[i] = Int32.Parse(reader.ReadLine());
-            }
-            createMoonPhaseArray();
-            startYear = Int32.Parse(reader.ReadLine());
-            startDay = Int32.Parse(reader.ReadLine());
-        }*/
-
 
         // cycle / 8 = full moon day length (rounded to nearest)
         // waning crescent -> full moon takes 4 days
         private void createMoonPhaseArray()
         {
-            moonPhases = new List<moonPhase[]>(numOfMoons);
-            moonCounters = new int[numOfMoons];
-            for (int i = 0; i < numOfMoons; i++)
+            mann_Phases = new moonPhase[mann_Cycle];
+            mannCounter = 0;
+
+
+            int arrayIndex = 0; // index for adding phases to arrayToAdd
+
+
+            int extraDays = mann_Cycle % 8;                         // If 8 doesn't evenly divide the cycle, there will be extra days for some phases (there are 8 phases)
+            bool[] phasesWithExtraDay = extraDayPlacement(extraDays); // find out which phases might have an extra day length
+
+
+            // Outer loop indexes through each phase, inner loop allocates that phase "cycle/8" times, then adds an extra day if applicable
+            for (int moonPhaseIndex = 0; moonPhaseIndex < 8; moonPhaseIndex++)
             {
-                moonPhase[] arrayToAdd = new moonPhase[moonCycle[i]]; // End result, this array holds the entire cycle of the moon
-                int arrayIndex = 0; // index for adding phases to arrayToAdd
-
-                if (moonCycle[i] >= 8)
+                for (int allocater = 0; allocater < (mann_Cycle / 8); allocater++)
                 {
-                    int extraDays = moonCycle[i] % 8;                         // If 8 doesn't evenly divide the cycle, there will be extra days for some phases (there are 8 phases)
-                    bool[] phasesWithExtraDay = extraDayPlacement(extraDays); // find out which phases might have an extra day length
-
-
-                    // Outer loop indexes through each phase, inner loop allocates that phase "cycle/8" times, then adds an extra day if applicable
-                    for (int moonPhaseIndex = 0; moonPhaseIndex < 8; moonPhaseIndex++)
-                    {
-                        for (int allocater = 0; allocater < (moonCycle[i] / 8); allocater++)
-                        {
-                            arrayToAdd[arrayIndex++] = (moonPhase)moonPhaseIndex;
-                        }
-                        if (phasesWithExtraDay[moonPhaseIndex]) // add extra day
-                            arrayToAdd[arrayIndex++] = (moonPhase)moonPhaseIndex;
-                    }
+                    mann_Phases[arrayIndex++] = (moonPhase)moonPhaseIndex;
                 }
-                else // cycle is less that 8, some phases won't appear
-                {
-                    bool[] usePhase = removedPhases(moonCycle[i]);
-
-
-                    // Outer loop indexes through each phase, inner loop allocates that phase "cycle/8" times, then adds an extra day if applicable
-                    for (int moonPhaseIndex = 0; i < 8 && usePhase[i]; i++)
-                    {
-                        arrayToAdd[arrayIndex++] = (moonPhase)moonPhaseIndex;
-                    }
-                }
-                moonPhases.Add(arrayToAdd);
+                if (phasesWithExtraDay[moonPhaseIndex]) // add extra day
+                    mann_Phases[arrayIndex++] = (moonPhase)moonPhaseIndex;
             }
+            // TODO: CORRECT FOR ACTUAL CALENDAR
         }
 
         /// <summary>
@@ -455,8 +230,13 @@ namespace CalendarManager
                 month++;
                 if (month > numMonthsInYear)
                 {
+                    day = 0; // Hexentag
                     month = 1;
                     year++;
+                }
+                else if (month == 3 || month == 6 || month == 7 || month == 9 || month == 12)
+                {
+                    day = 0;
                 }
             }
             addDayOfWeek();
@@ -502,15 +282,13 @@ namespace CalendarManager
 
         public void addMoonPhase()
         {
-            for (int i = 0; i < moonCounters.Length; i++)
-            {
-                moonCounters[i]++;
-                if (moonCounters[i] >= moonCycle[i])
-                    moonCounters[i] = 0;
-            }
+            mannCounter++;
+            if (mannCounter >= mann_Cycle)
+                mannCounter = 0;
         }
         #endregion
 
+        // ********************************** START HERE
         #region backward in time
         public void subDay()
         {
@@ -571,11 +349,11 @@ namespace CalendarManager
 
         public void subMoonPhase()
         {
-            for (int i = 0; i < moonCounters.Length; i++)
+            for (int i = 0; i < mannCounter.Length; i++)
             {
-                moonCounters[i]--;
-                if (moonCounters[i] < 0)
-                    moonCounters[i] = moonCycle[i] - 1;
+                mannCounter[i]--;
+                if (mannCounter[i] < 0)
+                    mannCounter[i] = moonCycle[i] - 1;
             }
         }
         #endregion
@@ -646,7 +424,7 @@ namespace CalendarManager
             daysSinceFirstDay += determineDayOfYear() - 1;
 
             for (int i = 0; i < numOfMoons; i++)
-              moonCounters[i] = Math.Abs(daysSinceFirstDay - moonShift[i]) % moonCycle[i];
+              mannCounter[i] = Math.Abs(daysSinceFirstDay - moonShift[i]) % moonCycle[i];
 
         }
         #endregion
@@ -701,7 +479,7 @@ namespace CalendarManager
             string[] returnString = new string[numOfMoons];
             for (int i = 0; i < numOfMoons; i++)
             {
-                switch (moonPhases[i][moonCounters[i]])
+                switch (moonPhases[i][mannCounter[i]])
                 {
                     case moonPhase.full:
                         returnString[i] =  "Full Moon";
