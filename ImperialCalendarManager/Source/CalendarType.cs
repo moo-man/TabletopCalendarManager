@@ -288,20 +288,39 @@ namespace CalendarManager
         }
         #endregion
 
-        // ********************************** START HERE
         #region backward in time
         public void subDay()
         {
             day--;
             if (day < 1)
             {
-                month--;
-                if (month < 1)
+                if (month == 1 || month == 3 || month == 6 || month == 7 || month == 9 || month == 12)
                 {
-                    year--;
-                    month = numMonthsInYear;
+                    if (day < 0)
+                    {
+                        month--;
+                        if (month < 1)
+                        {
+                            year--;
+                            month = numMonthsInYear;
+                            day = numDaysInMonth[month];
+                        }
+                        day = numDaysInMonth[month];
+                    }
                 }
-                day = numDaysInMonth[month];
+                else
+                {
+                    month--;
+                    if (month < 1)
+                    {
+                        year--;
+                        month = numMonthsInYear;
+                        day = numDaysInMonth[month];
+                    }
+                    day = numDaysInMonth[month];
+                }
+
+
             }
             subDayOfWeek();
             subMoonPhase();
@@ -349,12 +368,9 @@ namespace CalendarManager
 
         public void subMoonPhase()
         {
-            for (int i = 0; i < mannCounter.Length; i++)
-            {
-                mannCounter[i]--;
-                if (mannCounter[i] < 0)
-                    mannCounter[i] = moonCycle[i] - 1;
-            }
+            mannCounter--;
+            if (mannCounter < 0)
+                mannCounter = mann_Cycle - 1;
         }
         #endregion
 
@@ -365,6 +381,7 @@ namespace CalendarManager
         {
             setDate(Int32.Parse(dateString.Substring(0, 2)), Int32.Parse(dateString.Substring(2, 2)), Int32.Parse(dateString.Substring(4, 4)));
         }
+        // ********************************** START HERE
 
         public void setDate(int m, int d, int y)
         {
