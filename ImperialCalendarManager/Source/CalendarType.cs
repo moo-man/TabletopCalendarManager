@@ -22,6 +22,9 @@ namespace CalendarManager
 
         readonly static int numMonthsInYear = 12;
 
+        readonly static string[] intercalaryHolidays = { null, "Hexentag", null, "Mitterfruhl", null, null, "Sonnstill", "Geheimnistag", null, "Mittherbst", null, null, "Monstille" };
+        readonly static string[] intercalaryAltHolidays = { null, "Witching Day", null, "Start Growth", null, null, "Sun Still", "Day of Mystery", null, "Less Growth", null, null, "World Still" };
+
         readonly static string[] monthNames = { null, "Nachexen", "Jahrdrung", "Pflugzeit", "Sigmarzeit", "Sommerzeit", "Vorgeheim", "Nachgeheim", "Erntezeit", "Brauzeit", "Kaldezeit", "Ulriczeit", "Vorhexen" };
         readonly static string[] altMonthNames = { null, "After-Witching", "Year-Turn", "Ploughtide", "Sigmartide", "Summertide", "Fore-Mystery", "After-Mystery", "Harvest-Tide", "Brewmonth", "Chillmonth", "Ulrictide", "Fore-Witching" };
 
@@ -233,10 +236,14 @@ namespace CalendarManager
                     day = 0; // Hexentag
                     month = 1;
                     year++;
+                    subDayOfWeek(); // Intercalary days are not considered a weekday, cancel out the addDayofWeek() below
+                                    // Jank implementation but whatever
                 }
                 else if (month == 3 || month == 6 || month == 7 || month == 9 || month == 12)
                 {
                     day = 0;
+                    subDayOfWeek();// Intercalary days are not considered a weekday
+                                   // Jank implementation but whatever
                 }
             }
             addDayOfWeek();
@@ -307,6 +314,9 @@ namespace CalendarManager
                         }
                         day = numDaysInMonth[month];
                     }
+                    else // if day == 0 and is intercalary day
+                        addDayOfWeek(); // jank but whatever, offset subdayofweek(), intercalary days are not considered a weekday
+
                 }
                 else
                 {
@@ -394,10 +404,20 @@ namespace CalendarManager
 
             if (d > numDaysInMonth[month])
                 d = numDaysInMonth[month];
-            else if (d <= 0)
-                d = 1;
 
-            day = d;
+            else if (d < 1)
+            {
+                if (month == 1 || month == 3 || month == 6 || month == 7 || month == 9 || month == 12)
+                {
+                    day = 0;
+                }
+                else
+                {
+                    day = 1;
+                }
+            }
+            else
+                day = d;
 
             if (y < 0)
                 y = 1;
@@ -422,8 +442,69 @@ namespace CalendarManager
 
         public static int determineDayOfWeek(int m, int d, int y)
         {
-            int totalDaysPassedSinceStart = Math.Abs(y - startYear) * numDaysInYear + (determineDayOfYear(m, d, y) - 1);
-            int modResult = (totalDaysPassedSinceStart) % (numDaysInWeek);
+            int yearDifference = Math.Abs(y - startYear);
+            int daysToSubtract = yearDifference * 6;
+
+            // Since intercalary days are not considered weekdays, we have to subtract however have passed since the start date and the input date
+            switch (m)
+            {
+                case 1:
+                    if (d > 0)
+                        daysToSubtract++;
+                    break;
+                case 2:
+                    daysToSubtract++;
+                    break;
+                case 3:
+                    if (d > 0)
+                        daysToSubtract += 2;
+                    else
+                        daysToSubtract++;
+                    break;
+                case 4:
+                    daysToSubtract += 2;
+                    break;
+                case 5:
+                    daysToSubtract += 2;
+
+                    break;
+                case 6:
+                    if (d > 0)
+                        daysToSubtract += 3;
+                    else
+                        daysToSubtract += 2;
+                    break;
+                case 7:
+                    if (d > 0)
+                        daysToSubtract += 4;
+                    else
+                        daysToSubtract += 3;
+                    break;
+                case 8:
+                    daysToSubtract += 4;
+                    break;
+                case 9:
+                    if (d > 0)
+                        daysToSubtract += 5;
+                    else
+                        daysToSubtract += 4;
+                    break;
+                case 10:
+                    daysToSubtract += 5;
+                    break;
+                case 11:
+                    daysToSubtract += 5;
+                    break;
+                case 12:
+                    if (d > 0)
+                        daysToSubtract += 6;
+                    else
+                        daysToSubtract += 5;
+                    break;
+            }
+
+            int totalDaysPassedSinceStart = yearDifference * numDaysInYear + (determineDayOfYear(m, d, y) - 1);
+            int modResult = (totalDaysPassedSinceStart - daysToSubtract) % (numDaysInWeek);
             return ((modResult + startDay) % (numDaysInWeek));
         }
 
@@ -440,8 +521,7 @@ namespace CalendarManager
 
             daysSinceFirstDay += determineDayOfYear() - 1;
 
-            for (int i = 0; i < numOfMoons; i++)
-              mannCounter[i] = Math.Abs(daysSinceFirstDay - moonShift[i]) % moonCycle[i];
+              mannCounter = Math.Abs(daysSinceFirstDay - mann_Shift) % mann_Cycle;
 
         }
         #endregion
@@ -483,49 +563,43 @@ namespace CalendarManager
         public string returnMoonNames()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (string s in moonNames)
-            {
-                sb.Append(s + "\n\n\n\n");
-            }
 
             return sb.ToString();
         }
 
-        public string[] currentMoonPhase()
+        public string currentMoonPhase()
         {
-            string[] returnString = new string[numOfMoons];
-            for (int i = 0; i < numOfMoons; i++)
+            string returnString = null;
+
+            switch (mann_Phases[mannCounter])
             {
-                switch (moonPhases[i][mannCounter[i]])
-                {
-                    case moonPhase.full:
-                        returnString[i] =  "Full Moon";
-                        break;
-                    case moonPhase.waningGib:
-                        returnString[i] =  "Waning Gibbous";
-                        break;
-                    case moonPhase.lastQuarter:
-                        returnString[i] =  "Last Quarter";
-                        break;
-                    case moonPhase.waningCresc:
-                        returnString[i] =  "Waning Crescent";
-                        break;
-                    case moonPhase.newMoon:
-                        returnString[i] =  "New Moon";
-                        break;
-                    case moonPhase.waxingCrsec:
-                        returnString[i] =  "Waxing Crescent";
-                        break;
-                    case moonPhase.firstQuarter:
-                        returnString[i] =  "First Quarter";
-                        break;
-                    case moonPhase.waxingGib:
-                        returnString[i] =  "Waxing Gibbous";
-                        break;
-                    default:
-                        returnString[i] = null;
-                        break;
-                }
+                case moonPhase.full:
+                    returnString =  "Full Moon";
+                    break;
+                case moonPhase.waningGib:
+                    returnString =  "Waning Gibbous";
+                    break;
+                case moonPhase.lastQuarter:
+                    returnString =  "Last Quarter";
+                    break;
+                case moonPhase.waningCresc:
+                    returnString =  "Waning Crescent";
+                    break;
+                case moonPhase.newMoon:
+                    returnString =  "New Moon";
+                    break;
+                case moonPhase.waxingCrsec:
+                    returnString =  "Waxing Crescent";
+                    break;
+                case moonPhase.firstQuarter:
+                    returnString =  "First Quarter";
+                    break;
+                case moonPhase.waxingGib:
+                    returnString =  "Waxing Gibbous";
+                    break;
+                default:
+                    returnString = null;
+                    break;
             }
             return returnString;
         }
@@ -533,12 +607,18 @@ namespace CalendarManager
         public static string returnGivenDateWithWeekday(int m, int d, int y)
         {
             StringBuilder dateString = new StringBuilder();
-            if (m > numMonthsInYear || m <= 0 || d > numDaysInMonth[m] || d <= 0)
+            if (m > numMonthsInYear || m <= 0 || d > numDaysInMonth[m] || d < 0)
                 return null;
-
-            dateString.Append(weekdayNames[determineDayOfWeek(m, d, y)]);
-            dateString.Append(", " + monthNames[m] + " " + d);
-            dateString.Append(", " + y);
+            else if (d == 0 && (m == 1 || m == 3 || m == 6 || m == 7 || m == 9 || m == 12))
+            {
+                dateString.Append(intercalaryHolidays[m] + " " + y);
+            }
+            else
+            {
+                dateString.Append(weekdayNames[determineDayOfWeek(m, d, y)]);
+                dateString.Append(", " + monthNames[m] + " " + d);
+                dateString.Append(", " + y);
+            }
             return dateString.ToString();
         }
 
@@ -553,6 +633,7 @@ namespace CalendarManager
                 return null;
         }
 
+        // TODO: organize date formats
         public string returnConciseCurrentDate()
         {
             string dateWithWeekday = returnGivenDateWithWeekday(month, day, year);
