@@ -30,6 +30,7 @@ namespace CalendarManager
 
 
         readonly static int[] numDaysInMonth = {0, 32, 33, 33, 33, 33, 33, 32, 33, 33, 33, 33, 33 };
+        readonly static int[] numDaysInMonthIncludingHolidays = { 0, 33, 33, 34, 33, 33, 34, 33, 33, 34, 33, 33, 34 };
 
         readonly static int numDaysInWeek = 8;
 
@@ -687,29 +688,21 @@ namespace CalendarManager
             {
                 string[] splitArray = date.Split(' ');
 
-                // If the length is not 3, that means the month name has a space in it
-                // Copy the array, extract the month name into a string builder
-                // Redo the array at size 3, assemble it as [monthName][day][year]
-                if (splitArray.Length != 3)
+                // If the length is 2, intercalary holiday
+                if (splitArray.Length == 2)
                 {
-                    string[] tempArray = new string[splitArray.Length];
-                    splitArray.CopyTo(tempArray, 0);
-                    StringBuilder monthName = new StringBuilder();
-                    for (int i = 0; i < splitArray.Length - 2; i++)
+                    for (int i = 0; i < numMonthsInYear; i++)
                     {
-                        monthName.Append(splitArray[i] + " ");
+                        if (intercalaryHolidays[i] == splitArray[i])
+                        {
+                            month = i.ToString("00");
+                            year = splitArray[i + 1];
+                        }
                     }
-
-                    splitArray = new string[3];
-                    splitArray[0] = monthName.ToString();
-                    splitArray[1] = tempArray[tempArray.Length - 2];
-                    splitArray[2] = tempArray[tempArray.Length - 1];
-
                 }
 
                 if (splitArray.Length == 3)
                 {
-
                     for (int i = 1; i < monthNames.Length; i++)
                     {
                         if (splitArray[0].Equals(monthNames[i]))
@@ -718,7 +711,6 @@ namespace CalendarManager
                         }
 
                     }
-
                     year = enforceYearFormat(splitArray[2]);
                     day = enforceDayFormat(month, splitArray[1], year);
                 }
@@ -777,6 +769,13 @@ namespace CalendarManager
             return yearsAgo(Int32.Parse(inputDate.Substring(4, 4)));
         }
 
+        // returns true if this month begins with an intercalary day (month starts at day 0)
+        public static bool isMonthWithHoliday(int m)
+        {
+            return (m == 1 || m == 3 || m == 6 || m == 7 || m == 9 || m == 12);
+
+        }
+
         public static int FarthestInTime(string date1, string date2)
         {
             int year1 = Int32.Parse(date1.Substring(4, 4));
@@ -824,21 +823,10 @@ namespace CalendarManager
         public override string ToString()
         {
             StringBuilder stringDate = new StringBuilder();
-            if (month < 10)
-                stringDate.Append("0" + month);
-            else
-                stringDate.Append(month);
 
-            if (day < 10)
-                stringDate.Append("0" + day);
-            else
-                stringDate.Append(day);
-
-            string yString = year.ToString();
-            while (yString.Length < 4)
-                yString = yString.Insert(0, "0");
-
-            stringDate.Append(yString);
+            stringDate.Append(month.ToString("00"));
+            stringDate.Append(day.ToString("00"));
+            stringDate.Append(year.ToString("0000"));
 
             return stringDate.ToString();
         }
@@ -930,13 +918,22 @@ namespace CalendarManager
             return testYear;
         }
 
+        /// <summary>
+        /// Verifies that given day is possible in given month
+        /// includes day = 0 for intercalary holidays
+        /// </summary>
+        /// <param name="m"></param>
+        /// <param name="d"></param>
+        /// <returns></returns>
         public static int verifyDay(int m, int d)
         {
-            if (m > numMonthsInYear || m < 1)
-                return 1;
-            if (d <= numDaysInMonth[m])
+            if (m > numMonthsInYear || m < 1) // not what month is so just return d
                 return d;
-            else if (d <= 0)
+            if (d > 0 && d <= numDaysInMonth[m]) // if between 1 and numdays in month
+                return d;
+            if (d <= 0 && (m == 1 || m == 3 || m == 6 || m == 7 || m == 9 || m == 12)) // If day == 0 possible intercalary holiday, check for that
+                return 0;
+            else if (d <= 0)                                                           // If not, return 1
                 return 1;
             else
                 return numDaysInMonth[m];
@@ -986,7 +983,11 @@ namespace CalendarManager
             {
                 do
                 {
-                    numDays -= numDaysInMonth[startMonth] - startDay;
+                    if (startDay == 0)
+                        numDays -= numDaysInMonthIncludingHolidays[startMonth];
+                    else
+                        numDays -= numDaysInMonth[startMonth] - startDay;
+
                     if (numDays > 0)
                     {
                         startMonth++;
@@ -1049,11 +1050,15 @@ namespace CalendarManager
             // This is pretty gross and i don't like to think about it, neither should you
 
             int numDays = 0; // Counter that's returned
+            if (beginDay != 0 && isMonthWithHoliday(beginMonth))
+                numDays--;
+
+            // If dates have the same year but not same month
             if (beginMonth != toMonth && toYear == beginYear)
             {
                 while (toMonth != beginMonth)
                 {
-                    numDays += numDaysInMonth[beginMonth] - beginDay;
+                    numDays += numDaysInMonthIncludingHolidays[beginMonth] - beginDay;
                     beginDay = 0;
                     if (++beginMonth > numMonthsInYear)
                     {

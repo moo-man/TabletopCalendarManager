@@ -948,21 +948,10 @@ namespace CalendarManager
         public override string ToString()
         {
             StringBuilder stringDate = new StringBuilder();
-            if (month < 10)
-                stringDate.Append("0" + month);
-            else
-                stringDate.Append(month);
 
-            if (day < 10)
-                stringDate.Append("0" + day);
-            else
-                stringDate.Append(day);
-
-            string yString = year.ToString();
-            while (yString.Length < 4)
-                yString = yString.Insert(0, "0");
-
-            stringDate.Append(yString);
+            stringDate.Append(month.ToString("00"));
+            stringDate.Append(day.ToString("00"));
+            stringDate.Append(year.ToString("0000"));
 
             return stringDate.ToString();
         }
@@ -1057,10 +1046,10 @@ namespace CalendarManager
         public static int verifyDay(int m, int d)
         {
             if (m > numMonthsInYear || m < 1)
-                return 1;
-            if (d <= numDaysInMonth[m])
                 return d;
-            else if (d <= 0)
+            if (d > 0 && d <= numDaysInMonth[m])
+                return d;
+            if (d <= 0)
                 return 1;
             else
                 return numDaysInMonth[m];
