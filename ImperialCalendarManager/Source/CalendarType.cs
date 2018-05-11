@@ -322,7 +322,7 @@ namespace CalendarManager
 
             if (year < 0)
             {
-                day = 1;
+                day = 0;
                 month = 1;
                 year = 0;
                 addDayOfWeek();
