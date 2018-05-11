@@ -46,7 +46,7 @@ namespace CalendarManager
 
         static moonPhase[] mann_Phases;
 
-        readonly static int startYear = 2522;
+        readonly static int startYear = 0;
 
         readonly static int startDay = 0;
         #endregion
