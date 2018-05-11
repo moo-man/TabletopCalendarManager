@@ -969,7 +969,7 @@ namespace CalendarManager
             {
                 do
                 {
-                    if (startDay == 0)
+                    if (startDay == 0 && isMonthWithHoliday(startMonth))
                         numDays -= numDaysInMonthIncludingHolidays[startMonth];
                     else
                         numDays -= numDaysInMonth[startMonth] - startDay;
@@ -981,12 +981,16 @@ namespace CalendarManager
                         {
                             startMonth = 1;
                             startYear++;
+                            startDay = 0;
                         }
                         startDay = 0;
+
                     }
                 } while (numDays >= numDaysInMonth[startMonth]);
                 // if numdays is 0, means the date landed at the very end of the month, assign d to numDays unless it's 0
                 startDay = numDays != 0 ? numDays : numDaysInMonth[startMonth] - startDay;
+                if (isMonthWithHoliday(startMonth))
+                    startDay--;
             }
             else
             {
@@ -1053,6 +1057,8 @@ namespace CalendarManager
                     }
                 }
                 numDays += toDay;
+                if (isMonthWithHoliday(toMonth))
+                    numDays++;
             }
             else if (beginMonth == toMonth && toYear == beginYear && toDay > beginDay)
             {
@@ -1067,7 +1073,7 @@ namespace CalendarManager
                 }
                 while (toMonth != beginMonth || toYear != beginYear)
                 {
-                    numDays += numDaysInMonth[beginMonth] - beginDay;
+                    numDays += numDaysInMonthIncludingHolidays[beginMonth] - beginDay;
                     beginDay = 0;
                     if (++beginMonth > numMonthsInYear)
                     {
@@ -1076,6 +1082,8 @@ namespace CalendarManager
                     }
                 }
                 numDays += toDay;
+                if (isMonthWithHoliday(toMonth) && !(isMonthWithHoliday(beginMonth) && startDay == 0))
+                    numDays++;
             }
             return numDays;
         }
