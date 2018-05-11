@@ -75,6 +75,7 @@
             this.timersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showHiddenTimersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,9 +102,12 @@
             this.timerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton3 = new System.Windows.Forms.ToolStripDropDownButton();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mannPicture = new System.Windows.Forms.PictureBox();
+            this.morrPicture = new System.Windows.Forms.PictureBox();
             this.noteboxRightClickMenu.SuspendLayout();
             this.daytrackerToolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mannPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.morrPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // titleText
@@ -469,7 +473,7 @@
             this.timersToolStripMenuItem,
             this.showHiddenTimersToolStripMenuItem});
             this.noteboxRightClickMenu.Name = "noteboxRightClickMenu";
-            this.noteboxRightClickMenu.Size = new System.Drawing.Size(185, 92);
+            this.noteboxRightClickMenu.Size = new System.Drawing.Size(185, 70);
             // 
             // notesToolStripMenuItem
             // 
@@ -531,6 +535,13 @@
             this.editToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editTimerButton_Click);
+            // 
+            // pauseToolStripMenuItem
+            // 
+            this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.pauseToolStripMenuItem.Text = "Pause/Unpause";
+            this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
@@ -623,7 +634,7 @@
             this.addToolStripMenuItem2,
             this.subtractToolStripMenuItem});
             this.dayToolStripMenuItem.Name = "dayToolStripMenuItem";
-            this.dayToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dayToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.dayToolStripMenuItem.Text = "Day";
             // 
             // addToolStripMenuItem2
@@ -648,7 +659,7 @@
             this.addToolStripMenuItem3,
             this.subtractToolStripMenuItem1});
             this.tendayToolStripMenuItem.Name = "tendayToolStripMenuItem";
-            this.tendayToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tendayToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.tendayToolStripMenuItem.Text = "Week";
             // 
             // addToolStripMenuItem3
@@ -671,7 +682,7 @@
             this.addToolStripMenuItem4,
             this.subtractToolStripMenuItem2});
             this.monthToolStripMenuItem.Name = "monthToolStripMenuItem";
-            this.monthToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.monthToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.monthToolStripMenuItem.Text = "Month";
             // 
             // addToolStripMenuItem4
@@ -694,7 +705,7 @@
             this.addToolStripMenuItem5,
             this.subtractToolStripMenuItem3});
             this.yearToolStripMenuItem.Name = "yearToolStripMenuItem";
-            this.yearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.yearToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.yearToolStripMenuItem.Text = "Year";
             // 
             // addToolStripMenuItem5
@@ -717,7 +728,7 @@
             this.noteToolStripMenuItem,
             this.timerToolStripMenuItem});
             this.addToolStripMenuItem6.Name = "addToolStripMenuItem6";
-            this.addToolStripMenuItem6.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem6.Size = new System.Drawing.Size(110, 22);
             this.addToolStripMenuItem6.Text = "Add";
             // 
             // noteToolStripMenuItem
@@ -754,12 +765,22 @@
             this.aboutToolStripMenuItem.Text = "Help";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // pauseToolStripMenuItem
+            // mannPicture
             // 
-            this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.pauseToolStripMenuItem.Text = "Pause/Unpause";
-            this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
+            this.mannPicture.Location = new System.Drawing.Point(617, 113);
+            this.mannPicture.Name = "mannPicture";
+            this.mannPicture.Size = new System.Drawing.Size(30, 30);
+            this.mannPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.mannPicture.TabIndex = 58;
+            this.mannPicture.TabStop = false;
+            // 
+            // morrPicture
+            // 
+            this.morrPicture.Location = new System.Drawing.Point(617, 197);
+            this.morrPicture.Name = "morrPicture";
+            this.morrPicture.Size = new System.Drawing.Size(50, 50);
+            this.morrPicture.TabIndex = 59;
+            this.morrPicture.TabStop = false;
             // 
             // DayTracker
             // 
@@ -769,6 +790,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(234)))), ((int)(((byte)(222)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(727, 564);
+            this.Controls.Add(this.morrPicture);
+            this.Controls.Add(this.mannPicture);
             this.Controls.Add(this.daytrackerToolStrip);
             this.Controls.Add(this.showHiddenTimersButton);
             this.Controls.Add(this.alarmButton);
@@ -816,6 +839,8 @@
             this.noteboxRightClickMenu.ResumeLayout(false);
             this.daytrackerToolStrip.ResumeLayout(false);
             this.daytrackerToolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mannPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.morrPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -894,6 +919,8 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pauseToolStripMenuItem;
+        private System.Windows.Forms.PictureBox mannPicture;
+        private System.Windows.Forms.PictureBox morrPicture;
     }
 }
 

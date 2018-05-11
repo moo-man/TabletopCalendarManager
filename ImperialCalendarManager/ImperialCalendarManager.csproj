@@ -110,12 +110,6 @@
       <DependentUpon>DayTracker.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\CalendarType.cs" />
-    <Compile Include="Source\ImportCalendarDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Source\ImportCalendarDialog.Designer.cs">
-      <DependentUpon>ImportCalendarDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="Source\MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,9 +166,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Source\DayTracker.resx">
       <DependentUpon>DayTracker.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Source\ImportCalendarDialog.resx">
-      <DependentUpon>ImportCalendarDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>

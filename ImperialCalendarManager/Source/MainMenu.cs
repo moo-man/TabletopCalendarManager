@@ -16,7 +16,6 @@ namespace CalendarManager
     {
         HelpBox help;
         CalendarMenu currentCalendar;
-        CalendarType calendarType;
 
         [DllImport("gdi32.dll")]
         private static extern IntPtr AddFontMemResouceEx(IntPtr pbfont, uint cbfont, IntPtr pdv, [In] ref uint pcFonts);
@@ -39,7 +38,6 @@ namespace CalendarManager
             initalizeFont(Properties.Resources.Ozymandias_Solid_WBW);
             applyFont(titleText, 1);
             currentCalendar = null;
-            newCalendarButton.Enabled = false;
 
             /*// TESTING
             AllocConsole();
@@ -151,7 +149,7 @@ namespace CalendarManager
 
         private void NewCalendarButton_Click(object sender, EventArgs e)
         {
-            LoadCalendarMenu(new Calendar(calendarType));
+            LoadCalendarMenu(new Calendar());
         }
 
         public void LoadCalendarMenu(Calendar calendarToUse)
@@ -181,15 +179,6 @@ namespace CalendarManager
         private void changelogPicture_Click(object sender, EventArgs e)
         {
             new ChangelogForm().Show();
-        }
-
-        private void importCalButton_Click(object sender, EventArgs e)
-        {
-            ImportCalendarDialog importCalendar = new ImportCalendarDialog();
-            importCalendar.ShowDialog(this);
-            calendarType = importCalendar.newCalendar;
-            if (calendarType != null)
-                newCalendarButton.Enabled = true;
         }
 
         private void helpLabel_Click(object sender, EventArgs e)

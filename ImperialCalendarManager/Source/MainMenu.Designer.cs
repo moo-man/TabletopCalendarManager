@@ -35,7 +35,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.changelogPicture = new System.Windows.Forms.PictureBox();
-            this.importCalButton = new System.Windows.Forms.Button();
             this.helpLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.changelogPicture)).BeginInit();
             this.SuspendLayout();
@@ -45,17 +44,17 @@
             this.titleText.AutoSize = true;
             this.titleText.BackColor = System.Drawing.Color.Transparent;
             this.titleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleText.Location = new System.Drawing.Point(6, 34);
+            this.titleText.Location = new System.Drawing.Point(9, 29);
             this.titleText.Name = "titleText";
-            this.titleText.Size = new System.Drawing.Size(240, 37);
+            this.titleText.Size = new System.Drawing.Size(251, 68);
             this.titleText.TabIndex = 2;
-            this.titleText.Text = "Calendar Manager";
+            this.titleText.Text = "Imperial Calendar \r\nManager";
             this.titleText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.titleText.UseCompatibleTextRendering = true;
             // 
             // loadCalendarButton
             // 
-            this.loadCalendarButton.Location = new System.Drawing.Point(155, 100);
+            this.loadCalendarButton.Location = new System.Drawing.Point(90, 181);
             this.loadCalendarButton.Name = "loadCalendarButton";
             this.loadCalendarButton.Size = new System.Drawing.Size(86, 23);
             this.loadCalendarButton.TabIndex = 4;
@@ -65,7 +64,7 @@
             // 
             // newCalendarButton
             // 
-            this.newCalendarButton.Location = new System.Drawing.Point(29, 100);
+            this.newCalendarButton.Location = new System.Drawing.Point(90, 139);
             this.newCalendarButton.Name = "newCalendarButton";
             this.newCalendarButton.Size = new System.Drawing.Size(86, 23);
             this.newCalendarButton.TabIndex = 5;
@@ -80,7 +79,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 210);
+            this.label1.Location = new System.Drawing.Point(12, 253);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 13);
             this.label1.TabIndex = 6;
@@ -89,7 +88,7 @@
             // changelogPicture
             // 
             this.changelogPicture.Image = global::CalendarManager.Properties.Resources.unrollingscroll;
-            this.changelogPicture.Location = new System.Drawing.Point(233, 196);
+            this.changelogPicture.Location = new System.Drawing.Point(233, 236);
             this.changelogPicture.Name = "changelogPicture";
             this.changelogPicture.Size = new System.Drawing.Size(27, 27);
             this.changelogPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -97,21 +96,11 @@
             this.changelogPicture.TabStop = false;
             this.changelogPicture.Click += new System.EventHandler(this.changelogPicture_Click);
             // 
-            // importCalButton
-            // 
-            this.importCalButton.Location = new System.Drawing.Point(69, 156);
-            this.importCalButton.Name = "importCalButton";
-            this.importCalButton.Size = new System.Drawing.Size(118, 23);
-            this.importCalButton.TabIndex = 8;
-            this.importCalButton.Text = "Import Calendar Type";
-            this.importCalButton.UseVisualStyleBackColor = true;
-            this.importCalButton.Click += new System.EventHandler(this.importCalButton_Click);
-            // 
             // helpLabel
             // 
             this.helpLabel.AutoSize = true;
             this.helpLabel.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.helpLabel.Location = new System.Drawing.Point(247, 8);
+            this.helpLabel.Location = new System.Drawing.Point(238, 3);
             this.helpLabel.Name = "helpLabel";
             this.helpLabel.Size = new System.Drawing.Size(22, 26);
             this.helpLabel.TabIndex = 9;
@@ -122,9 +111,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(272, 232);
+            this.ClientSize = new System.Drawing.Size(267, 275);
             this.Controls.Add(this.helpLabel);
-            this.Controls.Add(this.importCalButton);
             this.Controls.Add(this.changelogPicture);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.newCalendarButton);
@@ -149,7 +137,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox changelogPicture;
-        private System.Windows.Forms.Button importCalButton;
         private System.Windows.Forms.Label helpLabel;
     }
 }

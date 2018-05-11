@@ -119,7 +119,7 @@
   </resheader>
   <data name="label2.Text" xml:space="preserve">
     <value>The intention of this program is to easily track time passage in tabletop roleplaying 
-games, for a single game group or multiple.
+games set in the Warhammer world, for a single game group or multiple.
 
 When you create a 'New Calendar,' that calendar should contain all the groups in 
 the same 'world.' As you populate the calendar with important dates and events, it
@@ -128,10 +128,6 @@ date.
 
 You should use 'New Calendar' for groups that can't interact with each other, such
 as if you run the same adventure for a different group of people. 
-
-'Import Calendar Type' is used to import your own calendar. You can create a 
-compatible calendar at https://donjon.bin.sh/fantasy/calendar/
-Note: If you are using the Forgotten Realms, I've made a more specialized tool.
 
 Each calendar is associated with one or more campaigns, which have a start date
 and current date. As you track the days of your campaign you can add notes to 
@@ -142,6 +138,7 @@ to email me at russellthurman94@gmail.com
 
 Thanks,
 Russell
+
 
 </value>
   </data>

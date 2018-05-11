@@ -17,7 +17,7 @@ namespace CalendarManager
     {
         static Calendar currentCalendar; // Changed to static, beware of issues
         List<Note> listOfNotes;
-        List<PictureBox> moonPictures;
+        
 
         public DayTracker(Calendar currCalendar)
         {
@@ -39,27 +39,6 @@ namespace CalendarManager
             noteBox.ContextMenuStrip = noteboxRightClickMenu;
             noneSelectedContextMenu();
 
-
-            Point moonPictureLocation = new Point(moonsLabel.Location.X + 60, moonsLabel.Location.Y - 10);
-            moonPictures = new List<PictureBox>();
-            moonsLabel.Text = currentCalendar.calendar.returnMoonNames();
-            moonsLabel.SendToBack();
-            for (int i = 0; i < currentCalendar.calendar.currentMoonPhase().Length; i++)
-            {
-                moonPictures.Add(new PictureBox());
-                moonPictures[i].Location = moonPictureLocation;
-                moonPictures[i].Size = new Size(30, 30);
-                moonPictures[i].SizeMode = PictureBoxSizeMode.StretchImage;
-                moonPictures[i].BringToFront();
-                this.Controls.Add(moonPictures[i]);
-
-                moonPictureLocation.Y += 53;
-            }
-
-            /*if (currentCalendar.calendar.calendarName != "")
-                titleText.Text = "The Calendar of " + currentCalendar.calendar.calendarName;
-            else
-                titleText.Text = "";*/
             goButton.Hide();
             UpdateCalendar();
             setFonts();
@@ -294,11 +273,9 @@ namespace CalendarManager
 
         public void displayMoons()
         {
-            string[] moonPhases = currentCalendar.calendar.currentMoonPhase();
-            for (int i = 0; i < moonPhases.Length; i++)
-            {
-                moonPictures[i].Image = (Image)Properties.Resources.ResourceManager.GetObject(moonPhases[i].Replace(' ', '_'));
-            }
+            string moonPhase = currentCalendar.calendar.currentMoonPhase();
+
+            mannPicture.Image = (Image)Properties.Resources.ResourceManager.GetObject(moonPhase.Replace(' ', '_'));
         }
 
         private void currentDateLabel_Click(object sender, EventArgs e)

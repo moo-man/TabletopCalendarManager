@@ -113,22 +113,7 @@ namespace CalendarManager
         public CalendarType()
         {
             setDate(1, 1, 2522);
-        }
-
-        public CalendarType(System.IO.StreamReader sr)
-        {
-            //loadData(sr);
-            setDate(1, 1, 2522);
-        }
-
-        /// <summary>
-        /// Load data FROM SAVE FILE
-        /// </summary>
-        /// <param name="json"></param>
-        public CalendarType(dynamic json)
-        {
             createMoonPhaseArray();
-            setDate(1, 1, 2522);
         }
 
         // cycle / 8 = full moon day length (rounded to nearest)
@@ -136,7 +121,6 @@ namespace CalendarManager
         private void createMoonPhaseArray()
         {
             mann_Phases = new moonPhase[mann_Cycle];
-            mannCounter = 0;
 
 
             int arrayIndex = 0; // index for adding phases to arrayToAdd
@@ -546,9 +530,11 @@ namespace CalendarManager
             // Add the days of the month before current month
             for (int i = 0; i < m - 1; i++)
             {
-                dayAccumulator += numDaysInMonth[i + 1];
+                dayAccumulator += numDaysInMonthIncludingHolidays[i + 1];
             }
             dayAccumulator += d; // add current day to sum
+            if (isMonthWithHoliday(m))
+                dayAccumulator++;
             return dayAccumulator;
         }
 
