@@ -141,34 +141,18 @@ namespace HarptosCalendarManager
             this.Close();
         }
 
-        private void startD_Leave(object sender, EventArgs e)
+        private void start_Leave(object sender, EventArgs e)
         {
+            startY.Text = HarptosCalendar.enforceYearFormat(startY.Text);
+            startM.Text = HarptosCalendar.enforceMonthFormat(startM.Text);
             startD.Text = HarptosCalendar.enforceDayFormat(startM.Text, startD.Text, startY.Text);
         }
 
-        private void startM_Leave(object sender, EventArgs e)
-        {
-            startM.Text = HarptosCalendar.enforceMonthFormat(startM.Text);
-        }
-
-        private void currD_Leave(object sender, EventArgs e)
-        {
-            currD.Text = HarptosCalendar.enforceDayFormat(currM.Text, currD.Text, currY.Text);
-        }
-
-        private void currM_Leave(object sender, EventArgs e)
-        {
-            currM.Text = HarptosCalendar.enforceMonthFormat(currM.Text);
-        }
-
-        private void startY_Leave(object sender, EventArgs e)
-        {
-            startY.Text = HarptosCalendar.enforceYearFormat(startY.Text);
-        }
-
-        private void currY_Leave(object sender, EventArgs e)
+        private void curr_Leave(object sender, EventArgs e)
         {
             currY.Text = HarptosCalendar.enforceYearFormat(currY.Text);
+            currM.Text = HarptosCalendar.enforceMonthFormat(currM.Text);
+            currD.Text = HarptosCalendar.enforceDayFormat(currM.Text, currD.Text, currY.Text);
         }
 
         public string startBoxesToDate()
@@ -199,6 +183,6 @@ namespace HarptosCalendarManager
 
             if (keypress == '(' || keypress == ')')
                 e.Handled = true;
-        } 
+        }
     }
 }

@@ -125,20 +125,13 @@ namespace HarptosCalendarManager
 
         }
 
-        private void month_Leave(object sender, EventArgs e)
+        private void date_Leave(object sender, EventArgs e)
         {
+            year.Text = HarptosCalendar.enforceYearFormat(year.Text);
             month.Text = HarptosCalendar.enforceMonthFormat(month.Text);
-        }
-
-        private void day_Leave(object sender, EventArgs e)
-        {
             day.Text = HarptosCalendar.enforceDayFormat(month.Text, day.Text, year.Text);
         }
 
-        private void year_Leave(object sender, EventArgs e)
-        {
-            year.Text = HarptosCalendar.enforceYearFormat(year.Text);
-        }
 
         private void date_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -162,5 +155,7 @@ namespace HarptosCalendarManager
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
+
+
     }
 }

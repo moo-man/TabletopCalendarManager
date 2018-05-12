@@ -818,6 +818,21 @@ namespace CalendarManager
         }
 
         #region functions for format enforcement
+
+        /// <summary>
+        /// Performs all enforce functions on an entire date
+        /// </summary>
+        /// <param name="testMonth"></param>
+        /// <param name="testDay"></param>
+        /// <param name="testYear"></param>
+        public static void enforceDateFormat(ref string testMonth, ref string testDay, ref string testYear)
+        {
+            testMonth = enforceMonthFormat(testMonth);
+            testYear = enforceYearFormat(testYear);
+            testDay = enforceDayFormat(testDay, testDay, testYear);
+        }
+
+
         /// <summary>
         /// Takes a number and changes it to a valid month number if it is not already one
         /// (if a number is larger than 12, returns 12, for example)
@@ -861,15 +876,13 @@ namespace CalendarManager
                 testDay = "0" + testDay;
             }
 
-            if (testDay == "00" || testDay == "")
+            if (testDay == "")
             {
                 testDay = "01";
             }
             if (month != "")
             {
-                testDay = verifyDay(Int32.Parse(month), Int32.Parse(testDay)).ToString();
-                if (testDay.Length == 1)
-                    testDay = "0" + testDay;
+                testDay = verifyDay(Int32.Parse(month), Int32.Parse(testDay)).ToString("00");
             }
             else
             {

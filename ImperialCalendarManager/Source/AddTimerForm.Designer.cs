@@ -115,7 +115,7 @@ namespace CalendarManager
             this.year.Size = new System.Drawing.Size(64, 20);
             this.year.TabIndex = 8;
             this.year.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_KeyPress);
-            this.year.Leave += new System.EventHandler(this.year_Leave);
+            this.year.Leave += new System.EventHandler(this.date_Leave);
             // 
             // month
             // 
@@ -124,7 +124,7 @@ namespace CalendarManager
             this.month.Size = new System.Drawing.Size(29, 20);
             this.month.TabIndex = 6;
             this.month.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_KeyPress);
-            this.month.Leave += new System.EventHandler(this.month_Leave);
+            this.month.Leave += new System.EventHandler(this.date_Leave);
             // 
             // day
             // 
@@ -133,7 +133,7 @@ namespace CalendarManager
             this.day.Size = new System.Drawing.Size(29, 20);
             this.day.TabIndex = 7;
             this.day.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_KeyPress);
-            this.day.Leave += new System.EventHandler(this.day_Leave);
+            this.day.Leave += new System.EventHandler(this.date_Leave);
             // 
             // numDays
             // 

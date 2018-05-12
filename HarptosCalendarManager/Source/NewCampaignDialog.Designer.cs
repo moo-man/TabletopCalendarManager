@@ -104,7 +104,7 @@
             this.startD.TabIndex = 4;
             this.startD.TextChanged += new System.EventHandler(this.startD_TextChanged);
             this.startD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
-            this.startD.Leave += new System.EventHandler(this.startD_Leave);
+            this.startD.Leave += new System.EventHandler(this.start_Leave);
             // 
             // startM
             // 
@@ -114,7 +114,7 @@
             this.startM.TabIndex = 3;
             this.startM.TextChanged += new System.EventHandler(this.startM_TextChanged);
             this.startM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
-            this.startM.Leave += new System.EventHandler(this.startM_Leave);
+            this.startM.Leave += new System.EventHandler(this.start_Leave);
             // 
             // startY
             // 
@@ -124,7 +124,7 @@
             this.startY.TabIndex = 5;
             this.startY.TextChanged += new System.EventHandler(this.startY_TextChanged);
             this.startY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
-            this.startY.Leave += new System.EventHandler(this.startY_Leave);
+            this.startY.Leave += new System.EventHandler(this.start_Leave);
             // 
             // currY
             // 
@@ -133,7 +133,7 @@
             this.currY.Size = new System.Drawing.Size(64, 20);
             this.currY.TabIndex = 8;
             this.currY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
-            this.currY.Leave += new System.EventHandler(this.currY_Leave);
+            this.currY.Leave += new System.EventHandler(this.curr_Leave);
             // 
             // currM
             // 
@@ -142,7 +142,7 @@
             this.currM.Size = new System.Drawing.Size(29, 20);
             this.currM.TabIndex = 6;
             this.currM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
-            this.currM.Leave += new System.EventHandler(this.currM_Leave);
+            this.currM.Leave += new System.EventHandler(this.curr_Leave);
             // 
             // currD
             // 
@@ -151,7 +151,7 @@
             this.currD.Size = new System.Drawing.Size(29, 20);
             this.currD.TabIndex = 7;
             this.currD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
-            this.currD.Leave += new System.EventHandler(this.currD_Leave);
+            this.currD.Leave += new System.EventHandler(this.curr_Leave);
             // 
             // okButton
             // 

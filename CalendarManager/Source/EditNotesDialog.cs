@@ -173,19 +173,11 @@ namespace CalendarManager
             this.Close();
         }
 
-        private void month_Leave(object sender, EventArgs e)
-        {
-            month.Text = CalendarType.enforceMonthFormat(month.Text);       
-        }
-
-        private void day_Leave(object sender, EventArgs e)
-        {
-            day.Text = CalendarType.enforceDayFormat(month.Text, day.Text, year.Text);
-        }
-
-        private void year_Leave(object sender, EventArgs e)
+        private void date_Leave(object sender, EventArgs e)
         {
             year.Text = CalendarType.enforceYearFormat(year.Text);
+            month.Text = CalendarType.enforceMonthFormat(month.Text);
+            day.Text = CalendarType.enforceDayFormat(month.Text, day.Text, year.Text);
         }
 
         private void date_keypress(object sender, KeyPressEventArgs e)
@@ -200,5 +192,6 @@ namespace CalendarManager
                 e.Handled = true;
             }
         }
+
     }
 }

@@ -17,7 +17,7 @@ namespace CalendarManager
     {
         static Calendar currentCalendar; // Changed to static, beware of issues
         List<Note> listOfNotes;
-        
+
 
         public DayTracker(Calendar currCalendar)
         {
@@ -540,22 +540,15 @@ namespace CalendarManager
 
             UpdateCalendar();
         }
-        private void month_Leave(object sender, EventArgs e)
-        {
-            month.Text = CalendarType.enforceMonthFormat(month.Text);
-        }
 
-        private void day_Leave(object sender, EventArgs e)
+        private void goto_date_Leave(object sender, EventArgs e)
         {
+            year.Text = CalendarType.enforceYearFormat(year.Text);
+            month.Text = CalendarType.enforceMonthFormat(month.Text);
             day.Text = CalendarType.enforceDayFormat(month.Text, day.Text, year.Text);
         }
 
-        private void year_Leave(object sender, EventArgs e)
-        {
-            year.Text = CalendarType.enforceYearFormat(year.Text);
-        }
-
-        private void date_KeyPress(object sender, KeyPressEventArgs e)
+        private void goto_date_Keypress(object sender, KeyPressEventArgs e)
         {
             char keypress = e.KeyChar;
 
@@ -599,13 +592,14 @@ namespace CalendarManager
             UpdateCalendar();
         }
 
-        private void date_TextChanged(object sender, EventArgs e)
+        private void goto_date_TextChanged(object sender, EventArgs e)
         {
             if (month.Text != "" && day.Text != "" && year.Text != "")
                 goButton.Show();
             else
                 goButton.Hide();
         }
+
 
         private void showTimerButtons()
         {
@@ -778,4 +772,5 @@ namespace CalendarManager
             UpdateCalendar();
         }
     }
+
 }

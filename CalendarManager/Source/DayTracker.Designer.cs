@@ -75,6 +75,7 @@
             this.timersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showHiddenTimersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,7 +102,6 @@
             this.timerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton3 = new System.Windows.Forms.ToolStripDropDownButton();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noteboxRightClickMenu.SuspendLayout();
             this.daytrackerToolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -389,7 +389,7 @@
             this.year.TabIndex = 50;
             this.year.TextChanged += new System.EventHandler(this.date_TextChanged);
             this.year.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_KeyPress);
-            this.year.Leave += new System.EventHandler(this.year_Leave);
+            this.year.Leave += new System.EventHandler(this.date_Leave);
             // 
             // month
             // 
@@ -399,7 +399,7 @@
             this.month.TabIndex = 48;
             this.month.TextChanged += new System.EventHandler(this.date_TextChanged);
             this.month.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_KeyPress);
-            this.month.Leave += new System.EventHandler(this.month_Leave);
+            this.month.Leave += new System.EventHandler(this.date_Leave);
             // 
             // day
             // 
@@ -409,7 +409,7 @@
             this.day.TabIndex = 49;
             this.day.TextChanged += new System.EventHandler(this.date_TextChanged);
             this.day.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_KeyPress);
-            this.day.Leave += new System.EventHandler(this.day_Leave);
+            this.day.Leave += new System.EventHandler(this.date_Leave);
             // 
             // gotoLabel
             // 
@@ -469,7 +469,7 @@
             this.timersToolStripMenuItem,
             this.showHiddenTimersToolStripMenuItem});
             this.noteboxRightClickMenu.Name = "noteboxRightClickMenu";
-            this.noteboxRightClickMenu.Size = new System.Drawing.Size(185, 92);
+            this.noteboxRightClickMenu.Size = new System.Drawing.Size(185, 70);
             // 
             // notesToolStripMenuItem
             // 
@@ -531,6 +531,13 @@
             this.editToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editTimerButton_Click);
+            // 
+            // pauseToolStripMenuItem
+            // 
+            this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.pauseToolStripMenuItem.Text = "Pause/Unpause";
+            this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
@@ -623,7 +630,7 @@
             this.addToolStripMenuItem2,
             this.subtractToolStripMenuItem});
             this.dayToolStripMenuItem.Name = "dayToolStripMenuItem";
-            this.dayToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dayToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.dayToolStripMenuItem.Text = "Day";
             // 
             // addToolStripMenuItem2
@@ -648,7 +655,7 @@
             this.addToolStripMenuItem3,
             this.subtractToolStripMenuItem1});
             this.tendayToolStripMenuItem.Name = "tendayToolStripMenuItem";
-            this.tendayToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tendayToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.tendayToolStripMenuItem.Text = "Week";
             // 
             // addToolStripMenuItem3
@@ -671,7 +678,7 @@
             this.addToolStripMenuItem4,
             this.subtractToolStripMenuItem2});
             this.monthToolStripMenuItem.Name = "monthToolStripMenuItem";
-            this.monthToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.monthToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.monthToolStripMenuItem.Text = "Month";
             // 
             // addToolStripMenuItem4
@@ -694,7 +701,7 @@
             this.addToolStripMenuItem5,
             this.subtractToolStripMenuItem3});
             this.yearToolStripMenuItem.Name = "yearToolStripMenuItem";
-            this.yearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.yearToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.yearToolStripMenuItem.Text = "Year";
             // 
             // addToolStripMenuItem5
@@ -717,7 +724,7 @@
             this.noteToolStripMenuItem,
             this.timerToolStripMenuItem});
             this.addToolStripMenuItem6.Name = "addToolStripMenuItem6";
-            this.addToolStripMenuItem6.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem6.Size = new System.Drawing.Size(110, 22);
             this.addToolStripMenuItem6.Text = "Add";
             // 
             // noteToolStripMenuItem
@@ -753,13 +760,6 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
             this.aboutToolStripMenuItem.Text = "Help";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // pauseToolStripMenuItem
-            // 
-            this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.pauseToolStripMenuItem.Text = "Pause/Unpause";
-            this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
             // 
             // DayTracker
             // 

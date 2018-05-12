@@ -146,7 +146,7 @@
             this.year.Size = new System.Drawing.Size(64, 20);
             this.year.TabIndex = 4;
             this.year.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
-            this.year.Leave += new System.EventHandler(this.year_Leave);
+            this.year.Leave += new System.EventHandler(this.date_Leave);
             // 
             // month
             // 
@@ -155,7 +155,7 @@
             this.month.Size = new System.Drawing.Size(29, 20);
             this.month.TabIndex = 2;
             this.month.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
-            this.month.Leave += new System.EventHandler(this.month_Leave);
+            this.month.Leave += new System.EventHandler(this.date_Leave);
             // 
             // day
             // 
@@ -164,7 +164,7 @@
             this.day.Size = new System.Drawing.Size(29, 20);
             this.day.TabIndex = 3;
             this.day.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
-            this.day.Leave += new System.EventHandler(this.day_Leave);
+            this.day.Leave += new System.EventHandler(this.date_Leave);
             // 
             // campaignSelector
             // 

@@ -63,6 +63,20 @@ namespace CalendarManager
                 currY.Text = startY.Text;
         }
 
+        private void start_Leave(object sender, EventArgs e)
+        {
+            startY.Text = CalendarType.enforceYearFormat(startY.Text);
+            startM.Text = CalendarType.enforceMonthFormat(startM.Text);
+            startD.Text = CalendarType.enforceDayFormat(startM.Text, startD.Text, startY.Text);
+        }
+
+        private void curr_Leave(object sender, EventArgs e)
+        {
+            currY.Text = CalendarType.enforceYearFormat(currY.Text);
+            currM.Text = CalendarType.enforceMonthFormat(currM.Text);
+            currD.Text = CalendarType.enforceDayFormat(currM.Text, currD.Text, currY.Text);
+        }
+
         private void tagBox_TextChanged(object sender, EventArgs e)
         {
             tagBox.Text = Campaign.fixTag(tagBox.Text);
@@ -140,36 +154,6 @@ namespace CalendarManager
             this.Close();
         }
 
-        private void startD_Leave(object sender, EventArgs e)
-        {
-            startD.Text = CalendarType.enforceDayFormat(startM.Text, startD.Text, startY.Text);
-        }
-
-        private void startM_Leave(object sender, EventArgs e)
-        {
-            startM.Text = CalendarType.enforceMonthFormat(startM.Text);
-        }
-
-        private void currD_Leave(object sender, EventArgs e)
-        {
-            currD.Text = CalendarType.enforceDayFormat(currM.Text, currD.Text, currY.Text);
-        }
-
-        private void currM_Leave(object sender, EventArgs e)
-        {
-            currM.Text = CalendarType.enforceMonthFormat(currM.Text);
-        }
-
-        private void startY_Leave(object sender, EventArgs e)
-        {
-            startY.Text = CalendarType.enforceYearFormat(startY.Text);
-        }
-
-        private void currY_Leave(object sender, EventArgs e)
-        {
-            currY.Text = CalendarType.enforceYearFormat(currY.Text);
-        }
-
         public string startBoxesToDate()
         {
             return startM.Text + startD.Text + startY.Text;
@@ -198,6 +182,6 @@ namespace CalendarManager
 
             if (keypress == '(' || keypress == ')')
                 e.Handled = true;
-        } 
+        }
     }
 }

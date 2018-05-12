@@ -391,9 +391,9 @@
             this.year.Name = "year";
             this.year.Size = new System.Drawing.Size(64, 20);
             this.year.TabIndex = 50;
-            this.year.TextChanged += new System.EventHandler(this.date_TextChanged);
-            this.year.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_KeyPress);
-            this.year.Leave += new System.EventHandler(this.year_Leave);
+            this.year.TextChanged += new System.EventHandler(this.goto_date_TextChanged);
+            this.year.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.goto_date_Keypress);
+            this.year.Leave += new System.EventHandler(this.goto_date_Leave);
             // 
             // month
             // 
@@ -401,9 +401,9 @@
             this.month.Name = "month";
             this.month.Size = new System.Drawing.Size(29, 20);
             this.month.TabIndex = 48;
-            this.month.TextChanged += new System.EventHandler(this.date_TextChanged);
-            this.month.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_KeyPress);
-            this.month.Leave += new System.EventHandler(this.month_Leave);
+            this.month.TextChanged += new System.EventHandler(this.goto_date_TextChanged);
+            this.month.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.goto_date_Keypress);
+            this.month.Leave += new System.EventHandler(this.goto_date_Leave);
             // 
             // day
             // 
@@ -411,9 +411,9 @@
             this.day.Name = "day";
             this.day.Size = new System.Drawing.Size(29, 20);
             this.day.TabIndex = 49;
-            this.day.TextChanged += new System.EventHandler(this.date_TextChanged);
-            this.day.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_KeyPress);
-            this.day.Leave += new System.EventHandler(this.day_Leave);
+            this.day.TextChanged += new System.EventHandler(this.goto_date_TextChanged);
+            this.day.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.goto_date_Keypress);
+            this.day.Leave += new System.EventHandler(this.goto_date_Leave);
             // 
             // gotoLabel
             // 
