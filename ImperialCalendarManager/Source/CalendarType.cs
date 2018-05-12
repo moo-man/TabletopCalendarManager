@@ -1040,7 +1040,7 @@ namespace CalendarManager
             // This is pretty gross and i don't like to think about it, neither should you
 
             int numDays = 0; // Counter that's returned
-            if (beginDay != 0 && isMonthWithHoliday(beginMonth))
+            if (isMonthWithHoliday(beginMonth))
                 numDays--;
 
             // If dates have the same year but not same month
@@ -1082,8 +1082,9 @@ namespace CalendarManager
                     }
                 }
                 numDays += toDay;
-                if (isMonthWithHoliday(toMonth) && !(isMonthWithHoliday(beginMonth) && startDay == 0))
+                if (isMonthWithHoliday(toMonth))
                     numDays++;
+
             }
             return numDays;
         }
