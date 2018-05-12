@@ -508,6 +508,12 @@ namespace CalendarManager
 
               mannCounter = Math.Abs(daysSinceFirstDay - mann_Shift) % mann_Cycle;
 
+            // For some reason, if the year is zero, the phases are off by one, not sure why
+            // Has to do with determineDayofYear adding 1 if month starts at 0, but that's necessary
+            if (year == 0)
+                addMoonPhase();
+
+
         }
         #endregion
 
