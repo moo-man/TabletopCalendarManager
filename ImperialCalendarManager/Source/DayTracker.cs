@@ -17,6 +17,7 @@ namespace CalendarManager
     {
         static Calendar currentCalendar; // Changed to static, beware of issues
         List<Note> listOfNotes;
+        Point morrLocation;
 
 
         public DayTracker(Calendar currCalendar)
@@ -40,8 +41,13 @@ namespace CalendarManager
             noneSelectedContextMenu();
 
             goButton.Hide();
-            UpdateCalendar();
+            morrLocation = morrPicture.Location;
             setFonts();
+
+
+            UpdateCalendar();
+
+
         }
 
         public void setFonts()
@@ -284,14 +290,18 @@ namespace CalendarManager
             newDimensions = (int) (30 * ((currentCalendar.calendar.MorrSize) / 100.0));
 
             morrPicture.Size = new Size(newDimensions, newDimensions);
-            //if (newDimensions > 30)
-            //{
-            //    morrPicture.Location = new Point(morrPicture.Location.X -(newDimensions - 30), morrPicture.Location.Y - (newDimensions - 30));
-            //}
-            //else if (newDimensions < 30)
-            //{
-            //    morrPicture.Location = new Point(morrPicture.Location.X + (30 - newDimensions), morrPicture.Location.Y + (30 + newDimensions));
-            //}
+            if (newDimensions > 30)
+            {
+                morrPicture.Location = new Point(morrLocation.X - (newDimensions - 30) / 2, morrLocation.Y - (newDimensions - 30) / 2);
+            }
+            else if (newDimensions < 30)
+            {
+                morrPicture.Location = new Point(morrLocation.X + (30 - newDimensions) / 2, morrLocation.Y + (30 - newDimensions) / 2);
+            }
+            else
+            {
+                morrPicture.Location = morrLocation;
+            }
 
         }
 

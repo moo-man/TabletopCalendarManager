@@ -59,6 +59,7 @@ namespace CalendarManager
         int dayOfWeek;
         int mannCounter;
         int morrCounter;
+        int currentMorrSeed;
         int morrSize;
         public int MorrSize
         {
@@ -152,6 +153,7 @@ namespace CalendarManager
             // TODO: CORRECT FOR ACTUAL CALENDAR
 
             morr_Phases = new moonPhase[8];
+            currentMorrSeed = 0;
             for (int moonPhaseIndex = 0; moonPhaseIndex < 8; moonPhaseIndex++)
             {
                 morr_Phases[moonPhaseIndex] = (moonPhase)moonPhaseIndex;
@@ -294,9 +296,8 @@ namespace CalendarManager
             if (mannCounter >= mann_Cycle)
                 mannCounter = 0;
 
-            morrSize = morrslieb.Next(50,200);
-            morrCounter = morrSize % 8;
-            // TODO: Make one function for morrslieb
+            morrsliebNextPhase();
+
         }
         #endregion
 
@@ -387,9 +388,8 @@ namespace CalendarManager
             if (mannCounter < 0)
                 mannCounter = mann_Cycle - 1;
 
-            morrslieb = new Random(year);
-            for (int i = 0; i < determineDayOfYear(); i++)
-                morrCounter = morrslieb.Next(8);
+            determineMorrslieb();
+
         }
         #endregion
 
@@ -537,10 +537,45 @@ namespace CalendarManager
             if (year == 0)
                 addMoonPhase();
 
-            morrslieb = new Random(year);
-            for (int i = 0; i < determineDayOfYear(); i++)
-                morrCounter = morrslieb.Next(8);
+            determineMorrslieb();
 
+        }
+
+        /// <summary>
+        /// Determines the next morrslieb phase
+        /// Calls a new Random.Next() for every day
+        /// </summary>
+        private void morrsliebNextPhase()
+        {
+            if (year != currentMorrSeed)
+            {
+                morrslieb = new Random(year);
+                currentMorrSeed = year;
+                int days = determineDayOfYear();
+                for (int i = 0; i < days - 1; i++)
+                {
+                    morrslieb.Next();
+                }
+            }
+            morrSize = morrslieb.Next(50, 200);
+            morrCounter = morrSize % 8;
+
+            // If it is geheimnistag or hexentag
+            if ((day == 0 && (month == 1 || month == 7)))
+            {
+                morrSize = 200;
+                morrCounter = 4;
+            }
+        }
+
+        /// <summary>
+        /// Since morrsliebNextPhase calls Random.Next() for every day, going backwards doesn't work (a new Next() would not be the same as the previous)
+        /// Therefore, have to redo, call Next() for every day so far this year, stop at the current day
+        /// </summary>
+        private void determineMorrslieb()
+        {
+            currentMorrSeed = -1;
+            morrsliebNextPhase();
         }
         #endregion
 
