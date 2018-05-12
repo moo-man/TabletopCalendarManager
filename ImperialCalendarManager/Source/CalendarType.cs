@@ -37,14 +37,15 @@ namespace CalendarManager
         readonly static string[] weekdayNames = {"Wellentag", "Aubentag", "Marktag", "Backertag", "Bezahltag", "Konistag", "Angestag", "Festag"};
         readonly static string[] altWeekdayNames = { "Workday", "Levyday", "Marketday", "Bakeday", "Taxday", "Kingday", "Startweek", "Holiday" };
 
-
         readonly static int mann_Cycle = 25;
-        static int morr_Cycle;
-
         readonly static int mann_Shift = 12;
-        static int morr_Shift;
-
         static moonPhase[] mann_Phases;
+
+        static moonPhase[] morr_Phases;
+        static Random morrslieb;
+
+        readonly static string[] phase_strings = { "New Moon", "Waxing Crescent", "First Quarter","Waxing Gibbous", "Full Moon", "Waning Gibbous", "Last Quarter", "Waning Crescent" };
+
 
         readonly static int startYear = 0;
 
@@ -57,6 +58,15 @@ namespace CalendarManager
         int year;
         int dayOfWeek;
         int mannCounter;
+        int morrCounter;
+        int morrSize;
+        public int MorrSize
+        {
+            get
+            {
+                return morrSize;
+            }
+        }
         #endregion
 
         #region Accessors
@@ -122,7 +132,6 @@ namespace CalendarManager
         {
             mann_Phases = new moonPhase[mann_Cycle];
 
-
             int arrayIndex = 0; // index for adding phases to arrayToAdd
 
 
@@ -141,6 +150,13 @@ namespace CalendarManager
                     mann_Phases[arrayIndex++] = (moonPhase)moonPhaseIndex;
             }
             // TODO: CORRECT FOR ACTUAL CALENDAR
+
+            morr_Phases = new moonPhase[8];
+            for (int moonPhaseIndex = 0; moonPhaseIndex < 8; moonPhaseIndex++)
+            {
+                morr_Phases[moonPhaseIndex] = (moonPhase)moonPhaseIndex;
+            }
+
         }
 
         /// <summary>
@@ -277,6 +293,10 @@ namespace CalendarManager
             mannCounter++;
             if (mannCounter >= mann_Cycle)
                 mannCounter = 0;
+
+            morrSize = morrslieb.Next(50,200);
+            morrCounter = morrSize % 8;
+            // TODO: Make one function for morrslieb
         }
         #endregion
 
@@ -366,6 +386,10 @@ namespace CalendarManager
             mannCounter--;
             if (mannCounter < 0)
                 mannCounter = mann_Cycle - 1;
+
+            morrslieb = new Random(year);
+            for (int i = 0; i < determineDayOfYear(); i++)
+                morrCounter = morrslieb.Next(8);
         }
         #endregion
 
@@ -513,6 +537,9 @@ namespace CalendarManager
             if (year == 0)
                 addMoonPhase();
 
+            morrslieb = new Random(year);
+            for (int i = 0; i < determineDayOfYear(); i++)
+                morrCounter = morrslieb.Next(8);
 
         }
         #endregion
@@ -560,41 +587,9 @@ namespace CalendarManager
             return sb.ToString();
         }
 
-        public string currentMoonPhase()
+        public string[] currentMoonPhases()
         {
-            string returnString = null;
-
-            switch (mann_Phases[mannCounter])
-            {
-                case moonPhase.full:
-                    returnString =  "Full Moon";
-                    break;
-                case moonPhase.waningGib:
-                    returnString =  "Waning Gibbous";
-                    break;
-                case moonPhase.lastQuarter:
-                    returnString =  "Last Quarter";
-                    break;
-                case moonPhase.waningCresc:
-                    returnString =  "Waning Crescent";
-                    break;
-                case moonPhase.newMoon:
-                    returnString =  "New Moon";
-                    break;
-                case moonPhase.waxingCrsec:
-                    returnString =  "Waxing Crescent";
-                    break;
-                case moonPhase.firstQuarter:
-                    returnString =  "First Quarter";
-                    break;
-                case moonPhase.waxingGib:
-                    returnString =  "Waxing Gibbous";
-                    break;
-                default:
-                    returnString = null;
-                    break;
-            }
-            return returnString;
+            return new string[] { phase_strings[(int)(mann_Phases[mannCounter])], phase_strings[(int)(morr_Phases[morrCounter])]};
         }
 
         public static string returnGivenDateWithWeekday(int m, int d, int y)

@@ -209,6 +209,14 @@
     <Content Include="Resources\Moons\Full Moon.png" />
     <Content Include="Resources\Icons\HarptosIcon.ico" />
     <Content Include="Resources\Moons\Last Quarter.png" />
+    <Content Include="Resources\Moons\morr_First Quarter.png" />
+    <Content Include="Resources\Moons\morr_Full Moon.png" />
+    <Content Include="Resources\Moons\morr_Last Quarter.png" />
+    <Content Include="Resources\Moons\morr_New Moon.png" />
+    <Content Include="Resources\Moons\morr_Waning Crescent.png" />
+    <Content Include="Resources\Moons\morr_Waning Gibbous.png" />
+    <Content Include="Resources\Moons\morr_Waxing Crescent.png" />
+    <Content Include="Resources\Moons\morr_Waxing Gibbous.png" />
     <Content Include="Resources\Moons\New Moon.png" />
     <EmbeddedResource Include="Newtonsoft.Json.dll" />
     <Content Include="Resources\Icons\noteicon.png" />

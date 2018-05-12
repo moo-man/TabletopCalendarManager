@@ -273,9 +273,26 @@ namespace CalendarManager
 
         public void displayMoons()
         {
-            string moonPhase = currentCalendar.calendar.currentMoonPhase();
+            string[] phases = currentCalendar.calendar.currentMoonPhases();
+            string mannPhase = phases[0];
+            string morrPhase = "morr_" + phases[1];
 
-            mannPicture.Image = (Image)Properties.Resources.ResourceManager.GetObject(moonPhase.Replace(' ', '_'));
+            mannPicture.Image = (Image)Properties.Resources.ResourceManager.GetObject(mannPhase.Replace(' ', '_'));
+            morrPicture.Image = (Image)Properties.Resources.ResourceManager.GetObject(morrPhase.Replace(' ', '_'));
+            int newDimensions = 30;
+
+            newDimensions = (int) (30 * ((currentCalendar.calendar.MorrSize) / 100.0));
+
+            morrPicture.Size = new Size(newDimensions, newDimensions);
+            //if (newDimensions > 30)
+            //{
+            //    morrPicture.Location = new Point(morrPicture.Location.X -(newDimensions - 30), morrPicture.Location.Y - (newDimensions - 30));
+            //}
+            //else if (newDimensions < 30)
+            //{
+            //    morrPicture.Location = new Point(morrPicture.Location.X + (30 - newDimensions), morrPicture.Location.Y + (30 + newDimensions));
+            //}
+
         }
 
         private void currentDateLabel_Click(object sender, EventArgs e)

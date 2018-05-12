@@ -776,9 +776,10 @@
             // 
             // morrPicture
             // 
-            this.morrPicture.Location = new System.Drawing.Point(617, 197);
+            this.morrPicture.Location = new System.Drawing.Point(617, 173);
             this.morrPicture.Name = "morrPicture";
-            this.morrPicture.Size = new System.Drawing.Size(50, 50);
+            this.morrPicture.Size = new System.Drawing.Size(30, 30);
+            this.morrPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.morrPicture.TabIndex = 59;
             this.morrPicture.TabStop = false;
             // 
