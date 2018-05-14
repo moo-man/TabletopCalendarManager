@@ -723,7 +723,7 @@ namespace CalendarManager
                 return null;
             else if (d == 0 && (m == 1 || m == 3 || m == 6 || m == 7 || m == 9 || m == 12))
             {
-                dateString.Append(intercalaryHolidays[m] + " " + y);
+                dateString.Append(intercalaryHolidays[m] + ", " + y);
             }
             else
             {
