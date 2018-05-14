@@ -104,10 +104,13 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mannPicture = new System.Windows.Forms.PictureBox();
             this.morrPicture = new System.Windows.Forms.PictureBox();
+            this.starSignPictureBox = new System.Windows.Forms.PictureBox();
+            this.starSignTT = new System.Windows.Forms.ToolTip(this.components);
             this.noteboxRightClickMenu.SuspendLayout();
             this.daytrackerToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mannPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morrPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.starSignPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // titleText
@@ -783,6 +786,15 @@
             this.morrPicture.TabIndex = 59;
             this.morrPicture.TabStop = false;
             // 
+            // starSignPictureBox
+            // 
+            this.starSignPictureBox.Location = new System.Drawing.Point(589, 289);
+            this.starSignPictureBox.Name = "starSignPictureBox";
+            this.starSignPictureBox.Size = new System.Drawing.Size(120, 120);
+            this.starSignPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.starSignPictureBox.TabIndex = 60;
+            this.starSignPictureBox.TabStop = false;
+            // 
             // DayTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -791,6 +803,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(234)))), ((int)(((byte)(222)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(727, 564);
+            this.Controls.Add(this.starSignPictureBox);
             this.Controls.Add(this.morrPicture);
             this.Controls.Add(this.mannPicture);
             this.Controls.Add(this.daytrackerToolStrip);
@@ -842,6 +855,7 @@
             this.daytrackerToolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mannPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.morrPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.starSignPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -922,6 +936,8 @@
         private System.Windows.Forms.ToolStripMenuItem pauseToolStripMenuItem;
         private System.Windows.Forms.PictureBox mannPicture;
         private System.Windows.Forms.PictureBox morrPicture;
+        private System.Windows.Forms.PictureBox starSignPictureBox;
+        private System.Windows.Forms.ToolTip starSignTT;
     }
 }
 

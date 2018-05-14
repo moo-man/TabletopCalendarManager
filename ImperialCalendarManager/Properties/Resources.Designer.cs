@@ -73,6 +73,26 @@ namespace CalendarManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cacklefax_the_Cockerel {
+            get {
+                object obj = ResourceManager.GetObject("Cacklefax_the_Cockerel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Dragomas_the_Drake {
+            get {
+                object obj = ResourceManager.GetObject("Dragomas_the_Drake", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap eyeicon {
             get {
                 object obj = ResourceManager.GetObject("eyeicon", resourceCulture);
@@ -96,6 +116,26 @@ namespace CalendarManager.Properties {
         internal static System.Drawing.Bitmap Full_Moon {
             get {
                 object obj = ResourceManager.GetObject("Full_Moon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gnuthus_the_Ox {
+            get {
+                object obj = ResourceManager.GetObject("Gnuthus_the_Ox", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Grungi_s_Baldrick {
+            get {
+                object obj = ResourceManager.GetObject("Grungi_s_Baldrick", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +166,16 @@ namespace CalendarManager.Properties {
         internal static System.Drawing.Bitmap Last_Quarter {
             get {
                 object obj = ResourceManager.GetObject("Last_Quarter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Mammit_the_Wise {
+            get {
+                object obj = ResourceManager.GetObject("Mammit_the_Wise", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,6 +273,16 @@ namespace CalendarManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Mummit_the_Fool {
+            get {
+                object obj = ResourceManager.GetObject("Mummit_the_Fool", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap New_Moon {
             get {
                 object obj = ResourceManager.GetObject("New_Moon", resourceCulture);
@@ -253,6 +313,16 @@ namespace CalendarManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Rhya_s_Cauldron {
+            get {
+                object obj = ResourceManager.GetObject("Rhya_s_Cauldron", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap save_icon_5404 {
             get {
                 object obj = ResourceManager.GetObject("save_icon_5404", resourceCulture);
@@ -263,9 +333,129 @@ namespace CalendarManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap The_Big_Cross {
+            get {
+                object obj = ResourceManager.GetObject("The_Big_Cross", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap The_Bonesaw {
+            get {
+                object obj = ResourceManager.GetObject("The_Bonesaw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap The_Broken_Cart {
+            get {
+                object obj = ResourceManager.GetObject("The_Broken_Cart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap The_Dancer {
+            get {
+                object obj = ResourceManager.GetObject("The_Dancer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap The_Drummer {
+            get {
+                object obj = ResourceManager.GetObject("The_Drummer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap The_Gloaming {
+            get {
+                object obj = ResourceManager.GetObject("The_Gloaming", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap The_Greased_Goat {
+            get {
+                object obj = ResourceManager.GetObject("The_Greased_Goat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap The_Limner_s_Line {
+            get {
+                object obj = ResourceManager.GetObject("The_Limner_s_Line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap The_Piper {
+            get {
+                object obj = ResourceManager.GetObject("The_Piper", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap The_Two_Bullocks {
+            get {
+                object obj = ResourceManager.GetObject("The_Two_Bullocks", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap The_Witchling_Star {
+            get {
+                object obj = ResourceManager.GetObject("The_Witchling_Star", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap unrollingscroll {
             get {
                 object obj = ResourceManager.GetObject("unrollingscroll", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Vobist_the_Faint {
+            get {
+                object obj = ResourceManager.GetObject("Vobist_the_Faint", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -306,6 +496,16 @@ namespace CalendarManager.Properties {
         internal static System.Drawing.Bitmap Waxing_Gibbous {
             get {
                 object obj = ResourceManager.GetObject("Waxing_Gibbous", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Wymund_the_Anchorite {
+            get {
+                object obj = ResourceManager.GetObject("Wymund_the_Anchorite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

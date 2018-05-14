@@ -349,8 +349,6 @@ namespace CalendarManager
                 addDayOfWeek();
                 addMoonPhase();
             }
-
-
         }
         public void subDay(int numDays)
         {
@@ -576,6 +574,97 @@ namespace CalendarManager
         {
             currentMorrSeed = -1;
             morrsliebNextPhase();
+        }
+
+        public string determineCurrentStarSign()
+        {
+            return determineStarSignFromDate(month, day);
+
+        }
+
+        public static string determineStarSignFromDate(int m, int d)
+        {
+            switch (m)
+            {
+                case 1:
+                    if (d <= 7)
+                        return "Wymund the Anchorite";
+                    else if (d <= 27)
+                        return "The Big Cross";
+                    else
+                        return "The Limner's Line";
+                case 2:
+                    if (d <= 15)
+                        return "The Limner's Line";
+                    else
+                        return "Gnuthus the Ox";
+                case 3:
+                    if (d <= 1)
+                        return "Gnuthus the Ox";
+                    else if (d <= 21)
+                        return "Dragomas the Drake";
+                    else
+                        return "The Gloaming";
+                case 4:
+                    if (d <= 8)
+                        return "The Gloaming";
+                    else if (d <= 28)
+                        return "Grungi's Baldrick";
+                    else
+                        return "Mammit the Wise";
+                case 5:
+                    if (d <= 15)
+                        return "Mammit the Wise";
+                    else
+                        return "Mummit the Fool";
+                case 6:
+                    if (d <= 1)
+                        return "Mummit the Fool";
+                    else if (d <= 21)
+                        return "The Two Bullocks";
+                    else
+                        return "The Dancer";
+                case 7:
+                    if (d <= 7)
+                        return "The Dancer";
+                    else if (d <= 27)
+                        return "The Drummer";
+                    else
+                        return "The Piper";
+                case 8:
+                    if (d <= 15)
+                        return "The Piper";
+                    else
+                        return "Vobist the Faint";
+                case 9:
+                    if (d <= 1)
+                        return "Vobist the Faint";
+                    else if (d <= 21)
+                        return "The Broken Cart";
+                    else
+                        return "The Greased Goat";
+                case 10:
+                    if (d <= 8)
+                        return "The Greased Goat";
+                    else if (d <= 28)
+                        return "Rhya's Cauldron";
+                    else
+                        return "Cacklefax the Cockerel";
+                case 11:
+                    if (d <= 15)
+                        return "Cacklefax the Cockerel";
+                    else
+                        return "The Bonesaw";
+                case 12:
+                    if (d <= 1)
+                        return "The Bonesaw";
+                    else if (d <= 21)
+                        return "The Witchling Star";
+                    else
+                        return "Wymund the Anchorite";
+
+            }
+            return null;
         }
         #endregion
 

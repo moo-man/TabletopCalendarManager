@@ -19,7 +19,6 @@ namespace CalendarManager
         List<Note> listOfNotes;
         Point morrLocation;
 
-
         public DayTracker(Calendar currCalendar)
         {
             InitializeComponent();
@@ -85,6 +84,7 @@ namespace CalendarManager
 
             listOfNotes = currentCalendar.findNotesToList();
 
+            SetStarSign();
 
             //if (currentCalendar.activeCampaign != null)
             //{
@@ -149,6 +149,14 @@ namespace CalendarManager
                 writeNotes(currentCalendar.activeCampaign.timers, listOfNotes);
             else
                 writeNotes(null, listOfNotes);
+        }
+
+        public void SetStarSign()
+        {
+            string currentStarSign;
+            currentStarSign = currentCalendar.calendar.determineCurrentStarSign();
+            starSignPictureBox.Image = (Image)Properties.Resources.ResourceManager.GetObject(currentStarSign.Replace(' ', '_').Replace('\'', '_'));
+            starSignTT.SetToolTip(starSignPictureBox, currentStarSign);
         }
 
         public void writeNotes(List<Timer> timerList, List<Note> list)

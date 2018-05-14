@@ -198,6 +198,25 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Resources\Star Signs\PSDs\Cacklefax the Cockrel.psd" />
+    <None Include="Resources\Star Signs\PSDs\Dragomas the Drake.psd" />
+    <None Include="Resources\Star Signs\PSDs\Gnuthus the Ox.psd" />
+    <None Include="Resources\Star Signs\PSDs\Grugni%27s Baldrick.psd" />
+    <None Include="Resources\Star Signs\PSDs\Mammit the Wise.psd" />
+    <None Include="Resources\Star Signs\PSDs\Mummit the Fool.psd" />
+    <None Include="Resources\Star Signs\PSDs\Rhya%27s Cauldron.psd" />
+    <None Include="Resources\Star Signs\PSDs\The Big Cross.psd" />
+    <None Include="Resources\Star Signs\PSDs\The Bonesaw.psd" />
+    <None Include="Resources\Star Signs\PSDs\The Broken Cart.psd" />
+    <None Include="Resources\Star Signs\PSDs\The Dancer.psd" />
+    <None Include="Resources\Star Signs\PSDs\The Drummer.psd" />
+    <None Include="Resources\Star Signs\PSDs\The Gloaming.psd" />
+    <None Include="Resources\Star Signs\PSDs\The Greased Goat.psd" />
+    <None Include="Resources\Star Signs\PSDs\The Limner%27s Line.psd" />
+    <None Include="Resources\Star Signs\PSDs\The Piper.psd" />
+    <None Include="Resources\Star Signs\PSDs\The Two Bulls.psd" />
+    <None Include="Resources\Star Signs\PSDs\The Witchling Star.psd" />
+    <None Include="Resources\Star Signs\PSDs\Wymund the Anchorite.psd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -218,6 +237,26 @@
     <Content Include="Resources\Moons\morr_Waxing Crescent.png" />
     <Content Include="Resources\Moons\morr_Waxing Gibbous.png" />
     <Content Include="Resources\Moons\New Moon.png" />
+    <Content Include="Resources\Star Signs\Cacklefax the Cockerel.png" />
+    <Content Include="Resources\Star Signs\Dragomas the Drake.png" />
+    <Content Include="Resources\Star Signs\Gnuthus the Ox.png" />
+    <Content Include="Resources\Star Signs\Grungi%27s Baldrick.png" />
+    <Content Include="Resources\Star Signs\Mammit the Wise.png" />
+    <Content Include="Resources\Star Signs\Mummit the Fool.png" />
+    <Content Include="Resources\Star Signs\Rhya%27s Cauldron.png" />
+    <Content Include="Resources\Star Signs\The Big Cross.png" />
+    <Content Include="Resources\Star Signs\The Bonesaw.png" />
+    <Content Include="Resources\Star Signs\The Broken Cart.png" />
+    <Content Include="Resources\Star Signs\The Dancer.png" />
+    <Content Include="Resources\Star Signs\The Drummer.png" />
+    <Content Include="Resources\Star Signs\The Gloaming.png" />
+    <Content Include="Resources\Star Signs\The Greased Goat.png" />
+    <Content Include="Resources\Star Signs\The Limner%27s Line.png" />
+    <Content Include="Resources\Star Signs\The Piper.png" />
+    <Content Include="Resources\Star Signs\The Two Bullocks.png" />
+    <Content Include="Resources\Star Signs\The Witchling Star.png" />
+    <Content Include="Resources\Star Signs\Vobist the Faint.png" />
+    <Content Include="Resources\Star Signs\Wymund the Anchorite.png" />
     <EmbeddedResource Include="Newtonsoft.Json.dll" />
     <Content Include="Resources\Icons\noteicon.png" />
     <Content Include="Resources\Icons\infoicon.png" />

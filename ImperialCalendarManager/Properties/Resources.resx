@@ -193,4 +193,64 @@
   <data name="morr_Waxing_Gibbous" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\moons\morr_waxing gibbous.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Dragomas_the_Drake" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\dragomas the drake.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gnuthus_the_Ox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\gnuthus the ox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mammit_the_Wise" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\mammit the wise.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mummit_the_Fool" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\mummit the fool.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rhya_s_Cauldron" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\rhya's cauldron.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="The_Big_Cross" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\the big cross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="The_Bonesaw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\the bonesaw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="The_Broken_Cart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\the broken cart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="The_Dancer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\the dancer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="The_Drummer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\the drummer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="The_Gloaming" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\the gloaming.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="The_Greased_Goat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\the greased goat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="The_Limner_s_Line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\the limner's line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="The_Piper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\the piper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="The_Witchling_Star" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\the witchling star.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Vobist_the_Faint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\vobist the faint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wymund_the_Anchorite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\wymund the anchorite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Grungi_s_Baldrick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\grungi's baldrick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="The_Two_Bullocks" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\the two bullocks.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cacklefax_the_Cockerel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\star signs\cacklefax the cockerel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
