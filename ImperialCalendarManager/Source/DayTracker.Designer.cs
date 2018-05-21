@@ -106,6 +106,8 @@
             this.morrPicture = new System.Windows.Forms.PictureBox();
             this.starSignPictureBox = new System.Windows.Forms.PictureBox();
             this.starSignTT = new System.Windows.Forms.ToolTip(this.components);
+            this.mannTT = new System.Windows.Forms.ToolTip(this.components);
+            this.morrTT = new System.Windows.Forms.ToolTip(this.components);
             this.noteboxRightClickMenu.SuspendLayout();
             this.daytrackerToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mannPicture)).BeginInit();
@@ -938,6 +940,8 @@
         private System.Windows.Forms.PictureBox morrPicture;
         private System.Windows.Forms.PictureBox starSignPictureBox;
         private System.Windows.Forms.ToolTip starSignTT;
+        private System.Windows.Forms.ToolTip mannTT;
+        private System.Windows.Forms.ToolTip morrTT;
     }
 }
 

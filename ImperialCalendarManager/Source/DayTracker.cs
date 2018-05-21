@@ -35,6 +35,8 @@ namespace CalendarManager
             noteTT.SetToolTip(noteButton, "Notes");
             timerTT.SetToolTip(alarmButton, "Timers");
             showTT.SetToolTip(showHiddenTimersButton, "Show hidden timers");
+            mannTT.SetToolTip(mannPicture, "Mannslieb");
+            morrTT.SetToolTip(morrPicture, "Morrslieb");
 
             noteBox.ContextMenuStrip = noteboxRightClickMenu;
             noneSelectedContextMenu();
