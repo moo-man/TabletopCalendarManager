@@ -375,7 +375,8 @@ namespace CalendarManager
                 switch (campaignTree.SelectedNode.Level)
                 {
                     case 0: // Take the name of the selected node (which is the campaign name), find the current date of that campaign
-                        timeDiffTool.GiveDate(currentCalendar.CampaignList.Find(x => x.Name.Equals(parseCampaignName(campaignTree.SelectedNode.Text))).CurrentDate);
+                        if (campaignTree.SelectedNode.Text != "General Notes")
+                            timeDiffTool.GiveDate(currentCalendar.CampaignList.Find(x => x.Name.Equals(parseCampaignName(campaignTree.SelectedNode.Text))).CurrentDate);
                         break;
                     case 1: //
                         timeDiffTool.GiveDate(CalendarType.ReturnGivenDateFromName(campaignTree.SelectedNode.Text));
