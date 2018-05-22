@@ -1029,6 +1029,118 @@ namespace HarptosCalendarManager
             return stringDate.ToString();
         }
 
+
+        public override string ToString(string format, bool alt)
+        {
+            format = format.ToLower();
+            StringBuilder returnDate = new StringBuilder();
+
+            for (int i = 0; i < format.Length; i++)
+            {
+
+            }
+        }
+
+        private string ReturnDayFromFormat(string format)
+        {
+            string returnDay;
+            switch (format)
+            {
+                case "dddd":
+                    if (day == 1)
+                        returnDay = day + "st of ";
+                    else if (day == 2)
+                        returnDay = day + "nd of ";
+                    else if (day == 3)
+                        returnDay = day + "rd of ";
+                    else
+                        returnDay = day + "th of ";
+                    break;
+                case "ddd":
+                    if (day == 1)
+                        returnDay = day + "st";
+                    else if (day == 2)
+                        returnDay = day + "nd";
+                    else if (day == 3)
+                        returnDay = day + "rd";
+                    else
+                        returnDay = day + "th";
+                    break;
+                case "dd":
+                    returnDay = day.ToString("00");
+                    break;
+
+                case "d":
+                    returnDay = day.ToString();
+                    break;
+                default:
+                    returnDay = day.ToString();
+                    break;
+            }
+            return returnDay;
+        }
+
+        private string ReturnMonthFromFormat(string format, bool alt)
+        {
+            string returnMonth;
+            switch (format)
+            {
+                case "mmm":
+                    if (alt)
+                        returnMonth = altMonthNames[month];
+                    else
+                        returnMonth = monthNames[month];
+                    break;
+
+                case "mm":
+                    returnMonth = month.ToString("00");
+                    break;
+
+                case "m":
+                    returnMonth = month.ToString();
+                    break;
+                default:
+                    returnMonth = month.ToString();
+                    break;
+            }
+            return returnMonth;
+        }
+        private string ReturnYearFromFormat(string format)
+        {
+            string returnYear;
+
+            switch (format)
+            {
+                case "yyyy":
+                    returnYear = year.ToString("0000");
+                    break;
+                case "yyy":
+                    returnYear = year.ToString("000"); // TEST
+                    break;
+                case "yy":
+                    returnYear = year.ToString("00");
+                    break;
+                case "y":
+                    returnYear = year.ToString("0");
+                    break;
+                default:
+                    returnYear = year.ToString();
+                    break;
+            }
+            return returnYear;
+        }
+
+        private string ReturnHolidayFromFormat(string format)
+        {
+            switch (format)
+            {
+                case "hh":
+                    break;
+                case "h":
+                    break;
+            }
+        }
+
         /// <summary>
         /// Returns current year name
         /// </summary>
