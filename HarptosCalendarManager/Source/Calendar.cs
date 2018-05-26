@@ -312,6 +312,9 @@ namespace HarptosCalendarManager
         }
         public static bool CanEditOrDelete(Note noteToTest)
         {
+            if (noteToTest == null)
+                return false;
+
             if (noteToTest.Campaign != null &&                                          // If campaign is not null (note not general)
         (noteToTest.Campaign.getCurrentDateOrEndNote() == noteToTest ||   // AND (the note is not the currentdate note OR the begin note)
         noteToTest.Campaign.returnBeginNote() == noteToTest))

@@ -105,6 +105,13 @@ namespace HarptosCalendarManager
         public void writeNotes(List<Timer> timerList, List<Note> noteList)
         {
             noteBox.Items.Clear();
+
+            string UniversalNote = currentCalendar.calendar.ReturnUniversalNoteContent();
+            if (UniversalNote != null)
+            {
+                noteBox.Items.Add("\u2022 (Holiday) " + UniversalNote);
+            }
+
             if (timerList != null)
                 foreach (Timer t in timerList)
                 {
@@ -138,17 +145,19 @@ namespace HarptosCalendarManager
 
         public string ReturnNoteDisplay(Note n)
         {
+
+            //TODO: Why is all this shit needed?
             if (n.isGeneral()) // if note is general
             {
                 if (currentCalendar.calendar.yearsAgo(n.Date) == 1)
                     return ("\u2022 " + " " + ReturnContentAndDateDifference(n));
-                else if (currentCalendar.calendar.yearsAgo(n.Date) > 1)                                                                                                        // Note happened in past
+                else if (currentCalendar.calendar.yearsAgo(n.Date) > 1)          // Note happened in past
                     return ("\u2022 " + " " + ReturnContentAndDateDifference(n));
                 else if ((currentCalendar.calendar.yearsAgo(n.Date) == 0))
-                    return ("\u2022 " + " " + ReturnContentAndDateDifference(n));                                                                                                 // Note happened this very day
+                    return ("\u2022 " + " " + ReturnContentAndDateDifference(n)); // Note happened this very day
                 else if (currentCalendar.calendar.yearsAgo(n.Date) == -1)
                     return ("\u2022 " + " " + ReturnContentAndDateDifference(n));
-                else if (currentCalendar.calendar.yearsAgo(n.Date) < -1)                                                                                                       // Note happens in future
+                else if (currentCalendar.calendar.yearsAgo(n.Date) < -1) // Note happens in future
                     return ("\u2022 " + " " + ReturnContentAndDateDifference(n));
                 else
                     return ("Error.");
@@ -169,38 +178,6 @@ namespace HarptosCalendarManager
                 else
                     return ("Error.");
             }
-
-            //if (n.isGeneral()) // if note is general
-            //{
-            //    if (currentCalendar.calendar.yearsAgo(n.Date) == 1)
-            //        return ("\u2022 " + " " + n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " year ago)\n");
-            //    else if (currentCalendar.calendar.yearsAgo(n.Date) > 1)                                                                                                        // Note happened in past
-            //        return ("\u2022 " + " " + n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " years ago)\n");
-            //    else if ((currentCalendar.calendar.yearsAgo(n.Date) == 0))
-            //        return ("\u2022 " + " " + n.NoteContent + "\n");                                                                                                 // Note happened this very day
-            //    else if (currentCalendar.calendar.yearsAgo(n.Date) == -1)
-            //        return ("\u2022 " + " " + n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " year)\n");
-            //    else if (currentCalendar.calendar.yearsAgo(n.Date) < -1)                                                                                                       // Note happens in future
-            //        return ("\u2022 " + " " + n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " years)\n");
-            //    else
-            //        return ("Error.");
-            //}
-
-            //else // if note belongs to a campaign
-            //{
-            //    if (currentCalendar.calendar.yearsAgo(n.Date) == 1)
-            //        return ("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " year ago)\n");
-            //    else if (currentCalendar.calendar.yearsAgo(n.Date) > 1)                                                                                                        // Note happened in past
-            //        return ("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " years ago)\n");
-            //    else if ((currentCalendar.calendar.yearsAgo(n.Date) == 0))
-            //        return ("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + "\n");                                                                         // Note happened this very day
-            //    else if (currentCalendar.calendar.yearsAgo(n.Date) == -1)
-            //        return ("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " year)\n");
-            //    else if (currentCalendar.calendar.yearsAgo(n.Date) < -1)                                                                                                       // Note happens in future
-            //        return ("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " years)\n");
-            //    else
-            //        return ("Error.");
-            //}
         }
 
 
@@ -387,6 +364,12 @@ namespace HarptosCalendarManager
         {
             int OpenParenIndex = 0;
             int ClosedParenIndex = 0;
+
+            if (stringToParse.Substring(0, 11) == "\u2022 (Holiday)")
+            {
+                type = noteType.universal;
+                return null;
+            }
 
             if (stringToParse.ElementAt(2) != '(' && stringToParse.ElementAt(0) == '\u2022') // Applies to general notes, no tag
             {
