@@ -1035,12 +1035,58 @@ namespace HarptosCalendarManager
             format = format.ToLower();
             StringBuilder returnDate = new StringBuilder();
 
-            for (int i = 0; i < format.Length; i++)
+            if (format.Contains("ddd"))
             {
+                format.Replace("ddd", ReturnDayFromFormat("ddd"));
+            }
+            else if (format.Contains("ddd"))
+            {
+                format.Replace("dd", ReturnDayFromFormat("dd"));
 
+            }
+            else if (format.Contains("d"))
+            {
+                format.Replace("d", ReturnDayFromFormat("d"));
+            }
+
+
+            if (format.Contains("mmm"))
+            {
+                format.Replace("mmm", ReturnDayFromFormat("mmm"));
+            }
+            else if (format.Contains("mm"))
+            {
+                format.Replace("mm", ReturnDayFromFormat("mm"));
+            }
+            else if (format.Contains("m"))
+            {
+                format.Replace("m", ReturnDayFromFormat("m"));
+            }
+
+
+            if (format.Contains("yyyy"))
+            {
+            }
+            else if (format.Contains("yyy"))
+            {
+            }
+            else if (format.Contains("yy"))
+            {
+            }
+            else if(format.Contains("y"))
+            {
             }
         }
 
+        /// <summary>
+        /// Input format as...
+        /// dddd -> "(day)st/nd/rd/th of "
+        /// ddd  -> "(day)st/nd/rd/th"
+        /// dd   -> "01" to "31"
+        /// none ->  "1" to "31"
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
         private string ReturnDayFromFormat(string format)
         {
             string returnDay;
@@ -1080,6 +1126,16 @@ namespace HarptosCalendarManager
             return returnDay;
         }
 
+        /// <summary>
+        /// Input format as...
+        /// mmm -> "(month name)" or if intercalary holiday, return holiday name
+        /// mm  -> "01" to "12"
+        /// m   ->  "1" to "12" 
+        /// none -> "1" to "12"
+        /// </summary>
+        /// <param name="format"></param>
+        /// <param name="alt">if you want alternative month names</param>
+        /// <returns></returns>
         private string ReturnMonthFromFormat(string format, bool alt)
         {
             string returnMonth;
@@ -1105,6 +1161,17 @@ namespace HarptosCalendarManager
             }
             return returnMonth;
         }
+
+        /// <summary>
+        /// Input format as...
+        /// yyyy -> "0000" to "9999"
+        /// yyy ->   "000" to  "999" right most 3 numbers, probably useless
+        /// yy ->     "00" to   "99" right most 2 numbers, probably useless
+        /// y ->       "0" to    "9" right most number, probably useless
+        /// none ->    "0  to "9999"
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
         private string ReturnYearFromFormat(string format)
         {
             string returnYear;
@@ -1130,15 +1197,58 @@ namespace HarptosCalendarManager
             return returnYear;
         }
 
+        /// <summary>
+        /// Input format as...
+        /// hh ->
+        /// Two cases:
+        /// Intercalary holiday -> "It is (holidayName)!"
+        /// intracalary holiday -> ", the (holidayName)" (equinoxes/solstices)
+        /// h -> just the holiday name
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
         private string ReturnHolidayFromFormat(string format)
         {
+            if (day == 31) // if is intercalary holiday
+            {
+                if (format == "hh")
+                {
+                    if (month != 12)
+                        return "It is " + CurrentHolidayName() + "!";
+                    else
+                        return "It is the " + CurrentHolidayName() + "!";
+                }
+                else if (format == "h")
+                    return CurrentHolidayName();
+            }
+            else if (day == 32)
+            {
+                if (format == "hh")
+                    return "It is " + CurrentHolidayName() + "!";
+                else if (format == "h")
+                    return CurrentHolidayName();
+            }
+
             switch (format)
             {
                 case "hh":
-                    break;
+                    return ", the " + CurrentHolidayName();
                 case "h":
-                    break;
+                    return CurrentHolidayName();
             }
+            return null;
+        }
+
+        public string CurrentHolidayName()
+        {
+            int i;
+            for (i = 0; i < holidays.Length; i++)
+            {
+                if (holidays[i])
+                    return holidayNames[i];
+            }
+            return null;
+
         }
 
         /// <summary>
