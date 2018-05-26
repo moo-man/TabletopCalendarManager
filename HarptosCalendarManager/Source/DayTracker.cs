@@ -15,7 +15,7 @@ namespace HarptosCalendarManager
     public partial class DayTracker : Form
     {
 
-        static Calendar currentCalendar; // Changed to static, beware of issues
+        static Calendar currentCalendar; // Changed to static
         bool altNames;
         List<Note> listOfNotes;
 
@@ -34,6 +34,7 @@ namespace HarptosCalendarManager
             timerTT.SetToolTip(alarmButton, "Timers");
             showTT.SetToolTip(showHiddenTimersButton, "Show hidden timers");
 
+            noteBox.DisplayMember = "DisplayString";
             noteBox.ContextMenuStrip = noteboxRightClickMenu;
             noneSelectedContextMenu();
 
@@ -86,12 +87,7 @@ namespace HarptosCalendarManager
 
             checkIfTimerPassed();
 
-            listOfNotes = currentCalendar.findNotesToList();
-
-            if (currentCalendar.activeCampaign != null)
-                writeNotes(currentCalendar.activeCampaign.timers, listOfNotes);
-            else
-                writeNotes(null, listOfNotes);
+            WriteNotes();
 
             moonPicture.Image = (Image)Properties.Resources.ResourceManager.GetObject(currentCalendar.calendar.currentMoonPhase().Replace(' ', '_'));
 
@@ -102,129 +98,22 @@ namespace HarptosCalendarManager
             wheelPicture.Refresh();
         }
 
-        public void writeNotes(List<Timer> timerList, List<Note> noteList)
+        public void WriteNotes()
         {
             noteBox.Items.Clear();
-            if (timerList != null)
-                foreach (Timer t in timerList)
+            List<Timer> timers = currentCalendar.returnTimersToDisplay();
+            List<Note> notes = currentCalendar.returnNotesToDisplay();
+
+            if (timers != null)
+                foreach (Timer t in timers)
                 {
-                    if (t.keepTrack && currentCalendar.calendar.sameDate(t.returnDateString()) == false)
-                    {
-                        int numDays = (currentCalendar.calendar.daysTo(t.returnDateString()));
-
-                        if (t.pausedTime == 0)
-                        {
-
-                            if (numDays > 1)
-                                noteBox.Items.Add("(TIMER) " + t.message + " (in " + currentCalendar.calendar.daysTo(t.returnDateString()) + " days)");
-                            else
-                                noteBox.Items.Add("(TIMER) " + t.message + " (in " + currentCalendar.calendar.daysTo(t.returnDateString()) + " days)");
-                        }
-                        else
-                        {
-                            if (numDays > 1)
-                                noteBox.Items.Add("(TIMER)(PAUSED) " + t.message + " (in " + currentCalendar.calendar.daysTo(t.returnDateString()) + " days)");
-                            else
-                                noteBox.Items.Add("(TIMER)(PAUSED) " + t.message + " (in " + currentCalendar.calendar.daysTo(t.returnDateString()) + " days)");
-                        }
-                    }
+                    noteBox.Items.Add(t);
                 }
 
-            foreach (Note n in noteList)
+            foreach (Note n in notes)
             {
-                noteBox.Items.Add(ReturnNoteDisplay(n));
+                noteBox.Items.Add(n);
             }
-        }
-
-        public string ReturnNoteDisplay(Note n)
-        {
-            if (n.isGeneral()) // if note is general
-            {
-                if (currentCalendar.calendar.yearsAgo(n.Date) == 1)
-                    return ("\u2022 " + " " + ReturnContentAndDateDifference(n));
-                else if (currentCalendar.calendar.yearsAgo(n.Date) > 1)                                                                                                        // Note happened in past
-                    return ("\u2022 " + " " + ReturnContentAndDateDifference(n));
-                else if ((currentCalendar.calendar.yearsAgo(n.Date) == 0))
-                    return ("\u2022 " + " " + ReturnContentAndDateDifference(n));                                                                                                 // Note happened this very day
-                else if (currentCalendar.calendar.yearsAgo(n.Date) == -1)
-                    return ("\u2022 " + " " + ReturnContentAndDateDifference(n));
-                else if (currentCalendar.calendar.yearsAgo(n.Date) < -1)                                                                                                       // Note happens in future
-                    return ("\u2022 " + " " + ReturnContentAndDateDifference(n));
-                else
-                    return ("Error.");
-            }
-
-            else // if note belongs to a campaign
-            {
-                if (currentCalendar.calendar.yearsAgo(n.Date) == 1)
-                    return ("\u2022 " + "(" + n.Campaign.Tag + ") " + ReturnContentAndDateDifference(n));
-                else if (currentCalendar.calendar.yearsAgo(n.Date) > 1)                                                                                                        // Note happened in past
-                    return ("\u2022 " + "(" + n.Campaign.Tag + ") " + ReturnContentAndDateDifference(n));
-                else if ((currentCalendar.calendar.yearsAgo(n.Date) == 0))
-                    return ("\u2022 " + "(" + n.Campaign.Tag + ") " + ReturnContentAndDateDifference(n));                                                                         // Note happened this very day
-                else if (currentCalendar.calendar.yearsAgo(n.Date) == -1)
-                    return ("\u2022 " + "(" + n.Campaign.Tag + ") " + ReturnContentAndDateDifference(n));
-                else if (currentCalendar.calendar.yearsAgo(n.Date) < -1)                                                                                                       // Note happens in future
-                    return ("\u2022 " + "(" + n.Campaign.Tag + ") " + ReturnContentAndDateDifference(n));
-                else
-                    return ("Error.");
-            }
-
-            //if (n.isGeneral()) // if note is general
-            //{
-            //    if (currentCalendar.calendar.yearsAgo(n.Date) == 1)
-            //        return ("\u2022 " + " " + n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " year ago)\n");
-            //    else if (currentCalendar.calendar.yearsAgo(n.Date) > 1)                                                                                                        // Note happened in past
-            //        return ("\u2022 " + " " + n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " years ago)\n");
-            //    else if ((currentCalendar.calendar.yearsAgo(n.Date) == 0))
-            //        return ("\u2022 " + " " + n.NoteContent + "\n");                                                                                                 // Note happened this very day
-            //    else if (currentCalendar.calendar.yearsAgo(n.Date) == -1)
-            //        return ("\u2022 " + " " + n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " year)\n");
-            //    else if (currentCalendar.calendar.yearsAgo(n.Date) < -1)                                                                                                       // Note happens in future
-            //        return ("\u2022 " + " " + n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " years)\n");
-            //    else
-            //        return ("Error.");
-            //}
-
-            //else // if note belongs to a campaign
-            //{
-            //    if (currentCalendar.calendar.yearsAgo(n.Date) == 1)
-            //        return ("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " year ago)\n");
-            //    else if (currentCalendar.calendar.yearsAgo(n.Date) > 1)                                                                                                        // Note happened in past
-            //        return ("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " years ago)\n");
-            //    else if ((currentCalendar.calendar.yearsAgo(n.Date) == 0))
-            //        return ("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + "\n");                                                                         // Note happened this very day
-            //    else if (currentCalendar.calendar.yearsAgo(n.Date) == -1)
-            //        return ("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " year)\n");
-            //    else if (currentCalendar.calendar.yearsAgo(n.Date) < -1)                                                                                                       // Note happens in future
-            //        return ("\u2022 " + "(" + n.Campaign.Tag + ") " + n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " years)\n");
-            //    else
-            //        return ("Error.");
-            //}
-        }
-
-
-        /// <summary>
-        /// Returns the contents of the note, with the difference of time of the current date
-        /// Eg. "Note Content" (5 years ago)
-        /// Necessary for PassedNoteGrid to call
-        /// </summary>
-        /// <param name="n">Note whose contents are being returned</param>
-        /// <returns></returns>
-        public static string ReturnContentAndDateDifference(Note n)
-        {
-            if (currentCalendar.calendar.yearsAgo(n.Date) == 1)
-                return (n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " year ago)\n");
-            else if (currentCalendar.calendar.yearsAgo(n.Date) > 1)                                                    // Note happened in past
-                return (n.NoteContent + " (" + currentCalendar.calendar.yearsAgo(n.Date) + " years ago)\n");
-            else if ((currentCalendar.calendar.yearsAgo(n.Date) == 0))
-                return (n.NoteContent + "\n");                                                                         // Note happened this very day
-            else if (currentCalendar.calendar.yearsAgo(n.Date) == -1)
-                return (n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " year)\n");
-            else if (currentCalendar.calendar.yearsAgo(n.Date) < -1)                                                   // Note happens in future
-                return (n.NoteContent + " (in " + Math.Abs(currentCalendar.calendar.yearsAgo(n.Date)) + " years)\n");
-            else
-                return ("Error.");
         }
 
         public void checkIfTimerPassed()
@@ -364,87 +253,18 @@ namespace HarptosCalendarManager
 
         }
 
-        private void editNotesButton_Click(object sender, EventArgs e)
+        private void CastListObject(object input, out Note noteSelected, out Timer timerSelected)
         {
-            if (noteBox.SelectedItem != null && noteBox.SelectedItem.ToString().Contains("(TIMER)") == false)
+            timerSelected = null;
+            noteSelected = null;
+            if (input.GetType() == typeof(Timer))
             {
-                noteType type; // if the selected note is general
-                Note selectedNote = currentCalendar.findNote(parseNoteContent(noteBox.SelectedItem.ToString(), out type), type);
-                if (Calendar.CanEditOrDelete(selectedNote) == false)
-                {
-                    MessageBox.Show(this, "This note cannot be edited.", "Cannot edit note", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                EditNotesDialog editNoteDialog = new EditNotesDialog(selectedNote, currentCalendar);
-                editNoteDialog.ShowDialog(this);
+                timerSelected = (Timer)input;
             }
-            UpdateCalendar();
-        }
-
-        // The list has notes that look like "(tag) note contents", so when selecting a note we have a parse 
-        // the note contents to give to findNote
-        private string parseNoteContent(string stringToParse, out noteType type)
-        {
-            int OpenParenIndex = 0;
-            int ClosedParenIndex = 0;
-
-            if (stringToParse.ElementAt(2) != '(' && stringToParse.ElementAt(0) == '\u2022') // Applies to general notes, no tag
+            else if (input.GetType() == typeof(Note))
             {
-                stringToParse = stringToParse.Substring(3).TrimEnd("\n ".ToCharArray()); // remove bullet point and space in the beginning
-                type = noteType.generalNote;
+                noteSelected = (Note)input;
             }
-
-            else // if the note belongs to a campaign, trim off tag
-            {
-                if (stringToParse.Contains("(TIMER)"))
-                    type = noteType.timer;
-                else
-                    type = noteType.note;
-                // First half trims the tag off the noteContent
-                for (int i = 0; i < stringToParse.Length && stringToParse[i] != '('; i++)
-                    OpenParenIndex = i;
-                for (int i = OpenParenIndex; i < stringToParse.Length && stringToParse[i] != ')'; i++)
-                    ClosedParenIndex = i;
-
-                // if paused, trim off paused
-                if (stringToParse.Contains("(PAUSED)") && type == noteType.timer)
-                {
-                    for (int i = ClosedParenIndex + 2; i < stringToParse.Length && stringToParse[i] != ')'; i++)
-                        ClosedParenIndex = i;
-                }
-
-                int startIndex = 0;
-
-                if (OpenParenIndex < ClosedParenIndex)
-                    startIndex = ClosedParenIndex + 3;
-                else
-                    stringToParse = null;
-
-                stringToParse = stringToParse.Substring(startIndex).TrimEnd('\n');
-
-            }
-
-            // This part applies if the current date is not the note's date
-            // Trims off the (x years ago) or (in x years)
-            if (stringToParse.ElementAt(stringToParse.Length - 1) == ')')
-            {
-                if (stringToParse.Contains(" years ago)") || stringToParse.Contains(" year ago)") ||
-                stringToParse.Contains(" years)") || stringToParse.Contains(" year)") ||
-                stringToParse.Contains(" days)") || stringToParse.Contains(" day)")) // If the end parenthesis is not part of the note
-                {                                                                                  // such as (string) (1 year ago)
-                    for (int i = stringToParse.Length - 1; i > 0 && stringToParse[i] != '('; i--)
-                        OpenParenIndex = i;
-                    stringToParse = stringToParse.Substring(0, OpenParenIndex - 2);
-                }
-
-                else // if the end parentheses IS part of the string, such as the note being "this happened one year ago (about)"
-                {
-                    // do nothing
-                }
-
-            }
-
-            return stringToParse;
         }
 
         private void currentDate_Click(object sender, EventArgs e)
@@ -486,25 +306,50 @@ namespace HarptosCalendarManager
             }
         }
 
+
+        private void editNotesButton_Click(object sender, EventArgs e)
+        {
+            if (noteBox.SelectedItem != null)
+            {
+                CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer);
+                if (selectedNote != null)
+                {
+                    if (Calendar.CanEditOrDelete(selectedNote) == false)
+                    {
+                        MessageBox.Show(this, "This note cannot be edited.", "Cannot edit note", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    EditNotesDialog editNoteDialog = new EditNotesDialog(selectedNote, currentCalendar);
+                    editNoteDialog.ShowDialog(this);
+                    UpdateCalendar();
+                }
+            }
+
+        }
+
         private void deleteNoteButton_Click(object sender, EventArgs e)
         {
-            if (noteBox.SelectedItem == null || noteBox.SelectedItem.ToString().Contains("(TIMER)"))
-                return;
-            noteType type;
-            Note noteToDelete = currentCalendar.findNote(parseNoteContent(noteBox.SelectedItem.ToString(), out type), type);
-
-            if (Calendar.CanEditOrDelete(noteToDelete) == false)
-                MessageBox.Show(this, "This note cannot be deleted", "Cannot delete note", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            else if (MessageBox.Show(this, "Are you sure you wish to delete this note?", "Delete note", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            if (noteBox.SelectedItem != null)
             {
-                if (noteToDelete.Campaign == null)
-                    currentCalendar.deleteNote(noteToDelete);
-                else
-                    noteToDelete.Campaign.deleteNote(noteToDelete);
+                CastListObject(noteBox.SelectedItem, out Note noteToDelete, out Timer selectedTimer);
+                if (noteToDelete != null)
+                {
+
+                    if (Calendar.CanEditOrDelete(noteToDelete) == false)
+                        MessageBox.Show(this, "This note cannot be deleted", "Cannot delete note", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    else if (MessageBox.Show(this, "Are you sure you wish to delete this note?", "Delete note", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                    {
+                        if (noteToDelete.Campaign == null)
+                            currentCalendar.deleteNote(noteToDelete);
+                        else
+                            noteToDelete.Campaign.deleteNote(noteToDelete);
+                        UpdateCalendar();
+                    }
+
+                }
 
             }
-            UpdateCalendar();
         }
 
         private void addTimerButton_Click(object sender, EventArgs e)
@@ -515,30 +360,26 @@ namespace HarptosCalendarManager
 
         private void deleteButtonTimer_Click(object sender, EventArgs e)
         {
-            if (noteBox.SelectedItem == null || noteBox.SelectedItem.ToString().Contains("(TIMER)") == false)
+            if (noteBox.SelectedItem == null)
                 return;
 
-            Timer timerToDelete = currentCalendar.activeCampaign.timers.Find(t => t.message == parseNoteContent(noteBox.SelectedItem.ToString(), out noteType type));
+            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer timerToDelete);
+            if (timerToDelete != null)
+            {
+                if (MessageBox.Show(this, "Are you sure you wish to delete this timer?", "Delete timer", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                    currentCalendar.activeCampaign.timers.Remove(timerToDelete);
 
-            if (MessageBox.Show(this, "Are you sure you wish to delete this timer?", "Delete timer", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
-                currentCalendar.activeCampaign.timers.Remove(timerToDelete);
-
-            UpdateCalendar();
+                UpdateCalendar();
+            }
         }
 
         private void editTimerButton_Click(object sender, EventArgs e)
         {
-            if (noteBox.SelectedItem == null || noteBox.SelectedItem.ToString().Contains("(TIMER)") == false)
+            if (noteBox.SelectedItem == null)
                 return;
 
-            Timer timerToEdit = currentCalendar.activeCampaign.timers.Find(t => t.message == parseNoteContent(noteBox.SelectedItem.ToString(), out noteType type));
-
-            if (timerToEdit == null)
-            {
-                MessageBox.Show(this, "Error: Could not find timer", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-            else
+            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer timerToEdit);
+            if (timerToEdit != null)
             {
                 new AddTimerForm(currentCalendar, timerToEdit).ShowDialog();
             }
@@ -681,20 +522,18 @@ namespace HarptosCalendarManager
                 noteType selectedType;
                 if (noteBox.SelectedItem != null)
                 {
-                    parseNoteContent(noteBox.SelectedItem.ToString(), out selectedType);
+                    CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer);
 
-                    switch (selectedType)
+                    if (selectedNote != null)
                     {
-                        case noteType.generalNote:
-                            noteSelectedContextMenu();
-                            break;
-                        case noteType.note:
-                            noteSelectedContextMenu();
-                            break;
-                        case noteType.timer:
-                            timerSelectedContextMenu();
-                            break;
+                        noteSelectedContextMenu();
                     }
+                    else if (selectedTimer != null)
+                    {
+                        timerSelectedContextMenu();
+                    }
+                    else
+                        noneSelectedContextMenu();
                 }
                 else
                     noneSelectedContextMenu();
@@ -721,21 +560,20 @@ namespace HarptosCalendarManager
 
         private void hideToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Timer t = currentCalendar.activeCampaign.timers.Find(x => x.message == parseNoteContent(noteBox.SelectedItem.ToString(), out noteType type));
-            if (t != null)
+            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer);
+            if (selectedTimer != null)
             {
-                t.keepTrack = false;
+                selectedTimer.keepTrack = false;
             }
             UpdateCalendar();
         }
 
         private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Timer t = currentCalendar.activeCampaign.timers.Find(x => x.message == parseNoteContent(noteBox.SelectedItem.ToString(), out noteType type));
-
-            if (t != null)
+            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer);
+            if (selectedTimer != null)
             {
-                t.TogglePause(currentCalendar.calendar);
+                selectedTimer.TogglePause(currentCalendar.calendar);
             }
             UpdateCalendar();
         }

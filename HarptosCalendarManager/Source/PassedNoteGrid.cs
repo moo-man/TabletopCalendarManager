@@ -35,7 +35,7 @@ namespace HarptosCalendarManager
                 else
                     tag = t.Item1.Campaign.Tag;
                 dateString = t.Item2.Insert(2, "/").Insert(5, "/");
-                rowToAdd = new string[] { tag, dateString, DayTracker.ReturnContentAndDateDifference(t.Item1), "Go" };
+                rowToAdd = new string[] {dateString, t.Item1.DisplayString, "Go" };
                 noteGrid.Rows.Add(rowToAdd);
             }
 
@@ -49,7 +49,7 @@ namespace HarptosCalendarManager
                 return;
 
             goButton.Show();
-            string date = noteGrid[1, e.RowIndex].Value.ToString();
+            string date = noteGrid[0, e.RowIndex].Value.ToString();
             date = date.Replace("/", "");
             GoToDate_clicked(date);
 

@@ -958,7 +958,12 @@ namespace HarptosCalendarManager
         /// <returns></returns>
         public int yearsAgo(string inputDate)
         {
-            return yearsAgo(Int32.Parse(inputDate.Substring(4, 4)));
+            return yearsAgo(this.ToString(), inputDate);
+        }
+
+        public static int yearsAgo(string initialDate, string compareDate)
+        {
+            return Int32.Parse(initialDate.Substring(4, 4)) - Int32.Parse(compareDate.Substring(4, 4));
         }
 
         /// <summary>
