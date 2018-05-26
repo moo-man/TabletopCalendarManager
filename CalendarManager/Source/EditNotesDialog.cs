@@ -13,8 +13,8 @@ namespace CalendarManager
     public partial class EditNotesDialog : Form
     {
         Note editNote;
-        Calendar currentCalendar;
-        public EditNotesDialog(Note n, Calendar currCal)
+        CalendarContents currentCalendar;
+        public EditNotesDialog(Note n, CalendarContents currCal)
         {
             InitializeComponent();
             editNote = n;
@@ -29,7 +29,7 @@ namespace CalendarManager
         // This constructor is used for adding a brand new note
         // used by CampaignViewer, because NewNoteDialog (used by daytracker)
         // does not ask for enough info, such as date and campaign
-        public EditNotesDialog(Calendar currCal)
+        public EditNotesDialog(CalendarContents currCal)
         {
             InitializeComponent();
             editNote = new Note(null, 0, null, null); // dummy values

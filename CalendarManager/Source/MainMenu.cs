@@ -151,10 +151,10 @@ namespace CalendarManager
 
         private void NewCalendarButton_Click(object sender, EventArgs e)
         {
-            LoadCalendarMenu(new Calendar(calendarType));
+            LoadCalendarMenu(new CalendarContents(calendarType));
         }
 
-        public void LoadCalendarMenu(Calendar calendarToUse)
+        public void LoadCalendarMenu(CalendarContents calendarToUse)
         {
             if (calendarToUse == null)
             {
@@ -168,7 +168,7 @@ namespace CalendarManager
 
         private void LoadCalendarButton_Click(object sender, EventArgs e)
         {
-            Calendar loadedCalendar = Utility.Load();
+            CalendarContents loadedCalendar = Utility.Load();
             LoadCalendarMenu(loadedCalendar);
         }
 

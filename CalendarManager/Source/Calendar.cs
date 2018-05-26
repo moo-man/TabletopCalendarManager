@@ -13,7 +13,7 @@ namespace CalendarManager
     // campaign will alert the campaign that the note belongs to
     // global will alert all campaigns in this calendar
 
-    public class Calendar
+    public class CalendarContents
     {
         public CalendarType calendar;
         List<Campaign> campaignList;
@@ -21,19 +21,19 @@ namespace CalendarManager
         public Campaign activeCampaign;
 
 
-        public Calendar()
+        public CalendarContents()
         {
             activeCampaign = null;
             campaignList = new List<Campaign>();
             generalNoteList = new List<Note>();
         }
 
-        public Calendar(CalendarType calendarType) : this()
+        public CalendarContents(CalendarType calendarType) : this()
         {
             calendar = calendarType;
         }
 
-        public Calendar(dynamic json) : this()
+        public CalendarContents(dynamic json) : this()
         {
             calendar = new CalendarType(json);
 

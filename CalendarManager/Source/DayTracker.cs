@@ -15,11 +15,11 @@ namespace CalendarManager
 {
     public partial class DayTracker : Form
     {
-        static Calendar currentCalendar; // Changed to static, beware of issues
+        static CalendarContents currentCalendar; // Changed to static, beware of issues
         List<Note> listOfNotes;
         List<PictureBox> moonPictures;
 
-        public DayTracker(Calendar currCalendar)
+        public DayTracker(CalendarContents currCalendar)
         {
             InitializeComponent();
             currentCalendar = currCalendar;
@@ -422,7 +422,7 @@ namespace CalendarManager
             {
                 noteType type; // if the selected note is general
                 Note selectedNote = currentCalendar.findNote(parseNoteContent(noteBox.SelectedItem.ToString(), out type), type);
-                if (Calendar.CanEditOrDelete(selectedNote) == false)
+                if (CalendarContents.CanEditOrDelete(selectedNote) == false)
                 {
                     MessageBox.Show(this, "This note cannot be edited.", "Cannot edit note", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -516,7 +516,7 @@ namespace CalendarManager
             noteType type;
             Note noteToDelete = currentCalendar.findNote(parseNoteContent(noteBox.SelectedItem.ToString(), out type), type);
 
-            if (Calendar.CanEditOrDelete(noteToDelete) == false)
+            if (CalendarContents.CanEditOrDelete(noteToDelete) == false)
                 MessageBox.Show(this, "This note cannot be deleted", "Cannot delete note", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             else if (MessageBox.Show(this, "Are you sure you wish to delete this note?", "Delete note", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
