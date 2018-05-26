@@ -103,12 +103,16 @@ namespace HarptosCalendarManager
             noteBox.Items.Clear();
             List<Timer> timers = currentCalendar.returnTimersToDisplay();
             List<Note> notes = currentCalendar.returnNotesToDisplay();
+            string universalNote = currentCalendar.calendar.ReturnUniversalNoteContent();
+            if (universalNote != null)
+            {
+                noteBox.Items.Add("\u2022 " + universalNote);
+            }
 
-            if (timers != null)
-                foreach (Timer t in timers)
-                {
-                    noteBox.Items.Add(t);
-                }
+            foreach (Timer t in timers)
+            {
+                noteBox.Items.Add(t);
+            }
 
             foreach (Note n in notes)
             {
@@ -253,10 +257,11 @@ namespace HarptosCalendarManager
 
         }
 
-        private void CastListObject(object input, out Note noteSelected, out Timer timerSelected)
+        private void CastListObject(object input, out Note noteSelected, out Timer timerSelected, out string universal)
         {
             timerSelected = null;
             noteSelected = null;
+            universal = null;
             if (input.GetType() == typeof(Timer))
             {
                 timerSelected = (Timer)input;
@@ -264,6 +269,10 @@ namespace HarptosCalendarManager
             else if (input.GetType() == typeof(Note))
             {
                 noteSelected = (Note)input;
+            }
+            else if (input.GetType() == typeof(String))
+            {
+                universal = (string)input;
             }
         }
 
@@ -311,7 +320,7 @@ namespace HarptosCalendarManager
         {
             if (noteBox.SelectedItem != null)
             {
-                CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer);
+                CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer, out string universal);
                 if (selectedNote != null)
                 {
                     if (Calendar.CanEditOrDelete(selectedNote) == false)
@@ -331,7 +340,7 @@ namespace HarptosCalendarManager
         {
             if (noteBox.SelectedItem != null)
             {
-                CastListObject(noteBox.SelectedItem, out Note noteToDelete, out Timer selectedTimer);
+                CastListObject(noteBox.SelectedItem, out Note noteToDelete, out Timer selectedTimer, out string universal);
                 if (noteToDelete != null)
                 {
 
@@ -363,7 +372,7 @@ namespace HarptosCalendarManager
             if (noteBox.SelectedItem == null)
                 return;
 
-            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer timerToDelete);
+            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer timerToDelete, out string universal);
             if (timerToDelete != null)
             {
                 if (MessageBox.Show(this, "Are you sure you wish to delete this timer?", "Delete timer", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
@@ -378,7 +387,7 @@ namespace HarptosCalendarManager
             if (noteBox.SelectedItem == null)
                 return;
 
-            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer timerToEdit);
+            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer timerToEdit, out string universal);
             if (timerToEdit != null)
             {
                 new AddTimerForm(currentCalendar, timerToEdit).ShowDialog();
@@ -522,7 +531,7 @@ namespace HarptosCalendarManager
                 noteType selectedType;
                 if (noteBox.SelectedItem != null)
                 {
-                    CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer);
+                    CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer, out string universal);
 
                     if (selectedNote != null)
                     {
@@ -560,7 +569,7 @@ namespace HarptosCalendarManager
 
         private void hideToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer);
+            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer, out string universal);
             if (selectedTimer != null)
             {
                 selectedTimer.keepTrack = false;
@@ -570,7 +579,7 @@ namespace HarptosCalendarManager
 
         private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer);
+            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer, out string universal);
             if (selectedTimer != null)
             {
                 selectedTimer.TogglePause(currentCalendar.calendar);
