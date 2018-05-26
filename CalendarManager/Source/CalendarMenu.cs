@@ -61,8 +61,6 @@ namespace CalendarManager
 
         private void dayTrackerButton_Click(object sender, EventArgs e)
         {
-            if (currentCalendar.CampaignList.Count == 0 && currentCalendar.GeneralNoteList.Count == 0)
-                currentCalendar = new Calendar();
 
             if (dayTracker == null)
             {
