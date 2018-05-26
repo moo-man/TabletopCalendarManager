@@ -15,7 +15,7 @@ namespace CalendarManager
     public partial class MainMenu : Form
     {
         HelpBox help;
-        CalendarMenu currentCalendar;
+        CalendarMenu calendarMenu;
         CalendarType calendarType;
 
         [DllImport("gdi32.dll")]
@@ -38,7 +38,7 @@ namespace CalendarManager
             initalizeFont(Properties.Resources.Minion_Pro);
             initalizeFont(Properties.Resources.Ozymandias_Solid_WBW);
             applyFont(titleText, 1);
-            currentCalendar = null;
+            calendarMenu = null;
             newCalendarButton.Enabled = false;
 
             /*// TESTING
@@ -161,8 +161,8 @@ namespace CalendarManager
                 return;
             }
 
-            currentCalendar = new CalendarMenu(this, calendarToUse);
-            currentCalendar.Show(this);
+            calendarMenu = new CalendarMenu(this, calendarToUse);
+            calendarMenu.Show(this);
             this.Hide();
         }
 
@@ -190,6 +190,8 @@ namespace CalendarManager
             calendarType = importCalendar.newCalendar;
             if (calendarType != null)
                 newCalendarButton.Enabled = true;
+            else
+                newCalendarButton.Enabled = false;
         }
 
         private void helpLabel_Click(object sender, EventArgs e)
