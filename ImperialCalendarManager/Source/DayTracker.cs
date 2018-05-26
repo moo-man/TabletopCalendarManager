@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-public enum noteType { note, generalNote, timer };
+public enum noteType { note, generalNote, timer, universal };
 
 namespace CalendarManager
 {
@@ -164,6 +164,13 @@ namespace CalendarManager
         public void writeNotes(List<Timer> timerList, List<Note> list)
         {
             noteBox.Items.Clear();
+
+            string UniversalNote = currentCalendar.calendar.ReturnUniversalNoteContent();
+            if (UniversalNote != null)
+            {
+                noteBox.Items.Add("\u2022 (Holiday) " + UniversalNote);
+            }
+
             if (timerList != null)
                 foreach (Timer t in timerList)
                 {
@@ -444,6 +451,13 @@ namespace CalendarManager
         {
             int OpenParenIndex = 0;
             int ClosedParenIndex = 0;
+
+
+            if (stringToParse.Substring(0, 11) == "\u2022 (Holiday)")
+            {
+                type = noteType.universal;
+                return null;
+            }
 
             if (stringToParse.ElementAt(2) != '(' && stringToParse.ElementAt(0) == '\u2022') // Applies to general notes, no tag
             {

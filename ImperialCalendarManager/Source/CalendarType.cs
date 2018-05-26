@@ -50,6 +50,32 @@ namespace CalendarManager
         readonly static int startYear = 0;
 
         readonly static int startDay = 0;
+
+        static string[] UniversalNoteDates = {
+            "0101",
+            "0300",
+            "0333",
+            "0418",
+            "0600",
+            "0633",
+            "0801",
+            "0900",
+            "0933",
+            "1200",
+            "1233" };
+        static string[] UniversalNoteContents = {
+            "Year Blessing",
+            "Holy day for Manaan, Taal, and Ulric",
+            "First Quaff (Dwarfs)",
+            "Sigmarsfest",
+            "Holy day for Taal, Rhya, and Elf gods",
+            "Saga (Dwarfs)",
+            "Start of Pie Week (Halflings)",
+            "Holy day for Rhya, Taal, and Ulric",
+            "Second Breech (Dwarfs)",
+            "Holy day for Ulric, Taal, an Rhya",
+            "Keg End (Dwarfs)" };
+
         #endregion
 
         #region Current data
@@ -833,6 +859,15 @@ namespace CalendarManager
             return month + day + year;
         }
 
+        public string ReturnUniversalNoteContent()
+        {
+            for (int i = 0; i < UniversalNoteContents.Length; i++)
+            {
+                if (isAnniversary(UniversalNoteDates[i] + "0000"))
+                    return UniversalNoteContents[i];
+            }
+            return null;
+        }
         #endregion
 
 
@@ -1140,6 +1175,8 @@ namespace CalendarManager
             string dayString = enforceDayFormat(monthString, startDay.ToString(), yearString);
             return monthString + dayString + yearString;
         }
+
+        // TODO: if 100 days from vorhexen 33, becomes 99, if 99 from vorhexen 33, becomes 67
 
         /// <summary>
         /// returns the amount of days between current date and input date
