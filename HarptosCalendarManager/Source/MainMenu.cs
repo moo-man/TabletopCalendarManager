@@ -11,7 +11,7 @@ using System.Drawing.Text;
 using System.Runtime.InteropServices;
 using System.Threading;
 
-public enum noteType { note, generalNote, timer };
+public enum noteType { note, generalNote, timer, universal };
 
 
 namespace HarptosCalendarManager

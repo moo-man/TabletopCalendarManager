@@ -17,6 +17,8 @@ namespace HarptosCalendarManager
         [Newtonsoft.Json.JsonProperty]
         int year;
 
+        readonly static string[] UniversalNoteDates = { "0319", "0620", "0921", "1220" };
+        readonly static string[] UniversalNoteContents = { "Spring Equinox", "Summer Solstice", "Autumn Equinox", "Winter Solstice" };
 
         bool[] holidays; // Array of bools for each holiday, if it is a holiday, find the true value for which one
         public bool isHoliday { get; set; } //Is current day a holiday?       // 0 1 3 5 7: locations of holidays that do not occur on days of a month 
@@ -682,26 +684,29 @@ namespace HarptosCalendarManager
                     else
                         returnString = "It is the " + holidayNames[i] + "!";
                 }
+                else if (day == 32)
+                {
+                    if (holidays[0])
+                        returnString = "It is " + holidayNames[0] + "!";
+                }
                 else
+                {
                     switch (day)
                     {
-                        case 32:
-                            if (holidays[0])
-                                returnString = "It is " + holidayNames[0] + "!";
-                            break;
                         case 1:
-                            returnString = day + "st of " + monthNames[month] + " " + year + ", the " + holidayNames[i];
+                            returnString = day + "st of " + monthNames[month] + " " + year;
                             break;
                         case 2:
-                            returnString = day + "nd of " + monthNames[month] + " " + year + ", the " + holidayNames[i];
+                            returnString = day + "nd of " + monthNames[month] + " " + year;
                             break;
                         case 3:
-                            returnString = day + "rd of " + monthNames[month] + " " + year + ", the " + holidayNames[i];
+                            returnString = day + "rd of " + monthNames[month] + " " + year;
                             break;
                         default:
-                            returnString = day + "th of " + monthNames[month] + " " + year + ", the " + holidayNames[i];
+                            returnString = day + "th of " + monthNames[month] + " " + year;
                             break;
                     }
+                }
             }
 
             else
@@ -743,26 +748,30 @@ namespace HarptosCalendarManager
                     else
                         returnString = "It is the " + holidayNames[i] + "!";
                 }
+                else if (day == 32)
+                {
+                    if (holidays[0])
+                        returnString = "It is " + holidayNames[0] + "!";
+                }
+
                 else
+                {
                     switch (day)
                     {
-                        case 32:
-                            if (holidays[0])
-                                returnString = "It is " + holidayNames[0] + "!";
-                            break;
                         case 1:
-                            returnString = day + "st of " + altMonthNames[month] + " " + year + ", the " + holidayNames[i];
+                            returnString = day + "st of " + monthNames[month] + " " + year;
                             break;
                         case 2:
-                            returnString = day + "nd of " + altMonthNames[month] + " " + year + ", the " + holidayNames[i];
+                            returnString = day + "nd of " + monthNames[month] + " " + year;
                             break;
                         case 3:
-                            returnString = day + "rd of " + altMonthNames[month] + " " + year + ", the " + holidayNames[i];
+                            returnString = day + "rd of " + monthNames[month] + " " + year;
                             break;
                         default:
-                            returnString = day + "th of " + altMonthNames[month] + " " + year + ", the " + holidayNames[i];
+                            returnString = day + "th of " + monthNames[month] + " " + year;
                             break;
                     }
+                }
             }
 
             else
@@ -885,6 +894,17 @@ namespace HarptosCalendarManager
             }
             return null;
         }
+
+        public string ReturnUniversalNoteContent()
+        {
+            for (int i = 0; i < UniversalNoteContents.Length; i++)
+            {
+                if (isAnniversary(UniversalNoteDates[i] + "0000"))
+                    return UniversalNoteContents[i];
+            }
+            return null;
+        }
+
 
         /// <summary>
         /// returns true if input string (MMDDYYYY) is the same as the current calendar date
