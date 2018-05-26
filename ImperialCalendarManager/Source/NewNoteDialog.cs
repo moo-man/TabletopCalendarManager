@@ -12,8 +12,8 @@ namespace CalendarManager
 {
     public partial class NewNoteDialog : Form
     {
-        Calendar currCalendar;
-        public NewNoteDialog(Calendar calendar)
+        CalendarContents currCalendar;
+        public NewNoteDialog(CalendarContents calendar)
         {
             InitializeComponent();
             currCalendar = calendar;

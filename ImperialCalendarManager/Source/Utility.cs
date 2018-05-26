@@ -18,7 +18,7 @@ namespace CalendarManager
             currentFilePath = null;
         }
 
-        public static void SaveAs(Calendar calendarToSave)
+        public static void SaveAs(CalendarContents calendarToSave)
         {
             string temp = currentFilePath;
             currentFilePath = null;
@@ -28,7 +28,7 @@ namespace CalendarManager
                 currentFilePath = temp;
         }
 
-        public static void AutoSave(Calendar calendarToSave)
+        public static void AutoSave(CalendarContents calendarToSave)
         {
             if (currentFilePath == null)
                 return;
@@ -36,7 +36,7 @@ namespace CalendarManager
                 Save(calendarToSave);
         }
 
-        public static void Save(Calendar calendarToSave)
+        public static void Save(CalendarContents calendarToSave)
         {
           
             System.IO.Stream outStream;
@@ -143,9 +143,9 @@ namespace CalendarManager
             writer.Close();
         }
 
-        public static Calendar Load()
+        public static CalendarContents Load()
         {
-            Calendar loadedCalendar = null;
+            CalendarContents loadedCalendar = null;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "WH Calendar files (*.whc)|*.whc|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 0;
@@ -173,11 +173,11 @@ namespace CalendarManager
             return loadedCalendar;
         }
 
-        public static Calendar readInJSON(dynamic json)
+        public static CalendarContents readInJSON(dynamic json)
         {
             try
             {
-                return new Calendar(json);
+                return new CalendarContents(json);
             }
             catch (Exception e)
             {
