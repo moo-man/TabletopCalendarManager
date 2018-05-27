@@ -104,6 +104,12 @@ namespace CalendarManager
             List<Timer> timers = currentCalendar.returnTimersToDisplay();
             List<Note> notes = currentCalendar.returnNotesToDisplay();
 
+            string universalNote = currentCalendar.calendar.ReturnUniversalNoteContent();
+            if (universalNote != null)
+            {
+                noteBox.Items.Add("\u2022 " + universalNote);
+            }
+
             if (timers != null)
                 foreach (Timer t in timers)
                 {
@@ -287,10 +293,11 @@ namespace CalendarManager
 
         // The list has notes that look like "(tag) note contents", so when selecting a note we have a parse 
         // the note contents to give to findNote
-        private void CastListObject(object input, out Note noteSelected, out Timer timerSelected)
+        private void CastListObject(object input, out Note noteSelected, out Timer timerSelected, out string universal)
         {
             timerSelected = null;
             noteSelected = null;
+            universal = null;
             if (input.GetType() == typeof(Timer))
             {
                 timerSelected = (Timer)input;
@@ -298,6 +305,10 @@ namespace CalendarManager
             else if (input.GetType() == typeof(Note))
             {
                 noteSelected = (Note)input;
+            }
+            else if (input.GetType() == typeof(String))
+            {
+                universal = (string)input;
             }
         }
 
@@ -310,11 +321,11 @@ namespace CalendarManager
         {
             if (noteBox.SelectedItem != null)
             {
-                CastListObject(noteBox.SelectedItem, out Note noteToDelete, out Timer selectedTimer);
+                CastListObject(noteBox.SelectedItem, out Note noteToDelete, out Timer selectedTimer, out string universal);
                 if (noteToDelete != null)
                 {
 
-                    if (Calendar.CanEditOrDelete(noteToDelete) == false)
+                    if (CalendarContents.CanEditOrDelete(noteToDelete) == false)
                         MessageBox.Show(this, "This note cannot be deleted", "Cannot delete note", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     else if (MessageBox.Show(this, "Are you sure you wish to delete this note?", "Delete note", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
@@ -342,7 +353,7 @@ namespace CalendarManager
             if (noteBox.SelectedItem == null)
                 return;
 
-            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer timerToDelete);
+            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer timerToDelete, out string universal);
             if (timerToDelete != null)
             {
                 if (MessageBox.Show(this, "Are you sure you wish to delete this timer?", "Delete timer", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
@@ -357,7 +368,7 @@ namespace CalendarManager
             if (noteBox.SelectedItem == null)
                 return;
 
-            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer timerToEdit);
+            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer timerToEdit, out string universal);
             if (timerToEdit != null)
             {
                 new AddTimerForm(currentCalendar, timerToEdit).ShowDialog();
@@ -370,10 +381,10 @@ namespace CalendarManager
         {
             if (noteBox.SelectedItem != null)
             {
-                CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer);
+                CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer, out string universal);
                 if (selectedNote != null)
                 {
-                    if (Calendar.CanEditOrDelete(selectedNote) == false)
+                    if (CalendarContents.CanEditOrDelete(selectedNote) == false)
                     {
                         MessageBox.Show(this, "This note cannot be edited.", "Cannot edit note", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -522,7 +533,7 @@ namespace CalendarManager
             {
                 if (noteBox.SelectedItem != null)
                 {
-                    CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer);
+                    CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer, out string universal);
 
                     if (selectedNote != null)
                     {
@@ -560,7 +571,7 @@ namespace CalendarManager
 
         private void hideToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer);
+            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer, out string universal);
             if (selectedTimer != null)
             {
                 selectedTimer.keepTrack = false;
@@ -570,7 +581,7 @@ namespace CalendarManager
 
         private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer);
+            CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer, out string universal);
             if (selectedTimer != null)
             {
                 selectedTimer.TogglePause(currentCalendar.calendar);
