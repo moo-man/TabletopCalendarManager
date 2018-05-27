@@ -284,7 +284,7 @@
             // 
             // timeDiffButton
             // 
-            this.timeDiffButton.Location = new System.Drawing.Point(366, 321);
+            this.timeDiffButton.Location = new System.Drawing.Point(372, 316);
             this.timeDiffButton.Name = "timeDiffButton";
             this.timeDiffButton.Size = new System.Drawing.Size(64, 35);
             this.timeDiffButton.TabIndex = 14;
