@@ -38,12 +38,13 @@ namespace CalendarManager
             try
             {
                 newCalendar = new CalendarType(textBox.Text, calendarNameBox.Text);
-                MessageBox.Show(this, "Calendar imported successfully", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "Calendar imported successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Error parsing: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 

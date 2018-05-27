@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-public enum noteType { note, generalNote, timer };
+public enum noteType { note, generalNote, timer, universal };
 
 namespace CalendarManager
 {
     public partial class DayTracker : Form
     {
-        static Calendar currentCalendar; // Changed to static, beware of issues
+        static CalendarContents currentCalendar; // Changed to static, beware of issues
         List<Note> listOfNotes;
         Point morrLocation;
 
-        public DayTracker(Calendar currCalendar)
+        public DayTracker(CalendarContents currCalendar)
         {
             InitializeComponent();
             currentCalendar = currCalendar;

@@ -13,7 +13,7 @@ namespace CalendarManager
     // campaign will alert the campaign that the note belongs to
     // global will alert all campaigns in this calendar
 
-    public class Calendar
+    public class CalendarContents
     {
         public CalendarType calendar;
         List<Campaign> campaignList;
@@ -21,16 +21,22 @@ namespace CalendarManager
         public Campaign activeCampaign;
 
 
-        public Calendar()
+        public CalendarContents()
         {
             activeCampaign = null;
-            calendar = new CalendarType();
             campaignList = new List<Campaign>();
             generalNoteList = new List<Note>();
         }
 
-        public Calendar(dynamic json) : this()
+        public CalendarContents(CalendarType calendarType) : this()
         {
+            calendar = calendarType;
+        }
+
+        public CalendarContents(dynamic json) : this()
+        {
+            calendar = new CalendarType(json);
+
             foreach (var campaign in json["CampaignList"])
                 AddCampaign(new Campaign(campaign));
 
@@ -227,7 +233,6 @@ namespace CalendarManager
         /// <summary>
         /// Finds all notes that should be listed based on the current date of the calendar
         /// This is called by returnNotesToDisplay, which sets the display values for each note
-        /// </summary>
         /// <returns></returns>
         private List<Note> findNotesToList()
         {
@@ -262,6 +267,7 @@ namespace CalendarManager
 
             return listOfNotes;
         }
+
 
         /// <summary>
         /// Returns all notes to display on the current date, and setting their display values
@@ -298,6 +304,7 @@ namespace CalendarManager
                 return ("Error.");
         }
 
+
         /// <summary>
         /// Finds all timers that should be listed based on the current date of the calendar
         /// This is called by returnTimersToDisplay, which sets the display values for each timer
@@ -321,9 +328,8 @@ namespace CalendarManager
             return listOfTimers;
         }
 
-
         /// <summary>
-        /// Returns all timers to display on the current date, and setting their display values
+        /// Returns all timers to timers on the current date, and setting their display values
         /// </summary>
         /// <returns></returns>
         public List<Timer> returnTimersToDisplay()
@@ -374,6 +380,9 @@ namespace CalendarManager
         }
         public static bool CanEditOrDelete(Note noteToTest)
         {
+            if (noteToTest == null)
+                return false;
+
             if (noteToTest.Campaign != null &&                                          // If campaign is not null (note not general)
         (noteToTest.Campaign.getCurrentDateOrEndNote() == noteToTest ||   // AND (the note is not the currentdate note OR the begin note)
         noteToTest.Campaign.returnBeginNote() == noteToTest))
@@ -629,7 +638,6 @@ namespace CalendarManager
         string noteContent; // Note contents
         Campaign campaign;
 
-
         string displayString;
         public string DisplayString
         {
@@ -684,6 +692,7 @@ namespace CalendarManager
                 date = "00000000";
         }
 
+
         /// <summary>
         /// Sets the displaystring to be used in the listbox
         /// * (TAG) (CONTENT) (YEARS TILL/AGO or none if happened this date)
@@ -695,8 +704,8 @@ namespace CalendarManager
                 displayString = "\u2022 (" + campaign.Tag + ") " + NoteContent + " " + relativity;
             else
                 displayString = "\u2022 " + NoteContent + " " + relativity;
-        }
 
+        }
 
         public AlertScope Importance
         {
@@ -744,7 +753,6 @@ namespace CalendarManager
         public string message;  // What the timer shows when it occurs
         public int pausedTime;
 
-
         string displayString;
         public string DisplayString
         {
@@ -754,7 +762,8 @@ namespace CalendarManager
             }
         }
 
-        public Timer(int m, int d, int y, bool track, string msg)
+
+    public Timer(int m, int d, int y, bool track, string msg)
         {
             month = m;
             day = d;
@@ -806,7 +815,6 @@ namespace CalendarManager
                     displayString = "\u2022 (TIMER)(PAUSED) " + message + " (in " + daysTill + " day)";
             }
         }
-
 
         /// <summary>
         /// If a timer is paused, when days are incremented, the timer's alarm date should also be incremented to reflect the pause

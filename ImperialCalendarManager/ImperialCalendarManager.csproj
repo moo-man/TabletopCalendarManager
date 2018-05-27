@@ -78,7 +78,7 @@
     <Compile Include="Source\AddTimerForm.Designer.cs">
       <DependentUpon>AddTimerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Calendar.cs" />
+    <Compile Include="Source\CalendarContents.cs" />
     <Compile Include="Source\CalendarMenu.cs">
       <SubType>Form</SubType>
     </Compile>

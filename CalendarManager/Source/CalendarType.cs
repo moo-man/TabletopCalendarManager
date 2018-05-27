@@ -45,6 +45,11 @@ namespace CalendarManager
         static int startYear;
         [JsonProperty]
         static int startDay;
+
+        [JsonProperty]
+        static string[] UniversalNoteDates;
+        [JsonProperty]
+        static string[] UniversalNoteContents;
         #endregion
 
         #region Current data
@@ -108,23 +113,17 @@ namespace CalendarManager
 
         public CalendarType(string json, string name)
         {
-            try
-            {
-                LoadFromDonjonJSON(JsonConvert.DeserializeObject(json));
-                createMoonPhaseArray();
-                setDate(1, 1, 0);
-            }
-            catch
-            {
-            }
 
+            LoadFromDonjonJSON(JsonConvert.DeserializeObject(json));
+            createMoonPhaseArray();
+            setDate(1, 1, startYear);
             calendarName = name;
         }
 
         public CalendarType(System.IO.StreamReader sr)
         {
             //loadData(sr);
-            setDate(1, 1, 0);
+            setDate(1, 1, startYear);
         }
 
         /// <summary>
@@ -135,37 +134,12 @@ namespace CalendarManager
         {
             LoadFromJSON(json);
             createMoonPhaseArray();
-            setDate(1, 1, 0);
+            setDate(1, 1, startYear);
         }
 
 
-        public void saveData(System.IO.StreamWriter writer)
-        {
-            writer.WriteLine(calendarName);
-            writer.WriteLine(numDaysInYear);
-            writer.WriteLine(celestialEvents);
-            writer.WriteLine(numMonthsInYear);
-            for (int i = 0; i < numMonthsInYear; i++)
-            {
-                writer.WriteLine(monthNames[i+1]);
-                writer.WriteLine(numDaysInMonth[i+1]);
-            }
-            writer.WriteLine(numDaysInWeek);
-            for (int i = 0; i < numDaysInWeek; i++)
-                writer.WriteLine(weekdayNames[i]);
-            writer.WriteLine(numOfMoons);
-            for (int i = 0; i < numOfMoons; i++)
-            {
-                writer.WriteLine(moonNames[i]);
-                writer.WriteLine(moonCycle[i]);
-                writer.WriteLine(moonShift[i]);
-            }
-            writer.WriteLine(startYear);
-            writer.WriteLine(startDay);
-        }
 
-
-        public void LoadFromJSON(dynamic json)
+        public string LoadFromJSON(dynamic json)
         {
             try
             {
@@ -225,10 +199,18 @@ namespace CalendarManager
                 }
                 startYear = json["calendar"]["startYear"];
                 startDay = json["calendar"]["startDay"];
+
+                Newtonsoft.Json.Linq.JArray univContent = json["calendar"]["UniversalNoteContents"];
+                Newtonsoft.Json.Linq.JArray univDates = json["calendar"]["UniversalNoteDates"];
+
+                UniversalNoteContents = univContent.Select(x => (string)x).ToArray();
+                UniversalNoteDates = univDates.Select(x => (string)x).ToArray();
+
+                return null;
             }
             catch (Exception ex)
             {
-                Console.Write(ex.Message);
+                return ex.Message;
             }
         }
 
@@ -236,7 +218,7 @@ namespace CalendarManager
         /// Load JSON data FROM DONJON
         /// </summary>
         /// <param name="json"></param>
-        public void LoadFromDonjonJSON(dynamic json)
+        public string LoadFromDonjonJSON(dynamic json)
         {
             try
             {
@@ -294,10 +276,34 @@ namespace CalendarManager
                 }
                 startYear = json["year"];
                 startDay = json["first_day"];
+
+
+                Newtonsoft.Json.Linq.JObject djNotes = json["notes"];
+                UniversalNoteContents = new string[djNotes.Count];
+                UniversalNoteDates = new string[djNotes.Count];
+                int noteIndex = 0;
+
+                foreach (var note in djNotes)
+                {
+                    // Separate date into array, year|month|day
+                    string[] date = note.Key.Split('-');
+                    int noteYear = Int32.Parse(date[0]);
+                    int noteMonth = Int32.Parse(date[1]);
+                    int noteDay = Int32.Parse(date[2]);
+
+                    if (noteYear == startYear)
+                    {
+                        UniversalNoteDates[noteIndex] = noteMonth.ToString("00") + noteDay.ToString("00");
+                        UniversalNoteContents[noteIndex] = note.Value.ToString();
+                        noteIndex++;
+                    }
+                }
+
+                return null;
             }
             catch (Exception ex)
             {
-                Console.Write(ex.Message);
+                return ex.Message;
             }
         }
 
@@ -852,6 +858,17 @@ namespace CalendarManager
 
             }
             return month + day + year;
+        }
+
+
+        public string ReturnUniversalNoteContent()
+        {
+            for (int i = 0; i < UniversalNoteContents.Length; i++)
+            {
+                if (isAnniversary(UniversalNoteDates[i] + "0000"))
+                    return UniversalNoteContents[i];
+            }
+            return null;
         }
 
         #endregion

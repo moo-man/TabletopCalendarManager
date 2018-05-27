@@ -13,11 +13,11 @@ namespace CalendarManager
     public partial class CalendarMenu : Form
     {
         MainMenu main;
-        Calendar currentCalendar;
+        CalendarContents currentCalendar;
         CampaignViewer campaignViewer;
         DayTracker dayTracker;
 
-        public CalendarMenu(MainMenu m, Calendar loadedCalendar)
+        public CalendarMenu(MainMenu m, CalendarContents loadedCalendar)
         {
             InitializeComponent();
             main = m;
@@ -61,8 +61,6 @@ namespace CalendarManager
 
         private void dayTrackerButton_Click(object sender, EventArgs e)
         {
-            if (currentCalendar.CampaignList.Count == 0 && currentCalendar.GeneralNoteList.Count == 0)
-                currentCalendar = new Calendar();
 
             if (dayTracker == null)
             {
@@ -171,7 +169,7 @@ namespace CalendarManager
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Calendar tempCal = currentCalendar;
+            CalendarContents tempCal = currentCalendar;
             currentCalendar = Utility.Load();
             if (currentCalendar == null)
             {

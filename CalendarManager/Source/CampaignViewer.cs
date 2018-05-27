@@ -12,12 +12,12 @@ namespace CalendarManager
 {
     public partial class CampaignViewer : Form
     {
-        Calendar currentCalendar;
+        CalendarContents currentCalendar;
         List<string> expandedNodes;
         TimeDifference timeDiffTool;
         bool measuring;
 
-        public CampaignViewer(Calendar cal)
+        public CampaignViewer(CalendarContents cal)
         {
             InitializeComponent();
             currentCalendar = cal;
@@ -323,7 +323,7 @@ namespace CalendarManager
                 type = noteType.note;
 
             Note noteToEdit = currentCalendar.findNote(campaignTree.SelectedNode.Text, type);
-            if (Calendar.CanEditOrDelete(noteToEdit))
+            if (CalendarContents.CanEditOrDelete(noteToEdit))
             {
                 EditNotesDialog editNoteDialog = new EditNotesDialog(noteToEdit, currentCalendar);
                 editNoteDialog.ShowDialog(this);
@@ -350,7 +350,7 @@ namespace CalendarManager
                 type = noteType.note;
 
             Note noteToDelete = currentCalendar.findNote(campaignTree.SelectedNode.Text, type);
-            if (Calendar.CanEditOrDelete(noteToDelete))
+            if (CalendarContents.CanEditOrDelete(noteToDelete))
             {
                 if (MessageBox.Show("Are you sure you want to delete this note?", "Delete Note", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     currentCalendar.deleteNote(noteToDelete);
