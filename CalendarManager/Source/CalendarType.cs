@@ -890,15 +890,29 @@ namespace CalendarManager
             else
                 return false;
         }
-
+        /// <summary>
+        /// Difference between input year and current year
+        /// </summary>
+        /// <param name="y">Input year</param>
+        /// <returns>Difference between current year and y</returns>
         public int yearsAgo(int y)
         {
             return year - y;
         }
 
+        /// <summary>
+        /// Difference in years between input date and current date
+        /// </summary>
+        /// <param name="inputDate">Input date in the form of MMDDYYYY</param>
+        /// <returns></returns>
         public int yearsAgo(string inputDate)
         {
-            return yearsAgo(Int32.Parse(inputDate.Substring(4, 4)));
+            return yearsAgo(this.ToString(), inputDate);
+        }
+
+        public static int yearsAgo(string initialDate, string compareDate)
+        {
+            return Int32.Parse(initialDate.Substring(4, 4)) - Int32.Parse(compareDate.Substring(4, 4));
         }
 
         public static int FarthestInTime(string date1, string date2)
