@@ -147,7 +147,8 @@ namespace CalendarManager
 
             List<Tuple<Note, string>> notesAndDate = new List<Tuple<Note, string>>();
 
-            List<Note> notesOnThisDay = findNotesToList();
+            List<Note> notesOnThisDay = returnNotesToDisplay();
+
             foreach (Note n in notesOnThisDay)
             {
                 notesAndDate.Add(new Tuple<Note, string>(n, this.calendar.ToString()));
@@ -231,9 +232,9 @@ namespace CalendarManager
 
         /// <summary>
         /// Finds all notes that should be listed based on the current date of the calendar
-        /// </summary>
+        /// This is called by returnNotesToDisplay, which sets the display values for each note
         /// <returns></returns>
-        public List<Note> findNotesToList()
+        private List<Note> findNotesToList()
         {
             List<Note> listOfNotes = new List<Note>();
 
@@ -266,6 +267,81 @@ namespace CalendarManager
 
             return listOfNotes;
         }
+
+
+        /// <summary>
+        /// Returns all notes to display on the current date, and setting their display values
+        /// </summary>
+        /// <returns></returns>
+        public List<Note> returnNotesToDisplay()
+        {
+            List<Note> displayList = findNotesToList();
+            foreach (Note n in displayList)
+            {
+                n.SetDisplayString(ReturnRelativity(n));
+            }
+            return displayList;
+        }
+
+        /// <summary>
+        /// Given a note that should be displayed, how many years ago/till did it happen?
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        private string ReturnRelativity(Note n)
+        {
+            if (calendar.yearsAgo(n.Date) == 1)
+                return (" (" + calendar.yearsAgo(n.Date) + " year ago)\n");
+            else if (calendar.yearsAgo(n.Date) > 1)                                                    // Note happened in past
+                return (" (" + calendar.yearsAgo(n.Date) + " years ago)\n");
+            else if ((calendar.yearsAgo(n.Date) == 0))
+                return ("\n");                                                                         // Note happened this very day
+            else if (calendar.yearsAgo(n.Date) == -1)
+                return (" (in " + Math.Abs(calendar.yearsAgo(n.Date)) + " year)\n");
+            else if (calendar.yearsAgo(n.Date) < -1)                                                   // Note happens in future
+                return (" (in " + Math.Abs(calendar.yearsAgo(n.Date)) + " years)\n");
+            else
+                return ("Error.");
+        }
+
+
+        /// <summary>
+        /// Finds all timers that should be listed based on the current date of the calendar
+        /// This is called by returnTimersToDisplay, which sets the display values for each timer
+        /// <returns></returns>
+        private List<Timer> findTimersToList()
+        {
+            List<Timer> listOfTimers = new List<Timer>();
+
+            //if (activeCampaign != null && activeCampaign.timers != null)
+            if (activeCampaign != null)
+            {
+
+                foreach (Timer t in activeCampaign.timers)
+                {
+                    if (t.keepTrack && calendar.sameDate(t.returnDateString()) == false)
+                    {
+                        listOfTimers.Add(t);
+                    }
+                }
+            }
+            return listOfTimers;
+        }
+
+        /// <summary>
+        /// Returns all timers to timers on the current date, and setting their display values
+        /// </summary>
+        /// <returns></returns>
+        public List<Timer> returnTimersToDisplay()
+        {
+            List<Timer> displayList = findTimersToList();
+            foreach (Timer t in displayList)
+            {
+                t.SetDisplayString(calendar.daysTo(t.returnDateString()));
+            }
+            return displayList;
+        }
+
 
         public Note findNote(string content, noteType type)
         {
@@ -559,6 +635,15 @@ namespace CalendarManager
         string noteContent; // Note contents
         Campaign campaign;
 
+        string displayString;
+        public string DisplayString
+        {
+            get
+            {
+                return displayString;
+            }
+        }
+
         public Note(string d, AlertScope imp, string n, Campaign c)
         {
             editDate(d);
@@ -602,6 +687,21 @@ namespace CalendarManager
                 date = newDate;
             else
                 date = "00000000";
+        }
+
+
+        /// <summary>
+        /// Sets the displaystring to be used in the listbox
+        /// * (TAG) (CONTENT) (YEARS TILL/AGO or none if happened this date)
+        /// </summary>
+        /// <param name="relativity">Years ago, till, or none, appended to (TAG) (CONTENT) </param>
+        public void SetDisplayString(string relativity)
+        {
+            if (campaign != null)
+                displayString = "\u2022 (" + campaign.Tag + ") " + NoteContent + " " + relativity;
+            else
+                displayString = "\u2022 " + NoteContent + " " + relativity;
+
         }
 
         public AlertScope Importance
@@ -650,7 +750,17 @@ namespace CalendarManager
         public string message;  // What the timer shows when it occurs
         public int pausedTime;
 
-        public Timer(int m, int d, int y, bool track, string msg)
+        string displayString;
+        public string DisplayString
+        {
+            get
+            {
+                return displayString;
+            }
+        }
+
+
+    public Timer(int m, int d, int y, bool track, string msg)
         {
             month = m;
             day = d;
@@ -680,6 +790,28 @@ namespace CalendarManager
             pausedTime = 0;
         }
 
+        /// <summary>
+        /// Sets the displaystring to be used in the listbox
+        /// * (TAG) (CONTENT) (YEARS TILL/AGO or none if happened this date)
+        /// </summary>
+        /// <param name="daysTill">Years ago, till, or none, appended to (TAG) (CONTENT) </param>
+        public void SetDisplayString(int daysTill)
+        {
+            if (pausedTime == 0)
+            {
+                if (daysTill > 1)
+                    displayString = "\u2022 (TIMER) " + message + " (in " + daysTill + " days)";
+                else
+                    displayString = "\u2022 (TIMER) " + message + " (in " + daysTill + " day)";
+            }
+            else
+            {
+                if (daysTill > 1)
+                    displayString = "\u2022 (TIMER)(PAUSED) " + message + " (in " + daysTill + " days)";
+                else
+                    displayString = "\u2022 (TIMER)(PAUSED) " + message + " (in " + daysTill + " day)";
+            }
+        }
 
         /// <summary>
         /// If a timer is paused, when days are incremented, the timer's alarm date should also be incremented to reflect the pause

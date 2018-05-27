@@ -652,7 +652,11 @@ namespace HarptosCalendarManager
         /// <param name="relativity">Years ago, till, or none, appended to (TAG) (CONTENT) </param>
         public void SetDisplayString(string relativity)
         {
-            displayString = "\u2022 (" + campaign.Tag + ") " + NoteContent + " " + relativity;
+            if (campaign != null)
+                displayString = "\u2022 (" + campaign.Tag + ") " + NoteContent + " " + relativity;
+            else
+                displayString = "\u2022 " + NoteContent + " " + relativity;
+
         }
 
         public Note(string d, AlertScope imp, string n, Campaign c)

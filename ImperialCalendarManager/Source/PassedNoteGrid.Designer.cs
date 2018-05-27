@@ -32,7 +32,6 @@
             this.currentDateLabel = new System.Windows.Forms.Label();
             this.currentDate = new System.Windows.Forms.Label();
             this.goButton = new System.Windows.Forms.Button();
-            this.tagColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gotoColumn = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -50,7 +49,6 @@
             this.noteGrid.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.noteGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.noteGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.tagColumn,
             this.dateColumn,
             this.contentColumn,
             this.gotoColumn});
@@ -91,13 +89,6 @@
             this.goButton.UseVisualStyleBackColor = true;
             this.goButton.Click += new System.EventHandler(this.goButton_Click);
             // 
-            // tagColumn
-            // 
-            this.tagColumn.HeaderText = "Tag";
-            this.tagColumn.Name = "tagColumn";
-            this.tagColumn.ReadOnly = true;
-            this.tagColumn.Width = 50;
-            // 
             // dateColumn
             // 
             this.dateColumn.HeaderText = "Date";
@@ -109,7 +100,7 @@
             // contentColumn
             // 
             this.contentColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.contentColumn.HeaderText = "Note Content";
+            this.contentColumn.HeaderText = "Note";
             this.contentColumn.Name = "contentColumn";
             this.contentColumn.ReadOnly = true;
             // 
@@ -146,7 +137,6 @@
         private System.Windows.Forms.Label currentDateLabel;
         private System.Windows.Forms.Label currentDate;
         private System.Windows.Forms.Button goButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tagColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn contentColumn;
         private System.Windows.Forms.DataGridViewButtonColumn gotoColumn;
