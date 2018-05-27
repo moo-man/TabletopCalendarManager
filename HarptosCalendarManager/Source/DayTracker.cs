@@ -15,11 +15,11 @@ namespace HarptosCalendarManager
     public partial class DayTracker : Form
     {
 
-        static Calendar currentCalendar; // Changed to static
+        static CalendarContents currentCalendar; // Changed to static
         bool altNames;
         List<Note> listOfNotes;
 
-        public DayTracker(Calendar currCalendar)
+        public DayTracker(CalendarContents currCalendar)
         {
             InitializeComponent();
             currentCalendar = currCalendar;
@@ -323,7 +323,7 @@ namespace HarptosCalendarManager
                 CastListObject(noteBox.SelectedItem, out Note selectedNote, out Timer selectedTimer, out string universal);
                 if (selectedNote != null)
                 {
-                    if (Calendar.CanEditOrDelete(selectedNote) == false)
+                    if (CalendarContents.CanEditOrDelete(selectedNote) == false)
                     {
                         MessageBox.Show(this, "This note cannot be edited.", "Cannot edit note", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -344,7 +344,7 @@ namespace HarptosCalendarManager
                 if (noteToDelete != null)
                 {
 
-                    if (Calendar.CanEditOrDelete(noteToDelete) == false)
+                    if (CalendarContents.CanEditOrDelete(noteToDelete) == false)
                         MessageBox.Show(this, "This note cannot be deleted", "Cannot delete note", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     else if (MessageBox.Show(this, "Are you sure you wish to delete this note?", "Delete note", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)

@@ -12,11 +12,11 @@ namespace HarptosCalendarManager
 {
     public partial class NewCampaignDialog : Form
     {
-        Calendar currentCalendar;
+        CalendarContents currentCalendar;
         TreeView campaignTree;
         CampaignViewer Cviewer;
         Campaign campaignToAdd;
-        public NewCampaignDialog(Calendar cal, TreeView cTree, CampaignViewer cviewer)
+        public NewCampaignDialog(CalendarContents cal, TreeView cTree, CampaignViewer cviewer)
         {
             InitializeComponent();
             currentCalendar = cal;
@@ -28,7 +28,7 @@ namespace HarptosCalendarManager
 
         // This constructor is called if a campaign is passed to it, turning the dialog into an 'edit campaign' dialog
         // Throughout the form, it checks to see if editCampaign is null, if it is, that means it's a 'new campaign' form
-        public NewCampaignDialog(Calendar cal, Campaign editCampaign, TreeView cTree, CampaignViewer cviewer) : this(cal, cTree, cviewer)
+        public NewCampaignDialog(CalendarContents cal, Campaign editCampaign, TreeView cTree, CampaignViewer cviewer) : this(cal, cTree, cviewer)
         {
             campaignToAdd = editCampaign;
             nameBox.Text = campaignToAdd.Name;

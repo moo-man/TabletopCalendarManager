@@ -16,8 +16,8 @@ namespace HarptosCalendarManager
     public partial class EditCampaignDialog : Form
     {
         Campaign campaignToEdit;
-        Calendar currentCalendar;
-        public EditCampaignDialog(Campaign editCampaign, Calendar currCalendar)
+        CalendarContents currentCalendar;
+        public EditCampaignDialog(Campaign editCampaign, CalendarContents currCalendar)
         {
             InitializeComponent();
             try

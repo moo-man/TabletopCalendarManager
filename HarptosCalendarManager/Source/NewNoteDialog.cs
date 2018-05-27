@@ -12,13 +12,13 @@ namespace HarptosCalendarManager
 {
     public partial class NewNoteDialog : Form
     {
-        Calendar currCalendar;
-        public NewNoteDialog(Calendar calendar) : this (calendar, "")
+        CalendarContents currCalendar;
+        public NewNoteDialog(CalendarContents calendar) : this (calendar, "")
         {
 
         }
 
-        public NewNoteDialog(Calendar calendar, string content)
+        public NewNoteDialog(CalendarContents calendar, string content)
         {
             InitializeComponent();
             generalTip.SetToolTip(generalBox, "General notes are not tied to a campaign.");

@@ -12,14 +12,14 @@ namespace HarptosCalendarManager
 {
     public partial class AddTimerForm : Form
     {
-        Calendar currentCalendar;
+        CalendarContents currentCalendar;
         Timer timerToEdit;
-        public AddTimerForm(Calendar currCalendar) : this (currCalendar, null)
+        public AddTimerForm(CalendarContents currCalendar) : this (currCalendar, null)
         {
 
         }
 
-        public AddTimerForm(Calendar currCalendar, Timer timer)
+        public AddTimerForm(CalendarContents currCalendar, Timer timer)
         {
             currentCalendar = currCalendar;
             InitializeComponent();

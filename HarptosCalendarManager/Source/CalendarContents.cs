@@ -12,7 +12,7 @@ namespace HarptosCalendarManager
     // alertAll will alert all campaigns in this calendar
     public enum AlertScope { dontAlert, campaign, global }
 
-    public class Calendar
+    public class CalendarContents
     {
         [Newtonsoft.Json.JsonIgnore]
         public HarptosCalendar calendar;
@@ -39,7 +39,7 @@ namespace HarptosCalendarManager
         [Newtonsoft.Json.JsonIgnore]
         public Campaign activeCampaign;
 
-        public Calendar()
+        public CalendarContents()
         {
             activeCampaign = null;
             calendar = new HarptosCalendar();
@@ -47,7 +47,7 @@ namespace HarptosCalendarManager
             generalNoteList = new List<Note>();
         }
 
-        public Calendar(dynamic json) : this()
+        public CalendarContents(dynamic json) : this()
         {
 
             foreach (var campaign in json["CampaignList"])

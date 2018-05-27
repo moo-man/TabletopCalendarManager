@@ -13,8 +13,8 @@ namespace HarptosCalendarManager
     public partial class EditNotesDialog : Form
     {
         Note editNote;
-        Calendar currentCalendar;
-        public EditNotesDialog(Note n, Calendar currCal)
+        CalendarContents currentCalendar;
+        public EditNotesDialog(Note n, CalendarContents currCal)
         {
             InitializeComponent();
             editNote = n;
@@ -31,7 +31,7 @@ namespace HarptosCalendarManager
         /// does not ask for enough info, such as date and campaign
         /// </summary>
         /// <param name="currCal"></param>
-        public EditNotesDialog(Calendar currCal)
+        public EditNotesDialog(CalendarContents currCal)
         {
             InitializeComponent();
             editNote = new Note(null, 0, null, null); // dummy values

@@ -17,7 +17,7 @@ namespace HarptosCalendarManager
             currentFilePath = null;
         }
 
-        public static void SaveAs(Calendar calendarToSave)
+        public static void SaveAs(CalendarContents calendarToSave)
         {
             string temp = currentFilePath;
             currentFilePath = null;
@@ -27,7 +27,7 @@ namespace HarptosCalendarManager
                 currentFilePath = temp;
         }
 
-        public static void AutoSave(Calendar calendarToSave)
+        public static void AutoSave(CalendarContents calendarToSave)
         {
             if (currentFilePath == null)
                 return;
@@ -35,7 +35,7 @@ namespace HarptosCalendarManager
                 Save(calendarToSave);
         }
 
-        public static void Save(Calendar calendarToSave)
+        public static void Save(CalendarContents calendarToSave)
         {
             System.IO.Stream outStream;
             System.IO.StreamWriter writer = null;
@@ -128,9 +128,9 @@ namespace HarptosCalendarManager
             writer.Close();
         }
 
-        public static Calendar Load()
+        public static CalendarContents Load()
         {
-            Calendar loadedCalendar = null;
+            CalendarContents loadedCalendar = null;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.InitialDirectory = Application.StartupPath;
             openFileDialog1.Filter = "Harptos Calendar files (*.hcal)|*.hcal|All files (*.*)|*.*";
@@ -158,11 +158,11 @@ namespace HarptosCalendarManager
             return loadedCalendar;
         }
 
-        public static Calendar ReadJSON(string json)
+        public static CalendarContents ReadJSON(string json)
         {
             try
             {
-                return new Calendar(JsonConvert.DeserializeObject(json));
+                return new CalendarContents(JsonConvert.DeserializeObject(json));
             }
             catch (Exception e)
             {
@@ -172,9 +172,9 @@ namespace HarptosCalendarManager
         }
 
         #region OLD FILE FORMAT
-        public static Calendar ReadInFile(System.IO.StreamReader sr)
+        public static CalendarContents ReadInFile(System.IO.StreamReader sr)
         {
-            Calendar loadedCalendar = new Calendar();
+            CalendarContents loadedCalendar = new CalendarContents();
             int numOfGenNotes;
             if (Int32.TryParse(sr.ReadLine(), out numOfGenNotes))
             {
@@ -213,11 +213,11 @@ namespace HarptosCalendarManager
             return loadedCalendar;
         }
 
-        public static Calendar ReadInFile(System.IO.StreamReader sr, bool oldFile)
+        public static CalendarContents ReadInFile(System.IO.StreamReader sr, bool oldFile)
         {
             if (oldFile)
             {
-                Calendar loadedCalendar = new Calendar();
+                CalendarContents loadedCalendar = new CalendarContents();
                 int numOfGenNotes;
                 if (Int32.TryParse(sr.ReadLine(), out numOfGenNotes))
                 {
