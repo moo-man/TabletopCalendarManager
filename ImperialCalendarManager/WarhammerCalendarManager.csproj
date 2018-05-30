@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Icons\HarptosIcon.ico</ApplicationIcon>
+    <ApplicationIcon>whicon2.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -109,7 +109,7 @@
     <Compile Include="Source\DayTracker.Designer.cs">
       <DependentUpon>DayTracker.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\CalendarType.cs" />
+    <Compile Include="Source\ImperialCalendar.cs" />
     <Compile Include="Source\MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +222,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="favico.ico" />
     <Content Include="Resources\Icons\alarmicon.png" />
     <Content Include="Resources\Icons\eyeicon.png" />
     <Content Include="Resources\Moons\First Quarter.png" />
@@ -257,6 +258,9 @@
     <Content Include="Resources\Star Signs\The Witchling Star.png" />
     <Content Include="Resources\Star Signs\Vobist the Faint.png" />
     <Content Include="Resources\Star Signs\Wymund the Anchorite.png" />
+    <Content Include="whicon %282%29.ico" />
+    <Content Include="whicon.ico" />
+    <Content Include="whicon2.ico" />
     <EmbeddedResource Include="Newtonsoft.Json.dll" />
     <Content Include="Resources\Icons\noteicon.png" />
     <Content Include="Resources\Icons\infoicon.png" />

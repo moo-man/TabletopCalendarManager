@@ -44,17 +44,17 @@
             this.titleText.AutoSize = true;
             this.titleText.BackColor = System.Drawing.Color.Transparent;
             this.titleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleText.Location = new System.Drawing.Point(9, 29);
+            this.titleText.Location = new System.Drawing.Point(15, 29);
             this.titleText.Name = "titleText";
-            this.titleText.Size = new System.Drawing.Size(251, 68);
+            this.titleText.Size = new System.Drawing.Size(240, 68);
             this.titleText.TabIndex = 2;
-            this.titleText.Text = "Imperial Calendar \r\nManager";
+            this.titleText.Text = "   Warhammer\r\nCalendar Manager";
             this.titleText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.titleText.UseCompatibleTextRendering = true;
             // 
             // loadCalendarButton
             // 
-            this.loadCalendarButton.Location = new System.Drawing.Point(90, 181);
+            this.loadCalendarButton.Location = new System.Drawing.Point(169, 111);
             this.loadCalendarButton.Name = "loadCalendarButton";
             this.loadCalendarButton.Size = new System.Drawing.Size(86, 23);
             this.loadCalendarButton.TabIndex = 4;
@@ -64,7 +64,7 @@
             // 
             // newCalendarButton
             // 
-            this.newCalendarButton.Location = new System.Drawing.Point(90, 139);
+            this.newCalendarButton.Location = new System.Drawing.Point(51, 111);
             this.newCalendarButton.Name = "newCalendarButton";
             this.newCalendarButton.Size = new System.Drawing.Size(86, 23);
             this.newCalendarButton.TabIndex = 5;
@@ -79,16 +79,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 253);
+            this.label1.Location = new System.Drawing.Point(12, 163);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Version: 0.9.4.3";
+            this.label1.Text = "Version: 0.9.6";
             // 
             // changelogPicture
             // 
             this.changelogPicture.Image = global::WarhammerCalendarManager.Properties.Resources.unrollingscroll;
-            this.changelogPicture.Location = new System.Drawing.Point(233, 236);
+            this.changelogPicture.Location = new System.Drawing.Point(266, 150);
             this.changelogPicture.Name = "changelogPicture";
             this.changelogPicture.Size = new System.Drawing.Size(27, 27);
             this.changelogPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -100,7 +100,7 @@
             // 
             this.helpLabel.AutoSize = true;
             this.helpLabel.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.helpLabel.Location = new System.Drawing.Point(238, 3);
+            this.helpLabel.Location = new System.Drawing.Point(271, 0);
             this.helpLabel.Name = "helpLabel";
             this.helpLabel.Size = new System.Drawing.Size(22, 26);
             this.helpLabel.TabIndex = 9;
@@ -111,7 +111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(267, 275);
+            this.ClientSize = new System.Drawing.Size(300, 185);
             this.Controls.Add(this.helpLabel);
             this.Controls.Add(this.changelogPicture);
             this.Controls.Add(this.label1);

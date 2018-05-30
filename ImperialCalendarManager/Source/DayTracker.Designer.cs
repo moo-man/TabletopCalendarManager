@@ -572,10 +572,6 @@
             // 
             // daytrackerToolStrip
             // 
-            this.daytrackerToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1,
-            this.toolStripDropDownButton2,
-            this.toolStripDropDownButton3});
             this.daytrackerToolStrip.Location = new System.Drawing.Point(0, 0);
             this.daytrackerToolStrip.Name = "daytrackerToolStrip";
             this.daytrackerToolStrip.Size = new System.Drawing.Size(727, 25);
