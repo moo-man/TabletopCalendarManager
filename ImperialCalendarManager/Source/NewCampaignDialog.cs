@@ -65,16 +65,16 @@ namespace WarhammerCalendarManager
 
         private void start_Leave(object sender, EventArgs e)
         {
-            startY.Text = CalendarType.enforceYearFormat(startY.Text);
-            startM.Text = CalendarType.enforceMonthFormat(startM.Text);
-            startD.Text = CalendarType.enforceDayFormat(startM.Text, startD.Text, startY.Text);
+            startY.Text = ImperialCalendar.enforceYearFormat(startY.Text);
+            startM.Text = ImperialCalendar.enforceMonthFormat(startM.Text);
+            startD.Text = ImperialCalendar.enforceDayFormat(startM.Text, startD.Text, startY.Text);
         }
 
         private void curr_Leave(object sender, EventArgs e)
         {
-            currY.Text = CalendarType.enforceYearFormat(currY.Text);
-            currM.Text = CalendarType.enforceMonthFormat(currM.Text);
-            currD.Text = CalendarType.enforceDayFormat(currM.Text, currD.Text, currY.Text);
+            currY.Text = ImperialCalendar.enforceYearFormat(currY.Text);
+            currM.Text = ImperialCalendar.enforceMonthFormat(currM.Text);
+            currD.Text = ImperialCalendar.enforceDayFormat(currM.Text, currD.Text, currY.Text);
         }
 
         private void tagBox_TextChanged(object sender, EventArgs e)

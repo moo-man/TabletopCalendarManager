@@ -84,7 +84,7 @@ namespace WarhammerCalendarManager
             }
             else
             {
-                campaignTree.Nodes[campNum].Nodes.Add(new TreeNode(CalendarType.returnConciseGivenDate(noteToAdd.Date))); // ADD DATE OF NOTE
+                campaignTree.Nodes[campNum].Nodes.Add(new TreeNode(ImperialCalendar.returnConciseGivenDate(noteToAdd.Date))); // ADD DATE OF NOTE
                 campaignTree.Nodes[campNum].Nodes[noteNum].Nodes.Add(new TreeNode(noteToAdd.NoteContent));         // ADD NOTE CONTENT UNDER IT
                 noteNum++;
             }
@@ -144,7 +144,7 @@ namespace WarhammerCalendarManager
         {
             foreach (TreeNode n in nodes)
             {
-                if (n.Text == CalendarType.returnConciseGivenDate(dateString))
+                if (n.Text == ImperialCalendar.returnConciseGivenDate(dateString))
                     return n;
             }
             return null;
@@ -379,7 +379,7 @@ namespace WarhammerCalendarManager
                             timeDiffTool.GiveDate(currentCalendar.CampaignList.Find(x => x.Name.Equals(parseCampaignName(campaignTree.SelectedNode.Text))).CurrentDate);
                         break;
                     case 1: //
-                        timeDiffTool.GiveDate(CalendarType.ReturnGivenDateFromName(campaignTree.SelectedNode.Text));
+                        timeDiffTool.GiveDate(ImperialCalendar.ReturnGivenDateFromName(campaignTree.SelectedNode.Text));
                         break;
                     case 2:
                         timeDiffTool.GiveDate(

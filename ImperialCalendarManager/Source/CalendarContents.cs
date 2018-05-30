@@ -15,7 +15,7 @@ namespace WarhammerCalendarManager
 
     public class CalendarContents
     {
-        public CalendarType calendar;
+        public ImperialCalendar calendar;
         List<Campaign> campaignList;
         List<Note> generalNoteList;
         public Campaign activeCampaign;
@@ -24,7 +24,7 @@ namespace WarhammerCalendarManager
         public CalendarContents()
         {
             activeCampaign = null;
-            calendar = new CalendarType();
+            calendar = new ImperialCalendar();
             campaignList = new List<Campaign>();
             generalNoteList = new List<Note>();
         }
@@ -167,12 +167,12 @@ namespace WarhammerCalendarManager
 
         public List<Tuple<Note, string>> addWeek()
         {
-            return addDay(CalendarType.NumDaysInWeek);
+            return addDay(ImperialCalendar.NumDaysInWeek);
         }
 
         public List<Tuple<Note, string>> addMonth()
         {
-            return addDay(CalendarType.NumDaysInMonth[calendar.CurrentMonth]);
+            return addDay(ImperialCalendar.NumDaysInMonth[calendar.CurrentMonth]);
         }
 
         public List<Tuple<Note, string>> addMonth(int num)
@@ -728,7 +728,7 @@ namespace WarhammerCalendarManager
         // Returns 1 if x happened after y, -1 if y happened after x, 0 if same date
         public static int compareNotes(Note x, Note y)
         {
-            return CalendarType.FarthestInTime(x.date, y.date);
+            return ImperialCalendar.FarthestInTime(x.date, y.date);
         }
 
         public int compareTo(Note n)
@@ -814,7 +814,7 @@ namespace WarhammerCalendarManager
         /// If a timer is paused, when days are incremented, the timer's alarm date should also be incremented to reflect the pause
         /// </summary>
         /// <param name="currentCalendar"></param>
-        public void AdjustForPause(CalendarType currentCalendar)
+        public void AdjustForPause(ImperialCalendar currentCalendar)
         {
             if (pausedTime == 0)
                 return;
@@ -830,7 +830,7 @@ namespace WarhammerCalendarManager
 
         }
 
-        public void TogglePause(CalendarType currentCalendar)
+        public void TogglePause(ImperialCalendar currentCalendar)
         {
             if (pausedTime == 0)
                 Pause(currentCalendar);
@@ -838,7 +838,7 @@ namespace WarhammerCalendarManager
                 Unpause(currentCalendar);
         }
 
-        public void Pause(CalendarType currentCalendar)
+        public void Pause(ImperialCalendar currentCalendar)
         {
             if (pausedTime == 0)
             {
@@ -846,16 +846,16 @@ namespace WarhammerCalendarManager
             }
         }
 
-        public void Unpause(CalendarType currentCalendar)
+        public void Unpause(ImperialCalendar currentCalendar)
         {
             pausedTime = 0;
         }
 
         public string returnDateString()
         {
-            string monthString = CalendarType.enforceMonthFormat(month.ToString());
-            string yearString = CalendarType.enforceYearFormat(year.ToString());
-            string dayString = CalendarType.enforceDayFormat(monthString, day.ToString(), yearString);
+            string monthString = ImperialCalendar.enforceMonthFormat(month.ToString());
+            string yearString = ImperialCalendar.enforceYearFormat(year.ToString());
+            string dayString = ImperialCalendar.enforceDayFormat(monthString, day.ToString(), yearString);
             return monthString + dayString + yearString;
         }
     }

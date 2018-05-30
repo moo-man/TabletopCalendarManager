@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace WarhammerCalendarManager
 {
     public enum moonPhase {newMoon, waxingCrsec, firstQuarter, waxingGib, full, waningGib, lastQuarter, waningCresc};
-    public class CalendarType
+    public class ImperialCalendar
     {
 
 
@@ -147,7 +147,7 @@ namespace WarhammerCalendarManager
         #endregion
 
 
-        public CalendarType()
+        public ImperialCalendar()
         {
             setDate(1, 1, 2522);
             createMoonPhaseArray();

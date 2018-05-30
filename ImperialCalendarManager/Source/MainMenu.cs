@@ -41,7 +41,7 @@ namespace WarhammerCalendarManager
 
             /*// TESTING
             AllocConsole();
-            CalendarType testCalendar = new CalendarType(@"{""year_len"":365,""events"":1,""n_months"":12,""months"":[""Abadius"",""Calistril"",""Pharast"",""Gozran"",""Desnus"",""Sarenith"",""Erastus"",""Arodus"",""Rova"",""Lamashan"",""Neth"",""Kuthona""],""month_len"":{""Abadius"":31,""Calistril"":30,""Pharast"":31,""Gozran"":30,""Desnus"":31,""Sarenith"":30,""Erastus"":31,""Arodus"":31,""Rova"":30,""Lamashan"":31,""Neth"":30,""Kuthona"":29},""week_len"":7,""weekdays"":[""Moonday"",""Toilday"",""Wealday"",""Oathday"",""Fireday"",""Starday"",""Sunday""],""n_moons"":1,""moons"":[""Somal""],""lunar_cyc"":{""Somal"":29.53},""lunar_shf"":{""Somal"":0},""year"":4707,""first_day"":0,""notes"":{}}", "test");
+            ImperialCalendar testCalendar = new ImperialCalendar(@"{""year_len"":365,""events"":1,""n_months"":12,""months"":[""Abadius"",""Calistril"",""Pharast"",""Gozran"",""Desnus"",""Sarenith"",""Erastus"",""Arodus"",""Rova"",""Lamashan"",""Neth"",""Kuthona""],""month_len"":{""Abadius"":31,""Calistril"":30,""Pharast"":31,""Gozran"":30,""Desnus"":31,""Sarenith"":30,""Erastus"":31,""Arodus"":31,""Rova"":30,""Lamashan"":31,""Neth"":30,""Kuthona"":29},""week_len"":7,""weekdays"":[""Moonday"",""Toilday"",""Wealday"",""Oathday"",""Fireday"",""Starday"",""Sunday""],""n_moons"":1,""moons"":[""Somal""],""lunar_cyc"":{""Somal"":29.53},""lunar_shf"":{""Somal"":0},""year"":4707,""first_day"":0,""notes"":{}}", "test");
             Timer testTimer;
             Console.WriteLine("BEGIN TEST");
             for (int i = 1; i <= 10000; i++)

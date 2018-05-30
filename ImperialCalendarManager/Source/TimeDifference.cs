@@ -62,10 +62,10 @@ namespace WarhammerCalendarManager
 
         private void Calculate()
         {
-            if(CalendarType.FarthestInTime(date1, date2) == 1)
-                differenceLabel.Text = CalendarType.daysBetween(date2, date1).ToString() + " days";
+            if(ImperialCalendar.FarthestInTime(date1, date2) == 1)
+                differenceLabel.Text = ImperialCalendar.daysBetween(date2, date1).ToString() + " days";
             else
-                differenceLabel.Text = CalendarType.daysBetween(date1, date2).ToString() + " days";
+                differenceLabel.Text = ImperialCalendar.daysBetween(date1, date2).ToString() + " days";
         }
 
         private void Clear()

@@ -66,7 +66,7 @@ namespace WarhammerCalendarManager
                 day.Clear();
                 year.Clear();
                 if (timerToEdit != null)
-                    numDays.Text = CalendarType.daysBetween(currentCalendar.calendar.ToString(), timerToEdit.returnDateString()).ToString();
+                    numDays.Text = ImperialCalendar.daysBetween(currentCalendar.calendar.ToString(), timerToEdit.returnDateString()).ToString();
             }
         }
 
@@ -127,9 +127,9 @@ namespace WarhammerCalendarManager
 
         private void date_Leave(object sender, EventArgs e)
         {
-            year.Text = CalendarType.enforceYearFormat(year.Text);
-            month.Text = CalendarType.enforceMonthFormat(month.Text);
-            day.Text = CalendarType.enforceDayFormat(month.Text, day.Text, year.Text);
+            year.Text = ImperialCalendar.enforceYearFormat(year.Text);
+            month.Text = ImperialCalendar.enforceMonthFormat(month.Text);
+            day.Text = ImperialCalendar.enforceDayFormat(month.Text, day.Text, year.Text);
         }
 
         private void date_KeyPress(object sender, KeyPressEventArgs e)

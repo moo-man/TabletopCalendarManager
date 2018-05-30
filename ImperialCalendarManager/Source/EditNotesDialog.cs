@@ -174,9 +174,9 @@ namespace WarhammerCalendarManager
         }
         private void date_Leave(object sender, EventArgs e)
         {
-            year.Text = CalendarType.enforceYearFormat(year.Text);
-            month.Text = CalendarType.enforceMonthFormat(month.Text);
-            day.Text = CalendarType.enforceDayFormat(month.Text, day.Text, year.Text);
+            year.Text = ImperialCalendar.enforceYearFormat(year.Text);
+            month.Text = ImperialCalendar.enforceMonthFormat(month.Text);
+            day.Text = ImperialCalendar.enforceDayFormat(month.Text, day.Text, year.Text);
         }
 
         private void date_keypress(object sender, KeyPressEventArgs e)

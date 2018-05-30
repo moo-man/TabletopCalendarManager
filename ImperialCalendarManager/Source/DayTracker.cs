@@ -132,7 +132,7 @@ namespace WarhammerCalendarManager
                     t.AdjustForPause(currentCalendar.calendar); // If paused, adjust timer
 
                     // If the current date is same date a timer (0 means same date)
-                    if (CalendarType.FarthestInTime(t.returnDateString(), currentCalendar.calendar.ToString()) == 0)
+                    if (ImperialCalendar.FarthestInTime(t.returnDateString(), currentCalendar.calendar.ToString()) == 0)
                     {
                         if (MessageBox.Show(this, t.message + "\n\nCreate a note?", "Timer Reached", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                             new EditNotesDialog(new Note(t.returnDateString(), AlertScope.campaign, t.message, currentCalendar.activeCampaign), currentCalendar).ShowDialog(this);
@@ -142,11 +142,11 @@ namespace WarhammerCalendarManager
                         checkIfTimerPassed();
                         return;
                     }
-                    else if (CalendarType.FarthestInTime(t.returnDateString(), currentCalendar.calendar.ToString()) < 0)
+                    else if (ImperialCalendar.FarthestInTime(t.returnDateString(), currentCalendar.calendar.ToString()) < 0)
                     {
-                        if (MessageBox.Show(this, t.message + " (" + CalendarType.returnGivenDateWithWeekday(t.returnDateString()) + ")" + "\n\nCreate a note?", "Timer Passed", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        if (MessageBox.Show(this, t.message + " (" + ImperialCalendar.returnGivenDateWithWeekday(t.returnDateString()) + ")" + "\n\nCreate a note?", "Timer Passed", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                             new EditNotesDialog(new Note(t.returnDateString(), AlertScope.campaign, t.message, currentCalendar.activeCampaign), currentCalendar).ShowDialog(this);
-                        if (MessageBox.Show(this, "Go to date? (" + CalendarType.returnGivenDateWithWeekday(t.returnDateString()) + ")", "Go to date", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (MessageBox.Show(this, "Go to date? (" + ImperialCalendar.returnGivenDateWithWeekday(t.returnDateString()) + ")", "Go to date", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             currentCalendar.calendar.setDate(t.returnDateString());
                         // Remove, then restart updating (can't remove and iterate)
                         currentCalendar.activeCampaign.timers.Remove(t);
@@ -407,9 +407,9 @@ namespace WarhammerCalendarManager
 
         private void goto_date_Leave(object sender, EventArgs e)
         {
-            year.Text = CalendarType.enforceYearFormat(year.Text);
-            month.Text = CalendarType.enforceMonthFormat(month.Text);
-            day.Text = CalendarType.enforceDayFormat(month.Text, day.Text, year.Text);
+            year.Text = ImperialCalendar.enforceYearFormat(year.Text);
+            month.Text = ImperialCalendar.enforceMonthFormat(month.Text);
+            day.Text = ImperialCalendar.enforceDayFormat(month.Text, day.Text, year.Text);
         }
 
         private void goto_date_Keypress(object sender, KeyPressEventArgs e)

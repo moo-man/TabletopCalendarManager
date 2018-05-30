@@ -97,7 +97,7 @@ namespace WarhammerCalendarManager
 
             #region OLD FILE FORMAT
             /*
-            //Write calendartype data
+            //Write ImperialCalendar data
             calendarToSave.calendar.saveData(writer);
 
             // write event data
