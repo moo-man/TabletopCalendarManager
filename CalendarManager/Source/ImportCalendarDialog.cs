@@ -105,7 +105,7 @@ namespace CalendarManager
         private void helpLabel_Click(object sender, EventArgs e)
         {
            if ( MessageBox.Show(this, "Here is where you can import your custom calendar.\n\n" +
-                "To create a compatible calendar, go to https://donjon.bin.sh and navigate to the Fantasy Calendar Generator. Fill out the calendar's information, then under the 'Save/Restore' tab, save or copy the calendar's JSON data, and paste it in the textbox below.\n\n"+
+                "To create a compatible calendar, go to https://donjon.bin.sh and navigate to the Fantasy Calendar Generator. Fill out the calendar's information, then under the 'Save/Restore' tab, save or copy the calendar's JSON data, and paste it in the textbox below.\n\nNOTE: If you want to add holidays to your custom calendar, or some other event that is always associated with a specific date, use donjon's tool to add a note on the day you want the event to take place. This note has to be placed in the reference year of the calendar. You can verify the reference year by looking at the JSON data, which should include '\"year\":_____\' near the end, where _____ is the reference year.\n\n"+
                 "Once successfully imported, go back to the Main Menu and click 'New Calendar' to begin creating campaigns. Note that importing only needs to done once per 'New Calendar', as the save file stores the calendar data. This also means loading a file will also load its custom calendar data.\n\n" +
                 "Open the calendar creator now? (Internet connection required)",
     "Importing a Calendar",

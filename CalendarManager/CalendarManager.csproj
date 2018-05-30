@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Icons\HarptosIcon.ico</ApplicationIcon>
+    <ApplicationIcon>calicon2.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -212,6 +212,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="calicon.ico" />
+    <Content Include="calicon2.ico" />
     <Content Include="Resources\Icons\alarmicon.png" />
     <Content Include="Resources\Icons\eyeicon.png" />
     <Content Include="Resources\Moons\First Quarter.png" />

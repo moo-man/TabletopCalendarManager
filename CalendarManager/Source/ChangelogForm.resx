@@ -118,7 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>v0.9.4.3 
+    <value>v0.9.6
+- Now you can create holidays using donjon's note system. See the Import Calendar Help dialog for instructions
+- Mostly internal cleanup and bugfixes.
+
+v0.9.5
+- Added Time Difference Tool! See the Campaign Viewer
+
+v0.9.4.3 
 - Fixed Paused Timers not staying paused after save and load
 - Fixed canceling exit save prompt getting rid of stored save file path
 - Moons now reflect donjon's exactly

@@ -38,7 +38,7 @@
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.okButton.Location = new System.Drawing.Point(330, 366);
+            this.okButton.Location = new System.Drawing.Point(330, 377);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 25;
@@ -59,7 +59,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 37);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(395, 325);
+            this.label2.Size = new System.Drawing.Size(395, 338);
             this.label2.TabIndex = 27;
             this.label2.Text = resources.GetString("label2.Text");
             // 
@@ -79,7 +79,7 @@
             this.AcceptButton = this.okButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 401);
+            this.ClientSize = new System.Drawing.Size(417, 412);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

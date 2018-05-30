@@ -424,7 +424,6 @@ namespace WarhammerCalendarManager
         {
             setDate(Int32.Parse(dateString.Substring(0, 2)), Int32.Parse(dateString.Substring(2, 2)), Int32.Parse(dateString.Substring(4, 4)));
         }
-        // ********************************** START HERE
 
         public void setDate(int m, int d, int y)
         {
@@ -478,7 +477,7 @@ namespace WarhammerCalendarManager
             int yearDifference = Math.Abs(y - startYear);
             int daysToSubtract = yearDifference * 6;
 
-            // Since intercalary days are not considered weekdays, we have to subtract however have passed since the start date and the input date
+            // Since intercalary days are not considered weekdays, we have to subtract however many have passed since the start date and the input date
             switch (m)
             {
                 case 1:
@@ -569,29 +568,6 @@ namespace WarhammerCalendarManager
         /// Determines the next morrslieb phase
         /// Calls a new Random.Next() for every day
         /// </summary>
-        //private void morrsliebNextPhase()
-        //{
-        //    if (year != currentMorrSeed)
-        //    {
-        //        morrslieb = new Random(year);
-        //        currentMorrSeed = year;
-        //        int days = determineDayOfYear();
-        //        for (int i = 0; i < days - 1; i++)
-        //        {
-        //            morrslieb.Next();
-        //        }
-        //    }
-        //    morrSize = morrslieb.Next(50, 200);
-        //    morrCounter = morrSize % 8;
-
-        //    // If it is geheimnistag or hexentag
-        //    if ((day == 0 && (month == 1 || month == 7)))
-        //    {
-        //        morrSize = 200;
-        //        morrCounter = 4;
-        //    }
-        //}
-
         private void morrsliebNextPhase()
         {
             // The operations used to determine morrslieb have to be repeated in full when REdetermining morrslieb.
@@ -1190,90 +1166,6 @@ namespace WarhammerCalendarManager
         /// <param name="startYear">starting date's year</param>
         /// <param name="numDays">Number of days that pass</param>
         /// <returns></returns>
-        //public static string dateIn(int startMonth, int startDay, int startYear, int numDays)
-        //{
-
-        //    if (numDaysInMonth[startMonth] < startDay + numDays)
-        //    {
-        //        do
-        //        {
-        //            if (startDay == 0 && isMonthWithHoliday(startMonth))
-        //                numDays -= numDaysInMonthIncludingHolidays[startMonth];
-        //            else
-        //                numDays -= numDaysInMonth[startMonth] - startDay;
-
-        //            if (numDays > 0)
-        //            {
-        //                startMonth++;
-        //                if (startMonth > numMonthsInYear)
-        //                {
-        //                    startMonth = 1;
-        //                    startYear++;
-        //                    startDay = 0;
-        //                }
-        //                startDay = 0;
-
-        //            }
-        //        } while (numDays >= numDaysInMonth[startMonth]);
-        //        // if numdays is 0, means the date landed at the very end of the month, assign d to numDays unless it's 0
-        //        startDay = numDays != 0 ? numDays : numDaysInMonth[startMonth] - startDay;
-        //        if (isMonthWithHoliday(startMonth))
-        //            startDay--;
-        //    }
-        //    else
-        //    {
-        //        startDay += numDays;
-        //    }
-
-        //    string monthString = enforceMonthFormat(startMonth.ToString());
-        //    string yearString = enforceYearFormat(startYear.ToString());
-        //    string dayString = enforceDayFormat(monthString, startDay.ToString(), yearString);
-        //    return monthString + dayString + yearString;
-        //}
-
-        //public static string dateIn(int startMonth, int startDay, int startYear, int numDays)
-        //{
-        //    int m = startMonth;
-        //    int d = startDay;
-        //    int y = startYear;
-        //    if (numDaysInMonth[m] < startDay + numDays)
-        //    {
-        //        do
-        //        {
-        //            numDays -= numDaysInMonth[m] - d;
-        //            if (d == 0 && isMonthWithHoliday(m))
-        //            {
-        //                numDays--;
-        //            }
-        //            d = 0;
-
-        //            if (numDays > 0)
-        //            {
-        //                m++;
-        //                if (m > numMonthsInYear)
-        //                {
-        //                    m = 1;
-        //                    y++;
-        //                }
-        //            }
-        //        } while (numDays >= numDaysInMonthIncludingHolidays[m]);
-        //        // if numdays is 0, means the date landed at the very end of the month, assign d to numDays unless it's 0
-        //        d = numDays != 0 ? numDays : numDaysInMonthIncludingHolidays[m] - d;
-        //        if (isMonthWithHoliday(m))// && (m != startMonth || y != startYear))
-        //            d--;
-        //    }
-        //    else
-        //    {
-        //        d += numDays;
-        //    }
-
-        //    string monthString = enforceMonthFormat(m.ToString());
-        //    string yearString = enforceYearFormat(y.ToString());
-        //    string dayString = enforceDayFormat(monthString, d.ToString(), yearString);
-        //    return monthString + dayString + yearString;
-        //}
-
-
         public static string dateIn(int startMonth, int startDay, int startYear, int numDays)
         {
             int m = startMonth;

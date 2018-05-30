@@ -131,7 +131,8 @@ as if you run the same adventure for a different group of people.
 
 'Import Calendar Type' is used to import your own calendar. You can create a 
 compatible calendar at https://donjon.bin.sh/fantasy/calendar/
-Note: If you are using the Forgotten Realms, I've made a more specialized tool.
+Note: If you are using the Forgotten Realms or Warhammer, I've made a more
+specialized tools.
 
 Each calendar is associated with one or more campaigns, which have a start date
 and current date. As you track the days of your campaign you can add notes to 
