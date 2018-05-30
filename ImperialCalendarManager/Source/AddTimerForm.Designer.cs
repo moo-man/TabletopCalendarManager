@@ -1,5 +1,5 @@
 ﻿
-namespace CalendarManager
+namespace WarhammerCalendarManager
 {
     partial class AddTimerForm
     {

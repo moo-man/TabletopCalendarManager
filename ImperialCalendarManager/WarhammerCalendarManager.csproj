@@ -7,8 +7,8 @@
     <ProjectGuid>{A02C42A4-963B-40D9-BB6E-AB05119663AE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CalendarManager</RootNamespace>
-    <AssemblyName>CalendarManager</AssemblyName>
+    <RootNamespace>WarhammerCalendarManager</RootNamespace>
+    <AssemblyName>Warhammer Calendar Manager</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>

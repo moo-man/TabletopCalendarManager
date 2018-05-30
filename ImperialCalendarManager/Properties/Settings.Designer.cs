@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CalendarManager.Properties
+namespace WarhammerCalendarManager.Properties
 {
 
 

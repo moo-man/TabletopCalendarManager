@@ -1,4 +1,4 @@
-﻿namespace CalendarManager
+﻿namespace WarhammerCalendarManager
 {
     partial class NewNoteDialog
     {

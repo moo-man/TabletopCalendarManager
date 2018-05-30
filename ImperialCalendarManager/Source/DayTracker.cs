@@ -11,7 +11,7 @@ using System.Diagnostics;
 
 public enum noteType { note, generalNote, timer, universal };
 
-namespace CalendarManager
+namespace WarhammerCalendarManager
 {
     public partial class DayTracker : Form
     {

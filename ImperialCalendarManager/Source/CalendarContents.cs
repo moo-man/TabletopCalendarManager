@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public enum AlertScope { dontAlert, campaign, global }
 
-namespace CalendarManager
+namespace WarhammerCalendarManager
 {
     // Notes have 3 levels of importance
     // dontAlert will not alert any campaign when that date is reached

@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CalendarManager
+namespace WarhammerCalendarManager
 {
     partial class HelpBox : Form
     {

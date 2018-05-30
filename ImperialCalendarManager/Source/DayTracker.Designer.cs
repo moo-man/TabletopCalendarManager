@@ -1,4 +1,4 @@
-﻿namespace CalendarManager
+﻿namespace WarhammerCalendarManager
 {
     partial class DayTracker
     {
@@ -440,7 +440,7 @@
             // 
             // showHiddenTimersButton
             // 
-            this.showHiddenTimersButton.BackgroundImage = global::CalendarManager.Properties.Resources.eyeicon;
+            this.showHiddenTimersButton.BackgroundImage = global::WarhammerCalendarManager.Properties.Resources.eyeicon;
             this.showHiddenTimersButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.showHiddenTimersButton.Location = new System.Drawing.Point(329, 464);
             this.showHiddenTimersButton.Name = "showHiddenTimersButton";
@@ -451,7 +451,7 @@
             // 
             // alarmButton
             // 
-            this.alarmButton.BackgroundImage = global::CalendarManager.Properties.Resources.alarmicon;
+            this.alarmButton.BackgroundImage = global::WarhammerCalendarManager.Properties.Resources.alarmicon;
             this.alarmButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.alarmButton.Location = new System.Drawing.Point(274, 464);
             this.alarmButton.Name = "alarmButton";
@@ -462,7 +462,7 @@
             // 
             // noteButton
             // 
-            this.noteButton.BackgroundImage = global::CalendarManager.Properties.Resources.noteicon;
+            this.noteButton.BackgroundImage = global::WarhammerCalendarManager.Properties.Resources.noteicon;
             this.noteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.noteButton.Location = new System.Drawing.Point(219, 464);
             this.noteButton.Name = "noteButton";
@@ -486,7 +486,7 @@
             this.addToolStripMenuItem,
             this.editToolStripMenuItem1,
             this.deleteToolStripMenuItem1});
-            this.notesToolStripMenuItem.Image = global::CalendarManager.Properties.Resources.noteicon;
+            this.notesToolStripMenuItem.Image = global::WarhammerCalendarManager.Properties.Resources.noteicon;
             this.notesToolStripMenuItem.Name = "notesToolStripMenuItem";
             this.notesToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.notesToolStripMenuItem.Text = "Notes";
@@ -521,7 +521,7 @@
             this.pauseToolStripMenuItem,
             this.deleteToolStripMenuItem,
             this.hideToolStripMenuItem});
-            this.timersToolStripMenuItem.Image = global::CalendarManager.Properties.Resources.alarmicon;
+            this.timersToolStripMenuItem.Image = global::WarhammerCalendarManager.Properties.Resources.alarmicon;
             this.timersToolStripMenuItem.Name = "timersToolStripMenuItem";
             this.timersToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.timersToolStripMenuItem.Text = "Timers";
@@ -564,7 +564,7 @@
             // 
             // showHiddenTimersToolStripMenuItem
             // 
-            this.showHiddenTimersToolStripMenuItem.Image = global::CalendarManager.Properties.Resources.eyeicon;
+            this.showHiddenTimersToolStripMenuItem.Image = global::WarhammerCalendarManager.Properties.Resources.eyeicon;
             this.showHiddenTimersToolStripMenuItem.Name = "showHiddenTimersToolStripMenuItem";
             this.showHiddenTimersToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.showHiddenTimersToolStripMenuItem.Text = "Show Hidden Timers";

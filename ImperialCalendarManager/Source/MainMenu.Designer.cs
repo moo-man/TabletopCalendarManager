@@ -1,4 +1,4 @@
-﻿namespace CalendarManager
+﻿namespace WarhammerCalendarManager
 {
     partial class MainMenu
     {
@@ -87,7 +87,7 @@
             // 
             // changelogPicture
             // 
-            this.changelogPicture.Image = global::CalendarManager.Properties.Resources.unrollingscroll;
+            this.changelogPicture.Image = global::WarhammerCalendarManager.Properties.Resources.unrollingscroll;
             this.changelogPicture.Location = new System.Drawing.Point(233, 236);
             this.changelogPicture.Name = "changelogPicture";
             this.changelogPicture.Size = new System.Drawing.Size(27, 27);

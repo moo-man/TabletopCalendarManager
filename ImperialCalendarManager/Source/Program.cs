@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CalendarManager
+namespace WarhammerCalendarManager
 {
     static class Program
     {
@@ -23,7 +23,7 @@ namespace CalendarManager
 
         private static System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
-            using (var stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("CalendarManager.Newtonsoft.Json.dll"))
+            using (var stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("WarhammerCalendarManager.Newtonsoft.Json.dll"))
             {
                 byte[] assemblyData = new byte[stream.Length];
                 stream.Read(assemblyData, 0, assemblyData.Length);

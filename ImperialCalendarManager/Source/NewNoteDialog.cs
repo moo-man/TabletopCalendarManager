@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CalendarManager
+namespace WarhammerCalendarManager
 {
     public partial class NewNoteDialog : Form
     {

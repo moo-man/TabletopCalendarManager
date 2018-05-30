@@ -1,4 +1,4 @@
-﻿namespace CalendarManager
+﻿namespace WarhammerCalendarManager
 {
     partial class CalendarMenu
     {
@@ -126,7 +126,7 @@
             // 
             // saveToolStripMenuItem
             // 
-            this.saveToolStripMenuItem.Image = global::CalendarManager.Properties.Resources.save_icon_5404;
+            this.saveToolStripMenuItem.Image = global::WarhammerCalendarManager.Properties.Resources.save_icon_5404;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeyDisplayString = "Crtl + S";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(207, 22);

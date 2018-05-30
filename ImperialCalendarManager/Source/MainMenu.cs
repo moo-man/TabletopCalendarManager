@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Drawing.Text;
 using System.Runtime.InteropServices;
 
-namespace CalendarManager
+namespace WarhammerCalendarManager
 {
     public partial class MainMenu : Form
     {
