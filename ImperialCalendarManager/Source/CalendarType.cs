@@ -1150,46 +1150,137 @@ namespace CalendarManager
         /// <param name="startYear">starting date's year</param>
         /// <param name="numDays">Number of days that pass</param>
         /// <returns></returns>
+        //public static string dateIn(int startMonth, int startDay, int startYear, int numDays)
+        //{
+
+        //    if (numDaysInMonth[startMonth] < startDay + numDays)
+        //    {
+        //        do
+        //        {
+        //            if (startDay == 0 && isMonthWithHoliday(startMonth))
+        //                numDays -= numDaysInMonthIncludingHolidays[startMonth];
+        //            else
+        //                numDays -= numDaysInMonth[startMonth] - startDay;
+
+        //            if (numDays > 0)
+        //            {
+        //                startMonth++;
+        //                if (startMonth > numMonthsInYear)
+        //                {
+        //                    startMonth = 1;
+        //                    startYear++;
+        //                    startDay = 0;
+        //                }
+        //                startDay = 0;
+
+        //            }
+        //        } while (numDays >= numDaysInMonth[startMonth]);
+        //        // if numdays is 0, means the date landed at the very end of the month, assign d to numDays unless it's 0
+        //        startDay = numDays != 0 ? numDays : numDaysInMonth[startMonth] - startDay;
+        //        if (isMonthWithHoliday(startMonth))
+        //            startDay--;
+        //    }
+        //    else
+        //    {
+        //        startDay += numDays;
+        //    }
+
+        //    string monthString = enforceMonthFormat(startMonth.ToString());
+        //    string yearString = enforceYearFormat(startYear.ToString());
+        //    string dayString = enforceDayFormat(monthString, startDay.ToString(), yearString);
+        //    return monthString + dayString + yearString;
+        //}
+
+        //public static string dateIn(int startMonth, int startDay, int startYear, int numDays)
+        //{
+        //    int m = startMonth;
+        //    int d = startDay;
+        //    int y = startYear;
+        //    if (numDaysInMonth[m] < startDay + numDays)
+        //    {
+        //        do
+        //        {
+        //            numDays -= numDaysInMonth[m] - d;
+        //            if (d == 0 && isMonthWithHoliday(m))
+        //            {
+        //                numDays--;
+        //            }
+        //            d = 0;
+
+        //            if (numDays > 0)
+        //            {
+        //                m++;
+        //                if (m > numMonthsInYear)
+        //                {
+        //                    m = 1;
+        //                    y++;
+        //                }
+        //            }
+        //        } while (numDays >= numDaysInMonthIncludingHolidays[m]);
+        //        // if numdays is 0, means the date landed at the very end of the month, assign d to numDays unless it's 0
+        //        d = numDays != 0 ? numDays : numDaysInMonthIncludingHolidays[m] - d;
+        //        if (isMonthWithHoliday(m))// && (m != startMonth || y != startYear))
+        //            d--;
+        //    }
+        //    else
+        //    {
+        //        d += numDays;
+        //    }
+
+        //    string monthString = enforceMonthFormat(m.ToString());
+        //    string yearString = enforceYearFormat(y.ToString());
+        //    string dayString = enforceDayFormat(monthString, d.ToString(), yearString);
+        //    return monthString + dayString + yearString;
+        //}
+
+
         public static string dateIn(int startMonth, int startDay, int startYear, int numDays)
         {
+            int m = startMonth;
+            int d = startDay;
+            int y = startYear;
 
-            if (numDaysInMonth[startMonth] < startDay + numDays)
+
+            if (d == 0 && numDays > 0)
             {
-                do
+                d++;
+                numDays--;
+            }
+
+            while (d + numDays > numDaysInMonth[m])
+            {
+                if (d == 0)
                 {
-                    if (startDay == 0 && isMonthWithHoliday(startMonth))
-                        numDays -= numDaysInMonthIncludingHolidays[startMonth];
-                    else
-                        numDays -= numDaysInMonth[startMonth] - startDay;
+                    numDays -= numDaysInMonthIncludingHolidays[m];
+                }
+                else
+                {
+                    numDays -= numDaysInMonth[m] - d;
+                    d = 0;
+                }
 
-                    if (numDays > 0)
-                    {
-                        startMonth++;
-                        if (startMonth > numMonthsInYear)
-                        {
-                            startMonth = 1;
-                            startYear++;
-                            startDay = 0;
-                        }
-                        startDay = 0;
+                m++;
+                if (m > numMonthsInYear)
+                {
+                    m = 1;
+                    y++;
+                }
 
-                    }
-                } while (numDays >= numDaysInMonth[startMonth]);
-                // if numdays is 0, means the date landed at the very end of the month, assign d to numDays unless it's 0
-                startDay = numDays != 0 ? numDays : numDaysInMonth[startMonth] - startDay;
-                if (isMonthWithHoliday(startMonth))
-                    startDay--;
-            }
-            else
-            {
-                startDay += numDays;
             }
 
-            string monthString = enforceMonthFormat(startMonth.ToString());
-            string yearString = enforceYearFormat(startYear.ToString());
-            string dayString = enforceDayFormat(monthString, startDay.ToString(), yearString);
+            d += numDays;
+            if (isMonthWithHoliday(m) && (m != startMonth || y != startYear))
+                d--;
+
+            //d = numDays == 0 ? numDaysInMonth[startMonth] - d : numDays;
+
+
+            string monthString = enforceMonthFormat(m.ToString());
+            string yearString = enforceYearFormat(y.ToString());
+            string dayString = enforceDayFormat(monthString, d.ToString(), yearString);
             return monthString + dayString + yearString;
         }
+
 
         // TODO: if 100 days from vorhexen 33, becomes 99, if 99 from vorhexen 33, becomes 67
 
