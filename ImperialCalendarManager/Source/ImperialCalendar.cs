@@ -149,8 +149,8 @@ namespace WarhammerCalendarManager
 
         public ImperialCalendar()
         {
-            setDate(1, 1, 2522);
             createMoonPhaseArray();
+            setDate(1, 1, 2522);
         }
 
         // cycle / 8 = full moon day length (rounded to nearest)
@@ -569,8 +569,35 @@ namespace WarhammerCalendarManager
         /// Determines the next morrslieb phase
         /// Calls a new Random.Next() for every day
         /// </summary>
+        //private void morrsliebNextPhase()
+        //{
+        //    if (year != currentMorrSeed)
+        //    {
+        //        morrslieb = new Random(year);
+        //        currentMorrSeed = year;
+        //        int days = determineDayOfYear();
+        //        for (int i = 0; i < days - 1; i++)
+        //        {
+        //            morrslieb.Next();
+        //        }
+        //    }
+        //    morrSize = morrslieb.Next(50, 200);
+        //    morrCounter = morrSize % 8;
+
+        //    // If it is geheimnistag or hexentag
+        //    if ((day == 0 && (month == 1 || month == 7)))
+        //    {
+        //        morrSize = 200;
+        //        morrCounter = 4;
+        //    }
+        //}
+
         private void morrsliebNextPhase()
         {
+            // The operations used to determine morrslieb have to be repeated in full when REdetermining morrslieb.
+            // When determining the next phase of morr, it can't be full at the same time as mann (on a normal day)
+            // so a while loop is used to keep generating until morr isn't full. This must be also done when redetermining
+            // to ensure the same result is received
             if (year != currentMorrSeed)
             {
                 morrslieb = new Random(year);
@@ -578,11 +605,24 @@ namespace WarhammerCalendarManager
                 int days = determineDayOfYear();
                 for (int i = 0; i < days - 1; i++)
                 {
-                    morrslieb.Next();
+                    morrSize = morrslieb.Next(50, 200);
+                    morrCounter = morrSize % 8;
+                    while (mann_Phases[mannCounter] == moonPhase.full && morr_Phases[morrCounter] == moonPhase.full) // <- this must be done even when it's not used (redetermining)
+                    {
+                        morrSize = morrslieb.Next(50, 200);
+                        morrCounter = morrSize % 8;
+                    }
                 }
+
             }
             morrSize = morrslieb.Next(50, 200);
             morrCounter = morrSize % 8;
+
+            while (mann_Phases[mannCounter] == moonPhase.full && morr_Phases[morrCounter] == moonPhase.full)
+            {
+                morrSize = morrslieb.Next(50, 200);
+                morrCounter = morrSize % 8;
+            }
 
             // If it is geheimnistag or hexentag
             if ((day == 0 && (month == 1 || month == 7)))

@@ -118,37 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>v0.9.4.3 
-- Fixed Paused Timers not staying paused after save and load
-- Fixed canceling exit save prompt getting rid of stored save file path
-- Moons now reflect donjon's exactly
-- Fixed advancing by months/weeks not advancing the correct numbers
+    <value>v0.9.6 
+- First release of Warhammer variant
+- Unique features:
+- Morrslieb: The lesser moon is entirely erratic and unpredictable in both size and phase. They say madness ensues for those who gaze too long at it. 
+- Star Signs: The position of certain star clusters when someone is born reveals much about that person.
 
-v0.9.4
-- Added 'Save As...', now Save doesn't show a save dialog (unless you've started a new calendar)
-- Implemented Autosaves, every advancement in time triggers an autosave
-- You can now pause timers through the context menu from right clicking them. A paused timer will not tick down as you advance in days
-
-v0.9.3
-- Added "Passed Notes" form. If, in the Day Tracker, you move forward by a month or tenday, and there were notes in that time span, you get an alert and can view the notes you skipped over.
-
-v0.9.1
-- Changed save format to JSON (Rendering this version incompatible with past save files, sorry!)
-
-v0.9
-- Improved Daytracker UI, added right click menus to Daytracker notebox and Campaign Viewer list
-- Added toolstrips to Daytracker and Calendar Menu
-- Fixed bug when setting a timer to go off in a certain amount of days produces the wrong number of days
-- When a timer has been passed, there is now an option to go to the date of timer if it is not the current date.
-- Saving and loading calendar dialogs now start at .exe directory
-- Fixed exception caused by trying to edit or delete a Timer with the Edit or Delete Note button
-- Lengthened 'In number of days' box
-
-v0.8.0.1 (6/26/2017)
-- Embedded dll file needed to read custom calendars, kinda needs that
-
-v0.8 (6/20/2017)
-- First Public Release!
-- Contains all the new features of the Harptos Calendar Manager, such as Timers, moons, and the Go To function</value>
+</value>
   </data>
 </root>

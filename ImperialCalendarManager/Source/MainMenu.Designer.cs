@@ -44,7 +44,7 @@
             this.titleText.AutoSize = true;
             this.titleText.BackColor = System.Drawing.Color.Transparent;
             this.titleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleText.Location = new System.Drawing.Point(15, 29);
+            this.titleText.Location = new System.Drawing.Point(15, 20);
             this.titleText.Name = "titleText";
             this.titleText.Size = new System.Drawing.Size(240, 68);
             this.titleText.TabIndex = 2;
@@ -54,7 +54,7 @@
             // 
             // loadCalendarButton
             // 
-            this.loadCalendarButton.Location = new System.Drawing.Point(169, 111);
+            this.loadCalendarButton.Location = new System.Drawing.Point(166, 111);
             this.loadCalendarButton.Name = "loadCalendarButton";
             this.loadCalendarButton.Size = new System.Drawing.Size(86, 23);
             this.loadCalendarButton.TabIndex = 4;
@@ -64,7 +64,7 @@
             // 
             // newCalendarButton
             // 
-            this.newCalendarButton.Location = new System.Drawing.Point(51, 111);
+            this.newCalendarButton.Location = new System.Drawing.Point(48, 111);
             this.newCalendarButton.Name = "newCalendarButton";
             this.newCalendarButton.Size = new System.Drawing.Size(86, 23);
             this.newCalendarButton.TabIndex = 5;
