@@ -66,12 +66,9 @@ namespace HarptosCalendarManager
 
         private void UpdateCalendar()
         {
-            if (altNames)
-                currentDate.Text = currentCalendar.calendar.returnAltDateWithHolidays();
-            else
-                currentDate.Text = currentCalendar.calendar.returnDateWithHolidays();
+            currentDate.Text = currentCalendar.calendar.ToString("ddd of mmm, yyyy", altNames);
 
-            yearNameLabel.Text = currentCalendar.calendar.returnYear();
+            yearNameLabel.Text = currentCalendar.calendar.ReturnYearName();
 
             if (currentCalendar.activeCampaign == null)
                 campaignName.Text = "None";
@@ -91,10 +88,10 @@ namespace HarptosCalendarManager
 
             moonPicture.Image = (Image)Properties.Resources.ResourceManager.GetObject(currentCalendar.calendar.currentMoonPhase().Replace(' ', '_'));
 
-            if (currentCalendar.calendar.isHoliday == false)
+            if (currentCalendar.calendar.IsHoliday() == false)
                 wheelPicture.Image = (Image)Properties.Resources.ResourceManager.GetObject(currentCalendar.calendar.getMonthName());
             else
-                wheelPicture.Image = (Image)Properties.Resources.ResourceManager.GetObject(currentCalendar.calendar.returnJustHoliday().Replace(' ', '_'));
+                wheelPicture.Image = (Image)Properties.Resources.ResourceManager.GetObject(currentCalendar.calendar.CurrentHolidayName().Replace(' ', '_'));
             wheelPicture.Refresh();
         }
 
@@ -141,9 +138,9 @@ namespace HarptosCalendarManager
                     }
                     else if (HarptosCalendar.FarthestInTime(t.returnDateString(), currentCalendar.calendar.ToString()) < 0)
                     {
-                        if (MessageBox.Show(this, t.message + " (" + HarptosCalendar.returnGivenDate(t.returnDateString()) + ")" + "\n\nCreate a note?", "Timer Passed", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        if (MessageBox.Show(this, t.message + HarptosCalendar.ToString(t.returnDateString(), " (mmm dd, yyyy) ") + "\n\nCreate a note?", "Timer Passed", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                             new EditNotesDialog(new Note(t.returnDateString(), AlertScope.campaign, t.message, currentCalendar.activeCampaign), currentCalendar).ShowDialog(this);
-                        if (MessageBox.Show(this, "Go to date? (" + HarptosCalendar.returnGivenDate(t.returnDateString()) + ")", "Go to date", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (MessageBox.Show(this, "Go to date?" + HarptosCalendar.ToString(t.returnDateString(), " (mmm dd, yyyy) "), "Go to date", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             currentCalendar.calendar.setDate(t.returnDateString());
                         // Remove, then restart updating (can't remove and iterate)
                         currentCalendar.activeCampaign.timers.Remove(t);
@@ -278,14 +275,14 @@ namespace HarptosCalendarManager
 
         private void currentDate_Click(object sender, EventArgs e)
         {
-            if (currentCalendar.calendar.isHoliday == false)
+            if (currentCalendar.calendar.IsHoliday() == false)
             {
                 altNames = !altNames;
                 UpdateCalendar();
             }
             else
             {
-                string holiday = currentCalendar.calendar.returnJustHoliday();
+                string holiday = currentCalendar.calendar.CurrentHolidayName();
                 String messageString = "Open wiki page on " + holiday + "?";
 
                 DialogResult result = MessageBox.Show(this, messageString, "Opening wiki page", MessageBoxButtons.YesNo, MessageBoxIcon.None);
@@ -302,7 +299,7 @@ namespace HarptosCalendarManager
 
         private void yearNameLabel_Click(object sender, EventArgs e)
         {
-            String messageString = "Open wiki page on " + currentCalendar.calendar.returnYear() + " (" + currentCalendar.calendar.getYear() + " DR)?";
+            String messageString = "Open wiki page on " + currentCalendar.calendar.ReturnYearName() + " (" + currentCalendar.calendar.getYear() + " DR)?";
 
             DialogResult result = MessageBox.Show(this, messageString, "Opening wiki page", MessageBoxButtons.YesNo, MessageBoxIcon.None);
 

@@ -20,9 +20,7 @@ namespace HarptosCalendarManager
         readonly static string[] UniversalNoteDates = { "0319", "0620", "0921", "1220" };
         readonly static string[] UniversalNoteContents = { "Spring Equinox", "Summer Solstice", "Autumn Equinox", "Winter Solstice" };
 
-        bool[] holidays; // Array of bools for each holiday, if it is a holiday, find the true value for which one
-        public bool isHoliday { get; set; } //Is current day a holiday?       // 0 1 3 5 7: locations of holidays that do not occur on days of a month 
-        readonly static string[] holidayNames = { "Shieldmeet", "Midwinter", "Spring Equinox", "Greengrass", "Summer Solstice", "Midsummer", "Autumn Equinox", "Highharvestide", "Feast of the Moon", "Winter Solstice" };
+        readonly static string[] holidayNames = { "Shieldmeet", "Midwinter", null, null, "Greengrass", null, null, "Midsummer", null, "Highharvestide", null, "Feast of the Moon"};
         readonly static string[] monthNames = { null, "Hammer", "Alturiak", "Ches", "Tarsakh", "Mirtul", "Kythorn", "Flamerule", "Eleasis", "Eleint", "Merpenoth", "Uktar", "Nightal" };
         readonly static string[] altMonthNames = { null, "Deepwinter", "The Claw of Winter", "The Claw of Sunsets", "The Claw of Storms", "The Melting", "The Time of Flowers", "Summertide", "Highsun", "The Fading", "Leaffall", "The Rotting", "The Drawing Down" };
         string[] yearNames;
@@ -101,7 +99,6 @@ namespace HarptosCalendarManager
 
         public HarptosCalendar(int m, int d, int y)
         {
-            holidays = new bool[10];
             setDate(m, d, y);
             readInYears();
         }
@@ -140,8 +137,6 @@ namespace HarptosCalendarManager
 
             day++;
             addMoonPhase();
-            if (isHoliday)
-                clearHolidays();
 
             if (day > 32)
             {
@@ -151,48 +146,21 @@ namespace HarptosCalendarManager
 
             if (day == 31)
             {
-                switch (month)
+                if (month != 1 && month != 4 && month != 7 && month != 9 && month != 11)
                 {
-                    case 1:
-                        isHoliday = true;
-                        holidays[1] = true;
-                        break;
-                    case 4:
-                        isHoliday = true;
-                        holidays[3] = true;
-                        break;
-                    case 7:
-                        isHoliday = true;
-                        holidays[5] = true;
-                        break;
-                    case 9:
-                        isHoliday = true;
-                        holidays[7] = true;
-                        break;
-                    case 11:
-                        isHoliday = true;
-                        holidays[8] = true;
-                        break;
-                    default:
-                        day = 1;
-                        month++;
-                        if (month == 13)
-                        {
-                            month = 1;
-                            year++;
-                        }
-                        break;
+                    day = 1;
+                    month++;
+                    if (month == 13)
+                    {
+                        month = 1;
+                        year++;
+                    }
                 } // end switch(month)
             } // end if day == 31
 
             else if (day == 32)
             {
-                if (year % 4 == 0 && month == 7)
-                {
-                    isHoliday = true;
-                    holidays[0] = true;
-                }
-                else
+                if (!(year % 4 == 0 && month == 7))
                 {
                     day = 1;
                     month++;
@@ -201,31 +169,6 @@ namespace HarptosCalendarManager
 
             else // if day is not 31 or 32
             {
-                // check if in-month holiday (equinoxes)
-
-                if (day == 19 && month == 3)
-                {
-                    isHoliday = true;
-                    holidays[2] = true;
-                }
-
-                if (day == 20 && month == 6)
-                {
-                    isHoliday = true;
-                    holidays[4] = true;
-                }
-
-                if (day == 21 && month == 9)
-                {
-                    isHoliday = true;
-                    holidays[6] = true;
-                }
-
-                if (day == 20 && month == 12)
-                {
-                    isHoliday = true;
-                    holidays[9] = true;
-                }
             }
         }
 
@@ -276,8 +219,6 @@ namespace HarptosCalendarManager
         {
             day--;
             subMoonPhase();
-            if (isHoliday)
-                clearHolidays();
 
             if (day == 0)
             {
@@ -291,37 +232,25 @@ namespace HarptosCalendarManager
                         break;
                     case 1:
                         day = 31;
-                        isHoliday = true;
-                        holidays[1] = true;
                         break;
                     case 4:
                         day = 31;
-                        isHoliday = true;
-                        holidays[3] = true;
                         break;
                     case 7:
                         if (year % 4 == 0)
                         {
                             day = 32;
-                            isHoliday = true;
-                            holidays[0] = true;
                         }
                         else
                         {
                             day = 31;
-                            isHoliday = true;
-                            holidays[5] = true;
                         }
                         break;
                     case 9:
                         day = 31;
-                        isHoliday = true;
-                        holidays[7] = true;
                         break;
                     case 11:
                         day = 31;
-                        isHoliday = true;
-                        holidays[8] = true;
                         break;
                     default:
                         day = 30;
@@ -331,37 +260,10 @@ namespace HarptosCalendarManager
 
             else if (day == 31) // Very specific case: should only happen if leap year and subtract a day on shieldmeet
             {
-                isHoliday = true;
-                holidays[5] = true;
             }
 
             else // if day is not 0
             {
-                // check if in-month holiday (equinoxes)
-
-                if (day == 19 && month == 3)
-                {
-                    isHoliday = true;
-                    holidays[2] = true;
-                }
-
-                if (day == 20 && month == 6)
-                {
-                    isHoliday = true;
-                    holidays[4] = true;
-                }
-
-                if (day == 21 && month == 9)
-                {
-                    isHoliday = true;
-                    holidays[6] = true;
-                }
-
-                if (day == 20 && month == 12)
-                {
-                    isHoliday = true;
-                    holidays[9] = true;
-                }
             }
 
         }
@@ -392,15 +294,12 @@ namespace HarptosCalendarManager
         }
         #endregion
 
-        public bool setDate(string dateString)
+        public void setDate(string dateString)
         {
             if (dateString.Length == 8)
             {
-                return setDate(Int32.Parse(dateString.Substring(0, 2)), Int32.Parse(dateString.Substring(2, 2)), Int32.Parse(dateString.Substring(4, 4)));
+                setDate(Int32.Parse(dateString.Substring(0, 2)), Int32.Parse(dateString.Substring(2, 2)), Int32.Parse(dateString.Substring(4, 4)));
             }
-
-            else
-                return false;
         }
 
         /// <summary>
@@ -410,186 +309,62 @@ namespace HarptosCalendarManager
         /// <param name="d">day</param>
         /// <param name="y">year</param>
         /// <returns></returns>
-        public bool setDate(int m, int d, int y)
+        public void setDate(int m, int d, int y)
         {
-            clearHolidays();
             switch (d)
             {
                 case 31:
                     if (m == 1 || m == 4 || m == 7 || m == 9 || m == 11)
                     {
-                        isHoliday = true;
-                        switch (m)
-                        {
-                            case 1:
-                                holidays[1] = true;
-                                break;
-                            case 4:
-                                holidays[3] = true;
-                                break;
-                            case 7:
-                                holidays[5] = true;
-                                break;
-                            case 9:
-                                holidays[7] = true;
-                                break;
-                            case 11:
-                                holidays[8] = true;
-                                break;
-                        }
                         day = 31;
                         month = m;
                         year = y;
                     }
                     else
-                        return false;
+                    {
+                        day = 30;
+                        month = m;
+                        year = y;
+                    }
                     break;
 
                 case 32:
                     if (m == 7 && ((y % 4) == 0))
                     {
-                        isHoliday = true;
-                        holidays[0] = true;
                         month = m;
                         day = d;
                         year = y;
                     }
+                    else if (month == 7)
+                    {
+                        day = 31;
+                        month = m;
+                        year = y;
+                    }
                     else
-                        return false;
+                    {
+                        day = 30;
+                        month = m;
+                        year = y;
+                    }
                     break;
 
                 default:
                     if (d > 32 || d <= 0)
-                        return false;
+                    {
+                        d = 1;
+                        m = 1;
+                        y = 1491;
+                    }
                     else
                     {
                         day = d;
                         month = m;
                         year = y;
-
-                        if (day == 19 && month == 3)
-                        {
-                            isHoliday = true;
-                            holidays[2] = true;
-                        }
-                        else if (day == 20 && month == 6)
-                        {
-                            isHoliday = true;
-                            holidays[4] = true;
-                        }
-                        else if (day == 21 && month == 9)
-                        {
-                            isHoliday = true;
-                            holidays[6] = true;
-                        }
-                        else if (day == 20 && month == 12)
-                        {
-                            isHoliday = true;
-                            holidays[9] = true;
-                        }
                     }
                     break;
             }
             determineMoonCounter();
-            return true; // if the date was false, the switch statement would have returned false
-        }                // so if it gets to this point, it's true
-
-        /// <summary>
-        /// Returns date in format (monthName) (dayNumber) (yearNumber) and holiday, if present
-        /// </summary>
-        /// <param name="dateString">String representing date, in format MMDDYYYY</param>
-        /// <returns></returns>
-        public static string returnGivenDate(string dateString)
-        {
-            if (dateString.Length == 8)
-            {
-                return returnGivenDate(Int32.Parse(dateString.Substring(0, 2)), Int32.Parse(dateString.Substring(2, 2)), Int32.Parse(dateString.Substring(4, 4)));
-            }
-
-            else
-                return null;
-        }
-
-        /// <summary>
-        /// Returns date in format (monthName) (dayNumber) (yearNumber) and holiday, if present
-        /// </summary>
-        /// <param name="m">Month number</param>
-        /// <param name="d">Day number</param>
-        /// <param name="y">Year number</param>
-        /// <returns></returns>
-        public static string returnGivenDate(int m, int d, int y)
-        {
-            StringBuilder dateString = new StringBuilder();
-            switch (d)
-            {
-                case 31:
-                    if (m == 1 || m == 4 || m == 7 || m == 9 || m == 11)
-                    {
-                        switch (m)
-                        {
-                            case 1:
-                                dateString.Append(holidayNames[1] + " ");
-                                break;
-                            case 4:
-                                dateString.Append(holidayNames[3] + " ");
-                                break;
-                            case 7:
-                                dateString.Append(holidayNames[5] + " ");
-                                break;
-                            case 9:
-                                dateString.Append(holidayNames[7] + " ");
-                                break;
-                            case 11:
-                                dateString.Append(holidayNames[8] + " ");
-                                break;
-                        }
-                    }
-                    else
-                        return null;
-                    break;
-
-                case 32:
-                    if (m == 7 && ((y % 4) == 0))
-                        dateString.Append(holidayNames[0] + " ");
-                    else
-                        return null;
-                    break;
-
-                default:
-                    if (d >= 31 || d <= 0 || m >= 13 || m <= 0)
-                        return null;
-                    else
-                    {
-                        dateString.Append(monthNames[m] + " " + d + " ");
-
-                        // Equinoxes, not shown on concise dates
-                        /*  if (day == 19 && month == 3)
-                          {
-                              isHoliday = true;
-                              holidays[2] = true;
-                          }
-                          else if (day == 20 && month == 6)
-                          {
-                              isHoliday = true;
-                              holidays[4] = true;
-                          }
-                          else if (day == 21 && month == 9)
-                          {
-                              isHoliday = true;
-                              holidays[6] = true;
-                          }
-                          else if (day == 20 && month == 12)
-                          {
-                              isHoliday = true;
-                              holidays[9] = true;
-                          }
-                      }*/
-
-                    }
-                    break;
-            }
-            dateString.Append(y);
-            return dateString.ToString();
         }
 
         /// <summary>
@@ -663,136 +438,6 @@ namespace HarptosCalendarManager
             return month + day + year;
         }
 
-
-        /// <summary>
-        /// Returns current date as (dayNumber)st/rd/th of (monthName) (yearNumber) and holiday, if present
-        /// </summary>
-        /// <returns></returns>
-        public string returnDateWithHolidays()
-        {
-            string returnString = null;
-            if (isHoliday)
-            {
-                bool b = false; // locates holiday in for loop
-                int i;
-                for (i = -1; b == false && i < 10;) // Find location of true in holiday array, location = what holiday
-                    b = holidays[++i];              // once holiday is found, location is i
-                if (day == 31)
-                {
-                    if (i == 0 || i == 1 || i == 3 || i == 5 || i == 7)
-                        returnString = "It is " + holidayNames[i] + "!";
-                    else
-                        returnString = "It is the " + holidayNames[i] + "!";
-                }
-                else if (day == 32)
-                {
-                    if (holidays[0])
-                        returnString = "It is " + holidayNames[0] + "!";
-                }
-                else
-                {
-                    switch (day)
-                    {
-                        case 1:
-                            returnString = day + "st of " + monthNames[month] + " " + year;
-                            break;
-                        case 2:
-                            returnString = day + "nd of " + monthNames[month] + " " + year;
-                            break;
-                        case 3:
-                            returnString = day + "rd of " + monthNames[month] + " " + year;
-                            break;
-                        default:
-                            returnString = day + "th of " + monthNames[month] + " " + year;
-                            break;
-                    }
-                }
-            }
-
-            else
-                switch (day)
-                {
-                    case 1:
-                        returnString = day + "st of " + monthNames[month] + " " + year;
-                        break;
-                    case 2:
-                        returnString = day + "nd of " + monthNames[month] + " " + year;
-                        break;
-                    case 3:
-                        returnString = day + "rd of " + monthNames[month] + " " + year;
-                        break;
-                    default:
-                        returnString = day + "th of " + monthNames[month] + " " + year;
-                        break;
-                }
-            return returnString;
-        }
-
-        /// <summary>
-        /// Returns current date as (dayNumber)st/rd/th of (alternateMonthName) (yearNumber), and holiday, if present
-        /// </summary>
-        /// <returns></returns>
-        public string returnAltDateWithHolidays()
-        {
-            string returnString = null;
-            if (isHoliday)
-            {
-                bool b = false;
-                int i;
-                for (i = -1; b == false && i < 10;)
-                    b = holidays[++i];
-                if (day == 31)
-                {
-                    if (i == 0 || i == 1 || i == 3 || i == 5 || i == 7)
-                        returnString = "It is " + holidayNames[i] + "!";
-                    else
-                        returnString = "It is the " + holidayNames[i] + "!";
-                }
-                else if (day == 32)
-                {
-                    if (holidays[0])
-                        returnString = "It is " + holidayNames[0] + "!";
-                }
-
-                else
-                {
-                    switch (day)
-                    {
-                        case 1:
-                            returnString = day + "st of " + monthNames[month] + " " + year;
-                            break;
-                        case 2:
-                            returnString = day + "nd of " + monthNames[month] + " " + year;
-                            break;
-                        case 3:
-                            returnString = day + "rd of " + monthNames[month] + " " + year;
-                            break;
-                        default:
-                            returnString = day + "th of " + monthNames[month] + " " + year;
-                            break;
-                    }
-                }
-            }
-
-            else
-                switch (day)
-                {
-                    case 1:
-                        returnString = day + "st of " + altMonthNames[month] + " " + year;
-                        break;
-                    case 2:
-                        returnString = day + "nd of " + altMonthNames[month] + " " + year;
-                        break;
-                    case 3:
-                        returnString = day + "rd of " + altMonthNames[month] + " " + year;
-                        break;
-                    default:
-                        returnString = day + "th of " + altMonthNames[month] + " " + year;
-                        break;
-                }
-            return returnString;
-        }
-
         public string currentMoonPhase()
         {
             switch (moonPhases[moonCounter])
@@ -861,39 +506,10 @@ namespace HarptosCalendarManager
             return verifyDay(Int32.Parse(date.Substring(0, 2)), Int32.Parse(date.Substring(2, 2)), Int32.Parse(date.Substring(4, 4)));
         }
 
-        private void clearHolidays()
-        {
-            isHoliday = false;
-            for (int i = 0; i < 10; i++)
-                holidays[i] = false;
-        }
-
         /// <summary>
         /// Return current date in format(monthName) (dayNumber) (yearNumber) and holiday, if present
         /// </summary>
         /// <returns></returns>
-        public string returnConciseDate()
-        {
-            return returnGivenDate(month, day, year);
-        }
-
-        /// <summary>
-        /// Returns only holiday string, such as "Autumn Equinox" or "Midwinter", null if current date is not a holiday
-        /// </summary>
-        /// <returns></returns>
-        public string returnJustHoliday()
-        {
-            if (isHoliday)
-            {
-                int holidayIndex;
-                for (holidayIndex = 0; holidayIndex < holidays.Length && holidays[holidayIndex] == false; holidayIndex++)
-                {
-                    // move to correct holiday index
-                }
-                return holidayNames[holidayIndex];
-            }
-            return null;
-        }
 
         public string ReturnUniversalNoteContent()
         {
@@ -1054,53 +670,109 @@ namespace HarptosCalendarManager
             return stringDate.ToString();
         }
 
-
-        public override string ToString(string format, bool alt)
+        public static string ToString(string dateString, string format, bool alt = false)
         {
+            int m = Int32.Parse(dateString.Substring(0, 2));
+            int d = Int32.Parse(dateString.Substring(2, 2));
+            int y = Int32.Parse(dateString.Substring(4, 4));
+
             format = format.ToLower();
-            StringBuilder returnDate = new StringBuilder();
 
             if (format.Contains("ddd"))
             {
-                format.Replace("ddd", ReturnDayFromFormat("ddd"));
+                format = format.Replace("ddd", ReturnDayFromFormat("ddd", d));
             }
-            else if (format.Contains("ddd"))
+            else if (format.Contains("dd"))
             {
-                format.Replace("dd", ReturnDayFromFormat("dd"));
+                format = format.Replace("dd", ReturnDayFromFormat("dd", d));
 
             }
             else if (format.Contains("d"))
             {
-                format.Replace("d", ReturnDayFromFormat("d"));
+                format = format.Replace("d", ReturnDayFromFormat("d", d));
             }
 
 
             if (format.Contains("mmm"))
             {
-                format.Replace("mmm", ReturnDayFromFormat("mmm"));
+                if (IsHolidayAt(dateString) != -1)
+                {
+                    bool yearPresent = format.Contains("yyyy");
+
+                    if (yearPresent)
+                        format = HolidayAt(dateString) + ", " + y.ToString("0000");
+                    else
+                        format = HolidayAt(dateString);
+                    //int mIndex = format.IndexOf("mmm");
+                    //int dIndex = format.IndexOf("ddd");
+                    //if (dIndex == -1)
+                    //{
+                    //    dIndex = format.IndexOf("dd");
+                    //}
+                    //if (dIndex == -1)
+                    //{
+                    //    dIndex = format.IndexOf("d");
+                    //}
+                    //if (dIndex != -1)
+                    //{
+                    //    int startIndex;
+                    //    int endIndex;
+
+                    //    if (mIndex > dIndex)
+                    //    {
+                    //        startIndex = dIndex;
+                    //        endIndex = mIndex + 3;
+                    //    }
+                    //    else
+                    //    {
+                    //        startIndex = mIndex;
+                    //        endIndex = dIndex + 3;
+                    //    }
+
+                    //    format.Replace(format.Substring(startIndex, endIndex - startIndex), 
+                    //}
+                    //else // day is not in the format
+                    //{
+
+                    //}
+                }
+                else
+                {
+                    format = format.Replace("mmm", ReturnMonthFromFormat("mmm", m));
+                }
             }
             else if (format.Contains("mm"))
             {
-                format.Replace("mm", ReturnDayFromFormat("mm"));
+                format = format.Replace("mm", ReturnMonthFromFormat("mm", m));
             }
             else if (format.Contains("m"))
             {
-                format.Replace("m", ReturnDayFromFormat("m"));
+                format = format.Replace("m", ReturnMonthFromFormat("m", m));
             }
 
 
             if (format.Contains("yyyy"))
             {
+                format = format.Replace("yyyy", ReturnYearFromFormat("yyyy", y));
             }
             else if (format.Contains("yyy"))
             {
+                format = format.Replace("yyy", ReturnYearFromFormat("yyy", y));
             }
             else if (format.Contains("yy"))
             {
+                format = format.Replace("yy", ReturnYearFromFormat("yy", y));
             }
-            else if(format.Contains("y"))
+            else if (format.Contains("y"))
             {
+                format = format.Replace("y", ReturnYearFromFormat("y", y));
             }
+            return format;
+        }
+
+        public string ToString(string format, bool alt = false)
+        {
+            return ToString(this.ToString(), format, alt);
         }
 
         /// <summary>
@@ -1112,43 +784,48 @@ namespace HarptosCalendarManager
         /// </summary>
         /// <param name="format"></param>
         /// <returns></returns>
-        private string ReturnDayFromFormat(string format)
+        private static string ReturnDayFromFormat(string format, int dayValue)
         {
-            string returnDay;
+            string returnString;
             switch (format)
             {
                 case "dddd":
-                    if (day == 1)
-                        returnDay = day + "st of ";
-                    else if (day == 2)
-                        returnDay = day + "nd of ";
-                    else if (day == 3)
-                        returnDay = day + "rd of ";
+                    if (dayValue == 1)
+                        returnString = dayValue + "st of ";
+                    else if (dayValue == 2)
+                        returnString = dayValue + "nd of ";
+                    else if (dayValue == 3)
+                        returnString = dayValue + "rd of ";
                     else
-                        returnDay = day + "th of ";
+                        returnString = dayValue + "th of ";
                     break;
                 case "ddd":
-                    if (day == 1)
-                        returnDay = day + "st";
-                    else if (day == 2)
-                        returnDay = day + "nd";
-                    else if (day == 3)
-                        returnDay = day + "rd";
+                    if (dayValue == 1)
+                        returnString = dayValue + "st";
+                    else if (dayValue == 2)
+                        returnString = dayValue + "nd";
+                    else if (dayValue == 3)
+                        returnString = dayValue + "rd";
                     else
-                        returnDay = day + "th";
+                        returnString = dayValue + "th";
                     break;
                 case "dd":
-                    returnDay = day.ToString("00");
+                    returnString = dayValue.ToString("00");
                     break;
 
                 case "d":
-                    returnDay = day.ToString();
+                    returnString = dayValue.ToString();
                     break;
                 default:
-                    returnDay = day.ToString();
+                    returnString = dayValue.ToString();
                     break;
             }
-            return returnDay;
+            return returnString;
+        }
+
+        private string ReturnDayFromFormat(string format)
+        {
+            return ReturnDayFromFormat(format, day);
         }
 
         /// <summary>
@@ -1161,30 +838,35 @@ namespace HarptosCalendarManager
         /// <param name="format"></param>
         /// <param name="alt">if you want alternative month names</param>
         /// <returns></returns>
-        private string ReturnMonthFromFormat(string format, bool alt)
+        private static string ReturnMonthFromFormat(string format, int monthValue, bool alt = false)
         {
             string returnMonth;
             switch (format)
             {
                 case "mmm":
                     if (alt)
-                        returnMonth = altMonthNames[month];
+                        returnMonth = altMonthNames[monthValue];
                     else
-                        returnMonth = monthNames[month];
+                        returnMonth = monthNames[monthValue];
                     break;
 
                 case "mm":
-                    returnMonth = month.ToString("00");
+                    returnMonth = monthValue.ToString("00");
                     break;
 
                 case "m":
-                    returnMonth = month.ToString();
+                    returnMonth = monthValue.ToString();
                     break;
                 default:
-                    returnMonth = month.ToString();
+                    returnMonth = monthValue.ToString();
                     break;
             }
             return returnMonth;
+        }
+
+        private string ReturnMonthFromFormat(string format, bool alt = false)
+        {
+            return ReturnMonthFromFormat(format, month, alt);
         }
 
         /// <summary>
@@ -1197,29 +879,34 @@ namespace HarptosCalendarManager
         /// </summary>
         /// <param name="format"></param>
         /// <returns></returns>
-        private string ReturnYearFromFormat(string format)
+        private static string ReturnYearFromFormat(string format, int yearValue)
         {
             string returnYear;
 
             switch (format)
             {
                 case "yyyy":
-                    returnYear = year.ToString("0000");
+                    returnYear = yearValue.ToString("0000");
                     break;
                 case "yyy":
-                    returnYear = year.ToString("000"); // TEST
+                    returnYear = yearValue.ToString("000"); // TEST
                     break;
                 case "yy":
-                    returnYear = year.ToString("00");
+                    returnYear = yearValue.ToString("00");
                     break;
                 case "y":
-                    returnYear = year.ToString("0");
+                    returnYear = yearValue.ToString("0");
                     break;
                 default:
-                    returnYear = year.ToString();
+                    returnYear = yearValue.ToString();
                     break;
             }
             return returnYear;
+        }
+
+        private string ReturnYearFromFormat(string format)
+        {
+            return ReturnYearFromFormat(format, year);
         }
 
         /// <summary>
@@ -1264,23 +951,90 @@ namespace HarptosCalendarManager
             return null;
         }
 
+
+        #region Holiday Determination
+
         public string CurrentHolidayName()
         {
-            int i;
-            for (i = 0; i < holidays.Length; i++)
+            return HolidayAt(month, day, year);
+        }
+
+
+        public bool IsHoliday()
+        {
+            if (IsHolidayAt(month, day, year) != -1)
             {
-                if (holidays[i])
-                    return holidayNames[i];
+                return true;
             }
-            return null;
+            else
+                return false;
 
         }
+
+        public static string HolidayAt(string dateString)
+        {
+            string m = dateString.Substring(0, 2);
+            string d = dateString.Substring(2, 2);
+            string y = dateString.Substring(4, 4);
+
+            enforceDateFormat(ref m, ref d, ref y);
+            return HolidayAt(Int32.Parse(m), Int32.Parse(d), Int32.Parse(y));
+
+        }
+
+        public static string HolidayAt(int m, int d, int y)
+        {
+            int holidayStatus = IsHolidayAt(m, d, y);
+
+            if (holidayStatus != -1)
+            {
+                return holidayNames[holidayStatus];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+        public static int IsHolidayAt(string dateString)
+        {
+            string m = dateString.Substring(0, 2);
+            string d = dateString.Substring(2, 2);
+            string y = dateString.Substring(4, 4);
+
+            enforceDateFormat(ref m, ref d, ref y);
+            return IsHolidayAt(Int32.Parse(m), Int32.Parse(d), Int32.Parse(y));
+        }
+
+
+        public static int IsHolidayAt(int m, int d, int y)
+        {
+            if (d == 31)
+            {
+                if (m == 1 || m == 4 || m == 7 || m == 9 || m == 11)
+                {
+                    return m;
+                }
+            }
+
+            else if (d == 32)
+            {
+                if (m == 7 && y % 4 == 0)
+                    return 0;
+            }
+
+            return -1;
+        }
+
+        #endregion
+
 
         /// <summary>
         /// Returns current year name
         /// </summary>
         /// <returns></returns>
-        public string returnYear()
+        public string ReturnYearName()
         {
             if (year >= 1601)
                 return "";

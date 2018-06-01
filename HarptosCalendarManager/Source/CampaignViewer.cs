@@ -16,6 +16,8 @@ namespace HarptosCalendarManager
         List<string> expandedNodes;
         TimeDifference timeDiffTool;
         bool measuring;
+        string dateFormat;
+
         public CampaignViewer(CalendarContents cal)
         {
             InitializeComponent();
@@ -25,6 +27,7 @@ namespace HarptosCalendarManager
             timeDiffTool = new TimeDifference();
             measuring = false;
             timeDiffTool.VisibleChanged += CheckIfMeasuring;
+            dateFormat = "mmm d, yyyy";
         }
 
         private void CheckIfMeasuring(object sender, EventArgs e)
@@ -80,7 +83,7 @@ namespace HarptosCalendarManager
             }
             else
             {
-                campaignTree.Nodes[campNum].Nodes.Add(new TreeNode(HarptosCalendar.returnGivenDate(noteToAdd.Date))); // ADD DATE OF NOTE
+                campaignTree.Nodes[campNum].Nodes.Add(new TreeNode(HarptosCalendar.ToString(noteToAdd.Date, dateFormat)));// ADD DATE OF NOTE
                 campaignTree.Nodes[campNum].Nodes[noteNum].Nodes.Add(new TreeNode(noteToAdd.NoteContent));         // ADD NOTE CONTENT UNDER IT
                 noteNum++;
             }
@@ -142,7 +145,7 @@ namespace HarptosCalendarManager
         {
             foreach (TreeNode n in nodes)
             {
-                if (n.Text == HarptosCalendar.returnGivenDate(dateString))
+                if (n.Text == HarptosCalendar.ToString(dateString, dateFormat))
                     return n;
             }
             return null;

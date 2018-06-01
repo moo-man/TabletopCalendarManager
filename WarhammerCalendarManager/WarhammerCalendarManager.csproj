@@ -222,7 +222,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="favico.ico" />
     <Content Include="Resources\Icons\alarmicon.png" />
     <Content Include="Resources\Icons\eyeicon.png" />
     <Content Include="Resources\Moons\First Quarter.png" />
@@ -258,8 +257,6 @@
     <Content Include="Resources\Star Signs\The Witchling Star.png" />
     <Content Include="Resources\Star Signs\Vobist the Faint.png" />
     <Content Include="Resources\Star Signs\Wymund the Anchorite.png" />
-    <Content Include="whicon %282%29.ico" />
-    <Content Include="whicon.ico" />
     <Content Include="whicon2.ico" />
     <EmbeddedResource Include="Newtonsoft.Json.dll" />
     <Content Include="Resources\Icons\noteicon.png" />
