@@ -381,6 +381,11 @@ namespace HarptosCalendarManager
             {
                 string[] splitArray = date.Split(' ');
 
+
+                for (int i = 0; i < splitArray.Length; i++)
+                {
+                    splitArray[i] = splitArray[i].Trim(',');
+                }
                 if (splitArray.Length == 3)
                 {
 
@@ -738,7 +743,7 @@ namespace HarptosCalendarManager
                 }
                 else
                 {
-                    format = format.Replace("mmm", ReturnMonthFromFormat("mmm", m));
+                    format = format.Replace("mmm", ReturnMonthFromFormat("mmm", m, alt));
                 }
             }
             else if (format.Contains("mm"))
@@ -789,16 +794,6 @@ namespace HarptosCalendarManager
             string returnString;
             switch (format)
             {
-                case "dddd":
-                    if (dayValue == 1)
-                        returnString = dayValue + "st of ";
-                    else if (dayValue == 2)
-                        returnString = dayValue + "nd of ";
-                    else if (dayValue == 3)
-                        returnString = dayValue + "rd of ";
-                    else
-                        returnString = dayValue + "th of ";
-                    break;
                 case "ddd":
                     if (dayValue == 1)
                         returnString = dayValue + "st";
