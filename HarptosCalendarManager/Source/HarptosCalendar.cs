@@ -646,19 +646,7 @@ namespace HarptosCalendarManager
                         return 0;
                 }
             }
-
         }
-
-        /// <summary>
-        /// Returns true if testDate is between date1 and date2
-        /// </summary>
-        /// <param name="testDate"></param>
-        /// <param name="date1"></param>
-        /// <param name="date2"></param>
-        /// <returns></returns>
-        // public static bool dateBetween(string testDate, string date1, string date2)
-        //{
-        // }
 
         /// <summary>
         /// Formats current date as MMDDYYYY

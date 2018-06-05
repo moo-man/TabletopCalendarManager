@@ -76,7 +76,8 @@ namespace WarhammerCalendarManager
                 currentCalendar.activeCampaign.setCurrentDate(currentCalendar.calendar.ToString());
             }
 
-            currentDate.Text = currentCalendar.calendar.returnCurrentDateWithWeekday();
+            currentDate.Text = currentCalendar.calendar.ToString("dddd, mmm d, yyyy");
+
 
             displayMoons();
             DetermineTimerButtonVisibility();
@@ -144,9 +145,9 @@ namespace WarhammerCalendarManager
                     }
                     else if (ImperialCalendar.FarthestInTime(t.returnDateString(), currentCalendar.calendar.ToString()) < 0)
                     {
-                        if (MessageBox.Show(this, t.message + " (" + ImperialCalendar.returnGivenDateWithWeekday(t.returnDateString()) + ")" + "\n\nCreate a note?", "Timer Passed", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        if (MessageBox.Show(this, t.message + ImperialCalendar.ToString(t.returnDateString(), " (mmm dd, yyyy) ") + "\n\nCreate a note?", "Timer Passed", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                             new EditNotesDialog(new Note(t.returnDateString(), AlertScope.campaign, t.message, currentCalendar.activeCampaign), currentCalendar).ShowDialog(this);
-                        if (MessageBox.Show(this, "Go to date? (" + ImperialCalendar.returnGivenDateWithWeekday(t.returnDateString()) + ")", "Go to date", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (MessageBox.Show(this, "Go to date?" + ImperialCalendar.ToString(t.returnDateString(), " (mmm dd, yyyy) "), "Go to date", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             currentCalendar.calendar.setDate(t.returnDateString());
                         // Remove, then restart updating (can't remove and iterate)
                         currentCalendar.activeCampaign.timers.Remove(t);

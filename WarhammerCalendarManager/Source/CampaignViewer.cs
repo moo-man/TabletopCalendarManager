@@ -16,6 +16,7 @@ namespace WarhammerCalendarManager
         List<string> expandedNodes;
         TimeDifference timeDiffTool;
         bool measuring;
+        string dateFormat;
 
         public CampaignViewer(CalendarContents cal)
         {
@@ -27,6 +28,8 @@ namespace WarhammerCalendarManager
             timeDiffTool = new TimeDifference();
             measuring = false;
             timeDiffTool.VisibleChanged += CheckIfMeasuring;
+            dateFormat = "mmm d, yyyy";
+
         }
 
 
@@ -84,7 +87,7 @@ namespace WarhammerCalendarManager
             }
             else
             {
-                campaignTree.Nodes[campNum].Nodes.Add(new TreeNode(ImperialCalendar.returnConciseGivenDate(noteToAdd.Date))); // ADD DATE OF NOTE
+                campaignTree.Nodes[campNum].Nodes.Add(new TreeNode(ImperialCalendar.ToString(noteToAdd.Date, dateFormat)));// ADD DATE OF NOTE
                 campaignTree.Nodes[campNum].Nodes[noteNum].Nodes.Add(new TreeNode(noteToAdd.NoteContent));         // ADD NOTE CONTENT UNDER IT
                 noteNum++;
             }
@@ -144,7 +147,7 @@ namespace WarhammerCalendarManager
         {
             foreach (TreeNode n in nodes)
             {
-                if (n.Text == ImperialCalendar.returnConciseGivenDate(dateString))
+                if (n.Text == ImperialCalendar.ToString(dateString, dateFormat))
                     return n;
             }
             return null;

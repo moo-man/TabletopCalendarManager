@@ -817,6 +817,10 @@ namespace CalendarManager
             {
                 string[] splitArray = date.Split(' ');
 
+                for (int i = 0; i < splitArray.Length; i++)
+                {
+                    splitArray[i] = splitArray[i].Trim(',');
+                }
                 // If the length is not 3, that means the month name has a space in it
                 // Copy the array, extract the month name into a string builder
                 // Redo the array at size 3, assemble it as [monthName][day][year]
@@ -975,7 +979,10 @@ namespace CalendarManager
         //}
 
         #endregion
-
+        /// <summary>
+        /// Formats current date as MMDDYYYY
+        /// </summary>
+        /// <returns>Returns current date as a string in the format of MMDDYYYY</returns>
         public override string ToString()
         {
             StringBuilder stringDate = new StringBuilder();
@@ -985,6 +992,194 @@ namespace CalendarManager
             stringDate.Append(year.ToString("0000"));
 
             return stringDate.ToString();
+        }
+
+        public static string ToString(string dateString, string format, bool alt = false)
+        {
+            int m = Int32.Parse(dateString.Substring(0, 2));
+            int d = Int32.Parse(dateString.Substring(2, 2));
+            int y = Int32.Parse(dateString.Substring(4, 4));
+
+            format = format.ToLower();
+
+
+            if (format.Contains("dddd"))
+            {
+                format = format.Replace("dddd", ReturnDayFromFormat("dddd", dateString));
+            }
+
+
+            if (format.Contains("ddd"))
+            {
+                format = format.Replace("ddd", ReturnDayFromFormat("ddd", dateString));
+            }
+            else if (format.Contains("dd"))
+            {
+                format = format.Replace("dd", ReturnDayFromFormat("dd", dateString));
+
+            }
+            else if (format.Contains("d"))
+            {
+                format = format.Replace("d", ReturnDayFromFormat("d", dateString));
+            }
+
+
+            if (format.Contains("mmm"))
+            {
+                format = format.Replace("mmm", ReturnMonthFromFormat("mmm", m));
+            }
+            else if (format.Contains("mm"))
+            {
+                format = format.Replace("mm", ReturnMonthFromFormat("mm", m));
+            }
+            else if (format.Contains("m"))
+            {
+                format = format.Replace("m", ReturnMonthFromFormat("m", m));
+            }
+
+
+            if (format.Contains("yyyy"))
+            {
+                format = format.Replace("yyyy", ReturnYearFromFormat("yyyy", y));
+            }
+            else if (format.Contains("yyy"))
+            {
+                format = format.Replace("yyy", ReturnYearFromFormat("yyy", y));
+            }
+            else if (format.Contains("yy"))
+            {
+                format = format.Replace("yy", ReturnYearFromFormat("yy", y));
+            }
+            else if (format.Contains("y"))
+            {
+                format = format.Replace("y", ReturnYearFromFormat("y", y));
+            }
+            return format;
+        }
+
+        public string ToString(string format, bool alt = false)
+        {
+            return ToString(this.ToString(), format, alt);
+        }
+
+        /// <summary>
+        /// Input format as...
+        /// dddd -> returns day of week
+        /// ddd  -> "(day)st/nd/rd/th"
+        /// dd   -> "01" to "31"
+        /// none ->  "1" to "31"
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
+        private static string ReturnDayFromFormat(string format, string dateString)
+        {
+            int dayValue = Int32.Parse(dateString.Substring(2, 2));
+            string returnString;
+            switch (format)
+            {
+                case "dddd":
+                    returnString = weekdayNames[determineDayOfWeek(dateString)];
+                    break;
+                case "ddd":
+                    if (dayValue == 1)
+                        returnString = dayValue + "st";
+                    else if (dayValue == 2)
+                        returnString = dayValue + "nd";
+                    else if (dayValue == 3)
+                        returnString = dayValue + "rd";
+                    else
+                        returnString = dayValue + "th";
+                    break;
+                case "dd":
+                    returnString = dayValue.ToString("00");
+                    break;
+
+                case "d":
+                    returnString = dayValue.ToString();
+                    break;
+                default:
+                    returnString = dayValue.ToString();
+                    break;
+            }
+            return returnString;
+        }
+
+        /// <summary>
+        /// Input format as...
+        /// mmm -> "(month name)" or if intercalary holiday, return holiday name
+        /// mm  -> "01" to "12"
+        /// m   ->  "1" to "12" 
+        /// none -> "1" to "12"
+        /// </summary>
+        /// <param name="format"></param>
+        /// <param name="alt">if you want alternative month names</param>
+        /// <returns></returns>
+        private static string ReturnMonthFromFormat(string format, int monthValue)
+        {
+            string returnMonth;
+            switch (format)
+            {
+                case "mmm":
+                    returnMonth = monthNames[monthValue];
+                    break;
+
+                case "mm":
+                    returnMonth = monthValue.ToString("00");
+                    break;
+
+                case "m":
+                    returnMonth = monthValue.ToString();
+                    break;
+                default:
+                    returnMonth = monthValue.ToString();
+                    break;
+            }
+            return returnMonth;
+        }
+
+        private string ReturnMonthFromFormat(string format)
+        {
+            return ReturnMonthFromFormat(format, month);
+        }
+
+        /// <summary>
+        /// Input format as...
+        /// yyyy -> "0000" to "9999"
+        /// yyy ->   "000" to  "999" right most 3 numbers, probably useless
+        /// yy ->     "00" to   "99" right most 2 numbers, probably useless
+        /// y ->       "0" to    "9" right most number, probably useless
+        /// none ->    "0  to "9999"
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
+        private static string ReturnYearFromFormat(string format, int yearValue)
+        {
+            string returnYear;
+
+            switch (format)
+            {
+                case "yyyy":
+                    returnYear = yearValue.ToString("0000");
+                    break;
+                case "yyy":
+                    returnYear = yearValue.ToString("000"); // TEST
+                    break;
+                case "yy":
+                    returnYear = yearValue.ToString("00");
+                    break;
+                case "y":
+                    returnYear = yearValue.ToString("0");
+                    break;
+                default:
+                    returnYear = yearValue.ToString();
+                    break;
+            }
+            return returnYear;
+        }
+
+        private string ReturnYearFromFormat(string format)
+        {
+            return ReturnYearFromFormat(format, year);
         }
 
         #region functions for format enforcement

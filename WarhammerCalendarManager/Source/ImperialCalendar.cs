@@ -758,75 +758,8 @@ namespace WarhammerCalendarManager
             return new string[] { phase_strings[(int)(mann_Phases[mannCounter])], phase_strings[(int)(morr_Phases[morrCounter])]};
         }
 
-        public static string returnGivenDateWithWeekday(int m, int d, int y)
-        {
-            StringBuilder dateString = new StringBuilder();
-            if (m > numMonthsInYear || m <= 0 || d > numDaysInMonth[m] || d < 0)
-                return null;
-            else if (d == 0 && (m == 1 || m == 3 || m == 6 || m == 7 || m == 9 || m == 12))
-            {
-                dateString.Append(intercalaryHolidays[m] + ", " + y);
-            }
-            else
-            {
-                dateString.Append(weekdayNames[determineDayOfWeek(m, d, y)]);
-                dateString.Append(", " + monthNames[m] + " " + d);
-                dateString.Append(", " + y);
-            }
-            return dateString.ToString();
-        }
 
-        public static string returnGivenDateWithWeekday(string dateString)
-        {
-            if (dateString.Length == 8)
-            {
-                return returnGivenDateWithWeekday(Int32.Parse(dateString.Substring(0, 2)), Int32.Parse(dateString.Substring(2, 2)), Int32.Parse(dateString.Substring(4, 4)));
-            }
-
-            else
-                return null;
-        }
-
-        // TODO: organize date formats
-        public string returnConciseCurrentDate()
-        {
-            string dateWithWeekday = returnGivenDateWithWeekday(month, day, year);
-            for (int i = 0; i < dateWithWeekday.Length; i++)
-            {
-                if (dateWithWeekday.ElementAt(i) == ' ')
-                    return dateWithWeekday.Substring(i + 1).Trim(',');
-            }
-            return null;
-        }
-
-        public static string returnConciseGivenDate(int month, int day, int year)
-        {
-            string dateWithWeekday = returnGivenDateWithWeekday(month, day, year);
-                        for (int i = 0; i < dateWithWeekday.Length; i++)
-            {
-                if (dateWithWeekday.ElementAt(i) == ' ')
-                    return dateWithWeekday.Substring(i + 1).Replace(",", "");
-            }
-            return null;
-        }
-
-        public static string returnConciseGivenDate(string dateString)
-        {
-            if (dateString.Length == 8)
-            {
-                return returnConciseGivenDate(Int32.Parse(dateString.Substring(0, 2)), Int32.Parse(dateString.Substring(2, 2)), Int32.Parse(dateString.Substring(4, 4)));
-            }
-
-            else
-                return null;
-        }
-
-        public string returnCurrentDateWithWeekday()
-        {
-            return returnGivenDateWithWeekday(month, day, year);
-        }
-
-
+        //TODO: NOT STABLE
         /// <summary>
         /// Reverse ReturnGivenDate.
         /// Give (monthName) (dayNumber) (yearNumber)
@@ -840,16 +773,20 @@ namespace WarhammerCalendarManager
             try
             {
                 string[] splitArray = date.Split(' ');
-
+                for (int i = 0; i < splitArray.Length; i++)
+                {
+                    splitArray[i] = splitArray[i].Trim(',');
+                }
                 // If the length is 2, intercalary holiday
                 if (splitArray.Length == 2)
                 {
-                    for (int i = 0; i < numMonthsInYear; i++)
+                    for (int i = 1; i <= numMonthsInYear; i++)
                     {
-                        if (intercalaryHolidays[i] == splitArray[i])
+                        if (intercalaryHolidays[i] == splitArray[0])
                         {
                             month = i.ToString("00");
-                            year = splitArray[i + 1];
+                            year = splitArray[1];
+                            day = "00";
                         }
                     }
                 }
@@ -997,6 +934,10 @@ namespace WarhammerCalendarManager
 
         #endregion
 
+        /// <summary>
+        /// Formats current date as MMDDYYYY
+        /// </summary>
+        /// <returns>Returns current date as a string in the format of MMDDYYYY</returns>
         public override string ToString()
         {
             StringBuilder stringDate = new StringBuilder();
@@ -1007,6 +948,277 @@ namespace WarhammerCalendarManager
 
             return stringDate.ToString();
         }
+
+        public static string ToString(string dateString, string format, bool alt = false)
+        {
+            int m = Int32.Parse(dateString.Substring(0, 2));
+            int d = Int32.Parse(dateString.Substring(2, 2));
+            int y = Int32.Parse(dateString.Substring(4, 4));
+
+            format = format.ToLower();
+
+
+            if (format.Contains("dddd"))
+            {
+                format = format.Replace("dddd", ReturnDayFromFormat("dddd", dateString));
+            }
+           
+
+            if (format.Contains("ddd"))
+            {
+                format = format.Replace("ddd", ReturnDayFromFormat("ddd", dateString));
+            }
+            else if (format.Contains("dd"))
+            {
+                format = format.Replace("dd", ReturnDayFromFormat("dd", dateString));
+
+            }
+            else if (format.Contains("d"))
+            {
+                format = format.Replace("d", ReturnDayFromFormat("d", dateString));
+            }
+
+
+            if (format.Contains("mmm"))
+            {
+                if (IsHolidayAt(dateString) != 0)
+                {
+                    bool yearPresent = format.Contains("yyyy");
+
+                    if (yearPresent)
+                        format = HolidayAt(dateString) + ", " + y.ToString("0000");
+                    else
+                        format = HolidayAt(dateString);
+                }
+                else
+                {
+                    format = format.Replace("mmm", ReturnMonthFromFormat("mmm", m, alt));
+                }
+            }
+            else if (format.Contains("mm"))
+            {
+                format = format.Replace("mm", ReturnMonthFromFormat("mm", m));
+            }
+            else if (format.Contains("m"))
+            {
+                format = format.Replace("m", ReturnMonthFromFormat("m", m));
+            }
+
+
+            if (format.Contains("yyyy"))
+            {
+                format = format.Replace("yyyy", ReturnYearFromFormat("yyyy", y));
+            }
+            else if (format.Contains("yyy"))
+            {
+                format = format.Replace("yyy", ReturnYearFromFormat("yyy", y));
+            }
+            else if (format.Contains("yy"))
+            {
+                format = format.Replace("yy", ReturnYearFromFormat("yy", y));
+            }
+            else if (format.Contains("y"))
+            {
+                format = format.Replace("y", ReturnYearFromFormat("y", y));
+            }
+            return format;
+        }
+
+        public string ToString(string format, bool alt = false)
+        {
+            return ToString(this.ToString(), format, alt);
+        }
+
+        /// <summary>
+        /// Input format as...
+        /// dddd -> returns day of week
+        /// ddd  -> "(day)st/nd/rd/th"
+        /// dd   -> "01" to "31"
+        /// none ->  "1" to "31"
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
+        private static string ReturnDayFromFormat(string format, string dateString)
+        {
+            int dayValue = Int32.Parse(dateString.Substring(2, 2));
+            string returnString;
+            switch (format)
+            {
+                case "dddd":
+                    returnString = weekdayNames[determineDayOfWeek(dateString)];
+                    break;
+                case "ddd":
+                    if (dayValue == 1)
+                        returnString = dayValue + "st";
+                    else if (dayValue == 2)
+                        returnString = dayValue + "nd";
+                    else if (dayValue == 3)
+                        returnString = dayValue + "rd";
+                    else
+                        returnString = dayValue + "th";
+                    break;
+                case "dd":
+                    returnString = dayValue.ToString("00");
+                    break;
+
+                case "d":
+                    returnString = dayValue.ToString();
+                    break;
+                default:
+                    returnString = dayValue.ToString();
+                    break;
+            }
+            return returnString;
+        }
+
+        /// <summary>
+        /// Input format as...
+        /// mmm -> "(month name)" or if intercalary holiday, return holiday name
+        /// mm  -> "01" to "12"
+        /// m   ->  "1" to "12" 
+        /// none -> "1" to "12"
+        /// </summary>
+        /// <param name="format"></param>
+        /// <param name="alt">if you want alternative month names</param>
+        /// <returns></returns>
+        private static string ReturnMonthFromFormat(string format, int monthValue, bool alt = false)
+        {
+            string returnMonth;
+            switch (format)
+            {
+                case "mmm":
+                    if (alt)
+                        returnMonth = altMonthNames[monthValue];
+                    else
+                        returnMonth = monthNames[monthValue];
+                    break;
+
+                case "mm":
+                    returnMonth = monthValue.ToString("00");
+                    break;
+
+                case "m":
+                    returnMonth = monthValue.ToString();
+                    break;
+                default:
+                    returnMonth = monthValue.ToString();
+                    break;
+            }
+            return returnMonth;
+        }
+
+        private string ReturnMonthFromFormat(string format, bool alt = false)
+        {
+            return ReturnMonthFromFormat(format, month, alt);
+        }
+
+        /// <summary>
+        /// Input format as...
+        /// yyyy -> "0000" to "9999"
+        /// yyy ->   "000" to  "999" right most 3 numbers, probably useless
+        /// yy ->     "00" to   "99" right most 2 numbers, probably useless
+        /// y ->       "0" to    "9" right most number, probably useless
+        /// none ->    "0  to "9999"
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
+        private static string ReturnYearFromFormat(string format, int yearValue)
+        {
+            string returnYear;
+
+            switch (format)
+            {
+                case "yyyy":
+                    returnYear = yearValue.ToString("0000");
+                    break;
+                case "yyy":
+                    returnYear = yearValue.ToString("000"); // TEST
+                    break;
+                case "yy":
+                    returnYear = yearValue.ToString("00");
+                    break;
+                case "y":
+                    returnYear = yearValue.ToString("0");
+                    break;
+                default:
+                    returnYear = yearValue.ToString();
+                    break;
+            }
+            return returnYear;
+        }
+
+        private string ReturnYearFromFormat(string format)
+        {
+            return ReturnYearFromFormat(format, year);
+        }
+
+        #region Holiday Determination
+
+        public string CurrentHolidayName()
+        {
+            return HolidayAt(month, day, year);
+        }
+
+
+        public bool IsHoliday()
+        {
+            if (IsHolidayAt(month, day, year) != 0)
+            {
+                return true;
+            }
+            else
+                return false;
+
+        }
+
+        public static string HolidayAt(string dateString)
+        {
+            string m = dateString.Substring(0, 2);
+            string d = dateString.Substring(2, 2);
+            string y = dateString.Substring(4, 4);
+
+            enforceDateFormat(ref m, ref d, ref y);
+            return HolidayAt(Int32.Parse(m), Int32.Parse(d), Int32.Parse(y));
+
+        }
+
+        public static string HolidayAt(int m, int d, int y)
+        {
+            int holidayStatus = IsHolidayAt(m, d, y);
+
+            if (holidayStatus != 0)
+            {
+                return intercalaryHolidays[holidayStatus];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+        public static int IsHolidayAt(string dateString)
+        {
+            string m = dateString.Substring(0, 2);
+            string d = dateString.Substring(2, 2);
+            string y = dateString.Substring(4, 4);
+
+            enforceDateFormat(ref m, ref d, ref y);
+            return IsHolidayAt(Int32.Parse(m), Int32.Parse(d), Int32.Parse(y));
+        }
+
+
+        public static int IsHolidayAt(int m, int d, int y)
+        {
+            if (d == 0 && (m == 1 || m == 3 || m == 6 || m == 7 || m == 9 || m == 12))
+            {
+                return m;
+            }
+            else
+                return 0;
+        }
+
+        #endregion
 
         #region functions for format enforcement
 
