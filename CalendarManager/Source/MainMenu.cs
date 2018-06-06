@@ -156,7 +156,7 @@ namespace CalendarManager
 
         public void LoadCalendarMenu(CalendarContents calendarToUse)
         {
-            if (calendarToUse == null)
+            if (calendarToUse == null || calendarToUse.calendar == null)
             {
                 return;
             }

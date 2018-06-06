@@ -741,68 +741,6 @@ namespace CalendarManager
             return returnString;
         }
 
-        public static string returnGivenDateWithWeekday(int m, int d, int y)
-        {
-            StringBuilder dateString = new StringBuilder();
-            if (m > numMonthsInYear || m <= 0 || d > numDaysInMonth[m] || d <= 0)
-                return null;
-
-            dateString.Append(weekdayNames[determineDayOfWeek(m, d, y)]);
-            dateString.Append(", " + monthNames[m] + " " + d);
-            dateString.Append(", " + y);
-            return dateString.ToString();
-        }
-
-        public static string returnGivenDateWithWeekday(string dateString)
-        {
-            if (dateString.Length == 8)
-            {
-                return returnGivenDateWithWeekday(Int32.Parse(dateString.Substring(0, 2)), Int32.Parse(dateString.Substring(2, 2)), Int32.Parse(dateString.Substring(4, 4)));
-            }
-
-            else
-                return null;
-        }
-
-        public string returnConciseCurrentDate()
-        {
-            string dateWithWeekday = returnGivenDateWithWeekday(month, day, year);
-            for (int i = 0; i < dateWithWeekday.Length; i++)
-            {
-                if (dateWithWeekday.ElementAt(i) == ' ')
-                    return dateWithWeekday.Substring(i + 1).Trim(',');
-            }
-            return null;
-        }
-
-        public static string returnConciseGivenDate(int month, int day, int year)
-        {
-            string dateWithWeekday = returnGivenDateWithWeekday(month, day, year);
-                        for (int i = 0; i < dateWithWeekday.Length; i++)
-            {
-                if (dateWithWeekday.ElementAt(i) == ' ')
-                    return dateWithWeekday.Substring(i + 1).Replace(",", "");
-            }
-            return null;
-        }
-
-        public static string returnConciseGivenDate(string dateString)
-        {
-            if (dateString.Length == 8)
-            {
-                return returnConciseGivenDate(Int32.Parse(dateString.Substring(0, 2)), Int32.Parse(dateString.Substring(2, 2)), Int32.Parse(dateString.Substring(4, 4)));
-            }
-
-            else
-                return null;
-        }
-
-        public string returnCurrentDateWithWeekday()
-        {
-            return returnGivenDateWithWeekday(month, day, year);
-        }
-
-
         /// <summary>
         /// Reverse ReturnGivenDate.
         /// Give (monthName) (dayNumber) (yearNumber)

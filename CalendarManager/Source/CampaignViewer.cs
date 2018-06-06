@@ -16,6 +16,7 @@ namespace CalendarManager
         List<string> expandedNodes;
         TimeDifference timeDiffTool;
         bool measuring;
+        string dateFormat;
 
         public CampaignViewer(CalendarContents cal)
         {
@@ -27,6 +28,8 @@ namespace CalendarManager
             timeDiffTool = new TimeDifference();
             measuring = false;
             timeDiffTool.VisibleChanged += CheckIfMeasuring;
+
+            dateFormat = "mmm d, y";
         }
 
 
@@ -84,7 +87,7 @@ namespace CalendarManager
             }
             else
             {
-                campaignTree.Nodes[campNum].Nodes.Add(new TreeNode(CalendarType.returnConciseGivenDate(noteToAdd.Date))); // ADD DATE OF NOTE
+                campaignTree.Nodes[campNum].Nodes.Add(new TreeNode(CalendarType.ToString(noteToAdd.Date, dateFormat)));// ADD DATE OF NOTE
                 campaignTree.Nodes[campNum].Nodes[noteNum].Nodes.Add(new TreeNode(noteToAdd.NoteContent));         // ADD NOTE CONTENT UNDER IT
                 noteNum++;
             }
@@ -144,7 +147,7 @@ namespace CalendarManager
         {
             foreach (TreeNode n in nodes)
             {
-                if (n.Text == CalendarType.returnConciseGivenDate(dateString))
+                if (n.Text == CalendarType.ToString(dateString, dateFormat))
                     return n;
             }
             return null;

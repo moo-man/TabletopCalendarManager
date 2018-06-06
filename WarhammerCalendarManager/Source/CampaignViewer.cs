@@ -28,7 +28,7 @@ namespace WarhammerCalendarManager
             timeDiffTool = new TimeDifference();
             measuring = false;
             timeDiffTool.VisibleChanged += CheckIfMeasuring;
-            dateFormat = "mmm d, yyyy";
+            dateFormat = "mmm d, y";
 
         }
 

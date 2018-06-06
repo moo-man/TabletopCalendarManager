@@ -162,12 +162,18 @@ namespace CalendarManager
                     //loadedCalendar = ReadInFile(sr);
                     loadedCalendar = readInJSON(Newtonsoft.Json.JsonConvert.DeserializeObject(test));
 
+                    if (loadedCalendar.calendar == null)
+                    {
+                        throw new Exception("Error reading calendar data");
+                    }
+
                     currentFilePath = openFileDialog1.FileName;
                     sr.Close();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: Could not read file. Original error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
                 }
             }
             return loadedCalendar;

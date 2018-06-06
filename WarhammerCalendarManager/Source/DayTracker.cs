@@ -76,7 +76,7 @@ namespace WarhammerCalendarManager
                 currentCalendar.activeCampaign.setCurrentDate(currentCalendar.calendar.ToString());
             }
 
-            currentDate.Text = currentCalendar.calendar.ToString("dddd, mmm d, yyyy");
+            currentDate.Text = currentCalendar.calendar.ToString("dddd, mmm d, y");
 
 
             displayMoons();

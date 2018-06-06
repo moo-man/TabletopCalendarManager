@@ -962,7 +962,6 @@ namespace WarhammerCalendarManager
             {
                 format = format.Replace("dddd", ReturnDayFromFormat("dddd", dateString));
             }
-           
 
             if (format.Contains("ddd"))
             {
