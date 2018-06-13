@@ -968,29 +968,28 @@ namespace CalendarManager
                 format = format.Replace("dddd", ReturnDayFromFormat("dddd", dateString));
             }
 
-            startIndex = 0;
             while (startIndex < format.Length)
             {
                 if (format.IndexOf("ddd", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("ddd", startIndex), offLimitArray))
                 {
-                    offLimitArray[2, 0] = format.IndexOf("ddd");
-                    offLimitArray[2, 1] = ReturnMonthFromFormat("ddd", m).Length;
+                    offLimitArray[1, 0] = format.IndexOf("ddd");
+                    offLimitArray[1, 1] = ReturnMonthFromFormat("ddd", m).Length;
                     int substringStart = format.IndexOf("ddd", startIndex);
                     string substring = format.Substring(startIndex);
                     format = format.Substring(0, substringStart) + substring.Replace("ddd", ReturnDayFromFormat("ddd", dateString));
                 }
                 else if (format.IndexOf("dd", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("dd", startIndex), offLimitArray))
                 {
-                    offLimitArray[2, 0] = format.IndexOf("dd");
-                    offLimitArray[2, 1] = ReturnMonthFromFormat("dd", m).Length;
+                    offLimitArray[1, 0] = format.IndexOf("dd");
+                    offLimitArray[1, 1] = ReturnMonthFromFormat("dd", m).Length;
                     int substringStart = format.IndexOf("dd", startIndex);
                     string substring = format.Substring(startIndex);
                     format = format.Substring(0, substringStart) + substring.Replace("dd", ReturnDayFromFormat("dd", dateString));
                 }
                 else if (format.IndexOf("d", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("d", startIndex), offLimitArray))
                 {
-                    offLimitArray[2, 0] = format.IndexOf("d");
-                    offLimitArray[2, 1] = ReturnMonthFromFormat("d", m).Length;
+                    offLimitArray[1, 0] = format.IndexOf("d");
+                    offLimitArray[1, 1] = ReturnMonthFromFormat("d", m).Length;
                     int substringStart = format.IndexOf("d", startIndex);
                     string substring = format.Substring(startIndex);
                     format = format.Substring(0, substringStart) + substring.Replace("d", ReturnDayFromFormat("d", dateString));
@@ -1037,7 +1036,7 @@ namespace CalendarManager
                 if (format.IndexOf("yyyy", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("yyyy", startIndex), offLimitArray))
                 {
                     offLimitArray[3, 0] = format.IndexOf("yyyy", startIndex);
-                    offLimitArray[3, 1] = ReturnDayFromFormat("yyyy", dateString).Length;
+                    offLimitArray[3, 1] = ReturnYearFromFormat("yyyy", y).Length;
                     int substringStart = format.IndexOf("yyyy", startIndex);
                     string substring = format.Substring(startIndex);
                     format = format.Substring(0, substringStart) + substring.Replace("yyyy", ReturnYearFromFormat("yyyy", y));
@@ -1045,7 +1044,7 @@ namespace CalendarManager
                 else if (format.IndexOf("yyy", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("yyy", startIndex), offLimitArray))
                 {
                     offLimitArray[3, 0] = format.IndexOf("yyy", startIndex);
-                    offLimitArray[3, 1] = ReturnDayFromFormat("yyy", dateString).Length;
+                    offLimitArray[3, 1] = ReturnYearFromFormat("yyy", y).Length;
                     int substringStart = format.IndexOf("yyy", startIndex);
                     string substring = format.Substring(startIndex);
                     format = format.Substring(0, substringStart) + substring.Replace("yyy", ReturnYearFromFormat("yyy", y));
@@ -1053,7 +1052,7 @@ namespace CalendarManager
                 else if (format.IndexOf("yy", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("yy", startIndex), offLimitArray))
                 {
                     offLimitArray[3, 0] = format.IndexOf("yy", startIndex);
-                    offLimitArray[3, 1] = ReturnDayFromFormat("yy", dateString).Length;
+                    offLimitArray[3, 1] = ReturnYearFromFormat("yy", y).Length;
                     int substringStart = format.IndexOf("yy", startIndex);
                     string substring = format.Substring(startIndex);
                     format = format.Substring(0, substringStart) + substring.Replace("yy", ReturnYearFromFormat("yy", y));
@@ -1061,7 +1060,7 @@ namespace CalendarManager
                 else if (format.IndexOf("y", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("y", startIndex), offLimitArray))
                 {
                     offLimitArray[3, 0] = format.IndexOf("y", startIndex);
-                    offLimitArray[3, 1] = ReturnDayFromFormat("y", dateString).Length;
+                    offLimitArray[3, 1] = ReturnYearFromFormat("y", y).Length;
                     int substringStart = format.IndexOf("y", startIndex);
                     string substring = format.Substring(startIndex);
                     format = format.Substring(0, substringStart) + substring.Replace("y", ReturnYearFromFormat("y", y));
@@ -1139,7 +1138,7 @@ namespace CalendarManager
 
         /// <summary>
         /// Input format as...
-        /// mmm -> "(month name)" or if intercalary holiday, return holiday name
+        /// mmm -> "(month name)"
         /// mm  -> "01" to "12"
         /// m   ->  "1" to "12" 
         /// none -> "1" to "12"

@@ -958,67 +958,144 @@ namespace WarhammerCalendarManager
             format = format.ToLower();
 
 
+
+            /// First Column    Second Column
+            /// Index Marker |  Marker Length
+            /// D4
+            /// D
+            /// M
+            /// Y
+            int[,] offLimitArray = new int[4, 2];
+            for (int i = 0; i < offLimitArray.GetLength(0); i++)
+            {
+                for (int j = 0; j < offLimitArray.GetLength(1); j++)
+                {
+                    offLimitArray[i, j] = 0;
+                }
+            }
+
+
+            int startIndex = 0;
+
             if (format.Contains("dddd"))
             {
+                offLimitArray[0, 0] = format.IndexOf("dddd");
+                offLimitArray[0, 1] = ReturnDayFromFormat("dddd", dateString).Length;
                 format = format.Replace("dddd", ReturnDayFromFormat("dddd", dateString));
             }
 
-            if (format.Contains("ddd"))
+            while (startIndex < format.Length)
             {
-                format = format.Replace("ddd", ReturnDayFromFormat("ddd", dateString));
-            }
-            else if (format.Contains("dd"))
-            {
-                format = format.Replace("dd", ReturnDayFromFormat("dd", dateString));
-
-            }
-            else if (format.Contains("d"))
-            {
-                format = format.Replace("d", ReturnDayFromFormat("d", dateString));
-            }
-
-
-            if (format.Contains("mmm"))
-            {
-                if (IsHolidayAt(dateString) != 0)
+                if (format.IndexOf("ddd", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("ddd", startIndex), offLimitArray))
                 {
-                    bool yearPresent = format.Contains("yyyy");
-
-                    if (yearPresent)
-                        format = HolidayAt(dateString) + ", " + y.ToString("0000");
-                    else
-                        format = HolidayAt(dateString);
+                    offLimitArray[1, 0] = format.IndexOf("ddd");
+                    offLimitArray[1, 1] = ReturnMonthFromFormat("ddd", m).Length;
+                    int substringStart = format.IndexOf("ddd", startIndex);
+                    string substring = format.Substring(startIndex);
+                    format = format.Substring(0, substringStart) + substring.Replace("ddd", ReturnDayFromFormat("ddd", dateString));
+                }
+                else if (format.IndexOf("dd", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("dd", startIndex), offLimitArray))
+                {
+                    offLimitArray[1, 0] = format.IndexOf("dd");
+                    offLimitArray[1, 1] = ReturnMonthFromFormat("dd", m).Length;
+                    int substringStart = format.IndexOf("dd", startIndex);
+                    string substring = format.Substring(startIndex);
+                    format = format.Substring(0, substringStart) + substring.Replace("dd", ReturnDayFromFormat("dd", dateString));
+                }
+                else if (format.IndexOf("d", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("d", startIndex), offLimitArray))
+                {
+                    offLimitArray[1, 0] = format.IndexOf("d");
+                    offLimitArray[1, 1] = ReturnMonthFromFormat("d", m).Length;
+                    int substringStart = format.IndexOf("d", startIndex);
+                    string substring = format.Substring(startIndex);
+                    format = format.Substring(0, substringStart) + substring.Replace("d", ReturnDayFromFormat("d", dateString));
                 }
                 else
+                    startIndex++;
+            }
+
+
+            startIndex = 0;
+            while (startIndex < format.Length)
+            {
+                if (format.Contains("mmm"))
                 {
-                    format = format.Replace("mmm", ReturnMonthFromFormat("mmm", m, alt));
+                    if (IsIntercalAt(dateString) != 0)
+                    {
+                        bool yearPresent = format.Contains("y");
+
+                        if (yearPresent)
+                            return IntercalHolidayAt(dateString) + ", " + y.ToString("0000");
+                        else
+                            return IntercalHolidayAt(dateString);
+                    }
+                    else if (format.IndexOf("mmm", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("mmm", startIndex), offLimitArray))
+                    {
+                        offLimitArray[2, 0] = format.IndexOf("mmm");
+                        offLimitArray[2, 1] = ReturnMonthFromFormat("mmm", m).Length;
+                        int substringStart = format.IndexOf("mmm", startIndex);
+                        string substring = format.Substring(startIndex);
+                        format = format.Substring(0, substringStart) + substring.Replace("mmm", ReturnMonthFromFormat("mmm", m));
+                    }
                 }
-            }
-            else if (format.Contains("mm"))
-            {
-                format = format.Replace("mm", ReturnMonthFromFormat("mm", m));
-            }
-            else if (format.Contains("m"))
-            {
-                format = format.Replace("m", ReturnMonthFromFormat("m", m));
+                else if (format.IndexOf("mm", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("mm", startIndex), offLimitArray))
+                {
+                    offLimitArray[2, 0] = format.IndexOf("mm");
+                    offLimitArray[2, 1] = ReturnMonthFromFormat("mm", m).Length;
+                    int substringStart = format.IndexOf("mm", startIndex);
+                    string substring = format.Substring(startIndex);
+                    format = format.Substring(0, substringStart) + substring.Replace("mm", ReturnMonthFromFormat("mm", m));
+                }
+                else if (format.IndexOf("m", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("m", startIndex), offLimitArray))
+                {
+                    offLimitArray[2, 0] = format.IndexOf("m");
+                    offLimitArray[2, 1] = ReturnMonthFromFormat("m", m).Length;
+                    int substringStart = format.IndexOf("m", startIndex);
+                    string substring = format.Substring(startIndex);
+                    format = format.Substring(0, substringStart) + substring.Replace("m", ReturnMonthFromFormat("m", m));
+                }
+                else
+                    startIndex++;
             }
 
+            startIndex = 0;
+            while (startIndex < format.Length)
+            {
 
-            if (format.Contains("yyyy"))
-            {
-                format = format.Replace("yyyy", ReturnYearFromFormat("yyyy", y));
-            }
-            else if (format.Contains("yyy"))
-            {
-                format = format.Replace("yyy", ReturnYearFromFormat("yyy", y));
-            }
-            else if (format.Contains("yy"))
-            {
-                format = format.Replace("yy", ReturnYearFromFormat("yy", y));
-            }
-            else if (format.Contains("y"))
-            {
-                format = format.Replace("y", ReturnYearFromFormat("y", y));
+                if (format.IndexOf("yyyy", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("yyyy", startIndex), offLimitArray))
+                {
+                    offLimitArray[3, 0] = format.IndexOf("yyyy", startIndex);
+                    offLimitArray[3, 1] = ReturnYearFromFormat("yyyy", y).Length;
+                    int substringStart = format.IndexOf("yyyy", startIndex);
+                    string substring = format.Substring(startIndex);
+                    format = format.Substring(0, substringStart) + substring.Replace("yyyy", ReturnYearFromFormat("yyyy", y));
+                }
+                else if (format.IndexOf("yyy", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("yyy", startIndex), offLimitArray))
+                {
+                    offLimitArray[3, 0] = format.IndexOf("yyy", startIndex);
+                    offLimitArray[3, 1] = ReturnYearFromFormat("yyy", y).Length;
+                    int substringStart = format.IndexOf("yyy", startIndex);
+                    string substring = format.Substring(startIndex);
+                    format = format.Substring(0, substringStart) + substring.Replace("yyy", ReturnYearFromFormat("yyy", y));
+                }
+                else if (format.IndexOf("yy", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("yy", startIndex), offLimitArray))
+                {
+                    offLimitArray[3, 0] = format.IndexOf("yy", startIndex);
+                    offLimitArray[3, 1] = ReturnYearFromFormat("yy", y).Length;
+                    int substringStart = format.IndexOf("yy", startIndex);
+                    string substring = format.Substring(startIndex);
+                    format = format.Substring(0, substringStart) + substring.Replace("yy", ReturnYearFromFormat("yy", y));
+                }
+                else if (format.IndexOf("y", startIndex) != -1 && !OffLimits(startIndex = format.IndexOf("y", startIndex), offLimitArray))
+                {
+                    offLimitArray[3, 0] = format.IndexOf("y", startIndex);
+                    offLimitArray[3, 1] = ReturnYearFromFormat("y", y).Length;
+                    int substringStart = format.IndexOf("y", startIndex);
+                    string substring = format.Substring(startIndex);
+                    format = format.Substring(0, substringStart) + substring.Replace("y", ReturnYearFromFormat("y", y));
+                }
+                else
+                    startIndex++;
             }
             return format;
         }
@@ -1026,6 +1103,18 @@ namespace WarhammerCalendarManager
         public string ToString(string format, bool alt = false)
         {
             return ToString(this.ToString(), format, alt);
+        }
+
+        private static bool OffLimits(int indexFound, int[,] offLimitData)
+        {
+            for (int i = 0; i < offLimitData.GetLength(0); i++)
+            {
+                // If index is greater than the start index and less than the start index + length of marker
+                // (if in the offlimit zone)
+                if (indexFound > offLimitData[i, 0] && indexFound < offLimitData[i, 0] + offLimitData[i, 1])
+                    return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -1155,13 +1244,13 @@ namespace WarhammerCalendarManager
 
         public string CurrentHolidayName()
         {
-            return HolidayAt(month, day, year);
+            return IntercalHolidayAt(month, day, year);
         }
 
 
         public bool IsHoliday()
         {
-            if (IsHolidayAt(month, day, year) != 0)
+            if (IsIntercalAt(month, day, year) != 0)
             {
                 return true;
             }
@@ -1170,20 +1259,20 @@ namespace WarhammerCalendarManager
 
         }
 
-        public static string HolidayAt(string dateString)
+        public static string IntercalHolidayAt(string dateString)
         {
             string m = dateString.Substring(0, 2);
             string d = dateString.Substring(2, 2);
             string y = dateString.Substring(4, 4);
 
             enforceDateFormat(ref m, ref d, ref y);
-            return HolidayAt(Int32.Parse(m), Int32.Parse(d), Int32.Parse(y));
+            return IntercalHolidayAt(Int32.Parse(m), Int32.Parse(d), Int32.Parse(y));
 
         }
 
-        public static string HolidayAt(int m, int d, int y)
+        public static string IntercalHolidayAt(int m, int d, int y)
         {
-            int holidayStatus = IsHolidayAt(m, d, y);
+            int holidayStatus = IsIntercalAt(m, d, y);
 
             if (holidayStatus != 0)
             {
@@ -1196,18 +1285,18 @@ namespace WarhammerCalendarManager
         }
 
 
-        public static int IsHolidayAt(string dateString)
+        public static int IsIntercalAt(string dateString)
         {
             string m = dateString.Substring(0, 2);
             string d = dateString.Substring(2, 2);
             string y = dateString.Substring(4, 4);
 
             enforceDateFormat(ref m, ref d, ref y);
-            return IsHolidayAt(Int32.Parse(m), Int32.Parse(d), Int32.Parse(y));
+            return IsIntercalAt(Int32.Parse(m), Int32.Parse(d), Int32.Parse(y));
         }
 
 
-        public static int IsHolidayAt(int m, int d, int y)
+        public static int IsIntercalAt(int m, int d, int y)
         {
             if (d == 0 && (m == 1 || m == 3 || m == 6 || m == 7 || m == 9 || m == 12))
             {
