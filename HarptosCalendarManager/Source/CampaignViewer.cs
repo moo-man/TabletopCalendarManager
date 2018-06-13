@@ -61,7 +61,9 @@ namespace HarptosCalendarManager
 
             foreach (Campaign c in currentCalendar.CampaignList)
             {
-                campaignTree.Nodes.Add(new TreeNode(c.Name + " (" + c.Tag + ")"));
+                TreeNode nodeToAdd = new TreeNode(c.Name + " (" + c.Tag + ")");
+                nodeToAdd.Tag = c;
+                campaignTree.Nodes.Add(nodeToAdd);
                 int notesCount = 0;
                 foreach (Note n in c.notes)
                     AddNoteToTree(n, campaignCount, ref notesCount);
@@ -73,18 +75,20 @@ namespace HarptosCalendarManager
         public void AddNoteToTree(Note noteToAdd, int campNum, ref int noteNum)
         {
             string noteDate = noteToAdd.Date.ToString();
+            TreeNode nodeToAdd = new TreeNode(noteToAdd.NoteContent);
+            nodeToAdd.Tag = noteToAdd;
 
             // Find existing date node checks if there is already a note with that same date, so it can be put in that node
             TreeNode existingNode = FindExistingDateNode(campaignTree.Nodes[campNum].Nodes, noteDate);
 
             if (existingNode != null)
             {
-                existingNode.Nodes.Add(new TreeNode(noteToAdd.NoteContent));
+                existingNode.Nodes.Add(nodeToAdd);
             }
             else
             {
                 campaignTree.Nodes[campNum].Nodes.Add(new TreeNode(HarptosCalendar.ToString(noteToAdd.Date, dateFormat)));// ADD DATE OF NOTE
-                campaignTree.Nodes[campNum].Nodes[noteNum].Nodes.Add(new TreeNode(noteToAdd.NoteContent));         // ADD NOTE CONTENT UNDER IT
+                campaignTree.Nodes[campNum].Nodes[noteNum].Nodes.Add(nodeToAdd);         // ADD NOTE CONTENT UNDER IT
                 noteNum++;
             }
         }
@@ -196,27 +200,14 @@ namespace HarptosCalendarManager
             switch (campaignTree.SelectedNode.Level)
             {
                 case 0:
-                    return currentCalendar.CampaignList.Find(x => x.Name.Equals(parseCampaignName(campaignTree.SelectedNode.Text)));
+                    return campaignTree.SelectedNode.Tag as Campaign;
                 case 1:
-                    return currentCalendar.CampaignList.Find(x => x.Name.Equals(parseCampaignName(campaignTree.SelectedNode.Parent.Text)));
+                    return campaignTree.SelectedNode.Parent.Tag as Campaign;
                 case 2:
-                    return currentCalendar.CampaignList.Find(x => x.Name.Equals(parseCampaignName(campaignTree.SelectedNode.Parent.Parent.Text)));
+                    return campaignTree.SelectedNode.Parent.Parent.Tag as Campaign;
                 default:
                     return null;
             }
-        }
-
-        // because the tag is included in the campaign name in the campaign viewer, we must parse out the real name
-        public string parseCampaignName(string nameAndTag)
-        {
-            // Loop starts at the end of the string, so parentheses in the campaign name (for whatever reason)
-            // doesn't affect the parsing
-            for (int i = nameAndTag.Length - 1; i >= 0; i--)
-            {
-                if (nameAndTag.ElementAt(i) == '(')
-                    return nameAndTag.Substring(0, i - 1);
-            }
-            return null;
         }
 
         private void deactivateButton_Click(object sender, EventArgs e)
@@ -378,17 +369,13 @@ namespace HarptosCalendarManager
                 {
                     case 0: // Take the name of the selected node (which is the campaign name), find the current date of that campaign
                         if (campaignTree.SelectedNode.Text != "General Notes" && campaignTree.SelectedNode.Text != "No Campaigns")
-                            timeDiffTool.GiveDate(currentCalendar.CampaignList.Find(x => x.Name.Equals(parseCampaignName(campaignTree.SelectedNode.Text))).CurrentDate);
+                            timeDiffTool.GiveDate((campaignTree.SelectedNode.Tag as Campaign).CurrentDate);
                         break;
                     case 1: //
                         timeDiffTool.GiveDate(HarptosCalendar.ReturnGivenDateFromName(campaignTree.SelectedNode.Text));
                         break;
                     case 2:
-                        timeDiffTool.GiveDate(
-                            currentCalendar.CampaignList.Find(
-                                x => x.Name.Equals(
-                                    parseCampaignName( // take the node's parent's parent, which is the campaign name. Find the note in that campaign, give date to timedifftool
-                                        campaignTree.SelectedNode.Parent.Parent.Text))).findNote(campaignTree.SelectedNode.Text).Date);
+                        timeDiffTool.GiveDate((campaignTree.SelectedNode.Tag as Note).Date);
                         break;
                 }
 
