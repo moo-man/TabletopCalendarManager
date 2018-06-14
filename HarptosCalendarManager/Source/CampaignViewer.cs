@@ -315,7 +315,7 @@ namespace HarptosCalendarManager
             else
                 type = noteType.note;
 
-            Note noteToEdit = currentCalendar.findNote(campaignTree.SelectedNode.Text, type);
+            Note noteToEdit = campaignTree.SelectedNode.Tag as Note;
             if (CalendarContents.CanEditOrDelete(noteToEdit))
             {
                 EditNotesDialog editNoteDialog = new EditNotesDialog(noteToEdit, currentCalendar);
@@ -342,7 +342,7 @@ namespace HarptosCalendarManager
             else
                 type = noteType.note;
 
-            Note noteToDelete = currentCalendar.findNote(campaignTree.SelectedNode.Text, type);
+            Note noteToDelete = campaignTree.SelectedNode.Tag as Note;
             if (CalendarContents.CanEditOrDelete(noteToDelete))
             {
                 if (MessageBox.Show("Are you sure you want to delete this note?", "Delete Note", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -368,7 +368,7 @@ namespace HarptosCalendarManager
                 switch (campaignTree.SelectedNode.Level)
                 {
                     case 0: // Take the name of the selected node (which is the campaign name), find the current date of that campaign
-                        if (campaignTree.SelectedNode.Text != "General Notes" && campaignTree.SelectedNode.Text != "No Campaigns")
+                        if (campaignTree.SelectedNode.Tag != null)
                             timeDiffTool.GiveDate((campaignTree.SelectedNode.Tag as Campaign).CurrentDate);
                         break;
                     case 1: //

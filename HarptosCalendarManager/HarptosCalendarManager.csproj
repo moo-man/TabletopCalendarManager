@@ -98,12 +98,6 @@
     <Compile Include="Source\ChangelogForm.Designer.cs">
       <DependentUpon>ChangelogForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\EditCampaignDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Source\EditCampaignDialog.Designer.cs">
-      <DependentUpon>EditCampaignDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="Source\EditNotesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,9 +161,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Source\ChangelogForm.resx">
       <DependentUpon>ChangelogForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Source\EditCampaignDialog.resx">
-      <DependentUpon>EditCampaignDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\EditNotesDialog.resx">
       <DependentUpon>EditNotesDialog.cs</DependentUpon>
