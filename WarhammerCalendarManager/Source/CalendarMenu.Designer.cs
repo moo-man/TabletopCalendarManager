@@ -39,8 +39,9 @@
             this.dayTrackerTip = new System.Windows.Forms.ToolTip(this.components);
             this.campaignsTip = new System.Windows.Forms.ToolTip(this.components);
             this.campaignSelectorTip = new System.Windows.Forms.ToolTip(this.components);
-            this.calendarMenuToolStrip = new System.Windows.Forms.ToolStrip();
             this.filebutton = new System.Windows.Forms.ToolStripDropDownButton();
+            this.calendarMenuToolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,27 +101,38 @@
             this.campaignSelector.TabIndex = 9;
             this.campaignSelector.SelectedIndexChanged += new System.EventHandler(this.campaignSelector_SelectedIndexChanged);
             // 
-            // calendarMenuToolStrip
-            // 
-            this.calendarMenuToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.calendarMenuToolStrip.Name = "calendarMenuToolStrip";
-            this.calendarMenuToolStrip.Size = new System.Drawing.Size(641, 25);
-            this.calendarMenuToolStrip.TabIndex = 11;
-            this.calendarMenuToolStrip.Text = "toolStrip1";
-            // 
             // filebutton
             // 
             this.filebutton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.filebutton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToolStripMenuItem,
-            this.saveAsToolStripMenuItem,
-            this.loadToolStripMenuItem,
-            this.exitToolStripMenuItem1});
             this.filebutton.Image = ((System.Drawing.Image)(resources.GetObject("filebutton.Image")));
             this.filebutton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.filebutton.Name = "filebutton";
             this.filebutton.Size = new System.Drawing.Size(38, 22);
             this.filebutton.Text = "File";
+            // 
+            // calendarMenuToolStrip
+            // 
+            this.calendarMenuToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripDropDownButton1});
+            this.calendarMenuToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.calendarMenuToolStrip.Name = "calendarMenuToolStrip";
+            this.calendarMenuToolStrip.Size = new System.Drawing.Size(641, 25);
+            this.calendarMenuToolStrip.TabIndex = 12;
+            this.calendarMenuToolStrip.Text = "toolStrip1";
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
+            this.loadToolStripMenuItem,
+            this.exitToolStripMenuItem1});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(38, 22);
+            this.toolStripDropDownButton1.Text = "File";
             // 
             // saveToolStripMenuItem
             // 
@@ -191,11 +203,12 @@
         private System.Windows.Forms.ToolTip dayTrackerTip;
         private System.Windows.Forms.ToolTip campaignsTip;
         private System.Windows.Forms.ToolTip campaignSelectorTip;
-        private System.Windows.Forms.ToolStrip calendarMenuToolStrip;
         private System.Windows.Forms.ToolStripDropDownButton filebutton;
+        private System.Windows.Forms.ToolStrip calendarMenuToolStrip;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
     }
 }
