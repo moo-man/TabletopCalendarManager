@@ -75,46 +75,62 @@
             this.morrTT = new System.Windows.Forms.ToolTip(this.components);
             this.daytrackerToolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton4 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton5 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.subtractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.weekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.subtractToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.monthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.subtractToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.yearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.subtractToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.noteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem18 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton6 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripMenuItem19 = new System.Windows.Forms.ToolStripMenuItem();
             this.openWikiPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.currentDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.currentYearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.midwinterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.springEquinoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.greengassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.summerSolsticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.midsummerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.shieldmeetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.autumnEquinoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.highharvestideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.feastOfTheMoonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.winterSolsticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.calendarOfHarptosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.seluneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.yearblessingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.firstQuaffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sonnstillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.geheimnistagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mittherbstToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mondstilleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sigmartagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pieweekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kegendtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imperialCalendarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mannsliebToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noteboxRightClickMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.notesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.timersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showHiddenTimersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.morrsliebToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hexensnachMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MitterfruhlToolStripMenuITem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sagaToolstripItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.secondBreechtoolstripmenuitem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.mannPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morrPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.starSignPictureBox)).BeginInit();
             this.daytrackerToolStrip.SuspendLayout();
+            this.noteboxRightClickMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // titleText
@@ -516,158 +532,171 @@
             // 
             this.toolStripDropDownButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownButton4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3});
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.toolStripDropDownButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton4.Image")));
             this.toolStripDropDownButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton4.Name = "toolStripDropDownButton4";
             this.toolStripDropDownButton4.Size = new System.Drawing.Size(38, 22);
             this.toolStripDropDownButton4.Text = "File";
             // 
-            // toolStripMenuItem1
+            // saveToolStripMenuItem
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.ShortcutKeyDisplayString = "Crtl+S";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(207, 22);
-            this.toolStripMenuItem1.Text = "Save";
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeyDisplayString = "Crtl+S";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.save_Click);
             // 
-            // toolStripMenuItem2
+            // saveAsToolStripMenuItem
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.ShortcutKeyDisplayString = "Crtl + Shift + S";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(207, 22);
-            this.toolStripMenuItem2.Text = "Save As...";
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.ShortcutKeyDisplayString = "Crtl + Shift + S";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.saveAsToolStripMenuItem.Text = "Save As...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem3
+            // exitToolStripMenuItem
             // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(207, 22);
-            this.toolStripMenuItem3.Text = "Exit";
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // toolStripDropDownButton5
             // 
             this.toolStripDropDownButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownButton5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem7,
-            this.toolStripMenuItem10,
-            this.toolStripMenuItem13,
-            this.toolStripMenuItem16});
+            this.dayToolStripMenuItem,
+            this.weekToolStripMenuItem,
+            this.monthToolStripMenuItem,
+            this.yearToolStripMenuItem,
+            this.addToolStripMenuItem6});
             this.toolStripDropDownButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton5.Image")));
             this.toolStripDropDownButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton5.Name = "toolStripDropDownButton5";
             this.toolStripDropDownButton5.Size = new System.Drawing.Size(75, 22);
             this.toolStripDropDownButton5.Text = "Campaign";
             // 
-            // toolStripMenuItem4
+            // dayToolStripMenuItem
             // 
-            this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6});
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(112, 22);
-            this.toolStripMenuItem4.Text = "Day";
+            this.dayToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem2,
+            this.subtractToolStripMenuItem});
+            this.dayToolStripMenuItem.Name = "dayToolStripMenuItem";
+            this.dayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dayToolStripMenuItem.Text = "Day";
             // 
-            // toolStripMenuItem5
+            // addToolStripMenuItem2
             // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.ShortcutKeyDisplayString = "Crtl + >";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(166, 22);
-            this.toolStripMenuItem5.Text = "Add";
+            this.addToolStripMenuItem2.Name = "addToolStripMenuItem2";
+            this.addToolStripMenuItem2.ShortcutKeyDisplayString = "Crtl + >";
+            this.addToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem2.Text = "Add";
+            this.addToolStripMenuItem2.Click += new System.EventHandler(this.addDayButton_Click);
             // 
-            // toolStripMenuItem6
+            // subtractToolStripMenuItem
             // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.ShortcutKeyDisplayString = "Crtl + <";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(166, 22);
-            this.toolStripMenuItem6.Text = "Subtract";
+            this.subtractToolStripMenuItem.Name = "subtractToolStripMenuItem";
+            this.subtractToolStripMenuItem.ShortcutKeyDisplayString = "Crtl + <";
+            this.subtractToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.subtractToolStripMenuItem.Text = "Subtract";
+            this.subtractToolStripMenuItem.Click += new System.EventHandler(this.subDayButton_Click);
             // 
-            // toolStripMenuItem7
+            // weekToolStripMenuItem
             // 
-            this.toolStripMenuItem7.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem8,
-            this.toolStripMenuItem9});
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(112, 22);
-            this.toolStripMenuItem7.Text = "Tenday";
+            this.weekToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem3,
+            this.subtractToolStripMenuItem1});
+            this.weekToolStripMenuItem.Name = "weekToolStripMenuItem";
+            this.weekToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.weekToolStripMenuItem.Text = "Week";
             // 
-            // toolStripMenuItem8
+            // addToolStripMenuItem3
             // 
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(118, 22);
-            this.toolStripMenuItem8.Text = "Add";
+            this.addToolStripMenuItem3.Name = "addToolStripMenuItem3";
+            this.addToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem3.Text = "Add";
+            this.addToolStripMenuItem3.Click += new System.EventHandler(this.addWeek_Click);
             // 
-            // toolStripMenuItem9
+            // subtractToolStripMenuItem1
             // 
-            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(118, 22);
-            this.toolStripMenuItem9.Text = "Subtract";
+            this.subtractToolStripMenuItem1.Name = "subtractToolStripMenuItem1";
+            this.subtractToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.subtractToolStripMenuItem1.Text = "Subtract";
+            this.subtractToolStripMenuItem1.Click += new System.EventHandler(this.subWeek_Click);
             // 
-            // toolStripMenuItem10
+            // monthToolStripMenuItem
             // 
-            this.toolStripMenuItem10.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem11,
-            this.toolStripMenuItem12});
-            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(112, 22);
-            this.toolStripMenuItem10.Text = "Month";
+            this.monthToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem4,
+            this.subtractToolStripMenuItem2});
+            this.monthToolStripMenuItem.Name = "monthToolStripMenuItem";
+            this.monthToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.monthToolStripMenuItem.Text = "Month";
             // 
-            // toolStripMenuItem11
+            // addToolStripMenuItem4
             // 
-            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(118, 22);
-            this.toolStripMenuItem11.Text = "Add";
+            this.addToolStripMenuItem4.Name = "addToolStripMenuItem4";
+            this.addToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem4.Text = "Add";
+            this.addToolStripMenuItem4.Click += new System.EventHandler(this.addMonth_Click);
             // 
-            // toolStripMenuItem12
+            // subtractToolStripMenuItem2
             // 
-            this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-            this.toolStripMenuItem12.Size = new System.Drawing.Size(118, 22);
-            this.toolStripMenuItem12.Text = "Subtract";
+            this.subtractToolStripMenuItem2.Name = "subtractToolStripMenuItem2";
+            this.subtractToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.subtractToolStripMenuItem2.Text = "Subtract";
+            this.subtractToolStripMenuItem2.Click += new System.EventHandler(this.subMonth_Click);
             // 
-            // toolStripMenuItem13
+            // yearToolStripMenuItem
             // 
-            this.toolStripMenuItem13.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem14,
-            this.toolStripMenuItem15});
-            this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(112, 22);
-            this.toolStripMenuItem13.Text = "Year";
+            this.yearToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem5,
+            this.subtractToolStripMenuItem3});
+            this.yearToolStripMenuItem.Name = "yearToolStripMenuItem";
+            this.yearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.yearToolStripMenuItem.Text = "Year";
             // 
-            // toolStripMenuItem14
+            // addToolStripMenuItem5
             // 
-            this.toolStripMenuItem14.Name = "toolStripMenuItem14";
-            this.toolStripMenuItem14.Size = new System.Drawing.Size(118, 22);
-            this.toolStripMenuItem14.Text = "Add";
+            this.addToolStripMenuItem5.Name = "addToolStripMenuItem5";
+            this.addToolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem5.Text = "Add";
+            this.addToolStripMenuItem5.Click += new System.EventHandler(this.addYear_Click);
             // 
-            // toolStripMenuItem15
+            // subtractToolStripMenuItem3
             // 
-            this.toolStripMenuItem15.Name = "toolStripMenuItem15";
-            this.toolStripMenuItem15.Size = new System.Drawing.Size(118, 22);
-            this.toolStripMenuItem15.Text = "Subtract";
+            this.subtractToolStripMenuItem3.Name = "subtractToolStripMenuItem3";
+            this.subtractToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.subtractToolStripMenuItem3.Text = "Subtract";
+            this.subtractToolStripMenuItem3.Click += new System.EventHandler(this.subYear_Click);
             // 
-            // toolStripMenuItem16
+            // addToolStripMenuItem6
             // 
-            this.toolStripMenuItem16.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem17,
+            this.addToolStripMenuItem6.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.noteToolStripMenuItem,
             this.toolStripMenuItem18});
-            this.toolStripMenuItem16.Name = "toolStripMenuItem16";
-            this.toolStripMenuItem16.Size = new System.Drawing.Size(112, 22);
-            this.toolStripMenuItem16.Text = "Add";
+            this.addToolStripMenuItem6.Name = "addToolStripMenuItem6";
+            this.addToolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem6.Text = "Add";
             // 
-            // toolStripMenuItem17
+            // noteToolStripMenuItem
             // 
-            this.toolStripMenuItem17.Name = "toolStripMenuItem17";
-            this.toolStripMenuItem17.ShortcutKeyDisplayString = "Crtl + N";
-            this.toolStripMenuItem17.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem17.Text = "Note";
+            this.noteToolStripMenuItem.Name = "noteToolStripMenuItem";
+            this.noteToolStripMenuItem.ShortcutKeyDisplayString = "Crtl + N";
+            this.noteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noteToolStripMenuItem.Text = "Note";
+            this.noteToolStripMenuItem.Click += new System.EventHandler(this.addNoteButton_Click);
             // 
             // toolStripMenuItem18
             // 
             this.toolStripMenuItem18.Name = "toolStripMenuItem18";
             this.toolStripMenuItem18.ShortcutKeyDisplayString = "Crtl + T";
-            this.toolStripMenuItem18.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem18.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem18.Text = "Timer";
+            this.toolStripMenuItem18.Click += new System.EventHandler(this.addTimerButton_Click);
             // 
             // toolStripDropDownButton6
             // 
@@ -684,114 +713,248 @@
             // toolStripMenuItem19
             // 
             this.toolStripMenuItem19.Name = "toolStripMenuItem19";
-            this.toolStripMenuItem19.Size = new System.Drawing.Size(158, 22);
+            this.toolStripMenuItem19.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem19.Text = "Help";
+            this.toolStripMenuItem19.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // openWikiPageToolStripMenuItem
             // 
             this.openWikiPageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.currentDateToolStripMenuItem,
+            this.imperialCalendarToolStripMenuItem,
             this.currentYearToolStripMenuItem,
-            this.calendarOfHarptosToolStripMenuItem,
-            this.seluneToolStripMenuItem});
+            this.mannsliebToolStripMenuItem,
+            this.morrsliebToolStripMenuItem});
             this.openWikiPageToolStripMenuItem.Name = "openWikiPageToolStripMenuItem";
-            this.openWikiPageToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.openWikiPageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openWikiPageToolStripMenuItem.Text = "Open Wiki Page";
-            // 
-            // currentDateToolStripMenuItem
-            // 
-            this.currentDateToolStripMenuItem.Name = "currentDateToolStripMenuItem";
-            this.currentDateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.currentDateToolStripMenuItem.Text = "Current Year";
             // 
             // currentYearToolStripMenuItem
             // 
             this.currentYearToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.midwinterToolStripMenuItem,
-            this.springEquinoxToolStripMenuItem,
-            this.greengassToolStripMenuItem,
-            this.summerSolsticeToolStripMenuItem,
-            this.midsummerToolStripMenuItem,
-            this.shieldmeetToolStripMenuItem,
-            this.autumnEquinoxToolStripMenuItem,
-            this.highharvestideToolStripMenuItem,
-            this.feastOfTheMoonToolStripMenuItem,
-            this.winterSolsticeToolStripMenuItem});
+            this.hexensnachMenuItem1,
+            this.yearblessingToolStripMenuItem,
+            this.MitterfruhlToolStripMenuITem,
+            this.firstQuaffToolStripMenuItem,
+            this.sonnstillToolStripMenuItem,
+            this.geheimnistagToolStripMenuItem,
+            this.mittherbstToolStripMenuItem,
+            this.sagaToolstripItem,
+            this.mondstilleToolStripMenuItem,
+            this.sigmartagToolStripMenuItem,
+            this.secondBreechtoolstripmenuitem,
+            this.pieweekToolStripMenuItem,
+            this.kegendtoolStripMenuItem});
             this.currentYearToolStripMenuItem.Name = "currentYearToolStripMenuItem";
             this.currentYearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.currentYearToolStripMenuItem.Text = "Holiday";
             // 
-            // midwinterToolStripMenuItem
+            // yearblessingToolStripMenuItem
             // 
-            this.midwinterToolStripMenuItem.Name = "midwinterToolStripMenuItem";
-            this.midwinterToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.midwinterToolStripMenuItem.Text = "Midwinter";
+            this.yearblessingToolStripMenuItem.Name = "yearblessingToolStripMenuItem";
+            this.yearblessingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.yearblessingToolStripMenuItem.Text = "Year Blessing";
+            this.yearblessingToolStripMenuItem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
             // 
-            // springEquinoxToolStripMenuItem
+            // firstQuaffToolStripMenuItem
             // 
-            this.springEquinoxToolStripMenuItem.Name = "springEquinoxToolStripMenuItem";
-            this.springEquinoxToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.springEquinoxToolStripMenuItem.Text = "Spring Equinox";
+            this.firstQuaffToolStripMenuItem.Name = "firstQuaffToolStripMenuItem";
+            this.firstQuaffToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.firstQuaffToolStripMenuItem.Text = "First Quaff";
+            this.firstQuaffToolStripMenuItem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
             // 
-            // greengassToolStripMenuItem
+            // sonnstillToolStripMenuItem
             // 
-            this.greengassToolStripMenuItem.Name = "greengassToolStripMenuItem";
-            this.greengassToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.greengassToolStripMenuItem.Text = "Greengass";
+            this.sonnstillToolStripMenuItem.Name = "sonnstillToolStripMenuItem";
+            this.sonnstillToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sonnstillToolStripMenuItem.Text = "Sonnstill";
+            this.sonnstillToolStripMenuItem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
             // 
-            // summerSolsticeToolStripMenuItem
+            // geheimnistagToolStripMenuItem
             // 
-            this.summerSolsticeToolStripMenuItem.Name = "summerSolsticeToolStripMenuItem";
-            this.summerSolsticeToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.summerSolsticeToolStripMenuItem.Text = "Summer Solstice";
+            this.geheimnistagToolStripMenuItem.Name = "geheimnistagToolStripMenuItem";
+            this.geheimnistagToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.geheimnistagToolStripMenuItem.Text = "Geheimnistag";
+            this.geheimnistagToolStripMenuItem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
             // 
-            // midsummerToolStripMenuItem
+            // mittherbstToolStripMenuItem
             // 
-            this.midsummerToolStripMenuItem.Name = "midsummerToolStripMenuItem";
-            this.midsummerToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.midsummerToolStripMenuItem.Text = "Midsummer";
+            this.mittherbstToolStripMenuItem.Name = "mittherbstToolStripMenuItem";
+            this.mittherbstToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mittherbstToolStripMenuItem.Text = "Mittherbst";
+            this.mittherbstToolStripMenuItem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
             // 
-            // shieldmeetToolStripMenuItem
+            // mondstilleToolStripMenuItem
             // 
-            this.shieldmeetToolStripMenuItem.Name = "shieldmeetToolStripMenuItem";
-            this.shieldmeetToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.shieldmeetToolStripMenuItem.Text = "Shieldmeet";
+            this.mondstilleToolStripMenuItem.Name = "mondstilleToolStripMenuItem";
+            this.mondstilleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mondstilleToolStripMenuItem.Text = "Mondstille";
+            this.mondstilleToolStripMenuItem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
             // 
-            // autumnEquinoxToolStripMenuItem
+            // sigmartagToolStripMenuItem
             // 
-            this.autumnEquinoxToolStripMenuItem.Name = "autumnEquinoxToolStripMenuItem";
-            this.autumnEquinoxToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.autumnEquinoxToolStripMenuItem.Text = "Autumn Equinox";
+            this.sigmartagToolStripMenuItem.Name = "sigmartagToolStripMenuItem";
+            this.sigmartagToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sigmartagToolStripMenuItem.Text = "Sigmartag";
+            this.sigmartagToolStripMenuItem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
             // 
-            // highharvestideToolStripMenuItem
+            // pieweekToolStripMenuItem
             // 
-            this.highharvestideToolStripMenuItem.Name = "highharvestideToolStripMenuItem";
-            this.highharvestideToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.highharvestideToolStripMenuItem.Text = "Highharvestide";
+            this.pieweekToolStripMenuItem.Name = "pieweekToolStripMenuItem";
+            this.pieweekToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pieweekToolStripMenuItem.Text = "Pie Week";
+            this.pieweekToolStripMenuItem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
             // 
-            // feastOfTheMoonToolStripMenuItem
+            // kegendtoolStripMenuItem
             // 
-            this.feastOfTheMoonToolStripMenuItem.Name = "feastOfTheMoonToolStripMenuItem";
-            this.feastOfTheMoonToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.feastOfTheMoonToolStripMenuItem.Text = "Feast of the Moon";
+            this.kegendtoolStripMenuItem.Name = "kegendtoolStripMenuItem";
+            this.kegendtoolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kegendtoolStripMenuItem.Text = "Keg End";
+            this.kegendtoolStripMenuItem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
             // 
-            // winterSolsticeToolStripMenuItem
+            // imperialCalendarToolStripMenuItem
             // 
-            this.winterSolsticeToolStripMenuItem.Name = "winterSolsticeToolStripMenuItem";
-            this.winterSolsticeToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.winterSolsticeToolStripMenuItem.Text = "Winter Solstice";
+            this.imperialCalendarToolStripMenuItem.Name = "imperialCalendarToolStripMenuItem";
+            this.imperialCalendarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.imperialCalendarToolStripMenuItem.Text = "Imperial Calendar";
+            this.imperialCalendarToolStripMenuItem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
             // 
-            // calendarOfHarptosToolStripMenuItem
+            // mannsliebToolStripMenuItem
             // 
-            this.calendarOfHarptosToolStripMenuItem.Name = "calendarOfHarptosToolStripMenuItem";
-            this.calendarOfHarptosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.calendarOfHarptosToolStripMenuItem.Text = "Calendar of Harptos";
+            this.mannsliebToolStripMenuItem.Name = "mannsliebToolStripMenuItem";
+            this.mannsliebToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mannsliebToolStripMenuItem.Text = "Mannslieb";
+            this.mannsliebToolStripMenuItem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
             // 
-            // seluneToolStripMenuItem
+            // noteboxRightClickMenu
             // 
-            this.seluneToolStripMenuItem.Name = "seluneToolStripMenuItem";
-            this.seluneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.seluneToolStripMenuItem.Text = "Selune";
+            this.noteboxRightClickMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.notesToolStripMenuItem,
+            this.timersToolStripMenuItem,
+            this.showHiddenTimersToolStripMenuItem});
+            this.noteboxRightClickMenu.Name = "noteboxRightClickMenu";
+            this.noteboxRightClickMenu.Size = new System.Drawing.Size(185, 70);
+            // 
+            // notesToolStripMenuItem
+            // 
+            this.notesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem,
+            this.editToolStripMenuItem1,
+            this.deleteToolStripMenuItem1});
+            this.notesToolStripMenuItem.Name = "notesToolStripMenuItem";
+            this.notesToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.notesToolStripMenuItem.Text = "Notes";
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.ShortcutKeyDisplayString = "Crtl + N";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addNoteButton_Click);
+            // 
+            // editToolStripMenuItem1
+            // 
+            this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.editToolStripMenuItem1.Text = "Edit";
+            this.editToolStripMenuItem1.Click += new System.EventHandler(this.editNotesButton_Click);
+            // 
+            // deleteToolStripMenuItem1
+            // 
+            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem1.Text = "Delete";
+            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteNoteButton_Click);
+            // 
+            // timersToolStripMenuItem
+            // 
+            this.timersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem1,
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem,
+            this.pauseToolStripMenuItem,
+            this.hideToolStripMenuItem});
+            this.timersToolStripMenuItem.Name = "timersToolStripMenuItem";
+            this.timersToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.timersToolStripMenuItem.Text = "Timers";
+            // 
+            // addToolStripMenuItem1
+            // 
+            this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
+            this.addToolStripMenuItem1.ShortcutKeyDisplayString = "Crtl + T";
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem1.Text = "Add";
+            this.addToolStripMenuItem1.Click += new System.EventHandler(this.addTimerButton_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editTimerButton_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteButtonTimer_Click);
+            // 
+            // pauseToolStripMenuItem
+            // 
+            this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pauseToolStripMenuItem.Text = "Pause/Unpause";
+            this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
+            // 
+            // hideToolStripMenuItem
+            // 
+            this.hideToolStripMenuItem.Name = "hideToolStripMenuItem";
+            this.hideToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hideToolStripMenuItem.Text = "Hide";
+            this.hideToolStripMenuItem.Click += new System.EventHandler(this.hideToolStripMenuItem_Click);
+            // 
+            // showHiddenTimersToolStripMenuItem
+            // 
+            this.showHiddenTimersToolStripMenuItem.Name = "showHiddenTimersToolStripMenuItem";
+            this.showHiddenTimersToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.showHiddenTimersToolStripMenuItem.Text = "Show Hidden Timers";
+            this.showHiddenTimersToolStripMenuItem.Click += new System.EventHandler(this.showHiddenTimersButton_Click);
+            // 
+            // morrsliebToolStripMenuItem
+            // 
+            this.morrsliebToolStripMenuItem.Name = "morrsliebToolStripMenuItem";
+            this.morrsliebToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.morrsliebToolStripMenuItem.Text = "Morrslieb";
+            this.morrsliebToolStripMenuItem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
+            // 
+            // hexensnachMenuItem1
+            // 
+            this.hexensnachMenuItem1.Name = "hexensnachMenuItem1";
+            this.hexensnachMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.hexensnachMenuItem1.Text = "Hexensnacht";
+            this.hexensnachMenuItem1.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
+            // 
+            // MitterfruhlToolStripMenuITem
+            // 
+            this.MitterfruhlToolStripMenuITem.Name = "MitterfruhlToolStripMenuITem";
+            this.MitterfruhlToolStripMenuITem.Size = new System.Drawing.Size(180, 22);
+            this.MitterfruhlToolStripMenuITem.Text = "Mitterfruhl";
+            this.MitterfruhlToolStripMenuITem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
+            // 
+            // sagaToolstripItem
+            // 
+            this.sagaToolstripItem.Name = "sagaToolstripItem";
+            this.sagaToolstripItem.Size = new System.Drawing.Size(180, 22);
+            this.sagaToolstripItem.Text = "Saga";
+            this.sagaToolstripItem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
+            // 
+            // secondBreechtoolstripmenuitem
+            // 
+            this.secondBreechtoolstripmenuitem.Name = "secondBreechtoolstripmenuitem";
+            this.secondBreechtoolstripmenuitem.Size = new System.Drawing.Size(180, 22);
+            this.secondBreechtoolstripmenuitem.Text = "Second Breech";
+            this.secondBreechtoolstripmenuitem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
             // 
             // DayTracker
             // 
@@ -853,6 +1016,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.starSignPictureBox)).EndInit();
             this.daytrackerToolStrip.ResumeLayout(false);
             this.daytrackerToolStrip.PerformLayout();
+            this.noteboxRightClickMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -896,7 +1060,6 @@
         private System.Windows.Forms.ToolTip noteTT;
         private System.Windows.Forms.ToolTip timerTT;
         private System.Windows.Forms.ToolTip showTT;
-        private System.Windows.Forms.ContextMenuStrip noteboxRightClickMenu;
         private System.Windows.Forms.PictureBox mannPicture;
         private System.Windows.Forms.PictureBox morrPicture;
         private System.Windows.Forms.PictureBox starSignPictureBox;
@@ -905,42 +1068,57 @@
         private System.Windows.Forms.ToolTip morrTT;
         private System.Windows.Forms.ToolStrip daytrackerToolStrip;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem12;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem14;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem16;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem17;
+        private System.Windows.Forms.ToolStripMenuItem dayToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem subtractToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem weekToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem subtractToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem monthToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem subtractToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem yearToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem subtractToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem noteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem18;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem19;
         private System.Windows.Forms.ToolStripMenuItem openWikiPageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem currentDateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem currentYearToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem midwinterToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem springEquinoxToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem greengassToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem summerSolsticeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem midsummerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem shieldmeetToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem autumnEquinoxToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem highharvestideToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem feastOfTheMoonToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem winterSolsticeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem calendarOfHarptosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem seluneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem yearblessingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem firstQuaffToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sonnstillToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem geheimnistagToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mittherbstToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mondstilleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sigmartagToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pieweekToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kegendtoolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem imperialCalendarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mannsliebToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip noteboxRightClickMenu;
+        private System.Windows.Forms.ToolStripMenuItem notesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem timersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pauseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hideToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showHiddenTimersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem morrsliebToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hexensnachMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem MitterfruhlToolStripMenuITem;
+        private System.Windows.Forms.ToolStripMenuItem sagaToolstripItem;
+        private System.Windows.Forms.ToolStripMenuItem secondBreechtoolstripmenuitem;
     }
 }
 

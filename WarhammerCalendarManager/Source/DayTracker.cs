@@ -28,7 +28,7 @@ namespace WarhammerCalendarManager
             if (currentCalendar.activeCampaign == null)
             {
                 addTimerButton.Enabled = editTimerButton.Enabled = deleteButtonTimer.Enabled = false;
-                timerToolStripMenuItem.Enabled = false;
+                timersToolStripMenuItem.Enabled = false;
             }
 
             addNoteButton.Visible = editNotesButton.Visible = deleteNoteButton.Visible = addTimerButton.Visible = editTimerButton.Visible = deleteButtonTimer.Visible = false;
@@ -344,8 +344,6 @@ namespace WarhammerCalendarManager
         private void addTimerButton_Click(object sender, EventArgs e)
         {
             new AddTimerForm(currentCalendar).ShowDialog(this);
-
-
             UpdateCalendar();
         }
 
@@ -633,6 +631,24 @@ namespace WarhammerCalendarManager
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Utility.SaveAs(currentCalendar);
+        }
+
+
+        private void wikiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var button = (ToolStripMenuItem)sender;
+
+            String messageString = "Open wiki page on " + button.Text + "?";
+
+            DialogResult result = MessageBox.Show(this, messageString, "Opening wiki page", MessageBoxButtons.YesNo, MessageBoxIcon.None);
+
+            if (result == DialogResult.Yes)
+            {
+                string webpage = ("http://warhammerfantasy.wikia.com/wiki/" + button.Text.Replace(' ', '_'));
+
+                ProcessStartInfo sInfo = new ProcessStartInfo(webpage);
+                Process.Start(sInfo);
+            }
         }
     }
 

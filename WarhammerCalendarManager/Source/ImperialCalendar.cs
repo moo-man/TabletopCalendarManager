@@ -67,7 +67,7 @@ namespace WarhammerCalendarManager
             "Year Blessing",
             "Holy day for Manaan, Taal, and Ulric",
             "First Quaff (Dwarfs)",
-            "Sigmarsfest",
+            "Sigmartag",
             "Holy day for Taal, Rhya, and Elf gods",
             "Saga (Dwarfs)",
             "Start of Pie Week (Halflings)",
