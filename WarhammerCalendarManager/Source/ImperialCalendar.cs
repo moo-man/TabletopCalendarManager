@@ -626,88 +626,138 @@ namespace WarhammerCalendarManager
 
         public static string determineStarSignFromDate(int m, int d)
         {
-            switch (m)
+            switch (StarSignNumber(m, d))
             {
                 case 1:
-                    if (d <= 7)
-                        return "Wymund the Anchorite";
-                    else if (d <= 27)
-                        return "The Big Cross";
-                    else
-                        return "The Limner's Line";
+                    return "Wymund the Anchorite";
                 case 2:
-                    if (d <= 15)
-                        return "The Limner's Line";
-                    else
-                        return "Gnuthus the Ox";
+                    return "The Big Cross";
                 case 3:
-                    if (d <= 1)
-                        return "Gnuthus the Ox";
-                    else if (d <= 21)
-                        return "Dragomas the Drake";
-                    else
-                        return "The Gloaming";
+                    return "The Limner's Line";
                 case 4:
-                    if (d <= 8)
-                        return "The Gloaming";
-                    else if (d <= 28)
-                        return "Grungi's Baldrick";
-                    else
-                        return "Mammit the Wise";
+                    return "Gnuthus the Ox";
                 case 5:
-                    if (d <= 15)
-                        return "Mammit the Wise";
-                    else
-                        return "Mummit the Fool";
+                    return "Dragomas the Drake";
                 case 6:
-                    if (d <= 1)
-                        return "Mummit the Fool";
-                    else if (d <= 21)
-                        return "The Two Bullocks";
-                    else
-                        return "The Dancer";
+                    return "The Gloaming";
                 case 7:
-                    if (d <= 7)
-                        return "The Dancer";
-                    else if (d <= 27)
-                        return "The Drummer";
-                    else
-                        return "The Piper";
+                    return "Grungi's Baldrick";
                 case 8:
-                    if (d <= 15)
-                        return "The Piper";
-                    else
-                        return "Vobist the Faint";
+                    return "Mammit the Wise";
                 case 9:
-                    if (d <= 1)
-                        return "Vobist the Faint";
-                    else if (d <= 21)
-                        return "The Broken Cart";
-                    else
-                        return "The Greased Goat";
+                    return "Mummit the Fool";
                 case 10:
-                    if (d <= 8)
-                        return "The Greased Goat";
-                    else if (d <= 28)
-                        return "Rhya's Cauldron";
-                    else
-                        return "Cacklefax the Cockerel";
+                    return "The Two Bullocks";
                 case 11:
-                    if (d <= 15)
-                        return "Cacklefax the Cockerel";
-                    else
-                        return "The Bonesaw";
+                    return "The Dancer";
                 case 12:
-                    if (d <= 1)
-                        return "The Bonesaw";
-                    else if (d <= 21)
-                        return "The Witchling Star";
-                    else
-                        return "Wymund the Anchorite";
+                    return "The Drummer";
+                case 13:
+                    return "The Piper";
+                case 14:
+                    return "Vobist the Faint";
+                case 15:
+                    return "The Broken Cart";
+                case 16:
+                    return "The Greased Goat";
+                case 17:
+                    return "Rhya's Cauldron";
+                case 18:
+                    return "Cacklefax the Cockerel";
+                case 19:
+                    return "The Bonesaw";
+                case 20:
+                    return "The Witchling Star";
 
             }
             return null;
         }
+
+        public static int StarSignNumber(int m, int d)
+        {
+            switch (m)
+            {
+                case 1:
+                    if (d <= 7)
+                        return 1;
+                    else if (d <= 27)
+                        return 2;
+                    else
+                        return 3;
+                case 2:
+                    if (d <= 15)
+                        return 3;
+                    else
+                        return 4;
+                case 3:
+                    if (d <= 1)
+                        return 4;
+                    else if (d <= 21)
+                        return 5;
+                    else
+                        return 6;
+                case 4:
+                    if (d <= 8)
+                        return 6;
+                    else if (d <= 28)
+                        return 7;
+                    else
+                        return 8;
+                case 5:
+                    if (d <= 15)
+                        return 8;
+                    else
+                        return 9;
+                case 6:
+                    if (d <= 1)
+                        return 9;
+                    else if (d <= 21)
+                        return 10;
+                    else
+                        return 11;
+                case 7:
+                    if (d <= 7)
+                        return 11;
+                    else if (d <= 27)
+                        return 12;
+                    else
+                        return 13;
+                case 8:
+                    if (d <= 15)
+                        return 13;
+                    else
+                        return 14;
+                case 9:
+                    if (d <= 1)
+                        return 14;
+                    else if (d <= 21)
+                        return 15;
+                    else
+                        return 16;
+                case 10:
+                    if (d <= 8)
+                        return 16;
+                    else if (d <= 28)
+                        return 17;
+                    else
+                        return 18;
+                case 11:
+                    if (d <= 15)
+                        return 18;
+                    else
+                        return 19;
+                case 12:
+                    if (d <= 1)
+                        return 19;
+                    else if (d <= 21)
+                        return 20;
+                    else
+                        return 1;
+
+            }
+            return 0;
+        }
+
         #endregion
 
 

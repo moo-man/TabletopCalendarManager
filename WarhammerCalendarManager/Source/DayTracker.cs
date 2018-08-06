@@ -650,6 +650,88 @@ namespace WarhammerCalendarManager
                 Process.Start(sInfo);
             }
         }
+
+        private void starSignPictureBox_Click(object sender, EventArgs e)
+        {
+            string webpage = null;
+
+            switch (ImperialCalendar.StarSignNumber(currentCalendar.calendar.CurrentMonth, currentCalendar.calendar.CurrentDay))
+            {
+                case 1:
+                    webpage = "Wymund";
+                    break;
+                case 2:
+                    webpage = "Big_Cross";
+                    break;
+                case 3:
+                    webpage = "Limner's_Line";
+                    break;
+                case 4:
+                    webpage =  "Gnuthus";
+                    break;
+                case 5:
+                    webpage =  "Dragomas";
+                    break;
+                case 6:
+                    webpage =  "Gloaming";
+                    break;
+                case 7:
+                    webpage =  "Grungi's_Baldric";
+                    break;
+                case 8:
+                    webpage =  "Mammit";
+                    break;
+                case 9:
+                    webpage =  "Mummit";
+                    break;
+                case 10:
+                    webpage =  "Two_Bullocks";
+                    break;
+                case 11:
+                    webpage =  "Dancer";
+                    break;
+                case 12:
+                    webpage =  "Drummer";
+                    break;
+                case 13:
+                    webpage =  "Piper";
+                    break;
+                case 14:
+                    webpage =  "Vobist";
+                    break;
+                case 15:
+                    webpage =  "Broken_Cart";
+                    break;
+                case 16:
+                    webpage =  "Greased_Goat";
+                    break;
+                case 17:
+                    webpage =  "Rhya's_Cauldron";
+                    break;
+                case 18:
+                    webpage =  "Cacklefax";
+                    break;
+                case 19:
+                    webpage =  "Bone_Saw";
+                    break;
+                case 20:
+                    webpage =  "Witchling_Star";
+                    break;
+
+            }
+
+            string messageString = "Open wiki page on " + ImperialCalendar.determineStarSignFromDate(currentCalendar.calendar.CurrentMonth, currentCalendar.calendar.CurrentDay) + "?";
+
+            DialogResult result = MessageBox.Show(this, messageString, "Opening wiki page", MessageBoxButtons.YesNo, MessageBoxIcon.None);
+
+            if (result == DialogResult.Yes)
+            {
+                webpage = ("http://warhammerfantasy.wikia.com/wiki/" + webpage);
+
+                ProcessStartInfo sInfo = new ProcessStartInfo(webpage);
+                Process.Start(sInfo);
+            }
+        }
     }
 
 }

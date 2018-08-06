@@ -515,6 +515,7 @@
             this.starSignPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.starSignPictureBox.TabIndex = 60;
             this.starSignPictureBox.TabStop = false;
+            this.starSignPictureBox.Click += new System.EventHandler(this.starSignPictureBox_Click);
             // 
             // daytrackerToolStrip
             // 
