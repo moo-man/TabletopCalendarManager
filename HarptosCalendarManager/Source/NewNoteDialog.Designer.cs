@@ -60,7 +60,7 @@
             this.noAlert.Location = new System.Drawing.Point(201, 79);
             this.noAlert.Name = "noAlert";
             this.noAlert.Size = new System.Drawing.Size(68, 17);
-            this.noAlert.TabIndex = 4;
+            this.noAlert.TabIndex = 6;
             this.noAlert.TabStop = true;
             this.noAlert.Text = "No Alerts";
             this.noAlert.UseVisualStyleBackColor = true;
@@ -82,7 +82,7 @@
             this.globalButton.Location = new System.Drawing.Point(201, 33);
             this.globalButton.Name = "globalButton";
             this.globalButton.Size = new System.Drawing.Size(55, 17);
-            this.globalButton.TabIndex = 6;
+            this.globalButton.TabIndex = 4;
             this.globalButton.TabStop = true;
             this.globalButton.Text = "Global";
             this.globalButton.UseVisualStyleBackColor = true;
@@ -93,7 +93,7 @@
             this.newNoteBox.Multiline = true;
             this.newNoteBox.Name = "newNoteBox";
             this.newNoteBox.Size = new System.Drawing.Size(183, 66);
-            this.newNoteBox.TabIndex = 7;
+            this.newNoteBox.TabIndex = 0;
             // 
             // label1
             // 
@@ -109,7 +109,7 @@
             this.okButton.Location = new System.Drawing.Point(120, 102);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
-            this.okButton.TabIndex = 9;
+            this.okButton.TabIndex = 1;
             this.okButton.Text = "Ok";
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
@@ -119,7 +119,7 @@
             this.cancelButton.Location = new System.Drawing.Point(201, 102);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 10;
+            this.cancelButton.TabIndex = 2;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);

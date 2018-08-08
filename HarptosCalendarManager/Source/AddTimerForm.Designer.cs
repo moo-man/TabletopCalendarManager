@@ -78,7 +78,7 @@
             this.dateRadioButton.Location = new System.Drawing.Point(12, 126);
             this.dateRadioButton.Name = "dateRadioButton";
             this.dateRadioButton.Size = new System.Drawing.Size(107, 17);
-            this.dateRadioButton.TabIndex = 2;
+            this.dateRadioButton.TabIndex = 1;
             this.dateRadioButton.TabStop = true;
             this.dateRadioButton.Text = "On a certain date";
             this.dateRadioButton.UseVisualStyleBackColor = true;
@@ -90,7 +90,7 @@
             this.daysRadioButton.Location = new System.Drawing.Point(12, 149);
             this.daysRadioButton.Name = "daysRadioButton";
             this.daysRadioButton.Size = new System.Drawing.Size(118, 17);
-            this.daysRadioButton.TabIndex = 3;
+            this.daysRadioButton.TabIndex = 5;
             this.daysRadioButton.TabStop = true;
             this.daysRadioButton.Text = "In a number of days";
             this.daysRadioButton.UseVisualStyleBackColor = true;
@@ -102,7 +102,7 @@
             this.trackCheck.Location = new System.Drawing.Point(12, 175);
             this.trackCheck.Name = "trackCheck";
             this.trackCheck.Size = new System.Drawing.Size(82, 17);
-            this.trackCheck.TabIndex = 4;
+            this.trackCheck.TabIndex = 7;
             this.trackCheck.Text = "Keep Track";
             this.trackCheck.UseVisualStyleBackColor = true;
             this.trackCheck.CheckedChanged += new System.EventHandler(this.trackCheck_CheckedChanged);

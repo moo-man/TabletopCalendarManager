@@ -79,7 +79,7 @@ namespace CalendarManager
             this.dateRadioButton.Location = new System.Drawing.Point(12, 126);
             this.dateRadioButton.Name = "dateRadioButton";
             this.dateRadioButton.Size = new System.Drawing.Size(107, 17);
-            this.dateRadioButton.TabIndex = 3;
+            this.dateRadioButton.TabIndex = 1;
             this.dateRadioButton.TabStop = true;
             this.dateRadioButton.Text = "On a certain date";
             this.dateRadioButton.UseVisualStyleBackColor = true;
@@ -91,7 +91,7 @@ namespace CalendarManager
             this.daysRadioButton.Location = new System.Drawing.Point(12, 149);
             this.daysRadioButton.Name = "daysRadioButton";
             this.daysRadioButton.Size = new System.Drawing.Size(118, 17);
-            this.daysRadioButton.TabIndex = 4;
+            this.daysRadioButton.TabIndex = 5;
             this.daysRadioButton.TabStop = true;
             this.daysRadioButton.Text = "In a number of days";
             this.daysRadioButton.UseVisualStyleBackColor = true;
@@ -103,7 +103,7 @@ namespace CalendarManager
             this.trackCheck.Location = new System.Drawing.Point(12, 175);
             this.trackCheck.Name = "trackCheck";
             this.trackCheck.Size = new System.Drawing.Size(82, 17);
-            this.trackCheck.TabIndex = 5;
+            this.trackCheck.TabIndex = 7;
             this.trackCheck.Text = "Keep Track";
             this.trackCheck.UseVisualStyleBackColor = true;
             this.trackCheck.CheckedChanged += new System.EventHandler(this.trackCheck_CheckedChanged);
@@ -113,7 +113,7 @@ namespace CalendarManager
             this.year.Location = new System.Drawing.Point(225, 123);
             this.year.Name = "year";
             this.year.Size = new System.Drawing.Size(64, 20);
-            this.year.TabIndex = 8;
+            this.year.TabIndex = 4;
             this.year.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_KeyPress);
             this.year.Leave += new System.EventHandler(this.date_Leave);
             // 
@@ -122,7 +122,7 @@ namespace CalendarManager
             this.month.Location = new System.Drawing.Point(131, 123);
             this.month.Name = "month";
             this.month.Size = new System.Drawing.Size(29, 20);
-            this.month.TabIndex = 6;
+            this.month.TabIndex = 2;
             this.month.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_KeyPress);
             this.month.Leave += new System.EventHandler(this.date_Leave);
             // 
@@ -131,7 +131,7 @@ namespace CalendarManager
             this.day.Location = new System.Drawing.Point(177, 123);
             this.day.Name = "day";
             this.day.Size = new System.Drawing.Size(29, 20);
-            this.day.TabIndex = 7;
+            this.day.TabIndex = 3;
             this.day.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_KeyPress);
             this.day.Leave += new System.EventHandler(this.date_Leave);
             // 
@@ -140,7 +140,7 @@ namespace CalendarManager
             this.numDays.Location = new System.Drawing.Point(131, 149);
             this.numDays.Name = "numDays";
             this.numDays.Size = new System.Drawing.Size(75, 20);
-            this.numDays.TabIndex = 9;
+            this.numDays.TabIndex = 6;
             this.numDays.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_KeyPress);
             this.numDays.Leave += new System.EventHandler(this.numDays_Leave);
             // 
@@ -149,7 +149,7 @@ namespace CalendarManager
             this.addButton.Location = new System.Drawing.Point(131, 175);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 23);
-            this.addButton.TabIndex = 10;
+            this.addButton.TabIndex = 8;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
@@ -159,7 +159,7 @@ namespace CalendarManager
             this.cancelButton.Location = new System.Drawing.Point(225, 175);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 11;
+            this.cancelButton.TabIndex = 9;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);

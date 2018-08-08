@@ -98,7 +98,7 @@
             this.cancelButton.Location = new System.Drawing.Point(200, 146);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 11;
+            this.cancelButton.TabIndex = 5;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -108,7 +108,7 @@
             this.okButton.Location = new System.Drawing.Point(120, 146);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
-            this.okButton.TabIndex = 10;
+            this.okButton.TabIndex = 4;
             this.okButton.Text = "Ok";
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
@@ -128,7 +128,7 @@
             this.editNoteBox.Multiline = true;
             this.editNoteBox.Name = "editNoteBox";
             this.editNoteBox.Size = new System.Drawing.Size(183, 66);
-            this.editNoteBox.TabIndex = 1;
+            this.editNoteBox.TabIndex = 0;
             // 
             // dateLabel
             // 
@@ -144,7 +144,7 @@
             this.year.Location = new System.Drawing.Point(190, 110);
             this.year.Name = "year";
             this.year.Size = new System.Drawing.Size(64, 20);
-            this.year.TabIndex = 4;
+            this.year.TabIndex = 3;
             this.year.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
             this.year.Leave += new System.EventHandler(this.date_Leave);
             // 
@@ -153,7 +153,7 @@
             this.month.Location = new System.Drawing.Point(96, 110);
             this.month.Name = "month";
             this.month.Size = new System.Drawing.Size(29, 20);
-            this.month.TabIndex = 2;
+            this.month.TabIndex = 1;
             this.month.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
             this.month.Leave += new System.EventHandler(this.date_Leave);
             // 
@@ -162,7 +162,7 @@
             this.day.Location = new System.Drawing.Point(142, 110);
             this.day.Name = "day";
             this.day.Size = new System.Drawing.Size(29, 20);
-            this.day.TabIndex = 3;
+            this.day.TabIndex = 2;
             this.day.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.date_keypress);
             this.day.Leave += new System.EventHandler(this.date_Leave);
             // 
@@ -173,7 +173,7 @@
             this.campaignSelector.Location = new System.Drawing.Point(12, 148);
             this.campaignSelector.Name = "campaignSelector";
             this.campaignSelector.Size = new System.Drawing.Size(82, 21);
-            this.campaignSelector.TabIndex = 5;
+            this.campaignSelector.TabIndex = 10;
             // 
             // textBox1
             // 
