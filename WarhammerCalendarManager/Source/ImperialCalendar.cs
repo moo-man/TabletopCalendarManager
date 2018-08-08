@@ -150,7 +150,7 @@ namespace WarhammerCalendarManager
         public ImperialCalendar()
         {
             createMoonPhaseArray();
-            setDate(1, 1, 2522);
+            setDate(1, 1, 2511);
         }
 
         // cycle / 8 = full moon day length (rounded to nearest)
