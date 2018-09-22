@@ -13,7 +13,7 @@ Data is stored in the following structure:
 
 
 ## Example Scenario
-I'm starting a new adventure with some friends, so I create a new campaign, lets just call it Adventure 1. This campaign starts in the winter of 1490, so lets just say 12/05/1490. The first session covers 5 days, some of which may have events worthy of creating **Notes** for. Therefore, we have at least 2 **Notes**, *Start Date*, which is on 12/05/1490, and the *Current Date*, which is on 12/10/1490, and there may be other notes, such as *Left town* on 12/7/1490.
+I'm starting a new adventure with some friends, so I create a new campaign, lets just call it Adventure 1. This campaign starts in the winter of 1490, so lets just say 12/05/1490. The first session covers 5 days, some of which may have events worthy of creating **Notes** for. Therefore, we have at least 2 **Notes**, *Start Date*, which is on 12/05/1490, and the *Current Date*, which is on 12/10/1490, and there may be other, user created notes, such as *Left town* on 12/7/1490.
 
 Next, I want to create a new adventure in the same world. This adventure takes place in the past compared with Adventure 1. Lets say 1 year and 2 months before, so the *Start Date* is 10/12/1489. On the first session, this adventure has the characters traveling a long journey across the land, which takes 3 months. However, on the way we notice something. When we land on the date 12/05/1489, the program shows us that Adventure 1 will start on this day in one year! Whether that is relevant or not depends, of course, but it puts time in perspective for your players.   
 
@@ -29,4 +29,4 @@ This variant is used in conjunction with [Donjon's Fantasy Calendar Generator](h
 The Calendar of Harptos is the calendar of Faerun, or the Forgotten Realms, which is the default campaign setting for Dungeons & Dragons. This includes Harptos Calendar's special intercalary holidays, as well as a graphical image of the calendar that shows where the current date is. 
 
 ### Warhammer Calendar Manager
-This variant is for use in the Warhammer Fantasy world, and has the most unique features of the different variants. For example, Morrslieb, the Chaos Moon, which is erratic and unpredictable its phase and in its proximity to the world. 
+This variant is for use in the Warhammer Fantasy world, and has the most unique features of the different variants. For example, Morrslieb, the Chaos Moon, which is erratic and unpredictable in its phase and proximity to the world. 
