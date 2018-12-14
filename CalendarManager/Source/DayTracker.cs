@@ -91,6 +91,7 @@ namespace CalendarManager
             }
 
             currentDate.Text = currentCalendar.calendar.ToString("dddd, mmm d, y");
+            dateTT.SetToolTip(currentDate, currentCalendar.calendar.ToString("m\\d\\y"));
 
             displayMoons();
             DetermineTimerButtonVisibility();

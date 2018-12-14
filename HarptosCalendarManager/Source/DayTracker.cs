@@ -67,6 +67,7 @@ namespace HarptosCalendarManager
         private void UpdateCalendar()
         {
             currentDate.Text = currentCalendar.calendar.ToString("ddd of mmm, yyyy", altNames);
+            dateTT.SetToolTip(currentDate, currentCalendar.calendar.ToString("m\\d\\y"));
 
             yearNameLabel.Text = currentCalendar.calendar.ReturnYearName();
 

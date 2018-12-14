@@ -932,6 +932,12 @@ namespace CalendarManager
             return stringDate.ToString();
         }
 
+        public string ToString(string format, bool alt = false)
+        {
+            return ToString(ToString(), format, alt);
+        }
+        
+
         public static string ToString(string dateString, string format, bool alt = false)
         {
             int m = Int32.Parse(dateString.Substring(0, 2));
@@ -1069,11 +1075,6 @@ namespace CalendarManager
                     startIndex++;
             }
             return format;
-        }
-
-        public string ToString(string format, bool alt = false)
-        {
-            return ToString(this.ToString(), format, alt);
         }
         
         /// <summary>

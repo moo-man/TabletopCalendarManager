@@ -121,6 +121,7 @@
             this.winterSolsticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calendarOfHarptosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seluneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateTT = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.wheelPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moonPicture)).BeginInit();
             this.noteboxRightClickMenu.SuspendLayout();
@@ -1110,6 +1111,7 @@
         private System.Windows.Forms.ToolStripMenuItem timerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pauseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolstripMenuItem;
+        private System.Windows.Forms.ToolTip dateTT;
     }
 }
 

@@ -18,6 +18,7 @@ namespace WarhammerCalendarManager
         static CalendarContents currentCalendar; // Changed to static, beware of issues
         List<Note> listOfNotes;
         Point morrLocation;
+        bool hideMorr;
 
         public DayTracker(CalendarContents currCalendar)
         {
@@ -37,6 +38,7 @@ namespace WarhammerCalendarManager
             showTT.SetToolTip(showHiddenTimersButton, "Show hidden timers");
             mannTT.SetToolTip(mannPicture, "Mannslieb");
             morrTT.SetToolTip(morrPicture, "Morrslieb");
+
 
             noteBox.DisplayMember = "DisplayString";
             noteBox.ContextMenuStrip = noteboxRightClickMenu;
@@ -77,6 +79,7 @@ namespace WarhammerCalendarManager
             }
 
             currentDate.Text = currentCalendar.calendar.ToString("dddd, mmm d, y");
+            dateTT.SetToolTip(currentDate, currentCalendar.calendar.ToString("m\\d\\y"));
 
 
             displayMoons();
@@ -184,6 +187,10 @@ namespace WarhammerCalendarManager
                 morrPicture.Location = morrLocation;
             }
 
+            if (hideMorr)
+                morrPicture.Hide();
+            else
+                morrPicture.Show();
         }
 
         private void currentDateLabel_Click(object sender, EventArgs e)
@@ -731,6 +738,12 @@ namespace WarhammerCalendarManager
                 ProcessStartInfo sInfo = new ProcessStartInfo(webpage);
                 Process.Start(sInfo);
             }
+        }
+
+        private void hideMorrsliebToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            hideMorr = hideMorrsliebToolStripMenuItem.Checked;
+            UpdateCalendar();   
         }
     }
 
