@@ -154,21 +154,27 @@ namespace WarhammerCalendarManager
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                try
-                {
-                    System.IO.StreamReader sr = new System.IO.StreamReader(openFileDialog1.FileName);
-     
-                    string test = sr.ReadToEnd();
-                    //loadedCalendar = ReadInFile(sr);
-                    loadedCalendar = readInJSON(Newtonsoft.Json.JsonConvert.DeserializeObject(test));
+                Load(openFileDialog1.FileName);
+                currentFilePath = openFileDialog1.FileName;
 
-                    currentFilePath = openFileDialog1.FileName;
-                    sr.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: Could not read file. Original error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+
+            return loadedCalendar;
+        }
+
+        public static CalendarContents Load(string filename)
+        {
+            CalendarContents loadedCalendar = null;
+            try
+            {
+                System.IO.StreamReader sr = new System.IO.StreamReader(filename);
+                loadedCalendar = readInJSON(sr.ReadToEnd());
+                currentFilePath = filename;
+                sr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: Could not read file. Original error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return loadedCalendar;
         }

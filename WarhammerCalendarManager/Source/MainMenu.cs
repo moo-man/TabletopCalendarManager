@@ -38,23 +38,13 @@ namespace WarhammerCalendarManager
             initalizeFont(Properties.Resources.Ozymandias_Solid_WBW);
             applyFont(titleText, 1);
             currentCalendar = null;
-
-            /*// TESTING
-            AllocConsole();
-            ImperialCalendar testCalendar = new ImperialCalendar(@"{""year_len"":365,""events"":1,""n_months"":12,""months"":[""Abadius"",""Calistril"",""Pharast"",""Gozran"",""Desnus"",""Sarenith"",""Erastus"",""Arodus"",""Rova"",""Lamashan"",""Neth"",""Kuthona""],""month_len"":{""Abadius"":31,""Calistril"":30,""Pharast"":31,""Gozran"":30,""Desnus"":31,""Sarenith"":30,""Erastus"":31,""Arodus"":31,""Rova"":30,""Lamashan"":31,""Neth"":30,""Kuthona"":29},""week_len"":7,""weekdays"":[""Moonday"",""Toilday"",""Wealday"",""Oathday"",""Fireday"",""Starday"",""Sunday""],""n_moons"":1,""moons"":[""Somal""],""lunar_cyc"":{""Somal"":29.53},""lunar_shf"":{""Somal"":0},""year"":4707,""first_day"":0,""notes"":{}}", "test");
-            Timer testTimer;
-            Console.WriteLine("BEGIN TEST");
-            for (int i = 1; i <= 10000; i++)
-            {
-                testTimer = new Timer(testCalendar.dateIn(i), true, "test");
-                Console.WriteLine("i: " + i + "\tDays till: " + testCalendar.daysTo(testTimer.returnDateString()));
-                if (i != testCalendar.daysTo(testTimer.returnDateString()))
-                {
-                    Console.Write("\t ERROR********************************************************\n");
-                }
-            }
-            Console.WriteLine("TEST COMPLETE");*/
         }
+
+        public MainMenu(string arg) : this()
+        {
+            LoadCalendarMenu(Utility.Load(arg));
+        }
+
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
@@ -188,14 +178,5 @@ namespace WarhammerCalendarManager
             help = new HelpBox();
             help.ShowDialog(this);
         }
-
-        /*public void StartLoadingBar(int numItems)
-        {
-            loadingBar.Visible = false;
-            loadingBar.Minimum = 1;
-            loadingBar.Maximum = numItems;
-            loadingBar.Value = 1;
-            loadingBar.Step = 1;
-        }*/
     }
 }

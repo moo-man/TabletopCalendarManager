@@ -139,21 +139,27 @@ namespace HarptosCalendarManager
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                Load(openFileDialog1.FileName);
+                currentFilePath = openFileDialog1.FileName;
 
-                try
-                {
-                    bool oldFile = !openFileDialog1.FileName.Contains(".hcal");
-                    System.IO.StreamReader sr = new System.IO.StreamReader(openFileDialog1.FileName);
-                    //loadedCalendar = ReadInFile(sr, oldFile);
-                    loadedCalendar = ReadJSON(sr.ReadToEnd());
+            }
 
-                    currentFilePath = openFileDialog1.FileName;
-                    sr.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: Could not read file. Original error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            return loadedCalendar;
+        }
+
+        public static CalendarContents Load(string filename)
+        {
+            CalendarContents loadedCalendar = null;
+            try
+            {
+                System.IO.StreamReader sr = new System.IO.StreamReader(filename);
+                loadedCalendar = ReadJSON(sr.ReadToEnd());
+                currentFilePath = filename;
+                sr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: Could not read file. Original error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return loadedCalendar;
         }

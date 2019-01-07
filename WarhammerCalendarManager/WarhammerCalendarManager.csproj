@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -257,6 +257,7 @@
     <Content Include="Resources\Star Signs\The Witchling Star.png" />
     <Content Include="Resources\Star Signs\Vobist the Faint.png" />
     <Content Include="Resources\Star Signs\Wymund the Anchorite.png" />
+    <Content Include="whicon.ico" />
     <Content Include="whicon2.ico" />
     <EmbeddedResource Include="Newtonsoft.Json.dll" />
     <Content Include="Resources\Icons\noteicon.png" />
@@ -279,6 +280,14 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <FileAssociation Include=".whc">
+      <Visible>False</Visible>
+      <Description>Warhammer Calendar File</Description>
+      <Progid>.whcfile</Progid>
+      <DefaultIcon>whicon2.ico</DefaultIcon>
+    </FileAssociation>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

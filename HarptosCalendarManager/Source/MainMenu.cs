@@ -38,6 +38,11 @@ namespace HarptosCalendarManager
             currentCalendar = null;
         }
 
+        public MainMenu(string arg) : this()
+        {
+            LoadCalendarMenu(Utility.Load(arg));
+        }
+
         private void MainMenu_Load(object sender, EventArgs e)
         {
         }
