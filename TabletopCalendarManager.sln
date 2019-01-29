@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarhammerCalendarManager", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarptosCalendarManagerWPF", "HarptosCalendarManagerWPF\HarptosCalendarManagerWPF.csproj", "{23C491EE-E2F3-435B-80DA-948A97B1EA58}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarhammerCalendarManagerWPF", "WarhammerCalendarManagerWPF\WarhammerCalendarManagerWPF.csproj", "{0D6E069D-F810-4605-8B3C-9FED1C95CB99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{23C491EE-E2F3-435B-80DA-948A97B1EA58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23C491EE-E2F3-435B-80DA-948A97B1EA58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23C491EE-E2F3-435B-80DA-948A97B1EA58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D6E069D-F810-4605-8B3C-9FED1C95CB99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D6E069D-F810-4605-8B3C-9FED1C95CB99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D6E069D-F810-4605-8B3C-9FED1C95CB99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D6E069D-F810-4605-8B3C-9FED1C95CB99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
