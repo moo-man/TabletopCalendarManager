@@ -7,7 +7,7 @@
         mc:Ignorable="d"
 		MinHeight="200"
 		MinWidth="400"
-        Title="MainWindow" Height="500" Width="400">
+        Title="MainWindow" Height="200" Width="400">
 	<DockPanel>
 		<Menu DockPanel.Dock="Top">
 			<MenuItem Header="File">
@@ -24,13 +24,13 @@
 			<MenuItem Header="Options">
 				<MenuItem Header="Passed Notes Notification"/>
 				<MenuItem Header="Small Daytracker"/>
-				<MenuItem Header="Save"/>
-				<MenuItem Header="Save As"/>
 				<Separator />
 				<MenuItem Header="Exit"/>
 			</MenuItem>
 		</Menu>
-		<local:CampaignTree/>
+		<!-- Change the page with this segment -->
+		<local:MainMenu/>
+		<!-- <local:CampaignTree/> -->
 
 	</DockPanel>
 </Window>
